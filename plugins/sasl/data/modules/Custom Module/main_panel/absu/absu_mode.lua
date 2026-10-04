@@ -252,6 +252,11 @@ defineProperty("kln_flag2", globalPropertyi("tu154b2/custom/kln90/kln_fail_flag"
 defineProperty("show_gns", globalPropertyi("tu154b2/custom/anim/show_gns"))
 --defineProperty("show_RXP",globalPropertyi("tu154b2/custom/anim/RXP"))
 defineProperty("nav_select", globalPropertyi("tu154b2/custom/switchers/nav_select")) -- тумблер НВУ-СНС 0 - НВУ, 1 - СНС
+-- UNS readiness (cockpit v1 only): in v1 the НВУ switch position is fed by the UNS / native FMS
+-- (see absu_controls.lua), so NVU-mode availability must follow the UNS, not the old NVU-1 computer.
+defineProperty("kontur_on_v1", globalPropertyi("tu154b2/custom/b2/kontur_on")) -- 1 = cockpit v1
+defineProperty("uns1_on", globalPropertyi("tu154b2/custom/uns1_on")) -- UNS1 powered (uns_logic.lua)
+defineProperty("uns_dist_to_wpt_nm", globalPropertyf("sim/cockpit2/radios/indicators/gps_dme_distance_nm")) -- >0 when FMS has an active waypoint
 defineProperty("curs_np1_on", globalPropertyi("tu154b2/custom/switchers/ovhd/curs_np_on_1")) 
 defineProperty("curs_np2_on", globalPropertyi("tu154b2/custom/switchers/ovhd/curs_np_on_2"))
 defineProperty("nav1_fail", globalPropertyi("tu154b2/custom/failures/nav1_fail")) -- fail 
@@ -596,6 +601,12 @@ local MASTER = get(ismaster) ~= 1
 				nvu_flag=get(GNS430_flag)				
 			-- elseif get(show_gns) == 1 and get(show_RXP) == 1 then -- RXP
 				-- nvu_flag=get(RXP_flag)	
+			end
+		elseif get(kontur_on_v1) == 1 then
+			-- v1: НВУ position = UNS. Old NVU-1 computer (nvu_mode) is not used here -
+			-- it is switched off on cold & dark (nvu_logic sw_reset) and has no switch in v1.
+			if get(uns1_on) == 0 or get(uns_dist_to_wpt_nm) <= 0 or get(absu_bns_roll_fail)==1 then
+				nvu_flag=1
 			end
 		else
 			if get(nvu_mode)*(1-get(nvu_fail))==0 or get(absu_bns_roll_fail)==1 then

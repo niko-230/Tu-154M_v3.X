@@ -109,6 +109,13 @@ defineProperty("absu_bns_pitch_fail", globalPropertyi("tu154b2/custom/failures/b
 defineProperty("absu_bns_roll_fail", globalPropertyi("tu154b2/custom/failures/bns_gam_fail"))
 defineProperty("nvu_otk", globalPropertyi("tu154b2/custom/failures/nvu_fail"))
 defineProperty("nvu_mode", globalPropertyi("tu154b2/custom/nvu/nvu_mode")) -- режим НВУ. 0 = выкл, 1 = готов, 2 = счисление, 3 = коррекция
+-- UNS readiness (cockpit v1 only) - НВУ position follows UNS / native FMS in v1
+defineProperty("kontur_on_v1", globalPropertyi("tu154b2/custom/b2/kontur_on")) -- 1 = cockpit v1
+defineProperty("uns1_on", globalPropertyi("tu154b2/custom/uns1_on")) -- UNS1 powered (uns_logic.lua)
+defineProperty("uns_dist_to_wpt_nm", globalPropertyf("sim/cockpit2/radios/indicators/gps_dme_distance_nm")) -- >0 when FMS has an active waypoint
+defineProperty("uns_course", globalPropertyf("sim/cockpit/radios/gps_course_degtm")) -- UNS / native FMS desired track, magnetic (same source as absu_controls.lua)
+defineProperty("uns_hdef_dot", globalPropertyf("sim/cockpit/radios/gps_hdef_dot")) -- UNS course deviation, dots
+defineProperty("uns_nm_per_dot", globalPropertyf("sim/cockpit/radios/gps_hdef_nm_per_dot")) -- UNS CDI scale, nm per dot
 defineProperty("absu_power_cc", globalPropertyf("tu154b2/custom/absu_power_cc")) -- потребление тока АБСУ
 defineProperty("sta_type_left", globalPropertyi("tu154b2/custom/radio/ils_left"))
 defineProperty("sta_type_right", globalPropertyi("tu154b2/custom/radio/ils_right"))
@@ -141,6 +148,10 @@ function update()
 	local obs_flg=0
 	local ks_flag=0
 	local nvu_fail=bool2int(get(absu_bns_roll_fail)==1 or get(nvu_mode)*(1-get(nvu_otk))==0)
+	if get(kontur_on_v1) == 1 then
+		-- v1: course flag follows UNS readiness instead of the old NVU-1 computer
+		nvu_fail=bool2int(get(absu_bns_roll_fail)==1 or get(uns1_on)==0 or get(uns_dist_to_wpt_nm)<=0)
+	end
 	--local mp1_fail=get(absu_bns_roll_fail)==1 or get(nvu_mode)*(1-get(nvu_fail))==0
 	
 	local passed = get(frame_time)
@@ -318,11 +329,23 @@ function update()
 		--set(pkp_obs_flag, 0)
 		
 	elseif power and mode == 1 and nav_sel == 0 then -- NVU
-		if nvu_fail==0 then
-			obs_course = get(nvu_res_course)
+		if get(kontur_on_v1) == 1 then
+			-- v1: PNP shows UNS / native FMS track and deviation (same data ABSU flies)
+			if nvu_fail==0 then
+				obs_course = get(uns_course)
+			end
+			-- deviation in km = hdef_dot * nm_per_dot * 1.852; same scale/sign as the NVU line below
+			-- (ABSU uses uns_z = -dev_km, and NVU bar = -nvu_z * 0.1)
+			course_pl = get(uns_hdef_dot) * get(uns_nm_per_dot) * 1.852 * 0.1 * (1-nvu_fail)
+			if course_pl > 1.3 then course_pl = 1.3
+			elseif course_pl < -1.3 then course_pl = -1.3 end
+		else
+			if nvu_fail==0 then
+				obs_course = get(nvu_res_course)
+			end
+			
+			course_pl = -get(nvu_res_z) * 0.1*(1-nvu_fail)
 		end
-		
-		course_pl = -get(nvu_res_z) * 0.1*(1-nvu_fail)
 		glidesl_pl = 0
 		
 		
