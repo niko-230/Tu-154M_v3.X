@@ -1911,7 +1911,7 @@ plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_controls.lua|403224
 plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_fails.lua|903252600
 plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_indicator.lua|1856700851
 plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_integrator.lua|17986017
-plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_mode.lua|2981564411
+plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_mode.lua|741582506
 plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_panel.lua|1351297743
 plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_ppn.lua|3610092110
 plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_svk.lua|3747036409
@@ -1959,7 +1959,7 @@ plugins/sasl/data/modules/Custom Module/main_panel/nvu/pa3_handdrawn_frag.glsl|4
 plugins/sasl/data/modules/Custom Module/main_panel/nvu/pa3_handdrawn_vert.glsl|1960375413
 plugins/sasl/data/modules/Custom Module/main_panel/nvu/rsbn_names_ru.lua|1852044540
 plugins/sasl/data/modules/Custom Module/main_panel/pkp.lua|1949808281
-plugins/sasl/data/modules/Custom Module/main_panel/pnp.lua|591111907
+plugins/sasl/data/modules/Custom Module/main_panel/pnp.lua|1607642456
 plugins/sasl/data/modules/Custom Module/main_panel/radar/radar.lua|306657851
 plugins/sasl/data/modules/Custom Module/main_panel/radar/radar_angle_scale.png|395874987
 plugins/sasl/data/modules/Custom Module/main_panel/radar/radar_exp.lua|827025924
