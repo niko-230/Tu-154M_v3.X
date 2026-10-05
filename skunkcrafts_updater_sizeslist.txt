@@ -1449,7 +1449,7 @@ objects/glass_NML.png|7979
 objects/gns430.obj|271459
 objects/gns430.png|3944957
 objects/gns430_LIT.png|142943
-objects/gps.obj|188196
+objects/gps.obj|188192
 objects/gps.png|1551972
 objects/gps_LIT.png|107052
 objects/ground.obj|3631594
@@ -1518,6 +1518,7 @@ objects/snow_window_LIT.png|6219646
 objects/srd_panel_RUS.png|592153
 objects/srd_panel_RUS_LIT.png|48140
 objects/srd_panel_b2_RUS.png|592153
+objects/srpbz_knob_v1.obj|8005
 objects/textures_rus/GrozaBody_ALB.png|10633423
 objects/textures_rus/GrozaBody_LIT.png|97802
 objects/textures_rus/GrozaBody_MAT.png|7406139
@@ -1907,7 +1908,7 @@ plugins/sasl/data/modules/Custom Module/lights_system/lights_system.lua|235
 plugins/sasl/data/modules/Custom Module/main_panel/absu/absu.lua|277
 plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_at.lua|18356
 plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_commands.lua|9291
-plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_controls.lua|67225
+plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_controls.lua|74788
 plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_fails.lua|17176
 plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_indicator.lua|1778
 plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_integrator.lua|4943
@@ -3261,7 +3262,7 @@ sounds/systems/click.wav|2188
 sounds/systems/flap.wav|2188
 sounds/systems/gear.wav|2188
 sounds/weather/wind.wav|520560
-tu154.acf|2839009
+tu154.acf|2839489
 tu154_cockpit.obj|1458456
 tu154_icon11.png|113962
 tu154_icon11_thumb.png|10010
