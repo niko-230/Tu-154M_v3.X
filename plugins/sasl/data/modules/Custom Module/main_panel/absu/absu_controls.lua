@@ -99,6 +99,12 @@ defineProperty("kln_dev", globalPropertyf("tu154b2/custom/kln90/kln_dev")) -- о
 defineProperty("gps_course_degtm_uns", globalPropertyf("sim/cockpit/radios/gps_course_degtm")) -- DTK magnetic, native FMS
 defineProperty("gps_hdef_dot", globalPropertyf("sim/cockpit/radios/gps_hdef_dot")) -- course deviation in dots, native FMS
 defineProperty("kontur_on_v1", globalPropertyi("tu154b2/custom/b2/kontur_on")) -- cockpit v1/v2 variant switch, used to limit UNS-follows-NVU to v1 only
+-- UNS leg tracker (KLN-style turn anticipation), see absu_uns_leg_track() below
+defineProperty("absu_uns_lat", globalPropertyd("sim/flightmodel/position/latitude"))
+defineProperty("absu_uns_lon", globalPropertyd("sim/flightmodel/position/longitude"))
+defineProperty("absu_uns_gs", globalPropertyf("sim/flightmodel/position/groundspeed")) -- m/s
+defineProperty("absu_uns_mag_psi", globalPropertyf("sim/flightmodel/position/mag_psi"))
+defineProperty("absu_uns_true_psi", globalPropertyf("sim/flightmodel/position/psi"))
 defineProperty("show_gns", globalPropertyi("tu154b2/custom/anim/show_gns"))
 defineProperty("show_RXP",globalPropertyi("tu154b2/custom/anim/RXP"))
 -- RXP
@@ -364,6 +370,130 @@ local function roll_holder(roll_hold)
 end
 local function yaw_holder(mode)
 end
+-- ===================================================================================
+-- UNS LEG TRACKER (UNS-only, cockpit v1, НВУ position) -- KLN90B-style turn anticipation
+-- SASL3 exposes the native FMS flight plan (sasl.countFMSEntries / getDestinationFMSEntry /
+-- getFMSEntryInfo -- the same calls nav_draw.lua already uses), so the next leg IS known.
+-- This mirrors what the KLN90B plugin does for its own output (kln_course/kln_dev):
+--   * desired track + cross-track computed by great-circle math against the active leg
+--   * the leg is switched to the NEXT one BEFORE the waypoint, at the turn-anticipation
+--     distance  r*tan(turn/2) + roll-in lead  (KLN90B's own turnanti() formula)
+-- Output feeds the existing, unchanged nvu_course/nvu_z -> side -> roll_need pipeline.
+-- Self-checking: the X-Plane FMS leg we read must match X-Plane's own DTK
+-- (gps_course_degtm). If it doesn't (direct-to, no plan, index mismatch...), this returns
+-- nil and the previous UNS logic is used unchanged as the fallback.
+-- All state is global on purpose (update() is at Lua's 60-upvalue ceiling, see above).
+-- ===================================================================================
+absu_uns_leg_idx = nil        -- our active TO-entry (may be one ahead of X-Plane's during a turn)
+absu_uns_leg_n_prev = -1      -- plan entry count last frame (plan edited -> resync)
+absu_uns_leg_bad_time = 0     -- seconds the FMS-leg/DTK cross-check has been failing
+absu_uns_leg_printed = false  -- one-time index-base debug print
+absu_uns_leg_bank = 22        -- deg, bank assumed for turn radius (ABSU roll limit is 25)
+absu_uns_leg_rollin = 5       -- s, roll-in lead added to the anticipation distance
+absu_uns_leg_dtk_tol = 10     -- deg, max FMS-leg vs X-Plane DTK mismatch accepted
+
+function absu_uns_wrap180(a)
+	while a > 180 do a = a - 360 end
+	while a < -180 do a = a + 360 end
+	return a
+end
+
+function absu_uns_wpt(i)
+	local ok, tpe, nme, id, alt, la, lo = pcall(sasl.getFMSEntryInfo, i)
+	if not ok or la == nil or lo == nil then return nil end
+	if la == 0 and lo == 0 then return nil end
+	return la, lo, nme
+end
+
+function absu_uns_gc(la1, lo1, la2, lo2) -- returns distance (m), initial true course (deg)
+	local p1, p2 = math.rad(la1), math.rad(la2)
+	local dl = math.rad(lo2 - lo1)
+	local a = math.sin((p2 - p1) / 2)^2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2)^2
+	local d = 2 * 6371000 * math.asin(math.min(1, math.sqrt(a)))
+	local c = math.deg(math.atan2(math.sin(dl) * math.cos(p2), math.cos(p1) * math.sin(p2) - math.sin(p1) * math.cos(p2) * math.cos(dl)))
+	if c < 0 then c = c + 360 end
+	return d, c
+end
+
+-- returns magnetic DTK (deg) and cross-track (km, + = right of track, same convention as
+-- the KLN path's -kln_dev*1.852 and the fallback's raw_z) -- or nil to use the fallback
+function absu_uns_leg_track(raw_course, passed)
+	if sasl == nil or sasl.countFMSEntries == nil then return nil end
+	local okn, n = pcall(sasl.countFMSEntries)
+	local okd, xd = pcall(sasl.getDestinationFMSEntry)
+	if not okn or not okd or n == nil or xd == nil or n < 2 then return nil end
+
+	-- index base: SASL may pass X-Plane's 0-based indices straight through, or be 1-based.
+	-- Relative indexing (dest-1 / dest / dest+1) works either way; only the LAST valid index
+	-- depends on it. Entry 0 being a real point means 0-based.
+	local last = n
+	if absu_uns_wpt(0) ~= nil then last = n - 1 end
+	if not absu_uns_leg_printed then
+		local _, _, nm = absu_uns_wpt(xd)
+		print(string.format("ABSU UNS leg tracker: entries=%d dest_index=%d dest_name=%s last_index=%d", n, xd, tostring(nm), last))
+		absu_uns_leg_printed = true
+	end
+
+	-- keep our index in step with X-Plane's: equal, or exactly one ahead during an anticipated turn
+	if n ~= absu_uns_leg_n_prev or absu_uns_leg_idx == nil or (absu_uns_leg_idx ~= xd and absu_uns_leg_idx ~= xd + 1) then
+		absu_uns_leg_idx = xd
+	end
+	absu_uns_leg_n_prev = n
+
+	local pla, plo = get(absu_uns_lat), get(absu_uns_lon)
+	local magoff = absu_uns_wrap180(get(absu_uns_mag_psi) - get(absu_uns_true_psi)) -- mag = true + magoff
+
+	-- cross-check X-Plane's own active leg against its DTK
+	local xla, xlo = absu_uns_wpt(xd - 1)
+	local bla, blo = absu_uns_wpt(xd)
+	local okleg = false
+	if xla ~= nil and bla ~= nil then
+		local _, cxp = absu_uns_gc(xla, xlo, bla, blo)
+		okleg = math.abs(absu_uns_wrap180(cxp + magoff - raw_course)) < absu_uns_leg_dtk_tol
+	end
+	if okleg then absu_uns_leg_bad_time = 0 else absu_uns_leg_bad_time = absu_uns_leg_bad_time + passed end
+	if absu_uns_leg_bad_time > 2 then
+		absu_uns_leg_idx = xd
+		return nil
+	end
+
+	-- turn anticipation: only while we are still on X-Plane's leg and a next leg exists
+	if absu_uns_leg_idx == xd and xd + 1 <= last then
+		local cla, clo = absu_uns_wpt(xd + 1)
+		if cla ~= nil and xla ~= nil then
+			local _, back = absu_uns_gc(bla, blo, xla, xlo)
+			local crs_in = back + 180                       -- track arriving at the waypoint
+			local _, crs_out = absu_uns_gc(bla, blo, cla, clo)
+			local turn = math.abs(absu_uns_wrap180(crs_out - crs_in))
+			if turn > 3 then
+				local gs = math.max(get(absu_uns_gs), 50)    -- m/s
+				local r = gs * gs / (9.81 * math.tan(math.rad(absu_uns_leg_bank)))
+				local lead = r * math.tan(math.rad(math.min(turn, 120)) / 2) + gs * absu_uns_leg_rollin
+				local dpb, cpb = absu_uns_gc(pla, plo, bla, blo)
+				local along = dpb * math.cos(math.rad(cpb - crs_in))  -- along-track distance left to the waypoint
+				if along <= lead then
+					absu_uns_leg_idx = xd + 1
+					local _, _, fn = absu_uns_wpt(xd)
+					local _, _, tn = absu_uns_wpt(xd + 1)
+					print(string.format("ABSU UNS leg tracker: turn %.0f deg, lead %.1f km -> leg %s-%s", turn, lead / 1000, tostring(fn), tostring(tn)))
+				end
+			end
+		end
+	end
+
+	-- active leg A->B (ours)
+	local ala, alo = absu_uns_wpt(absu_uns_leg_idx - 1)
+	local tla, tlo = absu_uns_wpt(absu_uns_leg_idx)
+	if ala == nil or tla == nil then return nil end
+	local _, cab = absu_uns_gc(ala, alo, tla, tlo)
+	local dap, cap = absu_uns_gc(ala, alo, pla, plo)
+	local xtk = math.asin(math.sin(dap / 6371000) * math.sin(math.rad(cap - cab))) * 6371 -- km, + = right
+	local dtk = cab + magoff
+	if dtk >= 360 then dtk = dtk - 360 elseif dtk < 0 then dtk = dtk + 360 end
+	return dtk, xtk
+end
+
+
 function update()
 	
 	local passed = get(frame_time)
@@ -986,96 +1116,110 @@ function update()
 				-- v2 НВУ position is untouched, still uses nvu_res_course/nvu_res_z above.
 				local raw_course = get(gps_course_degtm_uns)
 				local raw_z = -(get(gps_hdef_dot) * 1.852 * get(gps_dot)) -- km, negated to match the sign convention the GNS430 path below uses
-
-				-- Smooth the raw native-FMS values (~2s time constant) before use, since unlike
-				-- KLN's own internally-filtered course/deviation, these can jump sharply the
-				-- moment the flight plan sequences to a new leg -- exactly what happens at a
-				-- sharp turn waypoint, which was pinning roll_need against its ceiling.
-				if absu_uns_course_smooth == nil then absu_uns_course_smooth = raw_course end
-				local course_delta = raw_course - absu_uns_course_smooth
-				while course_delta > 180 do course_delta = course_delta - 360 end
-				while course_delta < -180 do course_delta = course_delta + 360 end
-				local uns_alpha = math.min(passed/2, 1)
-				-- Turn-approach softening: X-Plane's native FMS gives no next-leg data (confirmed
-				-- -- Laminar deliberately doesn't expose it as a plain dataref, only via the
-				-- compiled-plugin-only XPLM SDK, which SASL can't call), so genuine anticipation
-				-- of the NEW course isn't possible here. This instead softens the RESPONSE as the
-				-- active waypoint is approached, so the abrupt course jump (when it happens, right
-				-- at/after the waypoint) gets absorbed more gradually instead of snapping instantly.
-				-- Distance-only (not time-to-waypoint) specifically to avoid diss_groundspeed's
-				-- unmet units -- it's declared elsewhere in this file but never actually used
-				-- anywhere, so its units aren't verifiable from context; distance in nm is safe.
-				local uns_dist = get(uns_dist_to_wpt_nm)
-				-- Near-waypoint freeze + passage detection (matches KLN90B's own proven technique,
-				-- confirmed from that plugin's actual source: "distance started increasing again"
-				-- is the trigger it uses to recognize the waypoint's been passed). Right at/after
-				-- passage -- especially if the bank limit meant the turn couldn't complete in time
-				-- -- the raw bearing-to-a-point signal itself gets geometrically unstable that close
-				-- to the point, separate from the "abrupt jump" problem the softening above handles.
-				-- So: freeze the smoothing entirely while very close and still approaching (don't
-				-- chase potentially garbage data); once distance confirms we've passed the point,
-				-- snap fresh instead of blending stale frozen values into newly-stabilized data.
-				local uns_near_wpt = uns_dist > 0 and uns_dist < 0.3
-				local uns_passed_wpt = uns_near_wpt and absu_uns_last_dist ~= nil and uns_dist > absu_uns_last_dist
-				if uns_passed_wpt then
+				local leg_course, leg_z = absu_uns_leg_track(raw_course, passed)
+				if leg_course ~= nil then
+					-- KLN-equivalent leg tracking (own leg + turn anticipation). No extra smoothing/
+					-- capping here on purpose: KLN feeds this same pipeline raw and tracks precisely;
+					-- the course jump at the anticipated leg switch zeroes PZ for that frame (|dcourse|>2).
+					nvu_course = leg_course
+					nvu_z = leg_z
+					-- keep the fallback filters primed so switching back to it is seamless
 					absu_uns_course_smooth = raw_course
 					absu_uns_z_smooth = raw_z
-					uns_alpha = 0 -- already snapped above, skip the blend below this frame
-				elseif uns_near_wpt then
-					uns_alpha = 0 -- still approaching within the freeze radius: hold, don't chase
-				elseif uns_dist > 0 and uns_dist < 2 then
-					local uns_approach_factor = math.max(uns_dist / 2, 0.6) -- eases toward 60%, not 25% -- was too weak to complete a real turn
-					uns_alpha = uns_alpha * uns_approach_factor
-				end
-				if uns_dist > 0 then absu_uns_last_dist = uns_dist end
-				absu_uns_course_smooth = absu_uns_course_smooth + course_delta * uns_alpha
-				while absu_uns_course_smooth >= 360 do absu_uns_course_smooth = absu_uns_course_smooth - 360 end
-				while absu_uns_course_smooth < 0 do absu_uns_course_smooth = absu_uns_course_smooth + 360 end
-				absu_uns_z_smooth = absu_uns_z_smooth + (raw_z - absu_uns_z_smooth) * uns_alpha
+					absu_uns_last_dist = nil
+				else
+				-- FALLBACK (no usable FMS leg data, e.g. direct-to): previous UNS logic, unchanged
 
-				nvu_course = absu_uns_course_smooth
-				-- Intercept-angle-style softening (UNS-only, KLN's own nvu_z above is untouched):
-				-- side_lim=2000m/KZ=0.02 below means raw cross-track deviation drives an almost
-				-- flat, near-maximum proportional response across most of that whole 2000m range --
-				-- after a sharp turn (e.g. a 180 waypoint reversal) this pins roll_need at its
-				-- ceiling for an extended stretch, then overshoots the track and does the same in
-				-- reverse: the "snake" oscillation. This saturates nvu_z's effect smoothly above
-				-- ~0.6km -- ordinary small deviations (normal enroute tracking) are unaffected
-				-- (effective ~= raw for |raw| << cap), only large post-turn deviations get eased.
-				local uns_z_cap = 1.8 -- km -- was 0.6, capped proportional response at only ~12 deg,
-				-- not enough authority to actually complete a sustained large-angle correction like
-				-- a 180 reversal. Raised close to the real side_lim=2000m ceiling so large, sustained
-				-- deviations can still reach near-full 25deg authority -- this now only smooths the
-				-- very top of the curve, it no longer caps the plane's actual turning ability.
-				nvu_z = uns_z_cap * absu_uns_z_smooth / (uns_z_cap + math.abs(absu_uns_z_smooth))
+					-- Smooth the raw native-FMS values (~2s time constant) before use, since unlike
+					-- KLN's own internally-filtered course/deviation, these can jump sharply the
+					-- moment the flight plan sequences to a new leg -- exactly what happens at a
+					-- sharp turn waypoint, which was pinning roll_need against its ceiling.
+					if absu_uns_course_smooth == nil then absu_uns_course_smooth = raw_course end
+					local course_delta = raw_course - absu_uns_course_smooth
+					while course_delta > 180 do course_delta = course_delta - 360 end
+					while course_delta < -180 do course_delta = course_delta + 360 end
+					local uns_alpha = math.min(passed/2, 1)
+					-- Turn-approach softening: X-Plane's native FMS gives no next-leg data (confirmed
+					-- -- Laminar deliberately doesn't expose it as a plain dataref, only via the
+					-- compiled-plugin-only XPLM SDK, which SASL can't call), so genuine anticipation
+					-- of the NEW course isn't possible here. This instead softens the RESPONSE as the
+					-- active waypoint is approached, so the abrupt course jump (when it happens, right
+					-- at/after the waypoint) gets absorbed more gradually instead of snapping instantly.
+					-- Distance-only (not time-to-waypoint) specifically to avoid diss_groundspeed's
+					-- unmet units -- it's declared elsewhere in this file but never actually used
+					-- anywhere, so its units aren't verifiable from context; distance in nm is safe.
+					local uns_dist = get(uns_dist_to_wpt_nm)
+					-- Near-waypoint freeze + passage detection (matches KLN90B's own proven technique,
+					-- confirmed from that plugin's actual source: "distance started increasing again"
+					-- is the trigger it uses to recognize the waypoint's been passed). Right at/after
+					-- passage -- especially if the bank limit meant the turn couldn't complete in time
+					-- -- the raw bearing-to-a-point signal itself gets geometrically unstable that close
+					-- to the point, separate from the "abrupt jump" problem the softening above handles.
+					-- So: freeze the smoothing entirely while very close and still approaching (don't
+					-- chase potentially garbage data); once distance confirms we've passed the point,
+					-- snap fresh instead of blending stale frozen values into newly-stabilized data.
+					local uns_near_wpt = uns_dist > 0 and uns_dist < 0.3
+					local uns_passed_wpt = uns_near_wpt and absu_uns_last_dist ~= nil and uns_dist > absu_uns_last_dist
+					if uns_passed_wpt then
+						absu_uns_course_smooth = raw_course
+						absu_uns_z_smooth = raw_z
+						uns_alpha = 0 -- already snapped above, skip the blend below this frame
+					elseif uns_near_wpt then
+						uns_alpha = 0 -- still approaching within the freeze radius: hold, don't chase
+					elseif uns_dist > 0 and uns_dist < 2 then
+						local uns_approach_factor = math.max(uns_dist / 2, 0.6) -- eases toward 60%, not 25% -- was too weak to complete a real turn
+						uns_alpha = uns_alpha * uns_approach_factor
+					end
+					if uns_dist > 0 then absu_uns_last_dist = uns_dist end
+					absu_uns_course_smooth = absu_uns_course_smooth + course_delta * uns_alpha
+					while absu_uns_course_smooth >= 360 do absu_uns_course_smooth = absu_uns_course_smooth - 360 end
+					while absu_uns_course_smooth < 0 do absu_uns_course_smooth = absu_uns_course_smooth + 360 end
+					absu_uns_z_smooth = absu_uns_z_smooth + (raw_z - absu_uns_z_smooth) * uns_alpha
 
-				-- Heading-error-driven boost (UNS-only): ZK mode (manual course-set) uses a direct
-				-- heading-error law (roll_need = course error, clamped) and stays decisively pinned
-				-- near max bank through a whole turn because of it. NVU/UNS's law is purely
-				-- cross-track-*distance*-based -- a different physical quantity that doesn't
-				-- reliably track heading error mid-turn, which is the real reason it goes weak/
-				-- "lost" even with the saturation loosened above. (There's a never-enabled attempt
-				-- at exactly this idea already sitting commented-out in the SHARED code right after
-				-- this whole block -- left disabled, presumably because enabling it there would
-				-- hard-snap roll_need with no smoothing and affect KLN too. This is the UNS-only,
-				-- properly-smoothed version, blended through the existing nvu_z/side pipeline
-				-- instead of touching roll_need or shared code directly.)
-				-- SIGN NOT INDEPENDENTLY VERIFIED -- side=nvu_z*1000 with no flip is confirmed from
-				-- the code, but whether "heading error positive" should map to nvu_z positive or
-				-- negative depends on nvu_course/nvu_z's own geometric convention, which isn't
-				-- determinable from reading the code alone. uns_heading_sign is the ONE thing to
-				-- test: trigger a large heading error and confirm the plane turns TOWARD the target,
-				-- not away. Flip this single constant if it turns the wrong way.
-				local uns_heading_sign = -1 -- flipped 2026-09-03: sign=1 caused oscillation ("drunk",
-				-- torn between two directions) -- consistent with the heading term fighting the
-				-- correctly-signed cross-track term each frame whenever it dominated. Needs
-				-- confirming the plane now turns cleanly toward the target on a large heading error.
-				local uns_heading_error = absu_uns_course_smooth - course_now
-				while uns_heading_error > 180 do uns_heading_error = uns_heading_error - 360 end
-				while uns_heading_error < -180 do uns_heading_error = uns_heading_error + 360 end
-				local uns_heading_virtual_z = uns_heading_sign * (uns_heading_error / 90) * uns_z_cap -- +-90deg maps to +-full z_cap
-				if math.abs(uns_heading_virtual_z) > math.abs(nvu_z) then
-					nvu_z = uns_heading_virtual_z
+					nvu_course = absu_uns_course_smooth
+					-- Intercept-angle-style softening (UNS-only, KLN's own nvu_z above is untouched):
+					-- side_lim=2000m/KZ=0.02 below means raw cross-track deviation drives an almost
+					-- flat, near-maximum proportional response across most of that whole 2000m range --
+					-- after a sharp turn (e.g. a 180 waypoint reversal) this pins roll_need at its
+					-- ceiling for an extended stretch, then overshoots the track and does the same in
+					-- reverse: the "snake" oscillation. This saturates nvu_z's effect smoothly above
+					-- ~0.6km -- ordinary small deviations (normal enroute tracking) are unaffected
+					-- (effective ~= raw for |raw| << cap), only large post-turn deviations get eased.
+					local uns_z_cap = 1.8 -- km -- was 0.6, capped proportional response at only ~12 deg,
+					-- not enough authority to actually complete a sustained large-angle correction like
+					-- a 180 reversal. Raised close to the real side_lim=2000m ceiling so large, sustained
+					-- deviations can still reach near-full 25deg authority -- this now only smooths the
+					-- very top of the curve, it no longer caps the plane's actual turning ability.
+					nvu_z = uns_z_cap * absu_uns_z_smooth / (uns_z_cap + math.abs(absu_uns_z_smooth))
+
+					-- Heading-error-driven boost (UNS-only): ZK mode (manual course-set) uses a direct
+					-- heading-error law (roll_need = course error, clamped) and stays decisively pinned
+					-- near max bank through a whole turn because of it. NVU/UNS's law is purely
+					-- cross-track-*distance*-based -- a different physical quantity that doesn't
+					-- reliably track heading error mid-turn, which is the real reason it goes weak/
+					-- "lost" even with the saturation loosened above. (There's a never-enabled attempt
+					-- at exactly this idea already sitting commented-out in the SHARED code right after
+					-- this whole block -- left disabled, presumably because enabling it there would
+					-- hard-snap roll_need with no smoothing and affect KLN too. This is the UNS-only,
+					-- properly-smoothed version, blended through the existing nvu_z/side pipeline
+					-- instead of touching roll_need or shared code directly.)
+					-- SIGN NOT INDEPENDENTLY VERIFIED -- side=nvu_z*1000 with no flip is confirmed from
+					-- the code, but whether "heading error positive" should map to nvu_z positive or
+					-- negative depends on nvu_course/nvu_z's own geometric convention, which isn't
+					-- determinable from reading the code alone. uns_heading_sign is the ONE thing to
+					-- test: trigger a large heading error and confirm the plane turns TOWARD the target,
+					-- not away. Flip this single constant if it turns the wrong way.
+					local uns_heading_sign = -1 -- flipped 2026-09-03: sign=1 caused oscillation ("drunk",
+					-- torn between two directions) -- consistent with the heading term fighting the
+					-- correctly-signed cross-track term each frame whenever it dominated. Needs
+					-- confirming the plane now turns cleanly toward the target on a large heading error.
+					local uns_heading_error = absu_uns_course_smooth - course_now
+					while uns_heading_error > 180 do uns_heading_error = uns_heading_error - 360 end
+					while uns_heading_error < -180 do uns_heading_error = uns_heading_error + 360 end
+					local uns_heading_virtual_z = uns_heading_sign * (uns_heading_error / 90) * uns_z_cap -- +-90deg maps to +-full z_cap
+					if math.abs(uns_heading_virtual_z) > math.abs(nvu_z) then
+						nvu_z = uns_heading_virtual_z
+					end
 				end
 			end
 			
