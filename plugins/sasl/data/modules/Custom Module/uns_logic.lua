@@ -69,7 +69,57 @@ local function set_if_changed(prop, value)
 	end
 end
 
+-- 2026-10-06: KONTUR FP TRANSFER GUARD
+-- plugins/kontur_fp_transfer (B-donor leftover, Windows-only win.xpl) copies the FO's GNS flight plan
+-- into the captain's FMS every frame and, unconditionally, deletes every captain-FMS entry beyond the
+-- length of the FO's plan. With the GNS never selectable (show_gns forced to 0 below) the FO plan is
+-- empty, so any origin/destination typed into the UNS is wiped the next frame ("letters disappear").
+-- It never loaded on Mac (no mac.xpl), which is why the UNS works there. Removed from the repo, but
+-- users who still have the folder get it switched off here. Retries for a few seconds in case it
+-- loads after SASL.
+local kfp_done = false
+local kfp_tries = 0
+local function kfp_info(id)
+	local a, b, c, d = sasl.getPluginInfo(id)
+	if type(a) == "table" then
+		return tostring(a.name or a[1] or ""), tostring(a.path or a[2] or ""), tostring(a.signature or a[3] or ""), tostring(a.description or a[4] or "")
+	end
+	return tostring(a or ""), tostring(b or ""), tostring(c or ""), tostring(d or "")
+end
+local function kfp_disable()
+	if kfp_done then return end
+	kfp_tries = kfp_tries + 1
+	if kfp_tries > 600 then kfp_done = true return end
+	if not (sasl and sasl.countPlugins and sasl.getNthPlugin and sasl.getPluginInfo and sasl.disablePlugin) then
+		kfp_done = true
+		return
+	end
+	local ok, err = pcall(function()
+		local n = sasl.countPlugins()
+		for i = 0, n - 1 do
+			local id = sasl.getNthPlugin(i)
+			if id and id >= 0 then
+				local name, path, sig, desc = kfp_info(id)
+				local p = string.lower(path)
+				if string.find(p, "kontur_fp_transfer", 1, true) or name == "Tu-154 Kontur FP Plugin" then
+					if (not sasl.isPluginEnabled) or sasl.isPluginEnabled(id) then
+						sasl.disablePlugin(id)
+						sasl.logInfo("kontur_fp_transfer plugin found and disabled (it wipes UNS/FMS entries): " .. path)
+					end
+					kfp_done = true
+				end
+			end
+		end
+	end)
+	if not ok then
+		sasl.logInfo("kontur_fp_transfer guard error: " .. tostring(err))
+		kfp_done = true
+	end
+end
+kfp_disable()
+
 function update()
+	kfp_disable() -- kontur_fp_transfer guard (see above)
 
 	-- Orphaned-function consolidation (v1 only): mirror ovhd_panel_int_set
 	-- into mid_left_panel_int_set so the overhead knob also restores the
