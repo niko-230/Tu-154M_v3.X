@@ -2162,11 +2162,11 @@ plugins/sasl/data/modules/Custom Module/sounds/cockpit_sounds.lua|23641
 plugins/sasl/data/modules/Custom Module/sounds/crew_voices.lua|1770
 plugins/sasl/data/modules/Custom Module/sounds/door_sounds.lua|10128
 plugins/sasl/data/modules/Custom Module/sounds/engine_whine.lua|33529
-plugins/sasl/data/modules/Custom Module/sounds/engines_sound.lua|63549
+plugins/sasl/data/modules/Custom Module/sounds/engines_sound.lua|64158
 plugins/sasl/data/modules/Custom Module/sounds/left_panel_sounds.lua|9149
 plugins/sasl/data/modules/Custom Module/sounds/right_panel_sounds.lua|5963
 plugins/sasl/data/modules/Custom Module/sounds/sounds.lua|264
-plugins/sasl/data/modules/Custom Module/sounds/starter_cutout.lua|18699
+plugins/sasl/data/modules/Custom Module/sounds/starter_cutout.lua|19318
 plugins/sasl/data/modules/Custom Module/sounds/touchdown.lua|3024
 plugins/sasl/data/modules/Custom Module/sounds/voice_func.lua|6370
 plugins/sasl/data/modules/Custom Module/sounds/voice_tables.lua|54013
@@ -2187,7 +2187,7 @@ plugins/sasl/data/modules/Custom Module/textureLit_alpha_coords.lua|347
 plugins/sasl/data/modules/Custom Module/texture_ctr.lua|190
 plugins/sasl/data/modules/Custom Module/time_logic.lua|1451
 plugins/sasl/data/modules/Custom Module/transsonic.lua|30922
-plugins/sasl/data/modules/Custom Module/uns_logic.lua|6871
+plugins/sasl/data/modules/Custom Module/uns_logic.lua|8965
 plugins/sasl/data/modules/Custom Module/walk.lua|9129
 plugins/sasl/data/modules/Custom Sounds/ROD_OFF.wav|52490
 plugins/sasl/data/modules/Custom Sounds/ROD_OFF_L.wav|52260
@@ -2806,11 +2806,11 @@ plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_cutout_R_new.wav|305
 plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_left - копия copy.wav|4146294
 plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_left - копия.wav|4146294
 plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_left.wav|4146294
-plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_left_new.wav|14470610
+plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_left_new.wav|15523244
 plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_right - копия copy.wav|4079630
 plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_right - копия.wav|4079630
 plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_right.wav|4079630
-plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_right_new.wav|14470610
+plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_right_new.wav|15523244
 plugins/sasl/data/modules/Custom Sounds/engines/kvd_start_inn_L.wav|571852
 plugins/sasl/data/modules/Custom Sounds/engines/kvd_start_inn_R.wav|571852
 plugins/sasl/data/modules/Custom Sounds/engines/out_apu_left.wav|9505632
@@ -2832,10 +2832,10 @@ plugins/sasl/data/modules/Custom Sounds/engines/out_starter_cutout_R.wav|335004
 plugins/sasl/data/modules/Custom Sounds/engines/out_starter_cutout_R_new.wav|335004
 plugins/sasl/data/modules/Custom Sounds/engines/out_starter_left - копия.wav|4079472
 plugins/sasl/data/modules/Custom Sounds/engines/out_starter_left.wav|4079472
-plugins/sasl/data/modules/Custom Sounds/engines/out_starter_left_new.wav|4079472
+plugins/sasl/data/modules/Custom Sounds/engines/out_starter_left_new.wav|9623492
 plugins/sasl/data/modules/Custom Sounds/engines/out_starter_right - копия.wav|4079472
 plugins/sasl/data/modules/Custom Sounds/engines/out_starter_right.wav|4079472
-plugins/sasl/data/modules/Custom Sounds/engines/out_starter_right_new.wav|4079472
+plugins/sasl/data/modules/Custom Sounds/engines/out_starter_right_new.wav|9623492
 plugins/sasl/data/modules/Custom Sounds/engines/whine_left.wav|2456132
 plugins/sasl/data/modules/Custom Sounds/engines/whine_right.wav|2456132
 plugins/sasl/data/modules/Custom Sounds/flaps_hnd.wav|17518
@@ -3263,7 +3263,7 @@ sounds/systems/flap.wav|2188
 sounds/systems/gear.wav|2188
 sounds/weather/wind.wav|520560
 tu154.acf|2839489
-tu154_cockpit.obj|1458456
+tu154_cockpit.obj|1458579
 tu154_icon11.png|113962
 tu154_icon11_thumb.png|10010
 tu154_paint.png|6686
