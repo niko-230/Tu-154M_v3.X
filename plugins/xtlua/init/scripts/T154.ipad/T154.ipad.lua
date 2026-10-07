@@ -35,6 +35,9 @@ simDR_tank3_r = find_dataref("tu154b2/custom/payload/tank_3R")
 simDR_tank4 = find_dataref("tu154b2/custom/payload/tank_4")
 simDR_fuel_tanks = find_dataref("sim/flightmodel/weight/m_fuel") 
 simDR_set_cg = find_dataref("tu154b2/custom/payload/load_fast_btn") 
+-- 2026-10-07: for the loading-page CG (cax_nf / cax_to), see efb_payload()
+simDR_m_stations = find_dataref("sim/flightmodel/weight/m_stations")
+simDR_cg_ind = find_dataref("sim/cockpit2/gauges/indicators/CG_indicator")
 
 
 --fork calc
@@ -565,6 +568,43 @@ ct_nf =pos11/nofuel_weight
     
 cax_to = ((ct_t + 0.982)/ 5.285) *100
 cax_nf = ((ct_nf + 0.982)/ 5.285) *100
+
+-- 2026-10-07: loading-page CG recalculated from THIS aircraft's tu154.acf (M masses/positions),
+-- replacing the B-donor moment table above (kept only as fallback). Same physics X-Plane uses:
+-- empty mass at acf/_cgZ, payload stations at acf/_fixed_ref, fuel at acf/_tank_xyz (all in ft).
+-- The result is anchored to X-Plane's live CG (CG_indicator) and converted with the SAME formula as the
+-- Расчеты page (palette_2d.lua: CG_indicator*100/5.28+47.5), so after loading, cax_to == Расчеты CG.
+do
+    local FT = 0.3048
+    local EMPTY_Z = 71.11 * FT                                   -- acf/_cgZ
+    local ST_Z = {39.52, 82.40, 33.65, 34.08, 16.00, 29.25, 57.88, 76.34, 88.87} -- acf/_fixed_ref 0..8 (z)
+    local TK_Z = {67.22, 60.99, 66.73, 66.73, 80.84, 80.84}     -- acf/_tank_xyz 0..5 (z): tank1, tank4, 2R, 2L, 3R, 3L
+    local empty = simDR_empty_weight
+    -- current state (what the flight model has now)
+    local m_now, mom_now = empty, empty * EMPTY_Z
+    for i = 0, 8 do
+        local m = simDR_m_stations[i]
+        m_now = m_now + m; mom_now = mom_now + m * ST_Z[i+1] * FT
+    end
+    for i = 0, 5 do
+        local m = simDR_fuel_tanks[i]
+        m_now = m_now + m; mom_now = mom_now + m * TK_Z[i+1] * FT
+    end
+    if m_now > 1000 then
+        local offset = simDR_cg_ind - mom_now / m_now           -- ties our model to X-Plane's own CG
+        -- planned load from the loading page
+        local st = {simDR_payload_cargo1, simDR_payload_cargo2, simDR_payload_cargo3, simDR_m_stations[3],
+                    simDR_payload_pax1 * 75, simDR_payload_pax2 * 75, simDR_payload_pax3 * 75,
+                    simDR_payload_pax4 * 75, simDR_payload_pax5 * 75}
+        local tk = {simDR_tank1, simDR_tank4, simDR_tank2_r, simDR_tank2_l, simDR_tank3_r, simDR_tank3_l}
+        local m_nf, mom_nf = empty, empty * EMPTY_Z
+        for i = 1, 9 do m_nf = m_nf + st[i]; mom_nf = mom_nf + st[i] * ST_Z[i] * FT end
+        local m_to, mom_to = m_nf, mom_nf
+        for i = 1, 6 do m_to = m_to + tk[i]; mom_to = mom_to + tk[i] * TK_Z[i] * FT end
+        cax_nf = (mom_nf / m_nf + offset) * 100 / 5.28 + 47.5
+        cax_to = (mom_to / m_to + offset) * 100 / 5.28 + 47.5
+    end
+end
     
     
     
