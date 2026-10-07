@@ -183,6 +183,8 @@ local out_idle_left_3 = loadSample(moduleDirectory .. '/Custom Sounds/engines/ou
 local out_idle_right_3 = loadSample(moduleDirectory .. '/Custom Sounds/engines/out_idle_right.wav')
 local out_starter_left_3 = loadSample(moduleDirectory .. '/Custom Sounds/engines/out_starter_left_new.wav')
 local out_starter_right_3 = loadSample(moduleDirectory .. '/Custom Sounds/engines/out_starter_right_new.wav')
+-- 2026-10-07: outside starter sound plays until real N2 reaches ES_ST.n2_off (43 %), then fades out over ES_ST.fade_time seconds
+local ES_ST = { n2_off = 43, fade_time = 15, fade = {1, 1, 1}, on = {false, false, false} }
 
 local inn_apu_left = loadSample(moduleDirectory .. '/Custom Sounds/engines/inn_apu_left.wav')
 local inn_apu_right = loadSample(moduleDirectory .. '/Custom Sounds/engines/inn_apu_right.wav')
@@ -818,12 +820,15 @@ function update()
 		playSample(inn_starter_right_new_1, false)
 		playSample(out_starter_left_1, false)
 		playSample(out_starter_right_1, false)
+		ES_ST.fade[1] = 1
+		ES_ST.on[1] = true
 	
 	elseif starter_1 ~= es_starter_1_last and starter_1 == 0 and get(eng_working_1) == 0 then -- 2026-10-07: normal starter cutout (N2>34%) no longer cuts the starter sounds; they play to the end of the file. Only an aborted start (engine not burning fuel) stops them.
 		stopSample(inn_starter_left_new_1)
 		stopSample(inn_starter_right_new_1)
 		stopSample(out_starter_left_1)
 		stopSample(out_starter_right_1)
+		ES_ST.on[1] = false
 	end
 	
 	if starter_2 ~= es_starter_2_last and starter_2 == 1 and get(eng2_N1) < 20 then
@@ -831,12 +836,15 @@ function update()
 		playSample(inn_starter_right_new_2, false)
 		playSample(out_starter_left_2, false)
 		playSample(out_starter_right_2, false)
+		ES_ST.fade[2] = 1
+		ES_ST.on[2] = true
 	
 	elseif starter_2 ~= es_starter_2_last and starter_2 == 0 and get(eng_working_2) == 0 then -- 2026-10-07: normal starter cutout (N2>34%) no longer cuts the starter sounds; they play to the end of the file. Only an aborted start (engine not burning fuel) stops them.
 		stopSample(inn_starter_left_new_2)
 		stopSample(inn_starter_right_new_2)
 		stopSample(out_starter_left_2)
 		stopSample(out_starter_right_2)
+		ES_ST.on[2] = false
 	end
 
 	if starter_3 ~= es_starter_3_last and starter_3 == 1 and get(eng3_N1) < 20 then
@@ -844,18 +852,37 @@ function update()
 		playSample(inn_starter_right_new_3, false)
 		playSample(out_starter_left_3, false)
 		playSample(out_starter_right_3, false)
+		ES_ST.fade[3] = 1
+		ES_ST.on[3] = true
 	
 	elseif starter_3 ~= es_starter_3_last and starter_3 == 0 and get(eng_working_3) == 0 then -- 2026-10-07: normal starter cutout (N2>34%) no longer cuts the starter sounds; they play to the end of the file. Only an aborted start (engine not burning fuel) stops them.
 		stopSample(inn_starter_left_new_3)
 		stopSample(inn_starter_right_new_3)
 		stopSample(out_starter_left_3)
 		stopSample(out_starter_right_3)
+		ES_ST.on[3] = false
 	end	
 	
 	
 	es_starter_1_last = starter_1
 	es_starter_2_last = starter_2
 	es_starter_3_last = starter_3
+
+	-- outside starter sound: fade out once real N2 reaches ES_ST.n2_off, then stop it
+	local es_st_n2 = {get(eng1_N1), get(eng2_N1), get(eng3_N1)}
+	local es_st_l = {out_starter_left_1, out_starter_left_2, out_starter_left_3}
+	local es_st_r = {out_starter_right_1, out_starter_right_2, out_starter_right_3}
+	for e = 1, 3 do
+		if ES_ST.on[e] and es_st_n2[e] >= ES_ST.n2_off then
+			ES_ST.fade[e] = ES_ST.fade[e] - passed / ES_ST.fade_time
+			if ES_ST.fade[e] <= 0 then
+				ES_ST.fade[e] = 0
+				ES_ST.on[e] = false
+				stopSample(es_st_l[e])
+				stopSample(es_st_r[e])
+			end
+		end
+	end
 	
 	
 	-- reverse sounds
@@ -915,16 +942,23 @@ function update()
 		local door3_L, door3_R=inn_balance2 (1.95, -8.12, x_pos, z_pos , plt_hdg)
 		local cpt_door = get(cockpit_door)
 		local cpt_door = math.min(cpt_door,0.94)+0.06
+		-- 2026-10-07: smooth cockpit<->cabin transition instead of a hard switch at z=-19 / -19.1.
+		-- cab_t = 0 inside the cockpit (incl. the flight engineer seat), 1 in the cabin.
+		-- The cockpit door hinge is at z = -19.02 (cockpit_2.obj); the ramp starts just behind it so the
+		-- engineer seat is treated as cockpit: closed door = muffled, opening the door = clearly louder.
+		local CAB_RAMP_START = -18.8 -- z where the cabin blend begins (more negative = further forward)
+		local CAB_RAMP_LEN = 1.0     -- metres over which cockpit -> cabin blends
+		local cab_t = math.max(0, math.min(1, (z_pos - CAB_RAMP_START) / CAB_RAMP_LEN))
 		local chan_left2 = math.max(get(cockpit_window_left)*0.7*dist_windows*win1_L, get(cockpit_window_right)*dist_windows*0.7*win2_L, get(pax_door_1) * cpt_door*0.8*dist_door1*door1_L, get(pax_door_2) * cpt_door*1.1*dist_door2*door2_L, get(pax_door_3) * cpt_door*1*dist_door3*door3_L)
-		if z_pos>-19 then
-			chan_left2 = math.max( math.max(-0.0003571*z_pos+0.003214,0)*cockpit_L, get(cockpit_window_left)*0.7*dist_windows* cpt_door*win1_L, get(cockpit_window_right)*dist_windows* cpt_door*0.7*win2_L, get(pax_door_1) * 0.8*dist_door1*door1_L, get(pax_door_2) * 1.1*dist_door2*door2_L, get(pax_door_3) * 1*dist_door3*door3_L)
+		if cab_t > 0 then
+			chan_left2 = chan_left2 * (1 - cab_t) + cab_t * math.max( math.max(-0.0003571*z_pos+0.003214,0)*cockpit_L, get(cockpit_window_left)*0.7*dist_windows* cpt_door*win1_L, get(cockpit_window_right)*dist_windows* cpt_door*0.7*win2_L, get(pax_door_1) * 0.8*dist_door1*door1_L, get(pax_door_2) * 1.1*dist_door2*door2_L, get(pax_door_3) * 1*dist_door3*door3_L)
 		end
 		local chan_right2 = math.max(get(cockpit_window_left)*0.7*dist_windows*win1_R, get(cockpit_window_right)*dist_windows*0.7*win2_R, get(pax_door_1) * cpt_door*0.8*dist_door1*door1_R, get(pax_door_2) * cpt_door*1.1*dist_door2*door2_R, get(pax_door_3) * cpt_door*1*dist_door3*door3_R)
-		if z_pos>-19 then
-			chan_right2 = math.max( math.max(-0.0003571*z_pos+0.003214,0)*cockpit_R, get(cockpit_window_left)*0.7*dist_windows* cpt_door*win1_R, get(cockpit_window_right)*dist_windows* cpt_door*0.7*win2_R, get(pax_door_1) * 0.8*dist_door1*door1_R, get(pax_door_2) * 1.1*dist_door2*door2_R, get(pax_door_3) * 1*dist_door3*door3_R)
+		if cab_t > 0 then
+			chan_right2 = chan_right2 * (1 - cab_t) + cab_t * math.max( math.max(-0.0003571*z_pos+0.003214,0)*cockpit_R, get(cockpit_window_left)*0.7*dist_windows* cpt_door*win1_R, get(cockpit_window_right)*dist_windows* cpt_door*0.7*win2_R, get(pax_door_1) * 0.8*dist_door1*door1_R, get(pax_door_2) * 1.1*dist_door2*door2_R, get(pax_door_3) * 1*dist_door3*door3_R)
 		end
 		local dist = -get(pilot_Z)-1.42 + 9 
-		local cockpit_dr=math.max(bool2int(get(pilot_Z)+1.42>-19.1),cpt_door2)
+		local cockpit_dr=math.max(cab_t,cpt_door2) -- 2026-10-07: was bool2int(z>-19.1) (hard step); now the smooth cab_t ramp
 		-- mute external sounds
 		local inn_gain=400
 		setSampleGain(deice_out_L, chan_left2 * main_vol*0.5*deice_coef)
@@ -936,8 +970,8 @@ function update()
 		setSampleGain(es_n1_out[1][1], 0) -- N1 layer: outside view only (not through open windows/doors)
 		setSampleGain(out_idle_right_1, chan_right2 * inn_gain * main_vol * rpm_gain_1_idle * out_idle_level)
 		setSampleGain(es_n1_out[1][2], 0) -- N1 layer: outside view only (not through open windows/doors)
-		setSampleGain(out_starter_left_1, chan_left2 * inn_gain * main_vol*3/4)
-		setSampleGain(out_starter_right_1, chan_right2 * inn_gain * main_vol*3/4)
+		setSampleGain(out_starter_left_1, (chan_left2 * inn_gain * main_vol*3/4) * ES_ST.fade[1])
+		setSampleGain(out_starter_right_1, (chan_right2 * inn_gain * main_vol*3/4) * ES_ST.fade[1])
 		
 		setSampleGain(out_behind_left_2, 0)
 		setSampleGain(out_behind_right_2, 0)
@@ -945,8 +979,8 @@ function update()
 		setSampleGain(es_n1_out[2][1], 0) -- N1 layer: outside view only (not through open windows/doors)
 		setSampleGain(out_idle_right_2, chan_right2 * inn_gain * main_vol * rpm_gain_2_idle * out_idle_level)
 		setSampleGain(es_n1_out[2][2], 0) -- N1 layer: outside view only (not through open windows/doors)
-		setSampleGain(out_starter_left_2, chan_left2 * inn_gain * main_vol*3/4)
-		setSampleGain(out_starter_right_2, chan_right2 * inn_gain * main_vol*3/4)
+		setSampleGain(out_starter_left_2, (chan_left2 * inn_gain * main_vol*3/4) * ES_ST.fade[2])
+		setSampleGain(out_starter_right_2, (chan_right2 * inn_gain * main_vol*3/4) * ES_ST.fade[2])
 		
 		setSampleGain(out_behind_left_3, 0)
 		setSampleGain(out_behind_right_3, 0)
@@ -954,8 +988,8 @@ function update()
 		setSampleGain(es_n1_out[3][1], 0) -- N1 layer: outside view only (not through open windows/doors)
 		setSampleGain(out_idle_right_3, chan_right2 * inn_gain * main_vol * rpm_gain_3_idle * out_idle_level)
 		setSampleGain(es_n1_out[3][2], 0) -- N1 layer: outside view only (not through open windows/doors)
-		setSampleGain(out_starter_left_3, chan_left2 * inn_gain * main_vol*3/4)
-		setSampleGain(out_starter_right_3, chan_right2 * inn_gain * main_vol*3/4)
+		setSampleGain(out_starter_left_3, (chan_left2 * inn_gain * main_vol*3/4) * ES_ST.fade[3])
+		setSampleGain(out_starter_right_3, (chan_right2 * inn_gain * main_vol*3/4) * ES_ST.fade[3])
 		
 		-- blast and rattle are outside-view layers only: silent in the cockpit
 		setSampleGain(blast_full_1_L, 0)
@@ -1111,8 +1145,8 @@ function update()
 		setSampleGain(es_n1_out[1][1], 1200 * eng_1_L * es_n1_gain_out[1] * main_vol * ext_boost_1 * out_idle_level)
 		setSampleGain(out_idle_right_1, 1200 * eng_1_R * rpm_gain_1_idle * main_vol * ext_boost_1 * out_idle_level)
 		setSampleGain(es_n1_out[1][2], 1200 * eng_1_R * es_n1_gain_out[1] * main_vol * ext_boost_1 * out_idle_level)
-		setSampleGain(out_starter_left_1, 1000 * starter_L * main_vol)
-		setSampleGain(out_starter_right_1, 1000 * starter_R * main_vol)
+		setSampleGain(out_starter_left_1, (1000 * starter_L * main_vol) * ES_ST.fade[1])
+		setSampleGain(out_starter_right_1, (1000 * starter_R * main_vol) * ES_ST.fade[1])
         
 		local rev_snd =  math.min(R_1*rev_L*0.75+R_3*rev_R*0.75,1)*2000* main_vol
 		local rev_ptch = 1000 + (math.max(get(eng1_N1), get(eng3_N1)) - 78) * 10 -- raw N2, reverse untouched by tail
@@ -1130,8 +1164,8 @@ function update()
 		setSampleGain(es_n1_out[2][1], 1200 * eng_2_L * es_n1_gain_out[2] * main_vol * ext_boost_2 * out_idle_level)
 		setSampleGain(out_idle_right_2, 1200 * eng_2_R * rpm_gain_2_idle * main_vol * ext_boost_2 * out_idle_level)
 		setSampleGain(es_n1_out[2][2], 1200 * eng_2_R * es_n1_gain_out[2] * main_vol * ext_boost_2 * out_idle_level)
-		setSampleGain(out_starter_left_2, 1000 * starter_L * main_vol)
-		setSampleGain(out_starter_right_2, 1000 * starter_R * main_vol)	
+		setSampleGain(out_starter_left_2, (1000 * starter_L * main_vol) * ES_ST.fade[2])
+		setSampleGain(out_starter_right_2, (1000 * starter_R * main_vol) * ES_ST.fade[2])	
 
 		setSampleGain(out_behind_left_3, 1200 * ENG_VOL_TRIM * noise_L * rear_gain_3 * rpm_gain_3 ^ 3 * main_vol * (0.5 + 0.5 * work_3) * ext_boost_3)
 		setSampleGain(out_behind_right_3, 1200 * ENG_VOL_TRIM * noise_R * rear_gain_3 * rpm_gain_3 ^ 3 * main_vol * (0.5 + 0.5 * work_3) * ext_boost_3)
@@ -1139,8 +1173,8 @@ function update()
 		setSampleGain(es_n1_out[3][1], 1200 * eng_3_L * es_n1_gain_out[3] * main_vol * ext_boost_3 * out_idle_level)
 		setSampleGain(out_idle_right_3, 1200 * eng_3_R * rpm_gain_3_idle * main_vol * ext_boost_3 * out_idle_level)
 		setSampleGain(es_n1_out[3][2], 1200 * eng_3_R * es_n1_gain_out[3] * main_vol * ext_boost_3 * out_idle_level)
-		setSampleGain(out_starter_left_3, 1000 * starter_L * main_vol)
-		setSampleGain(out_starter_right_3, 1000 * starter_R * main_vol)	
+		setSampleGain(out_starter_left_3, (1000 * starter_L * main_vol) * ES_ST.fade[3])
+		setSampleGain(out_starter_right_3, (1000 * starter_R * main_vol) * ES_ST.fade[3])	
 		
 		-- Blast: rear-side jet noise, keyed on density-corrected thrust (B's layers)
 		local bl_rho = get(snd_rho)
