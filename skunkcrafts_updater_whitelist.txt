@@ -288,7 +288,7 @@ cockpit_3d/generic/EFB/en/grn_btn-1.png|707958098
 cockpit_3d/generic/EFB/en/grn_btn.png|2336502418
 cockpit_3d/generic/EFB/en/no_deice-1.png|4169285403
 cockpit_3d/generic/EFB/en/no_deice.png|3835020265
-cockpit_3d/generic/EFB/en/page1/bg_pg1-1.png|255006062
+cockpit_3d/generic/EFB/en/page1/bg_pg1-1.png|3820144478
 cockpit_3d/generic/EFB/en/page1/bg_pg1.png|60323864
 cockpit_3d/generic/EFB/en/page1/bg_pg11-1.png|3638099132
 cockpit_3d/generic/EFB/en/page1/bg_pg11.png|1584851102
@@ -523,7 +523,7 @@ cockpit_3d/generic/EFB/ru/grn_btn-1.png|707958098
 cockpit_3d/generic/EFB/ru/grn_btn.png|2336502418
 cockpit_3d/generic/EFB/ru/no_deice-1.png|353086557
 cockpit_3d/generic/EFB/ru/no_deice.png|3835020265
-cockpit_3d/generic/EFB/ru/page1/bg_pg1-1.png|2306642446
+cockpit_3d/generic/EFB/ru/page1/bg_pg1-1.png|1142313710
 cockpit_3d/generic/EFB/ru/page1/bg_pg1.png|60323864
 cockpit_3d/generic/EFB/ru/page1/bg_pg11-1.png|2969016505
 cockpit_3d/generic/EFB/ru/page1/bg_pg11.png|1584851102
@@ -3173,7 +3173,7 @@ plugins/xtlua/init/scripts/T154.arm406/T154.arm406.lua|1875648857
 plugins/xtlua/init/scripts/T154.btwo/T154.btwo.lua|2580981375
 plugins/xtlua/init/scripts/T154.config_i/T154.config_i.lua|490124425
 plugins/xtlua/init/scripts/T154.egpws/T154.egpws.lua|1775297070
-plugins/xtlua/init/scripts/T154.ipad/T154.ipad.lua|3202877080
+plugins/xtlua/init/scripts/T154.ipad/T154.ipad.lua|1353481500
 plugins/xtlua/init/scripts/T154.kontur/T154.kontur.lua|2302842219
 plugins/xtlua/init/scripts/T154.radio/T154.radio.lua|1086035926
 plugins/xtlua/init/scripts/T154.systems/T154.systems.lua|3554891135
