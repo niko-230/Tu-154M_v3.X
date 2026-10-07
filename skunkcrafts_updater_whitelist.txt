@@ -1343,8 +1343,10 @@ objects/Planchet_NML.png|4130529678
 objects/antenna.obj|3100674355
 objects/antenna.png|1731289868
 objects/antenna_NML.png|891662323
-objects/aux_stuff.obj|1544447746
+objects/aux_stuff.obj|3377864708
 objects/aux_stuff.png|1206325960
+objects/aux_stuff_1.obj|1541727277
+objects/aux_stuff_1.png|2584167065
 objects/azs_panel.png|3950294998
 objects/azs_panel_LIT.png|47489282
 objects/azs_panels.obj|3662974039
@@ -2161,7 +2163,7 @@ plugins/sasl/data/modules/Custom Module/sounds/cockpit_sounds.lua|1876955939
 plugins/sasl/data/modules/Custom Module/sounds/crew_voices.lua|4231002645
 plugins/sasl/data/modules/Custom Module/sounds/door_sounds.lua|3913113382
 plugins/sasl/data/modules/Custom Module/sounds/engine_whine.lua|3029217422
-plugins/sasl/data/modules/Custom Module/sounds/engines_sound.lua|1630738787
+plugins/sasl/data/modules/Custom Module/sounds/engines_sound.lua|3452216761
 plugins/sasl/data/modules/Custom Module/sounds/left_panel_sounds.lua|1484844117
 plugins/sasl/data/modules/Custom Module/sounds/right_panel_sounds.lua|811851918
 plugins/sasl/data/modules/Custom Module/sounds/sounds.lua|3772783540
@@ -3261,7 +3263,7 @@ sounds/systems/click.wav|2005905547
 sounds/systems/flap.wav|2005905547
 sounds/systems/gear.wav|2005905547
 sounds/weather/wind.wav|1395809330
-tu154.acf|441660803
+tu154.acf|279110198
 tu154_cockpit.obj|2828645987
 tu154_icon11.png|2913622315
 tu154_icon11_thumb.png|2223285862
