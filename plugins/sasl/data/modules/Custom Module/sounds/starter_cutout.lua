@@ -302,22 +302,22 @@ function update ()
 	if starter_1 ~= starter_1_last and starter_1 == 0 then
 		playSample(inn_starter_cut_left_1, false)
 		playSample(inn_starter_cut_right_1, false)
-		playSample(out_starter_cut_left_1, false)
-		playSample(out_starter_cut_right_1, false)
+		-- playSample(out_starter_cut_left_1, false) -- 2026-10-06: out_starter_cutout disabled
+		-- playSample(out_starter_cut_right_1, false) -- 2026-10-06: out_starter_cutout disabled
 	end
 	
 	if starter_2 ~= starter_2_last and starter_2 == 0 then
 		playSample(inn_starter_cut_left_2, false)
 		playSample(inn_starter_cut_right_2, false)
-		playSample(out_starter_cut_left_2, false)
-		playSample(out_starter_cut_right_2, false)
+		-- playSample(out_starter_cut_left_2, false) -- 2026-10-06: out_starter_cutout disabled
+		-- playSample(out_starter_cut_right_2, false) -- 2026-10-06: out_starter_cutout disabled
 	end
 	
 	if starter_3 ~= starter_3_last and starter_3 == 0 then
 		playSample(inn_starter_cut_left_3, false)
 		playSample(inn_starter_cut_right_3, false)
-		playSample(out_starter_cut_left_3, false)
-		playSample(out_starter_cut_right_3, false)
+		-- playSample(out_starter_cut_left_3, false) -- 2026-10-06: out_starter_cutout disabled
+		-- playSample(out_starter_cut_right_3, false) -- 2026-10-06: out_starter_cutout disabled
 	end
 	starter_1_last = starter_1
 	starter_2_last = starter_2
@@ -435,4 +435,12 @@ function update ()
 		setSampleGain(out_starter_right_3, 0)
 		
 	end
+	-- 2026-10-06: out_starter_cutout sounds disabled (never audible, cockpit or outside)
+	setSampleGain(out_starter_cut_left_1, 0)
+	setSampleGain(out_starter_cut_right_1, 0)
+	setSampleGain(out_starter_cut_left_2, 0)
+	setSampleGain(out_starter_cut_right_2, 0)
+	setSampleGain(out_starter_cut_left_3, 0)
+	setSampleGain(out_starter_cut_right_3, 0)
+
 end
