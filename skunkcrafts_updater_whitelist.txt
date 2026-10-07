@@ -2162,11 +2162,11 @@ plugins/sasl/data/modules/Custom Module/sounds/cockpit_sounds.lua|1876955939
 plugins/sasl/data/modules/Custom Module/sounds/crew_voices.lua|4231002645
 plugins/sasl/data/modules/Custom Module/sounds/door_sounds.lua|3913113382
 plugins/sasl/data/modules/Custom Module/sounds/engine_whine.lua|3029217422
-plugins/sasl/data/modules/Custom Module/sounds/engines_sound.lua|2506538625
+plugins/sasl/data/modules/Custom Module/sounds/engines_sound.lua|1630738787
 plugins/sasl/data/modules/Custom Module/sounds/left_panel_sounds.lua|1484844117
 plugins/sasl/data/modules/Custom Module/sounds/right_panel_sounds.lua|811851918
 plugins/sasl/data/modules/Custom Module/sounds/sounds.lua|3772783540
-plugins/sasl/data/modules/Custom Module/sounds/starter_cutout.lua|3498492514
+plugins/sasl/data/modules/Custom Module/sounds/starter_cutout.lua|717697142
 plugins/sasl/data/modules/Custom Module/sounds/touchdown.lua|1009905869
 plugins/sasl/data/modules/Custom Module/sounds/voice_func.lua|2922089639
 plugins/sasl/data/modules/Custom Module/sounds/voice_tables.lua|1696483171
@@ -2187,7 +2187,7 @@ plugins/sasl/data/modules/Custom Module/textureLit_alpha_coords.lua|3259576509
 plugins/sasl/data/modules/Custom Module/texture_ctr.lua|3556765118
 plugins/sasl/data/modules/Custom Module/time_logic.lua|3306150783
 plugins/sasl/data/modules/Custom Module/transsonic.lua|2494849523
-plugins/sasl/data/modules/Custom Module/uns_logic.lua|3803051882
+plugins/sasl/data/modules/Custom Module/uns_logic.lua|3798957545
 plugins/sasl/data/modules/Custom Module/walk.lua|2363159110
 plugins/sasl/data/modules/Custom Sounds/ROD_OFF.wav|4024833285
 plugins/sasl/data/modules/Custom Sounds/ROD_OFF_L.wav|3395022817
@@ -2806,11 +2806,11 @@ plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_cutout_R_new.wav|436
 plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_left - копия copy.wav|3007561554
 plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_left - копия.wav|3007561554
 plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_left.wav|3007561554
-plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_left_new.wav|154981158
+plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_left_new.wav|3840266802
 plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_right - копия copy.wav|312968978
 plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_right - копия.wav|2902332975
 plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_right.wav|2902332975
-plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_right_new.wav|1581708906
+plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_right_new.wav|1228784707
 plugins/sasl/data/modules/Custom Sounds/engines/kvd_start_inn_L.wav|174628929
 plugins/sasl/data/modules/Custom Sounds/engines/kvd_start_inn_R.wav|3646731468
 plugins/sasl/data/modules/Custom Sounds/engines/out_apu_left.wav|3012885935
@@ -2832,10 +2832,10 @@ plugins/sasl/data/modules/Custom Sounds/engines/out_starter_cutout_R.wav|2644009
 plugins/sasl/data/modules/Custom Sounds/engines/out_starter_cutout_R_new.wav|2644009039
 plugins/sasl/data/modules/Custom Sounds/engines/out_starter_left - копия.wav|4263696506
 plugins/sasl/data/modules/Custom Sounds/engines/out_starter_left.wav|4263696506
-plugins/sasl/data/modules/Custom Sounds/engines/out_starter_left_new.wav|4263696506
+plugins/sasl/data/modules/Custom Sounds/engines/out_starter_left_new.wav|101313637
 plugins/sasl/data/modules/Custom Sounds/engines/out_starter_right - копия.wav|3228928573
 plugins/sasl/data/modules/Custom Sounds/engines/out_starter_right.wav|3228928573
-plugins/sasl/data/modules/Custom Sounds/engines/out_starter_right_new.wav|3228928573
+plugins/sasl/data/modules/Custom Sounds/engines/out_starter_right_new.wav|1433164518
 plugins/sasl/data/modules/Custom Sounds/engines/whine_left.wav|1548571648
 plugins/sasl/data/modules/Custom Sounds/engines/whine_right.wav|3434714932
 plugins/sasl/data/modules/Custom Sounds/flaps_hnd.wav|3762363311
@@ -3263,7 +3263,7 @@ sounds/systems/flap.wav|2005905547
 sounds/systems/gear.wav|2005905547
 sounds/weather/wind.wav|1395809330
 tu154.acf|441660803
-tu154_cockpit.obj|2907239798
+tu154_cockpit.obj|2828645987
 tu154_icon11.png|2913622315
 tu154_icon11_thumb.png|2223285862
 tu154_paint.png|1900202556
