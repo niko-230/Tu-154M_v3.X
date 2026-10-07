@@ -23163,6 +23163,7 @@ TRIS 26727 36
 ANIM_end
 ANIM_begin
 ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ATTR_draw_disable
 ANIM_begin
 ATTR_manip_command button sim/FMS/ls_6r
 TRIS 26769 6
@@ -23424,6 +23425,7 @@ ATTR_manip_command button sim/FMS/key_period PERIOD
 TRIS 27351 24
 ANIM_end
 ANIM_end
+ATTR_draw_enable
 ANIM_begin
 ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
 TRIS 27375 6
@@ -23457,6 +23459,7 @@ TRIS 27393 6
 ANIM_end
 ANIM_begin
 ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ATTR_draw_disable
 ANIM_begin
 ATTR_manip_command button sim/FMS/ls_6r
 TRIS 27399 6
@@ -23718,6 +23721,7 @@ ATTR_manip_command button sim/FMS/key_period PERIOD
 TRIS 27981 24
 ANIM_end
 ANIM_end
+ATTR_draw_enable
 ATTR_cockpit_device tu154b2/ils_display_l 0 0 1
 TRIS 28017 6
 ATTR_no_cockpit_device
@@ -23731,6 +23735,7 @@ ATTR_cockpit_device tu154b2/dme_display_r 0 0 1
 TRIS 28131 6
 ATTR_no_cockpit_device
 ATTR_cockpit
+ATTR_draw_disable
 ANIM_begin
 ATTR_manip_toggle up_down 1.000000 0.000000 tu154b2/custom/switchers/nav_1_mode
 TRIS 28029 6
@@ -23772,6 +23777,7 @@ TRIS 28077 6
 ANIM_end
 ATTR_draw_enable
 ATTR_cockpit
+ATTR_draw_disable
 ANIM_begin
 ATTR_manip_push button 1.000000 0.000000 tu154b2/custom/buttons/ovhd/nav_2_but_3
 TRIS 28083 6
@@ -23801,6 +23807,7 @@ ANIM_begin
 ATTR_manip_toggle up_down 1.000000 0.000000 tu154b2/custom/switchers/nav_2_mode
 TRIS 28119 6
 ANIM_end
+ATTR_draw_enable
 ATTR_no_cockpit
 # --- VHF2 screens attempt 3: v-axis flip discovered by calibrating against VHF1's own real UV (v decreases with y, unlike u) ---
 VT -0.881090 -1.363527 -19.551782 0.120807 -0.720295 -0.683067 0.105713 0.343178
