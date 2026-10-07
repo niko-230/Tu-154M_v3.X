@@ -1674,7 +1674,6 @@ plugins/KLN90B/liblinux/libc++abi.so.1|126283024
 plugins/KLN90B/liblinux/libc++abi.so.1.0|126283024
 plugins/KLN90B/liblinux/readme.txt|1538643556
 plugins/KLN90B/version.txt|2225128295
-plugins/kontur_fp_transfer/64/win.xpl|2938899017
 plugins/sasl/64/libcrypto-3-x64.dll|159876504
 plugins/sasl/64/libssl-3-x64.dll|1603419901
 plugins/sasl/64/lin.xpl|2988520251
