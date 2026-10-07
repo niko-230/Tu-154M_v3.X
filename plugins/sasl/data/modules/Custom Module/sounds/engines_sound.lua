@@ -819,7 +819,7 @@ function update()
 		playSample(out_starter_left_1, false)
 		playSample(out_starter_right_1, false)
 	
-	elseif starter_1 ~= es_starter_1_last and starter_1 == 0 then
+	elseif starter_1 ~= es_starter_1_last and starter_1 == 0 and get(eng_working_1) == 0 then -- 2026-10-07: normal starter cutout (N2>34%) no longer cuts the starter sounds; they play to the end of the file. Only an aborted start (engine not burning fuel) stops them.
 		stopSample(inn_starter_left_new_1)
 		stopSample(inn_starter_right_new_1)
 		stopSample(out_starter_left_1)
@@ -832,7 +832,7 @@ function update()
 		playSample(out_starter_left_2, false)
 		playSample(out_starter_right_2, false)
 	
-	elseif starter_2 ~= es_starter_2_last and starter_2 == 0 then
+	elseif starter_2 ~= es_starter_2_last and starter_2 == 0 and get(eng_working_2) == 0 then -- 2026-10-07: normal starter cutout (N2>34%) no longer cuts the starter sounds; they play to the end of the file. Only an aborted start (engine not burning fuel) stops them.
 		stopSample(inn_starter_left_new_2)
 		stopSample(inn_starter_right_new_2)
 		stopSample(out_starter_left_2)
@@ -845,7 +845,7 @@ function update()
 		playSample(out_starter_left_3, false)
 		playSample(out_starter_right_3, false)
 	
-	elseif starter_3 ~= es_starter_3_last and starter_3 == 0 then
+	elseif starter_3 ~= es_starter_3_last and starter_3 == 0 and get(eng_working_3) == 0 then -- 2026-10-07: normal starter cutout (N2>34%) no longer cuts the starter sounds; they play to the end of the file. Only an aborted start (engine not burning fuel) stops them.
 		stopSample(inn_starter_left_new_3)
 		stopSample(inn_starter_right_new_3)
 		stopSample(out_starter_left_3)
