@@ -196,7 +196,7 @@ cockpit_3d/generic/EFB/en/bg_pg3-1.png|121364
 cockpit_3d/generic/EFB/en/bg_pg3.png|4822
 cockpit_3d/generic/EFB/en/bg_pg31-1.png|130356
 cockpit_3d/generic/EFB/en/bg_pg31.png|4822
-cockpit_3d/generic/EFB/en/bg_pg4-1.png|135089
+cockpit_3d/generic/EFB/en/bg_pg4-1.png|131810
 cockpit_3d/generic/EFB/en/bg_pg4.png|4822
 cockpit_3d/generic/EFB/en/bg_pg41-1.png|120783
 cockpit_3d/generic/EFB/en/bg_pg41.png|4822
@@ -433,7 +433,7 @@ cockpit_3d/generic/EFB/ru/bg_pg3-1.png|162427
 cockpit_3d/generic/EFB/ru/bg_pg3.png|4822
 cockpit_3d/generic/EFB/ru/bg_pg31-1.png|152424
 cockpit_3d/generic/EFB/ru/bg_pg31.png|4822
-cockpit_3d/generic/EFB/ru/bg_pg4-1.png|152184
+cockpit_3d/generic/EFB/ru/bg_pg4-1.png|147372
 cockpit_3d/generic/EFB/ru/bg_pg4.png|4822
 cockpit_3d/generic/EFB/ru/bg_pg41-1.png|133149
 cockpit_3d/generic/EFB/ru/bg_pg41.png|4822
@@ -2130,7 +2130,7 @@ plugins/sasl/data/modules/Custom Module/panels_2d/overhead_tex.psd|9435206
 plugins/sasl/data/modules/Custom Module/panels_2d/overhead_tex_RUS.png|1514038
 plugins/sasl/data/modules/Custom Module/panels_2d/palette.png|32470
 plugins/sasl/data/modules/Custom Module/panels_2d/palette.psd|227878
-plugins/sasl/data/modules/Custom Module/panels_2d/palette_2d.lua|15842
+plugins/sasl/data/modules/Custom Module/panels_2d/palette_2d.lua|16010
 plugins/sasl/data/modules/Custom Module/panels_2d/panels_2d.lua|16580
 plugins/sasl/data/modules/Custom Module/panels_2d/png_backup/absu_bk.png|416506
 plugins/sasl/data/modules/Custom Module/panels_2d/png_backup/absu_bk_RUS.png|476886
@@ -3173,7 +3173,7 @@ plugins/xtlua/init/scripts/T154.arm406/T154.arm406.lua|2632
 plugins/xtlua/init/scripts/T154.btwo/T154.btwo.lua|72049
 plugins/xtlua/init/scripts/T154.config_i/T154.config_i.lua|4235
 plugins/xtlua/init/scripts/T154.egpws/T154.egpws.lua|8838
-plugins/xtlua/init/scripts/T154.ipad/T154.ipad.lua|41828
+plugins/xtlua/init/scripts/T154.ipad/T154.ipad.lua|48202
 plugins/xtlua/init/scripts/T154.kontur/T154.kontur.lua|59620
 plugins/xtlua/init/scripts/T154.radio/T154.radio.lua|24631
 plugins/xtlua/init/scripts/T154.systems/T154.systems.lua|24239
