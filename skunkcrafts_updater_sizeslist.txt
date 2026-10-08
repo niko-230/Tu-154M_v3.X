@@ -1864,9 +1864,9 @@ plugins/sasl/data/modules/Custom Module/engines_system/eng_fails.lua|21030
 plugins/sasl/data/modules/Custom Module/engines_system/engine_gauges.lua|56274
 plugins/sasl/data/modules/Custom Module/engines_system/engines_panel.lua|47164
 plugins/sasl/data/modules/Custom Module/engines_system/engines_system.lua|168
-plugins/sasl/data/modules/Custom Module/engines_system/fuel_consumption.lua|13320
+plugins/sasl/data/modules/Custom Module/engines_system/fuel_consumption.lua|14554
 plugins/sasl/data/modules/Custom Module/engines_system/rt12.lua|6684
-plugins/sasl/data/modules/Custom Module/engines_system/rud_logic.lua|39822
+plugins/sasl/data/modules/Custom Module/engines_system/rud_logic.lua|40321
 plugins/sasl/data/modules/Custom Module/engines_system/vibration_logic.lua|8889
 plugins/sasl/data/modules/Custom Module/fire_system/fire_logic.lua|16563
 plugins/sasl/data/modules/Custom Module/fire_system/fire_panel copy.lua|22014
@@ -2146,7 +2146,7 @@ plugins/sasl/data/modules/Custom Module/panels_2d/yellow_digits.png|87651
 plugins/sasl/data/modules/Custom Module/readme.txt|41
 plugins/sasl/data/modules/Custom Module/rectangle_ctr.lua|369
 plugins/sasl/data/modules/Custom Module/rectangle_ctr_fuel.lua|358
-plugins/sasl/data/modules/Custom Module/save_state.lua|115433
+plugins/sasl/data/modules/Custom Module/save_state.lua|115907
 plugins/sasl/data/modules/Custom Module/sounds/FE_top_sounds.lua|9663
 plugins/sasl/data/modules/Custom Module/sounds/cabin_sounds.lua|35692
 plugins/sasl/data/modules/Custom Module/sounds/cabin_sounds2.lua|19580
