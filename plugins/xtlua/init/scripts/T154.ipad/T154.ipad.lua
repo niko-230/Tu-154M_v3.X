@@ -355,11 +355,14 @@ end
 function efb_land_calc()
     weight_corr = (60000 - simDR_weight_act)/435
     weight_corr_2 = (60000 - simDR_weight_act)/560
-    vapp_0 = math.floor((295-weight_corr) * 0.2) * 5
-    vapp_15 = math.floor((250-weight_corr) * 0.2) * 5
-    vapp_28 = math.floor((240-weight_corr_2) * 0.2) * 5
-    vapp_36 = math.floor((235-weight_corr_2) * 0.2) * 5
-    vapp_45 = math.floor((230-weight_corr_2) * 0.2) * 5
+    -- 2026-10-08: approach speeds from Tu-154M РЛЭ Fig. 7.7.1 (linear in landing mass, km/h IAS),
+    -- rounded to the nearest 5 km/h (was a B-donor formula)
+    local lm_t = simDR_weight_act / 1000 - 60
+    vapp_0  = math.floor((318.0 + 2.410 * lm_t) / 5 + 0.5) * 5
+    vapp_15 = math.floor((250.3 + 1.854 * lm_t) / 5 + 0.5) * 5
+    vapp_28 = math.floor((236.2 + 1.777 * lm_t) / 5 + 0.5) * 5
+    vapp_36 = math.floor((232.1 + 1.715 * lm_t) / 5 + 0.5) * 5
+    vapp_45 = math.floor((229.6 + 1.681 * lm_t) / 5 + 0.5) * 5
     probeg_0 = math.ceil(((vapp_0*0.277778) * (vapp_0*0.277778))/(2*11.8*((tyag_vor/6.673*0.00000000001)+0.02))*0.01)*10
     probeg_15 = math.ceil(((vapp_15*0.277778) * (vapp_15*0.277778))/(2*11.8*((tyag_vor/6.673*0.00000000001)+0.02))*0.01)*10
     probeg_28 = math.ceil(((vapp_28*0.277778) * (vapp_28*0.277778))/(2*11.8*((tyag_vor/6.673*0.00000000001)+0.02))*0.01)*10
@@ -530,6 +533,98 @@ elseif (fuel_main+fuel_alt+efb_fc_nav_res+efb_fc_taxi) > 39750 then
 else
     efb_fc = fuel_main+fuel_alt+efb_fc_nav_res+efb_fc_taxi
 end
+
+-- ============================================================================================
+-- 2026-10-08: FUEL PLANNING BY THE Tu-154M BOOK (РЛЭ Ту-154М, кн.1, разд. 3.1.4 и 7.5)
+-- Replaces the B-donor formula above (6100 kg/h cruise etc.). Results overwrite fuel_main,
+-- fuel_alt, efb_fc, fc_ete_h/m and landing_weight.
+--  * Trip fuel / time / wind correction / compensation fuel: tables 3.1.4.1, regime МД,
+--    FL 9600-12100 m, 500-5000 km (include 600 kg take-off + 600 kg approach & landing).
+--  * Below 9600 m (no book tables): average M burn 5250 kg/h + 1200 kg take-off/landing.
+--  * Alternate reserve РЗТ: table 3.1.4.2 (incl. go-around, transit, 30 min holding),
+--    by distance to alternate and landing mass 70/75/80 t.
+--  * Compensation reserve КЗТ: book column, >= 3% of trip fuel; the EFB "nav fuel" field is
+--    used if larger. РЗТ + КЗТ >= 5000 kg (7.5.3 note 2). Taxi = EFB taxi field (book: 500 kg).
+-- ============================================================================================
+do
+    local FLS  = {9600, 10100, 10600, 11100, 11600, 12100}
+    local BOOK = { -- per FL: fuel kg, wind corr kg per 30 km/h, КЗТ kg, time h at 500..5000 km
+      [9600]  = {f={4600,7400,10300,13250,16200,19250,22050,24700,27300,29900}, w={50,150,250,400,500,600,600,700,750,850}, k={150,200,300,400,500,600,650,750,800,900}, t={0.89,1.46,2.03,2.60,3.17,3.74,4.31,4.88,5.46,6.04}},
+      [10100] = {f={4600,7300,10100,12900,15800,18750,21550,24150,26650,29150}, w={50,150,250,350,450,600,600,700,750,850}, k={150,200,300,400,450,550,650,750,800,900}, t={0.89,1.47,2.04,2.61,3.18,3.75,4.32,4.89,5.46,6.03}},
+      [10600] = {f={4600,7200,9900,12650,15500,18350,21050,23600,26050,28450}, w={50,150,250,350,450,550,600,650,750,800}, k={150,200,300,400,450,550,650,700,800,850}, t={0.89,1.47,2.04,2.62,3.19,3.76,4.33,4.91,5.48,6.06}},
+      [11100] = {f={4600,7150,9750,12450,15200,18000,20700,23150,25550,27900}, w={50,150,250,350,450,550,550,650,700,750}, k={150,200,300,350,450,550,600,700,750,850}, t={0.89,1.47,2.04,2.61,3.19,3.76,4.33,4.90,5.48,6.06}},
+      [11600] = {f={4550,7050,9650,12250,14950,17700,20450,22800,25150,27500}, w={50,150,250,350,450,550,600,600,700,750}, k={150,200,300,350,450,550,600,700,750,800}, t={0.90,1.47,2.04,2.61,3.18,3.75,4.32,4.89,5.46,6.04}},
+      [12100] = {f={4550,7000,9550,12100,14750,17500,20200,22550,24850,27050}, w={50,150,250,300,400,550,550,600,650,700}, k={150,200,300,350,450,500,600,700,750,800}, t={0.90,1.47,2.04,2.61,3.18,3.75,4.32,4.89,5.46,6.03}},
+    }
+    -- РЗТ (3.1.4.2): distance to alternate km -> reserve kg at landing mass 70 / 75 / 80 t
+    local RZT_D = {100,150,200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500}
+    local RZT = {
+      {3850,4050,4300,4700,5150,5550,5950,6400,6800,7250,7650,8050,8450,8850,9300,9700},
+      {4000,4250,4450,4900,5350,5800,6250,6650,7100,7550,7950,8400,8800,9250,9700,10100},
+      {4200,4450,4650,5100,5500,6000,6500,6950,7400,7850,8350,8750,9200,9700,10100,10550},
+    }
+    local function by_dist(tbl, d, zero) -- tables are at 500,1000..5000 km
+        if d <= 500 then return zero + (tbl[1] - zero) * math.max(d, 0) / 500 end
+        local i = math.min(math.floor(d / 500), 9)
+        local x = (d - i * 500) / 500
+        return tbl[i] + (tbl[i+1] - tbl[i]) * x            -- also extrapolates past 5000 km
+    end
+    local function book_at(fl_m, key, d, zero)
+        if fl_m <= FLS[1] then return by_dist(BOOK[FLS[1]][key], d, zero) end
+        if fl_m >= FLS[6] then return by_dist(BOOK[FLS[6]][key], d, zero) end
+        for i = 1, 5 do
+            if fl_m <= FLS[i+1] then
+                local a = by_dist(BOOK[FLS[i]][key], d, zero)
+                local b = by_dist(BOOK[FLS[i+1]][key], d, zero)
+                return a + (b - a) * (fl_m - FLS[i]) / (FLS[i+1] - FLS[i])
+            end
+        end
+    end
+    local function interp(xs, ys, x)
+        if x <= xs[1] then return ys[1] end                  -- book: 100 km and less
+        for i = 1, #xs - 1 do
+            if x <= xs[i+1] then return ys[i] + (ys[i+1] - ys[i]) * (x - xs[i]) / (xs[i+1] - xs[i]) end
+        end
+        local n = #xs
+        return ys[n] + (ys[n] - ys[n-1]) * (x - xs[n]) / (xs[n] - xs[n-1])
+    end
+
+    local dist = math.max(efb_fc_dist_osn, 0)                  -- km
+    local fl_m = efb_fc_fl_osn * 100 * 0.3048                 -- FL -> metres
+    local wind = efb_fc_wind_corr                             -- km/h, + = tailwind
+    local trip, kzt, hours
+    if fl_m >= 9600 - 1 then
+        trip  = book_at(fl_m, "f", dist, 1200) - (wind / 30) * book_at(fl_m, "w", dist, 0)
+        kzt   = book_at(fl_m, "k", dist, 0)
+        hours = book_at(fl_m, "t", dist, 0)
+        local tas = (hours > 0.2) and (dist / hours) or 800
+        hours = hours * tas / math.max(tas + wind, 200)
+    else
+        local gs = math.max(math.min(efb_fc_fl_osn * 3, 900) + wind, 200)
+        hours = dist / gs + 0.2                                -- + take-off and approach time
+        trip  = 1200 + 5250 * dist / gs
+        kzt   = 0
+    end
+    kzt = math.max(kzt, trip * 0.03, efb_fc_nav_res)
+
+    -- landing mass at destination for the РЗТ table (zero-fuel + reserves), t
+    local lm = (nofuel_weight + 6000) / 1000
+    local w = math.max(0, math.min(2, (lm - 70) / 5))
+    local i0 = math.min(math.floor(w), 1)
+    local rzt_a = interp(RZT_D, RZT[i0+1], efb_fc_dist_alt)
+    local rzt_b = interp(RZT_D, RZT[i0+2], efb_fc_dist_alt)
+    local rzt = rzt_a + (rzt_b - rzt_a) * (w - i0)
+    rzt = rzt - (efb_fc_wind_corr_alt / 30) * 0.17 * efb_fc_dist_alt   -- book-style wind effect
+    if rzt + kzt < 5000 then kzt = 5000 - rzt end
+
+    fuel_main = math.ceil(trip * 0.01) * 100
+    fuel_alt  = math.ceil(rzt * 0.01) * 100
+    local total = fuel_main + fuel_alt + math.ceil(kzt * 0.01) * 100 + efb_fc_taxi
+    efb_fc = math.max(12750, math.min(39750, total))
+    fc_ete_h = math.floor(hours)
+    fc_ete_m = math.floor((hours - fc_ete_h) * 60)
+    landing_weight = nofuel_weight + efb_fc - fuel_main - efb_fc_taxi
+end
     
 end
 
@@ -614,7 +709,7 @@ pass_count = simDR_payload_pax1+simDR_payload_pax2+simDR_payload_pax3+simDR_payl
 pass_weight = pass_count * 75
 cargo_weight = simDR_payload_cargo1+simDR_payload_cargo2
 commerc_weight = pass_weight+cargo_weight
-empty_weight = simDR_empty_weight + simDR_payload_cargo3 + equip_weight
+empty_weight = 55000 + simDR_payload_cargo3 + equip_weight -- 2026-10-08: Tu-154M empty weight 55 t (was acf_m_empty)
 nofuel_weight = empty_weight + commerc_weight
 fuel_weight = simDR_tank1 + simDR_tank4 + simDR_tank2_l + simDR_tank2_r + simDR_tank3_l + simDR_tank3_r
 takeoff_weight = nofuel_weight + fuel_weight
