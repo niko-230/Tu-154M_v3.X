@@ -1,3 +1,11 @@
+defineProperty("mdrag_tas", globalPropertyf("sim/flightmodel/position/true_airspeed"))
+-- M clean-drag correction (RLE Fig. 7.5.10-7.5.14 vs sim): parasite drag missing dCd0 = 0.005
+defineProperty("mdrag_force", globalPropertyf("sim/flightmodel/forces/faxil_plug_acf"))
+defineProperty("mdrag_rho", globalPropertyf("sim/weather/rho"))
+defineProperty("mdrag_flap", globalPropertyf("sim/flightmodel/controls/flaprat"))
+local M_DCD0 = 0.005     -- added parasite drag coefficient
+local M_SREF = 201.45    -- m2, Tu-154M wing area
+local M_drag_fade_tbl = {{ -1, 1 }, { 0, 1 }, { 0.05, 0 }, { 2, 0 }} -- clean only; flap drag already calibrated in flap_aero.lua
 defineProperty("sfc_full_lo", globalPropertyf("sim/aircraft/overflow/jet_SFC_locrz"))
 defineProperty("sfc_full_hi", globalPropertyf("sim/aircraft/overflow/jet_SFC_hicrz"))
 -- defineProperty("sfc_full_lo", globalPropertyf("sim/aircraft/overflow/SFC_full_lo_JET"))
@@ -191,6 +199,7 @@ function update()
 	end
 	--set(db1,corr_idle_1)
 	-- total correction
+	corr_1=0 -- B NK-8 nominal-power shaping removed (M)
 	FF_1_corr=FF_1*(1-FF_d_isa_corr*FF_isa_corr_1_fade*interpolate(isa_corr_alt_fade_tbl,alt_baro/1000))*(1-corr_1)*KPP_corr_1+corr_idle_1+1500*bool2int(filling_1~=filling_1_prev)
 	-- Engine 2 --
 	--nominal power corr
@@ -219,6 +228,7 @@ function update()
 		corr_idle_2=0
 	end
 	-- total correction
+	corr_2=0 -- B NK-8 nominal-power shaping removed (M)
 	FF_2_corr=FF_2*(1-FF_d_isa_corr*FF_isa_corr_2_fade*interpolate(isa_corr_alt_fade_tbl,alt_baro/1000))*(1-corr_2)*KPP_corr_2+corr_idle_2+1500*bool2int(filling_2~=filling_2_prev)
 
 	-- Engine 2 --
@@ -252,6 +262,7 @@ function update()
 	local ice2=1+get(eng2_ice)*0.3
 	local ice3=1+get(eng3_ice)*0.4
 	-- total correction
+	corr_3=0 -- B NK-8 nominal-power shaping removed (M)
 	FF_3_corr=FF_3*(1-FF_d_isa_corr*FF_isa_corr_3_fade*interpolate(isa_corr_alt_fade_tbl,alt_baro/1000))*(1-corr_3)*KPP_corr_3+corr_idle_3+1500*bool2int(filling_3~=filling_3_prev)
 	-- check for NaN
 	if FF_1_corr~=FF_1_corr then
@@ -267,9 +278,9 @@ function update()
 	filling_2_prev=filling_2
 	filling_3_prev=filling_3
 	-- Limit
-	FF_1_corr=math.max(0,math.min(FF_1_corr*ice1,6100))
-	FF_2_corr=math.max(0,math.min(FF_2_corr*ice2,6100))
-	FF_3_corr=math.max(0,math.min(FF_3_corr*ice3,6100))
+	FF_1_corr=math.max(0,math.min(FF_1_corr*ice1,6000)) -- M: ~6000 kg/h per engine at take-off (RLE 600 kg / 2 min, 3 eng)
+	FF_2_corr=math.max(0,math.min(FF_2_corr*ice2,6000)) -- M: ~6000 kg/h per engine at take-off (RLE 600 kg / 2 min, 3 eng)
+	FF_3_corr=math.max(0,math.min(FF_3_corr*ice3,6000)) -- M: ~6000 kg/h per engine at take-off (RLE 600 kg / 2 min, 3 eng)
 	-- Correct tank one quantity
 	local delta_FF=(FF_1_corr-FF_1+FF_2_corr-FF_2+FF_3_corr-FF_3)/3600*passed
 	
@@ -311,15 +322,17 @@ function update()
 		set(Flow_2,FF_2_corr)
 		set(Flow_3,FF_3_corr)
 		set(sfc_to_rpm,rpm_max)
+		local v = get(mdrag_tas)
+		set(mdrag_force, M_DCD0 * 0.5 * get(mdrag_rho) * v * v * M_SREF * interpolate(M_drag_fade_tbl, get(mdrag_flap)))
 		set(idle_FF,idle_fuel)
 		set(fuel_q_1,math.max(0,tank1-delta_FF))
 		-- set(sfc_half_lo,sfc_half*corr_half)
-		set(sfc_full_lo,SFC_lo_base-SFC_low_corr)
-		set(sfc_full_hi,SFC_hi_base-SFC_high_corr)
+		-- M: D-30KU-154 cruise SFC ~0.70, no B (NK-8) altitude curves
+		set(sfc_full_lo,SFC_lo_base)
+		set(sfc_full_hi,SFC_hi_base)
 		-- baseline rescaled to M's acf _jet_SFC_takeoff ratio
-		set(to_sfc,0.000013834628*TO_sfc_corr)
+		set(to_sfc,0.000014107*TO_sfc_corr) -- M: D-30KU-154 take-off SFC 0.498
 		-- set(sfc_full_hi,sfc_full)
 		-- set(idle_FF,idle_fuel*idle_corr)
 	end
-	
 end

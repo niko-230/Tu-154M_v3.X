@@ -366,6 +366,8 @@ end
 
 -- registerCommandHandler(mag3_comm, 0, mag3_comm_hnd)
 
+-- M thrust-vs-altitude correction (km, factor); SL value with base below gives 10,500 kgf static (RLE 8.1.4.1)
+M_thrust_alt_tbl = {{ -10, 0.970 }, { 0, 0.970 }, { 2.6, 0.984 }, { 5, 0.981 }, { 7, 0.991 }, { 8.8, 1.008 }, { 10, 0.959 }, { 11.1, 0.926 }, { 20, 0.926 }}
 local idle_rat_tbl = {{ -10000, 0.3 },
                   {  3, 0.3 },	
            	      {  8, 0.86 },
@@ -880,11 +882,10 @@ local reverse_table = {{ -10000, 0.04 }, -- BUGS workaround
 		local eng_2_bleed_loss=bleed_loss_coef*(1-get(bleed_2)/440)
 		local eng_3_bleed_loss=bleed_loss_coef*(1-get(bleed_3)/440)
 		-- set engine power
-		local climb_corr=2.08333333333329782933e-02*math.pow(alt_baro/1000,3) -3.12499999999991784350e-01*math.pow(alt_baro/1000,2) + 1.54166666666660612250e+00*alt_baro/1000 + 1.00000000000014321877e+00
-		climb_corr=math.max(1-climb_corr/100,0.94)
-		if alt_baro/1000<5 then
-			climb_corr=0.97
-		end
+		-- 2026-10-08: B (NK-8) altitude curve replaced by M table: D-30KU-154 thrust vs altitude
+		-- (Practical Aerodynamics Tu-154M 1997, Fig. 2.6 nominal regime + Table 3 at 11 km),
+		-- calibrated against logged sim thrust on the climb profile (IAS 550 / M0.80).
+		local climb_corr=interpolate(M_thrust_alt_tbl, alt_baro/1000)
 		--set(db2,climb_corr)
 		local idle_rt=interpolate(idle_rat_tbl,alt_baro/1000)
 		-- reduce thrust during pushback
@@ -917,9 +918,11 @@ local reverse_table = {{ -10000, 0.04 }, -- BUGS workaround
 		-- = 105,715.69 N DELIVERED. Base is back-calculated through the SL/ISA/static/bleed-on
 		-- correction chain (alt_corr 1.00943 x climb_corr 0.97 x isa_corr 0.99800 = 0.977187):
 		-- 105,715.69 / 0.977187 = 108,183.66 N. (was 112,776.48 N base = ~11,238 kgf delivered)
-		set(acf_tmax_1, 103856.31*alt_corr*kpp1_corr*(climb_corr+eng_1_bleed_loss)*isa_corr*low_corr_1*push*rev_L_corr*ice1)
-		set(acf_tmax_2, 103856.31*alt_corr*kpp2_corr*(climb_corr+eng_2_bleed_loss)*isa_corr*low_corr_2*push*ice2)
-		set(acf_tmax_3, 103856.31*alt_corr*kpp3_corr*(climb_corr+eng_3_bleed_loss)*isa_corr*low_corr_3*push*rev_R_corr*ice3)
+		-- 2026-10-08: base set to book take-off thrust: 10,500 kgf static SL/ISA/bleed-on (RLE 8.1.4.1)
+		-- = 103856.31 x 10500/10349 = 105,371 N (user's 2026-09-25 4% cut was made while drag was 23% low)
+		set(acf_tmax_1, 105371.0*alt_corr*kpp1_corr*(climb_corr+eng_1_bleed_loss)*isa_corr*low_corr_1*push*rev_L_corr*ice1)
+		set(acf_tmax_2, 105371.0*alt_corr*kpp2_corr*(climb_corr+eng_2_bleed_loss)*isa_corr*low_corr_2*push*ice2)
+		set(acf_tmax_3, 105371.0*alt_corr*kpp3_corr*(climb_corr+eng_3_bleed_loss)*isa_corr*low_corr_3*push*rev_R_corr*ice3)
 		set(isa_temp_d,d_isa)
 		set(R_SC_1,get(R_1))
 		set(R_SC_2,get(R_2))

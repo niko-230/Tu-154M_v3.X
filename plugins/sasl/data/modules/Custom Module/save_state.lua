@@ -519,7 +519,9 @@ defineProperty("pax2", globalProperty("sim/flightmodel/weight/m_stations[5]"))
 defineProperty("pax3", globalProperty("sim/flightmodel/weight/m_stations[6]")) 
 defineProperty("pax4", globalProperty("sim/flightmodel/weight/m_stations[7]")) 
 defineProperty("pax5", globalProperty("sim/flightmodel/weight/m_stations[8]")) 
-defineProperty("eng_rpm1", globalProperty("sim/flightmodel/engine/ENGN_N2_[0]"))   
+defineProperty("eng_rpm1", globalProperty("sim/flightmodel/engine/ENGN_N2_[0]"))
+defineProperty("eng_rpm2", globalProperty("sim/flightmodel/engine/ENGN_N2_[1]"))
+defineProperty("eng_rpm3", globalProperty("sim/flightmodel/engine/ENGN_N2_[2]"))   
 
 -- defineProperty("db1", globalPropertyf("tu154b2/custom/controlls/debug1"))
 -- defineProperty("db2", globalPropertyf("tu154b2/custom/controlls/debug2"))
@@ -1691,9 +1693,15 @@ local function read_file()
         if var_table["slid46"] then set(slider46, var_table["slid46"]/10) end
         if var_table["slid47"] then set(slider47, var_table["slid47"]/10) end
         if var_table["slid48"] then set(slider48, var_table["slid48"]) end
-        if var_table["slid49"] then set(slider49, var_table["slid49"]) end
-        --if var_table["slid50"] then set(slider50, var_table["slid50"]) end
-        if var_table["slid51"] then set(slider51, var_table["slid51"]) end
+        -- covers (sensor caps, engine covers) are restored only when loading with engines stopped
+        if get(eng_rpm1) < 5 and get(eng_rpm2) < 5 and get(eng_rpm3) < 5 then
+            if var_table["slid49"] then set(slider49, var_table["slid49"]) end
+            --if var_table["slid50"] then set(slider50, var_table["slid50"]) end
+            if var_table["slid51"] then set(slider51, var_table["slid51"]) end
+        else
+            set(slider49, 0) -- sensor caps off
+            set(slider51, 0) -- engine covers off
+        end
         if var_table["slid52"] then set(slider52, var_table["slid52"]/10) end
         if var_table["slid53"] then set(slider53, var_table["slid53"]/10) end
         if var_table["slid54"] then set(slider54, var_table["slid54"]/10) end
