@@ -47898,10 +47898,10 @@ P acf/_jet_N1_climb 92.000000000
 P acf/_jet_N1_hicrz 88.000000000
 P acf/_jet_N1_locrz 87.000000000
 P acf/_jet_N1_takeoff 95.000000000
-P acf/_jet_SFC_climb 0.488000005
+P acf/_jet_SFC_climb 0.780000000
 P acf/_jet_SFC_hicrz 0.700999975
 P acf/_jet_SFC_locrz 0.695999980
-P acf/_jet_SFC_takeoff 0.488000005
+P acf/_jet_SFC_takeoff 0.498000000
 P acf/_jett_is_pipe 0
 P acf/_jett_is_ret 0
 P acf/_jett_is_slung 0
