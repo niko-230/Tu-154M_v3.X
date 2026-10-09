@@ -43,11 +43,49 @@ local FIELD_X = CENTER_X * RES - FIELD_ADV * SCALE / 2
 -- a digit height to put the digits' middle on CENTER_Y
 local FIELD_Y = CENTER_Y * RES - GLYPH_H * SCALE / 2
 
--- Unlit-segment colour: the digit colour dimmed against the black screen
--- (kept fully opaque so it doesn't depend on how the device texture blends alpha).
-local UNLIT_COLOR = {
-	DIGIT_COLOR[1] * UNLIT_LEVEL, DIGIT_COLOR[2] * UNLIT_LEVEL, DIGIT_COLOR[3] * UNLIT_LEVEL, 1
-}
+-- ===== Dark-cockpit fade for the unlit segments =====
+-- The screen is drawn on X-Plane's light-emitting layer, so anything drawn there
+-- glows at the same strength day and night. Real unlit segments only reflect
+-- light, so their level here follows the sun: full UNLIT_LEVEL in daylight,
+-- fading to UNLIT_NIGHT x UNLIT_LEVEL at night (0 = completely dark).
+-- Same sun-angle dataref vhf2_display.lua already uses for its day/night dimming.
+local UNLIT_NIGHT = 0.0        -- unlit level left at night (0.0 = gone, 1.0 = no fade)
+local FADE_DARK_SUN = -6.0     -- sun pitch (deg) where it is fully dark (end of civil dusk)
+local FADE_DAY_SUN = 10.0      -- sun pitch (deg) where the full daytime level is reached
+local UNLIT_POWERED_NIGHT = 0.5  -- while the device is ON, ghosts never fade below this x their
+                                 -- daytime level, so they stay faintly visible at night.
+                                 -- At night the whole screen also runs at only 20% (NIGHT_BRIGHTNESS in
+                                 -- the _display.lua file), so 0.5 here ends up very dim.
+                                 -- 0.0 = hidden at night even when ON, 1.0 = full daytime level.
+-- ====================================================
+local sun_pitch_unlit = globalPropertyf("sim/graphics/scenery/sun_pitch_degrees")
+
+-- 0..1 daylight factor with a soft S-curve so the fade has no visible "step"
+local function unlitDaylight()
+	local t = (get(sun_pitch_unlit) - FADE_DARK_SUN) / (FADE_DAY_SUN - FADE_DARK_SUN)
+	if t <= 0 then t = 0 elseif t >= 1 then t = 1 end
+	t = t * t * (3 - 2 * t)
+	return UNLIT_NIGHT + (1 - UNLIT_NIGHT) * t
+end
+
+
+-- unlit colour = DIGIT_COLOR x UNLIT_LEVEL x (daylight, or the ON-at-night level), fully opaque
+-- (one table reused every frame, so no new memory per frame)
+local UNLIT_COLOR = {0, 0, 0, 1}
+local UNLIT_MIN_VISIBLE = 0.02   -- below this, skip drawing the ghosts at all
+
+local function updateUnlitColor(isPowered)
+	-- daylight; while the device is ON, never below UNLIT_POWERED_NIGHT
+	-- (cockpit lights do not change the ghosts)
+	local light = unlitDaylight()
+	if isPowered and UNLIT_POWERED_NIGHT > light then light = UNLIT_POWERED_NIGHT end
+	local k = UNLIT_LEVEL * light
+	UNLIT_COLOR[1] = DIGIT_COLOR[1] * k
+	UNLIT_COLOR[2] = DIGIT_COLOR[2] * k
+	UNLIT_COLOR[3] = DIGIT_COLOR[3] * k
+	return k
+end
+
 
 local function formatFreq(hz)
 	-- dataref is in 10 kHz units, e.g. 10845 = 108.45 MHz -> "108.450"
@@ -73,7 +111,7 @@ function draw()
 	setScaleTransform(SCALE, SCALE)
 
 	-- faint unlit segments first (always visible, powered or not), lit digits on top
-	if UNLIT_SEGMENTS then
+	if UNLIT_SEGMENTS and updateUnlitColor(isPowered) > UNLIT_MIN_VISIBLE then
 		drawBitmapText(nav_font, 0, 0, "888.888", TEXT_ALIGN_LEFT, UNLIT_COLOR)
 	end
 

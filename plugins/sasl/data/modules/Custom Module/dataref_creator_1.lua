@@ -36,6 +36,8 @@ createGlobalPropertyf("tu154b2/custom/anim/cockpit_window_right", 0) -- откр
 createGlobalPropertyi("tu154b2/custom/anim/show_gns", 0) -- default: KLN90 installed; GNS430 selectable via EFB in v2
 createGlobalPropertyi("tu154b2/custom/anim/kln_hide_v2only", 0) -- KLN90 bezel hide flag - created early so acf _obj_hide_dataref binding works
 createGlobalPropertyi("tu154b2/custom/uns1_on", 0) -- UNS-1 (CDU739, left) installed/powered.
+createGlobalPropertyf("tu154b2/custom/lights/uns_lit", 0) -- UNS night texture on/off (1 = a UNS is powered), set in uns_logic.lua, used by cockpit_center_panel_v1_RUS.obj
+createGlobalPropertyf("tu154b2/custom/lights/hydro_gauges_lit", 0) -- front-panel hydraulic gauges night texture on/off (1 = gauges powered, 36V), set in hydro_panel.lua, used by cockpit_1_RUS.obj
 createGlobalPropertyi("tu154b2/custom/uns2_on", 0) -- UNS-2 (CDU739, right) installed/powered.
 createGlobalPropertyi("tu154b2/custom/anim/RXP", 0) -- в системе установлена RXP
 createGlobalPropertyi("tu154b2/custom/anim/show_yokes", 1) -- видны ли штурвалы

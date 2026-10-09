@@ -19,7 +19,7 @@ bus27_volt_right = globalPropertyf("tu154b2/custom/elec/bus27_volt_right")
 -- VHF1's real lighting response, even though the underlying mechanism differs.
 sun_pitch = globalPropertyf("sim/graphics/scenery/sun_pitch_degrees")
 
-local NIGHT_BRIGHTNESS = 0.35
+local NIGHT_BRIGHTNESS = 0.20
 local DAY_BRIGHTNESS = 0.75
 local TWILIGHT_START = -6.0   -- sun pitch (deg) where dimming to night begins
 local TWILIGHT_END = 15.0     -- sun pitch (deg) where full day brightness is reached

@@ -11,6 +11,21 @@ defineProperty("gps2_power", globalPropertyi("sim/cockpit2/radios/actuators/gps2
 -- custom datarefs (created in dataref_creator_1.lua)
 defineProperty("uns1_on", globalPropertyi("tu154b2/custom/uns1_on"))
 defineProperty("uns2_on", globalPropertyi("tu154b2/custom/uns2_on"))
+defineProperty("uns_lit", globalPropertyf("tu154b2/custom/lights/uns_lit")) -- UNS night texture on/off (created in dataref_creator_1.lua)
+defineProperty("gps_toggle", globalPropertyi("tu154b2/custom/switchers/ovhd/kln_on")) -- GPS toggle: last toggle of the upper overhead row
+
+-- UNS screen brightness at load.
+-- The UNS brightness knob (tu154_cockpit.obj manip + rotating cap in cockpit_1_RUS.obj) is
+-- sim/cockpit2/switches/instrument_brightness_ratio[16]. X-Plane restores its own remembered
+-- value for it when the flight loads, which is why the screens always came up "as before".
+-- Writing it with the "...[16]" name-in-brackets form does not reach the array element in SASL,
+-- so it is opened here with globalPropertyfae (array element, SASL counts from 1: [16] -> 17)
+-- and held at UNS_BRIGHT_START for the first UNS_BRIGHT_HOLD_FRAMES frames, then released so
+-- the knob works normally. (In v2 the same index is the Garmin's knob.)
+local UNS_BRIGHT_START = 0.0          -- 0.0 = load at minimum, 1.0 = load at maximum
+local UNS_BRIGHT_HOLD_FRAMES = 300    -- about 5 seconds
+local uns_bright_knob = globalPropertyfae("sim/cockpit2/switches/instrument_brightness_ratio", 17)
+local uns_bright_frames = 0
 
 -- DME (СД-75) power switches, now driving UNS power instead of the generic
 -- avionics master switch - same per-side condition course_mp.lua uses for
@@ -121,6 +136,12 @@ kfp_disable()
 function update()
 	kfp_disable() -- kontur_fp_transfer guard (see above)
 
+	-- UNS screen brightness at load (see top of file)
+	if uns_bright_frames < UNS_BRIGHT_HOLD_FRAMES then
+		uns_bright_frames = uns_bright_frames + 1
+		set(uns_bright_knob, UNS_BRIGHT_START)
+	end
+
 	-- Orphaned-function consolidation (v1 only): mirror ovhd_panel_int_set
 	-- into mid_left_panel_int_set so the overhead knob also restores the
 	-- pedestal/ABSU + NVU lighting that lost its control input in v1.
@@ -151,6 +172,15 @@ function update()
 		set_if_changed(gps_power, 1)
 	else
 		set_if_changed(gps_power, 0)
+	end
+
+	-- UNS night texture (cockpit_center_panel_v1_RUS_LIT.png) follows the GPS toggle
+	-- (last toggle of the upper overhead row, kln_on): lit only while that toggle is
+	-- ON and there is 27V power (avionics)
+	if get(gps_toggle) == 1 and avionics then
+		set_if_changed(uns_lit, 1)
+	else
+		set_if_changed(uns_lit, 0)
 	end
 
 	-- power the copilot Garmin gauge (v2's display) whenever avionics are on

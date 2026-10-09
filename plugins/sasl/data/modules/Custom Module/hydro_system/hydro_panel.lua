@@ -5,6 +5,7 @@ defineProperty("pressure_ind_1", globalPropertyf("tu154b2/custom/gauges/hydro/pr
 defineProperty("pressure_ind_2", globalPropertyf("tu154b2/custom/gauges/hydro/pressure_ind_2")) -- индикатор давления гидросистемы 2
 defineProperty("pressure_ind_3", globalPropertyf("tu154b2/custom/gauges/hydro/pressure_ind_3")) -- индикатор давления гидросистемы 3
 defineProperty("pressure_ind_emerg", globalPropertyf("tu154b2/custom/gauges/hydro/pressure_ind_emerg")) -- индикатор давления аварийного торможения
+defineProperty("hydro_gauges_lit", globalPropertyf("tu154b2/custom/lights/hydro_gauges_lit")) -- night texture of the front-panel hydraulic gauges on/off (created in dataref_creator_1.lua)
 
 defineProperty("qty_12", globalPropertyf("tu154b2/custom/gauges/hydro/qty_12")) -- гидробаки
 defineProperty("qty_3", globalPropertyf("tu154b2/custom/gauges/hydro/qty_3")) -- гидробаки
@@ -327,6 +328,10 @@ local function gauges()
 	local power36 = bool2int(get(bus36_volt_pts250_1) > 30 or get(bus36_volt_right) > 30)
 	local power27L = bool2int(get(bus27_volt_left) > 13)
 	local power27R = bool2int(get(bus27_volt_right) > 13)
+	
+	-- night texture of the pressure gauges (cockpit_1_RUS_LIT.png) only lit while
+	-- the gauges have power -- same 36V condition that drives their needles below
+	set(hydro_gauges_lit, power36)
 	
 	-- manometers
 	if power36>power36_prev then

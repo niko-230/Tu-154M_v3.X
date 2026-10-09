@@ -17,8 +17,26 @@ curs_np_on_2 = globalPropertyi("tu154b2/custom/switchers/ovhd/curs_np_on_2")
 bus36_volt = globalPropertyf("tu154b2/custom/elec/bus36_volt_pts250_2")
 bus115_volt = globalPropertyf("tu154b2/custom/elec/bus115_1_volt")
 
+-- Screen brightness follows the sun, same method and dusk curve as VHF2
+-- (vhf2_display.lua). Full brightness in daylight keeps today's daytime look;
+-- dimmed at night so the red digits no longer blow out / bloom in the dark.
+sun_pitch = globalPropertyf("sim/graphics/scenery/sun_pitch_degrees")
+
+local NIGHT_BRIGHTNESS = 0.20  -- screen brightness at night (same as VHF2)
+local DAY_BRIGHTNESS = 1.0     -- screen brightness in daylight (unchanged from before)
+local TWILIGHT_START = -6.0    -- sun pitch (deg) where it is fully night
+local TWILIGHT_END = 15.0      -- sun pitch (deg) where full daylight brightness is reached
+
 local function fullBrightness()
-	return 1.0
+	local pitch = get(sun_pitch)
+	if pitch <= TWILIGHT_START then
+		return NIGHT_BRIGHTNESS
+	elseif pitch >= TWILIGHT_END then
+		return DAY_BRIGHTNESS
+	else
+		local t = (pitch - TWILIGHT_START) / (TWILIGHT_END - TWILIGHT_START)
+		return NIGHT_BRIGHTNESS + t * (DAY_BRIGHTNESS - NIGHT_BRIGHTNESS)
+	end
 end
 
 local function powered_1()
