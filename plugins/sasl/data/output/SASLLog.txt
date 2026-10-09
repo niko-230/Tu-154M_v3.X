@@ -1,6 +1,6 @@
 [TU154M INFO]: Initializing...
-[TU154M INFO]: [DISPLAY] Main Screen Bounds: 0, 0, 1728, 1042
-[TU154M INFO]: Path to module: /Users/NikolayJeliazkov/X-Plane 12/Aircraft/Tu-154M_v3.0/plugins/sasl/data/modules/main.lua
+[TU154M INFO]: [DISPLAY] Main Screen Bounds: 0, 0, 1728, 1057
+[TU154M INFO]: Path to module: /Users/NikolayJeliazkov/X-Plane 12/Aircraft/Tu-154M_v3.X/plugins/sasl/data/modules/main.lua
 [TU154M INFO]: Loading module...
 [TU154M INFO]: [LUA]: loading	module
 [TU154M INFO]: [LUA]: "module"	This is the Tu154B-2 for XP12
@@ -8,11 +8,11 @@
 [TU154M INFO]: [LUA]: "module"	LuaJIT disabled
 [TU154M INFO]: [LUA]: loading	dataref_creator_1
 [TU154M WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/cockpit2/switches/instrument_brightness_ratio[16]> not found
-[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.0/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.X/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
 [TU154M WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/dataref_creator_1.lua:1499 in function <f>
-[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <dataref_creator_1>
-[TU154M WARN]: [STACK]:| ...Aircraft/Tu-154M_v3.0/plugins/sasl/data/modules/main.lua:127 in function <f>
-[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <c>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <dataref_creator_1>
+[TU154M WARN]: [STACK]:| ...Aircraft/Tu-154M_v3.X/plugins/sasl/data/modules/main.lua:127 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <c>
 [TU154M WARN]: [STACK]:| ...
 [TU154M INFO]: [LUA]: loading	dataref_creator_2
 [TU154M INFO]: [LUA]: loading	dataref_creator_3
@@ -176,11 +176,11 @@
 [TU154M INFO]: [LUA]: loading	absu_integrator
 [TU154M INFO]: [LUA]: loading	absu_svk
 [TU154M WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <tu154b2/custom/absu/ppn_search_started> not found
-[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.0/plugins/sasl/data/init/initProperties.lua:390 in function <globalPropertyi>
+[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.X/plugins/sasl/data/init/initProperties.lua:390 in function <globalPropertyi>
 [TU154M WARN]: [STACK]:| .../data/modules/Custom Module/main_panel/absu/absu_svk.lua:171 in function <f>
-[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <absu_svk>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <absu_svk>
 [TU154M WARN]: [STACK]:| ...sasl/data/modules/Custom Module/main_panel/absu/absu.lua:16 in function <f>
-[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <absu>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <absu>
 [TU154M WARN]: [STACK]:| ...
 [TU154M INFO]: [LUA]: loading	absu_ppn
 [TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
@@ -201,18 +201,18 @@
 [TU154M INFO]: [LUA]: loading	animation
 [TU154M INFO]: [LUA]: loading	ext_anim
 [TU154M WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/custom/anim/wing_flx_right> not found
-[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.0/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.X/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
 [TU154M WARN]: [STACK]:| ...s/sasl/data/modules/Custom Module/animation/ext_anim.lua:35 in function <f>
-[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <ext_anim>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <ext_anim>
 [TU154M WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:4 in function <f>
-[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <animation>
 [TU154M WARN]: [STACK]:| ...
 [TU154M WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/custom/anim/wing_flx_left> not found
-[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.0/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.X/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
 [TU154M WARN]: [STACK]:| ...s/sasl/data/modules/Custom Module/animation/ext_anim.lua:36 in function <f>
-[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <ext_anim>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <ext_anim>
 [TU154M WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:4 in function <f>
-[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <animation>
 [TU154M WARN]: [STACK]:| ...
 [TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
 [TU154M INFO]: [LUA]: loading	rain_mask
@@ -253,25 +253,25 @@
 [TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
 [TU154M INFO]: [LUA]: loading	engine_gauges
 [TU154M WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <tu154b2/custom/eng/oil_temp_1> not found
-[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.0/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.X/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
 [TU154M WARN]: [STACK]:| ...a/modules/Custom Module/engines_system/engine_gauges.lua:44 in function <f>
-[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <engine_gauges>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <engine_gauges>
 [TU154M WARN]: [STACK]:| .../modules/Custom Module/engines_system/engines_system.lua:6 in function <f>
-[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <engines_system>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <engines_system>
 [TU154M WARN]: [STACK]:| ...
 [TU154M WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <tu154b2/custom/eng/oil_temp_2> not found
-[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.0/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.X/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
 [TU154M WARN]: [STACK]:| ...a/modules/Custom Module/engines_system/engine_gauges.lua:45 in function <f>
-[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <engine_gauges>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <engine_gauges>
 [TU154M WARN]: [STACK]:| .../modules/Custom Module/engines_system/engines_system.lua:6 in function <f>
-[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <engines_system>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <engines_system>
 [TU154M WARN]: [STACK]:| ...
 [TU154M WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <tu154b2/custom/eng/oil_temp_3> not found
-[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.0/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.X/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
 [TU154M WARN]: [STACK]:| ...a/modules/Custom Module/engines_system/engine_gauges.lua:46 in function <f>
-[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <engine_gauges>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <engine_gauges>
 [TU154M WARN]: [STACK]:| .../modules/Custom Module/engines_system/engines_system.lua:6 in function <f>
-[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <engines_system>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <engines_system>
 [TU154M WARN]: [STACK]:| ...
 [TU154M DEBUG]: [LUA]: "tu154b2/custom/gauges/eng/oil_qty_1_p": Casting float to int
 [TU154M DEBUG]: [LUA]: "tu154b2/custom/gauges/eng/oil_qty_1_h": Casting float to int
@@ -281,25 +281,25 @@
 [TU154M DEBUG]: [LUA]: "tu154b2/custom/gauges/eng/oil_qty_3_h": Casting float to int
 [TU154M INFO]: [LUA]: loading	rud_logic
 [TU154M WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <tu154b2/custom/SC/thrust_1> not found
-[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.0/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.X/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
 [TU154M WARN]: [STACK]:| .../data/modules/Custom Module/engines_system/rud_logic.lua:159 in function <f>
-[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <rud_logic>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <rud_logic>
 [TU154M WARN]: [STACK]:| .../modules/Custom Module/engines_system/engines_system.lua:7 in function <f>
-[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <engines_system>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <engines_system>
 [TU154M WARN]: [STACK]:| ...
 [TU154M WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <tu154b2/custom/SC/thrust_2> not found
-[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.0/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.X/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
 [TU154M WARN]: [STACK]:| .../data/modules/Custom Module/engines_system/rud_logic.lua:160 in function <f>
-[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <rud_logic>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <rud_logic>
 [TU154M WARN]: [STACK]:| .../modules/Custom Module/engines_system/engines_system.lua:7 in function <f>
-[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <engines_system>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <engines_system>
 [TU154M WARN]: [STACK]:| ...
 [TU154M WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <tu154b2/custom/SC/thrust_3> not found
-[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.0/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.X/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
 [TU154M WARN]: [STACK]:| .../data/modules/Custom Module/engines_system/rud_logic.lua:161 in function <f>
-[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <rud_logic>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <rud_logic>
 [TU154M WARN]: [STACK]:| .../modules/Custom Module/engines_system/engines_system.lua:7 in function <f>
-[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <engines_system>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <engines_system>
 [TU154M WARN]: [STACK]:| ...
 [TU154M INFO]: [LUA]: loading	vibration_logic
 [TU154M INFO]: [LUA]: loading	eng_fails
@@ -337,25 +337,25 @@
 [TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
 [TU154M INFO]: [LUA]: loading	start_logic
 [TU154M WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/cockpit2/bleedair/actuators/engine_bleed_sov[0]> not found
-[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.0/plugins/sasl/data/init/initProperties.lua:390 in function <globalPropertyi>
+[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.X/plugins/sasl/data/init/initProperties.lua:390 in function <globalPropertyi>
 [TU154M WARN]: [STACK]:| .../data/modules/Custom Module/start_system/start_logic.lua:50 in function <f>
-[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <start_logic>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <start_logic>
 [TU154M WARN]: [STACK]:| ...data/modules/Custom Module/start_system/start_system.lua:4 in function <f>
-[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <start_system>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <start_system>
 [TU154M WARN]: [STACK]:| ...
 [TU154M WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/cockpit2/bleedair/actuators/engine_bleed_sov[1]> not found
-[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.0/plugins/sasl/data/init/initProperties.lua:390 in function <globalPropertyi>
+[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.X/plugins/sasl/data/init/initProperties.lua:390 in function <globalPropertyi>
 [TU154M WARN]: [STACK]:| .../data/modules/Custom Module/start_system/start_logic.lua:51 in function <f>
-[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <start_logic>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <start_logic>
 [TU154M WARN]: [STACK]:| ...data/modules/Custom Module/start_system/start_system.lua:4 in function <f>
-[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <start_system>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <start_system>
 [TU154M WARN]: [STACK]:| ...
 [TU154M WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/cockpit2/bleedair/actuators/engine_bleed_sov[2]> not found
-[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.0/plugins/sasl/data/init/initProperties.lua:390 in function <globalPropertyi>
+[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.X/plugins/sasl/data/init/initProperties.lua:390 in function <globalPropertyi>
 [TU154M WARN]: [STACK]:| .../data/modules/Custom Module/start_system/start_logic.lua:52 in function <f>
-[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <start_logic>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <start_logic>
 [TU154M WARN]: [STACK]:| ...data/modules/Custom Module/start_system/start_system.lua:4 in function <f>
-[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <start_system>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <start_system>
 [TU154M WARN]: [STACK]:| ...
 [TU154M DEBUG]: [LUA]: "tu154b2/custom/anim/cargo_2": Casting float to int
 [TU154M INFO]: [LUA]: loading	controls
@@ -363,18 +363,18 @@
 [TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
 [TU154M INFO]: [LUA]: loading	flight_controls
 [TU154M WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/custom/anim/spd_brk_inn_left> not found
-[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.0/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.X/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
 [TU154M WARN]: [STACK]:| .../data/modules/Custom Module/controls/flight_controls.lua:66 in function <f>
-[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <flight_controls>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <flight_controls>
 [TU154M WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/controls/controls.lua:5 in function <f>
-[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <controls>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <controls>
 [TU154M WARN]: [STACK]:| ...
 [TU154M WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/custom/anim/spd_brk_inn_right> not found
-[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.0/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.X/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
 [TU154M WARN]: [STACK]:| .../data/modules/Custom Module/controls/flight_controls.lua:67 in function <f>
-[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <flight_controls>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <flight_controls>
 [TU154M WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/controls/controls.lua:5 in function <f>
-[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.0/plugins/sasl/data/init/initMain.lua:260 in function <controls>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <controls>
 [TU154M WARN]: [STACK]:| ...
 [TU154M INFO]: [LUA]: loading	trimmers
 [TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
@@ -462,7 +462,7 @@
 [TU154M INFO]: [LUA]: loading	ils_freq_text
 [TU154M INFO]: [LUA]: including	vhf2_display.lua
 [TU154M INFO]: [LUA]: loading	vhf2_freq_text
-[TU154M INFO]: Scripts loading time: 0.8238
+[TU154M INFO]: Scripts loading time: 0.7462
 [TU154M INFO]: Module loaded
 [TU154M INFO]: Initializing modules...
 [TU154M DEBUG]: [LUA]: Tiles created
@@ -552,7 +552,6 @@
 [TU154M DEBUG]: [LUA]: PA-3 Config: NDB hidden
 [TU154M DEBUG]: [LUA]: PA-3 Config: APT hidden
 [TU154M INFO]: [LUA]: "crew_voices"	PREPARE
-[TU154M INFO]: [LUA]: "save_state"	error reading state file
 [TU154M INFO]: Disabling...
 [TU154M INFO]: [LUA]: "flight_controls"	flight controls released
 [TU154M INFO]: [LUA]: "rud_logic"	throttles released

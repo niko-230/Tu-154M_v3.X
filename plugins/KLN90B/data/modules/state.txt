@@ -3,40 +3,40 @@ state = {
     };
     ['contextWindows'] = {
         ['KLN90B_DISPLAY'] = {
+            ['visible'] = false;
+            ['mode'] = {
+                [1] = 0;
+            };
             ['position'] = {
                 [1] = 127;
                 [2] = 381;
                 [3] = 477;
                 [4] = 282;
             };
+        };
+        ['MD41'] = {
+            ['visible'] = false;
             ['mode'] = {
                 [1] = 0;
             };
-            ['visible'] = false;
-        };
-        ['MD41'] = {
             ['position'] = {
                 [1] = 120;
                 [2] = 522;
                 [3] = 411;
                 [4] = 177;
             };
+        };
+        ['KLN90B'] = {
+            ['visible'] = false;
             ['mode'] = {
                 [1] = 0;
             };
-            ['visible'] = false;
-        };
-        ['KLN90B'] = {
             ['position'] = {
                 [1] = 374;
                 [2] = 297;
                 [3] = 718;
                 [4] = 257;
             };
-            ['mode'] = {
-                [1] = 0;
-            };
-            ['visible'] = false;
         };
     };
 };

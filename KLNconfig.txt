@@ -11,8 +11,8 @@ YOU SHOULDN'T EVEN READ IT!
 #GPSHobbs0
 #GPSTurnons0
 #LastAPT----
-#LastLat42.696411132813
-#LastLon23.417909622192
+#LastLat43.23193359375
+#LastLon27.825262069702
 #RWYminlength1000
 #RWYsurface1
 #Fuelunit5
@@ -34,6 +34,7 @@ YOU SHOULDN'T EVEN READ IT!
 #NAVSYNC0
 #GPSRATE1
 #PWRKNOB0
+
 Ok, here's something
 to keep you entertained:
 Go to the STA 4 page

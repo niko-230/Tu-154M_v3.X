@@ -53,6 +53,8 @@ simCMD_com1_actv_coarse_dn_eight    = find_command("sim/radios/actv_com1_coarse_
 
 simCMD_com2_actv_fine_up    = find_command("sim/radios/actv_com2_fine_up")
 simCMD_com2_actv_fine_dn    = find_command("sim/radios/actv_com2_fine_down")
+simCMD_com2_actv_fine_up_eight    = find_command("sim/radios/actv_com2_fine_up_833")
+simCMD_com2_actv_fine_dn_eight    = find_command("sim/radios/actv_com2_fine_down_833")
 simCMD_com2_stby_fine_up    = find_command("sim/radios/stby_com2_fine_up")
 simCMD_com2_stby_fine_dn    = find_command("sim/radios/stby_com2_fine_down")
 
@@ -142,47 +144,51 @@ spu_net = 1
 
 
 
+-- VHF fine-tune knobs: same behaviour for every VHF in both cockpits, copied from
+-- cockpit v1's VHF1. Each click tunes one 8.33 kHz channel and adds to a "fast"
+-- counter (counted down again in the update loop). Turning quickly switches the
+-- radio's 100 mode on: the frequency then jumps in whole 100 kHz steps and the
+-- displays hide the last two digits until the knob stops.
+
+local function fast_click_vhf1()
+    if vhf1_fast < 1 then
+        vhf1_fast = vhf1_fast + 0.15
+    end
+end
+
+local function fast_click_vhf2()
+    if vhf2_fast < 1 then
+        vhf2_fast = vhf2_fast + 0.15
+    end
+end
+
 function com1_actv_dial_up_CMDhandler(phase, duration)
     if phase == 0 then
-        if T154_kontur_on == 0 then
-                simCMD_com1_actv_fine_up:once()
-                simDR_vhf_rotary = simDR_vhf_rotary +1
-        else
-                if simDR_bus27left > 5 and simDR_vhf1 > 0 then
-                    simCMD_com1_actv_fine_up_eight:once()
-                    if vhf1_fast < 1 then
-                        vhf1_fast = vhf1_fast +0.15
-                    end
-                    if vhf1_100_mode > 0 then
-                          if simDR_com1_khz < 901 then
-                            simDR_com1_khz = math.ceil(simDR_com1_khz* 0.01) * 100
-                          else
-                            simDR_com1_khz = 0
-                          end
-                    end
+        if simDR_bus27left > 5 and simDR_vhf1 > 0 then
+            simCMD_com1_actv_fine_up_eight:once()
+            fast_click_vhf1()
+            if vhf1_100_mode > 0 then
+                if simDR_com1_khz < 901 then
+                    simDR_com1_khz = math.ceil(simDR_com1_khz * 0.01) * 100
+                else
+                    simDR_com1_khz = 0
                 end
-                simDR_vhf_rotary = simDR_vhf_rotary +1
+            end
         end
+        simDR_vhf_rotary = simDR_vhf_rotary + 1
     end
 end
 
 function com1_actv_dial_dn_CMDhandler(phase, duration)
     if phase == 0 then
-        if T154_kontur_on == 0 then
-                simCMD_com1_actv_fine_dn:once()
-                simDR_vhf_rotary = simDR_vhf_rotary -1
-        else
-            if simDR_bus27left > 5 and simDR_vhf1 > 0 then
-                simCMD_com1_actv_fine_dn_eight:once()
-                if vhf1_fast < 1 then
-                    vhf1_fast = vhf1_fast +0.15
-                end
-                if vhf1_100_mode > 0 then
-                        simDR_com1_khz = math.floor(simDR_com1_khz* 0.01) * 100
-                end
+        if simDR_bus27left > 5 and simDR_vhf1 > 0 then
+            simCMD_com1_actv_fine_dn_eight:once()
+            fast_click_vhf1()
+            if vhf1_100_mode > 0 then
+                simDR_com1_khz = math.floor(simDR_com1_khz * 0.01) * 100
             end
-            simDR_vhf_rotary = simDR_vhf_rotary -1
         end
+        simDR_vhf_rotary = simDR_vhf_rotary - 1
     end
 end
 
@@ -218,47 +224,35 @@ end
 
 
 
+-- VHF2 (cockpit v2 knob): same behaviour as VHF1, with VHF2's own power
+-- (vhf_2_on + right 27 V bus, as vhf2_display.lua uses) and its own fast counter.
 function com2_actv_dial_up_CMDhandler(phase, duration)
     if phase == 0 then
-        if T154_kontur_on == 0 then
-                simCMD_com2_actv_fine_up:once()
-                simDR_vhf2_rotary = simDR_vhf2_rotary +1
-        else
-                if simDR_bus27left > 5 and simDR_vhf1 > 0 then
-                    simCMD_com2_actv_fine_up:once()
-                    if vhf1_fast < 1 then
-                        vhf1_fast = vhf1_fast +0.15
-                    end
-                    if vhf1_100_mode > 0 then
-                          if simDR_com2_khz < 901 then
-                            simDR_com2_khz = math.ceil(simDR_com2_khz* 0.01) * 100
-                          else
-                            simDR_com2_khz = 0
-                          end
-                    end
+        if simDR_bus27right > 5 and simDR_vhf2 > 0 then
+            simCMD_com2_actv_fine_up_eight:once()
+            fast_click_vhf2()
+            if vhf2_100_mode > 0 then
+                if simDR_com2_khz < 901 then
+                    simDR_com2_khz = math.ceil(simDR_com2_khz * 0.01) * 100
+                else
+                    simDR_com2_khz = 0
                 end
-                simDR_vhf2_rotary = simDR_vhf2_rotary +1
+            end
         end
+        simDR_vhf2_rotary = simDR_vhf2_rotary + 1
     end
 end
 
 function com2_actv_dial_dn_CMDhandler(phase, duration)
     if phase == 0 then
-        if T154_kontur_on == 0 then
-                simCMD_com2_actv_fine_dn:once()
-                simDR_vhf2_rotary = simDR_vhf2_rotary -1
-        else
-            if simDR_bus27left > 5 and simDR_vhf1 > 0 then
-                simCMD_com2_actv_fine_dn:once()
-                if vhf1_fast < 1 then
-                    vhf1_fast = vhf1_fast +0.15
-                end
-                if vhf1_100_mode > 0 then
-                        simDR_com2_khz = math.floor(simDR_com2_khz* 0.01) * 100
-                end
+        if simDR_bus27right > 5 and simDR_vhf2 > 0 then
+            simCMD_com2_actv_fine_dn_eight:once()
+            fast_click_vhf2()
+            if vhf2_100_mode > 0 then
+                simDR_com2_khz = math.floor(simDR_com2_khz * 0.01) * 100
             end
-            simDR_vhf2_rotary = simDR_vhf2_rotary -1
         end
+        simDR_vhf2_rotary = simDR_vhf2_rotary - 1
     end
 end
 
@@ -324,6 +318,13 @@ function vhf2_khz_up_CMDhandler(phase, duration)
         else
             vhfnew_2_khz = 0
         end
+        -- same fast tuning as VHF1: 100 kHz steps while turning quickly
+        fast_click_vhf2()
+        if vhf2_100_mode > 0 then
+            local r = math.ceil(vhfnew_2_khz * 0.01) * 100
+            if r >= 1000 then r = 0 end
+            vhfnew_2_khz = r
+        end
         vhf2new_right_rot = vhf2new_right_rot +1
         --simDR_vhf_rotary = simDR_vhf_rotary + 200
     end
@@ -335,6 +336,11 @@ function vhf2_khz_dn_CMDhandler(phase, duration)
             vhfnew_2_khz = vhfnew_2_khz - 25
         else
             vhfnew_2_khz = 975
+        end
+        -- same fast tuning as VHF1: 100 kHz steps while turning quickly
+        fast_click_vhf2()
+        if vhf2_100_mode > 0 then
+            vhfnew_2_khz = math.floor(vhfnew_2_khz * 0.01) * 100
         end
         vhf2new_right_rot = vhf2new_right_rot - 1
         --simDR_vhf_rotary = simDR_vhf_rotary + 200

@@ -55,6 +55,7 @@ components = {
 		bus27_volt = globalPropertyf("tu154b2/custom/elec/bus27_volt_right"), -- power
 		com_power = globalPropertyi("sim/cockpit2/radios/actuators/com2_power"), -- sim com power
 		vhf_cc = globalPropertyf("tu154b2/custom/radio/vhf2_cc"),
+		fast_mode = globalProperty("sim/custom/radios/vhf2_100mode"), -- VHF2 fast tuning
 	},
 	
 	course_mp {

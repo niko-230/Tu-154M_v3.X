@@ -27,6 +27,10 @@ defineProperty("com_power2", globalPropertyi("sim/cockpit2/radios/actuators/com2
 
 defineProperty("vhf_cc", globalPropertyf("tu154b2/custom/radio/vhf1_cc"))
 
+-- fast-tuning "100 mode" from T154.radio.lua (1 while the fine knob is turned
+-- quickly): the last two digits are hidden until the knob stops, like cockpit v1
+defineProperty("fast_mode", globalProperty("sim/custom/radios/vhf1_100mode"))
+
 
 --cursmp2
 
@@ -412,6 +416,9 @@ if MASTER then
 end
 	
 	freq_show = string.format("%.3f", freq/1000)
+	if get(fast_mode) == 1 then
+		freq_show = freq_show:sub(1, #freq_show - 2) .. "  "
+	end
 	
 	set(com_power, bool2int(power))
 	set(com_power2, bool2int(power))

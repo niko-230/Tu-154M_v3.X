@@ -20,6 +20,10 @@ def_ladd2_call = find_dataref("tu154b2/custom/anim/ladder_2_call")
 def_ladd1 = find_dataref("tu154b2/custom/anim/ladder_1")
 def_ladd2 = find_dataref("tu154b2/custom/anim/ladder_2")
 gear_blocks = find_dataref("tu154b2/custom/anim/gear_blocks")
+engine_caps = find_dataref("tu154b2/custom/anim/engine_caps")
+simDR_eng1_N2 = find_dataref("sim/flightmodel/engine/ENGN_N2_[0]")
+simDR_eng2_N2 = find_dataref("sim/flightmodel/engine/ENGN_N2_[1]")
+simDR_eng3_N2 = find_dataref("sim/flightmodel/engine/ENGN_N2_[2]")
 door1 = find_dataref("tu154b2/custom/anim/pax_door_1")
 simDR_door1_open = find_dataref("sim/cockpit2/switches/custom_slider_on[4]")
 door2 = find_dataref("tu154b2/custom/anim/pax_door_2")
@@ -548,7 +552,23 @@ function misc_gnd()
     
 end
 
+-- Engine covers: same approach as the stairs, which are cancelled while the chocks
+-- are not on. Fitting covers is cancelled while any engine is running (N2 above
+-- 5 %), whichever button asks for it (tablet, ground panel). Only a new request is
+-- cancelled: covers already on before a start stay on, so they still block that
+-- start (start_logic.lua cuts ignition when an engine turns with covers on).
+local engine_caps_was = -1
+
+function engine_covers()
+    local running = simDR_eng1_N2 > 5 or simDR_eng2_N2 > 5 or simDR_eng3_N2 > 5
+    if engine_caps > 0 and engine_caps_was == 0 and running then
+        engine_caps = 0
+    end
+    engine_caps_was = engine_caps
+end
+
 function after_physics()
+    engine_covers()
     misc_gnd()
     anti_icing()
     snow_on_fuse()

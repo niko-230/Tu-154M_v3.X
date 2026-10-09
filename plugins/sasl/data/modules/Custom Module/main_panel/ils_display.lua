@@ -3,6 +3,11 @@
 -- RIGHT screen = NAV2
 -- Power follows the same Kurs-MP N1/N2 switches as the distance displays
 -- (curs_np_on_1/2 + both buses), since both screens belong to the same unit.
+--
+-- Device size 484 x 130 (= 242 x 65 with 2x the dots, same method as the VHF2
+-- screen's 440 x 130) matches the real shape of the screen surfaces in
+-- tu154_cockpit.obj (about 3.7 : 1). The old 310 x 65 (4.8 : 1) got squeezed
+-- ~22% narrower in the sim.
 
 nav1_freq_hz = globalPropertyf("sim/cockpit2/radios/actuators/nav1_frequency_hz")
 nav2_freq_hz = globalPropertyf("sim/cockpit2/radios/actuators/nav2_frequency_hz")
@@ -28,7 +33,7 @@ end
 ils_display_r = avionicsDevice {
 	name = "ILS Freq Display R",
 	id = "tu154b2/ils_display_r",
-	size = {310, 65},
+	size = {484, 130},
 	screenClear = true,
 	brightnessCallback = fullBrightness,
 	components = {
@@ -40,7 +45,7 @@ ils_display_r = avionicsDevice {
 ils_display_l = avionicsDevice {
 	name = "ILS Freq Display L",
 	id = "tu154b2/ils_display_l",
-	size = {310, 65},
+	size = {484, 130},
 	screenClear = true,
 	brightnessCallback = fullBrightness,
 	components = {

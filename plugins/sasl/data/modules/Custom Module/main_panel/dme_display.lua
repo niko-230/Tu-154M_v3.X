@@ -2,6 +2,8 @@
 -- LEFT screen  = NAV1 distance
 -- RIGHT screen = NAV2 distance
 -- Independent avionics-device screens, same pattern as ils_display.lua.
+-- Device size 430 x 140 = 215 x 70 with 2x the dots (same method as the VHF2
+-- screen's 440 x 130), so the digits are sharp.
 -- Unit (NM/KM) follows the existing nav_1/2_mile_km switches, same as course_mp.lua.
 -- Power follows the real Kurs-MP unit's own power condition (course_mp.lua):
 -- curs_np_on_1/2 (the Kurs-MP N1/N2 overhead switch) + both buses powered.
@@ -58,7 +60,7 @@ end
 dme_display_l = avionicsDevice {
 	name = "DME Distance Display L",
 	id = "tu154b2/dme_display_l",
-	size = {215, 70},
+	size = {430, 140},
 	screenClear = true,
 	brightnessCallback = fullBrightness,
 	components = {
@@ -70,7 +72,7 @@ dme_display_l = avionicsDevice {
 dme_display_r = avionicsDevice {
 	name = "DME Distance Display R",
 	id = "tu154b2/dme_display_r",
-	size = {215, 70},
+	size = {430, 140},
 	screenClear = true,
 	brightnessCallback = fullBrightness,
 	components = {
