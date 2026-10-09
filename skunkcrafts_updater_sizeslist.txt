@@ -24,6 +24,7 @@ black_box/07_09_26_000.bbox|9139803
 black_box/08_09_26_000.bbox|7870046
 black_box/09_05_26_000.bbox|534951
 black_box/09_09_26_000.bbox|4378819
+black_box/09_10_26_000.bbox|138991
 black_box/10_08_26_000.bbox|122186
 black_box/10_09_26_000.bbox|5659400
 black_box/11_07_26_000.bbox|303355
@@ -1927,13 +1928,13 @@ plugins/sasl/data/modules/Custom Module/main_panel/clock24.lua|1183
 plugins/sasl/data/modules/Custom Module/main_panel/diss/diss.lua|87
 plugins/sasl/data/modules/Custom Module/main_panel/diss/diss_logic.lua|11896
 plugins/sasl/data/modules/Custom Module/main_panel/diss/diss_panel.lua|11150
-plugins/sasl/data/modules/Custom Module/main_panel/dme_display.lua|3430
-plugins/sasl/data/modules/Custom Module/main_panel/dme_dist_text.lua|2204
+plugins/sasl/data/modules/Custom Module/main_panel/dme_display.lua|3559
+plugins/sasl/data/modules/Custom Module/main_panel/dme_dist_text.lua|6672
 plugins/sasl/data/modules/Custom Module/main_panel/door_panel.lua|5839
 plugins/sasl/data/modules/Custom Module/main_panel/eup53.lua|1833
 plugins/sasl/data/modules/Custom Module/main_panel/gns430.lua|16077
-plugins/sasl/data/modules/Custom Module/main_panel/ils_display.lua|1550
-plugins/sasl/data/modules/Custom Module/main_panel/ils_freq_text.lua|1451
+plugins/sasl/data/modules/Custom Module/main_panel/ils_display.lua|1813
+plugins/sasl/data/modules/Custom Module/main_panel/ils_freq_text.lua|3668
 plugins/sasl/data/modules/Custom Module/main_panel/ins_test.lua|1779
 plugins/sasl/data/modules/Custom Module/main_panel/mach_meters.lua|2261
 plugins/sasl/data/modules/Custom Module/main_panel/main_panel.lua|11773
@@ -1976,10 +1977,10 @@ plugins/sasl/data/modules/Custom Module/main_panel/radio/ark15.lua|15671
 plugins/sasl/data/modules/Custom Module/main_panel/radio/course_mp.lua|13286
 plugins/sasl/data/modules/Custom Module/main_panel/radio/dme.lua|1667
 plugins/sasl/data/modules/Custom Module/main_panel/radio/mrp.lua|4241
-plugins/sasl/data/modules/Custom Module/main_panel/radio/radio.lua|8138
+plugins/sasl/data/modules/Custom Module/main_panel/radio/radio.lua|8222
 plugins/sasl/data/modules/Custom Module/main_panel/radio/radio_fails.lua|2509
 plugins/sasl/data/modules/Custom Module/main_panel/radio/spu.lua|14082
-plugins/sasl/data/modules/Custom Module/main_panel/radio/vhf.lua|15433
+plugins/sasl/data/modules/Custom Module/main_panel/radio/vhf.lua|15762
 plugins/sasl/data/modules/Custom Module/main_panel/radio_display.lua|915
 plugins/sasl/data/modules/Custom Module/main_panel/rmi.lua|6336
 plugins/sasl/data/modules/Custom Module/main_panel/rsbn/rsbn.lua|82
@@ -2064,7 +2065,7 @@ plugins/sasl/data/modules/Custom Module/main_panel/vbe_altimeter/vbe_scale2.png|
 plugins/sasl/data/modules/Custom Module/main_panel/vent.lua|7128
 plugins/sasl/data/modules/Custom Module/main_panel/vers.lua|1356
 plugins/sasl/data/modules/Custom Module/main_panel/vhf2_display.lua|2310
-plugins/sasl/data/modules/Custom Module/main_panel/vhf2_freq_text.lua|1756
+plugins/sasl/data/modules/Custom Module/main_panel/vhf2_freq_text.lua|2834
 plugins/sasl/data/modules/Custom Module/main_panel/water_panel.lua|8527
 plugins/sasl/data/modules/Custom Module/morse.ttf|36976
 plugins/sasl/data/modules/Custom Module/msrp/msrp.lua|96
@@ -3150,7 +3151,7 @@ plugins/sasl/data/modules/configuration/wprefs.ini|275
 plugins/sasl/data/modules/main.lua|4229
 plugins/sasl/data/modules/state.txt|2715
 plugins/sasl/data/modulesdataref_creator_4.lua|0
-plugins/sasl/data/output/SASLLog.txt|36569
+plugins/sasl/data/output/SASLLog.txt|36509
 plugins/sasl/data/output/readme.txt|57
 plugins/sasl/data/scripts/init.lua|43226
 plugins/sasl/functions.txt|6374
@@ -3175,7 +3176,7 @@ plugins/xtlua/init/scripts/T154.config_i/T154.config_i.lua|4235
 plugins/xtlua/init/scripts/T154.egpws/T154.egpws.lua|8838
 plugins/xtlua/init/scripts/T154.ipad/T154.ipad.lua|48202
 plugins/xtlua/init/scripts/T154.kontur/T154.kontur.lua|59620
-plugins/xtlua/init/scripts/T154.radio/T154.radio.lua|24631
+plugins/xtlua/init/scripts/T154.radio/T154.radio.lua|24827
 plugins/xtlua/init/scripts/T154.systems/T154.systems.lua|24239
 plugins/xtlua/init/scripts/T154.tcasCAS67/T154.tcasCAS67.lua|26224
 plugins/xtlua/init/scripts/T154.ubs/T154.ubs.lua|10206
@@ -3186,7 +3187,7 @@ plugins/xtlua/init/scripts/T154.zmisc2/T154.zmisc2.lua|63562
 plugins/xtlua/init/scripts/T154.zmisc3/T154.zmisc3.lua|75385
 plugins/xtlua/init/scripts/T154.zsmooth_lights/T154.zsmooth_lights.lua|97874
 plugins/xtlua/init/scripts/T154.zwalk/T154.zwalk.lua|18281
-plugins/xtlua/init/scripts/T154.zzgnd_tech/T154.zzgnd_tech.lua|17159
+plugins/xtlua/init/scripts/T154.zzgnd_tech/T154.zzgnd_tech.lua|18119
 plugins/xtlua/scripts/T154.config/T154.config.lua|21778
 plugins/xtlua/scripts/T154.config/json/LICENSE|1048
 plugins/xtlua/scripts/T154.config/json/json.lua|9632
@@ -3264,11 +3265,11 @@ sounds/systems/flap.wav|2188
 sounds/systems/gear.wav|2188
 sounds/weather/wind.wav|520560
 tu154.acf|2839967
-tu154_cockpit.obj|1458579
+tu154_cockpit.obj|1460341
 tu154_icon11.png|113962
 tu154_icon11_thumb.png|10010
 tu154_paint.png|6686
 tu154_paint2.png|1215
-tu154_prefs.txt|4282
-tu154_vrconfig.txt|12918
+tu154_prefs.txt|4281
+tu154_vrconfig.txt|12187
 version.mak|19
