@@ -203,33 +203,8 @@ BEGIN_MANIP drag_axis sim/custom/co70_sqwk_1
 	DEG_PER_ACTION 30
 END_MANIP
 
-BEGIN_MANIP drag_axis sim/custom/co70_sqwk_2
-	ACTION axis_knob 0 7 1 sim/custom/co70_sqwk_2
-	DEG_PER_ACTION 30
-END_MANIP
-
-BEGIN_MANIP drag_axis sim/custom/co70_sqwk_3
-	ACTION axis_knob 0 7 1 sim/custom/co70_sqwk_3
-	DEG_PER_ACTION 30
-END_MANIP
-
 BEGIN_MANIP drag_axis sim/custom/co70_sqwk_4
 	ACTION axis_knob 0 7 1 sim/custom/co70_sqwk_4
-	DEG_PER_ACTION 30
-END_MANIP
-
-BEGIN_MANIP drag_axis sim/custom/co63_sqwk_1
-	ACTION axis_knob 0 7 1 sim/custom/co63_sqwk_1
-	DEG_PER_ACTION 30
-END_MANIP
-
-BEGIN_MANIP drag_axis sim/custom/co63_sqwk_2
-	ACTION axis_knob 0 7 1 sim/custom/co63_sqwk_2
-	DEG_PER_ACTION 30
-END_MANIP
-
-BEGIN_MANIP drag_axis sim/custom/co63_sqwk_3
-	ACTION axis_knob 0 7 1 sim/custom/co63_sqwk_3
 	DEG_PER_ACTION 30
 END_MANIP
 
@@ -255,11 +230,6 @@ END_MANIP
 
 BEGIN_MANIP drag_axis tu154b2/custom/switchers/ovhd/ark_2_mode
 	ACTION axis_knob 0 3 1 tu154b2/custom/switchers/ovhd/ark_2_mode
-	DEG_PER_ACTION 30
-END_MANIP
-
-BEGIN_MANIP drag_axis sim/custom/co63_mode2
-	ACTION axis_knob 0 3 -1 sim/custom/co63_mode2
 	DEG_PER_ACTION 30
 END_MANIP
 
