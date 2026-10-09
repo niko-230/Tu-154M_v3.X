@@ -1354,7 +1354,7 @@ objects/azs_panels.obj|491157
 objects/cockpit_1.obj|14699191
 objects/cockpit_1.png|10212772
 objects/cockpit_1_NML.png|11659837
-objects/cockpit_1_RUS.obj|28528386
+objects/cockpit_1_RUS.obj|28528677
 objects/cockpit_1_RUS.png|10396316
 objects/cockpit_1_RUS_LIT.png|106187
 objects/cockpit_1_RUS_NML.png|10445991
@@ -1371,7 +1371,7 @@ objects/cockpit_center_panel_RUS_70th.png|18308348
 objects/cockpit_center_panel_RUS_LIT.png|573507
 objects/cockpit_center_panel_RUS_NML.png|8762506
 objects/cockpit_center_panel_blend_RUS.obj|739901
-objects/cockpit_center_panel_v1_RUS.obj|1726229
+objects/cockpit_center_panel_v1_RUS.obj|1726317
 objects/cockpit_center_panel_v1_RUS.png|19478850
 objects/cockpit_center_panel_v1_RUS_LIT.png|501812
 objects/cockpit_center_panel_v1_RUS_NML.png|9079065
@@ -1835,7 +1835,7 @@ plugins/sasl/data/modules/Custom Module/controls/nosewheel.lua|6036
 plugins/sasl/data/modules/Custom Module/controls/trimmers.lua|16839
 plugins/sasl/data/modules/Custom Module/creator_script.lua|2326
 plugins/sasl/data/modules/Custom Module/creator_script_SC.lua|2082
-plugins/sasl/data/modules/Custom Module/dataref_creator_1.lua|164657
+plugins/sasl/data/modules/Custom Module/dataref_creator_1.lua|165026
 plugins/sasl/data/modules/Custom Module/dataref_creator_2.lua|81144
 plugins/sasl/data/modules/Custom Module/dataref_creator_3.lua|20693
 plugins/sasl/data/modules/Custom Module/digit_background.png|13168
@@ -1890,7 +1890,7 @@ plugins/sasl/data/modules/Custom Module/hydro_system/hydro_fails.lua|3966
 plugins/sasl/data/modules/Custom Module/hydro_system/hydro_logic.lua|30180
 plugins/sasl/data/modules/Custom Module/hydro_system/hydro_logic_old.lua|19996
 plugins/sasl/data/modules/Custom Module/hydro_system/hydro_logic_old_old.lua|9141
-plugins/sasl/data/modules/Custom Module/hydro_system/hydro_panel.lua|18402
+plugins/sasl/data/modules/Custom Module/hydro_system/hydro_panel.lua|18785
 plugins/sasl/data/modules/Custom Module/hydro_system/hydro_system.lua|105
 plugins/sasl/data/modules/Custom Module/kskv/kskv.lua|146
 plugins/sasl/data/modules/Custom Module/kskv/kskv_bleed.lua|16608
@@ -1928,13 +1928,13 @@ plugins/sasl/data/modules/Custom Module/main_panel/clock24.lua|1183
 plugins/sasl/data/modules/Custom Module/main_panel/diss/diss.lua|87
 plugins/sasl/data/modules/Custom Module/main_panel/diss/diss_logic.lua|11896
 plugins/sasl/data/modules/Custom Module/main_panel/diss/diss_panel.lua|11150
-plugins/sasl/data/modules/Custom Module/main_panel/dme_display.lua|3559
-plugins/sasl/data/modules/Custom Module/main_panel/dme_dist_text.lua|6672
+plugins/sasl/data/modules/Custom Module/main_panel/dme_display.lua|4476
+plugins/sasl/data/modules/Custom Module/main_panel/dme_dist_text.lua|8806
 plugins/sasl/data/modules/Custom Module/main_panel/door_panel.lua|5839
 plugins/sasl/data/modules/Custom Module/main_panel/eup53.lua|1833
 plugins/sasl/data/modules/Custom Module/main_panel/gns430.lua|16077
-plugins/sasl/data/modules/Custom Module/main_panel/ils_display.lua|1813
-plugins/sasl/data/modules/Custom Module/main_panel/ils_freq_text.lua|3668
+plugins/sasl/data/modules/Custom Module/main_panel/ils_display.lua|2730
+plugins/sasl/data/modules/Custom Module/main_panel/ils_freq_text.lua|5802
 plugins/sasl/data/modules/Custom Module/main_panel/ins_test.lua|1779
 plugins/sasl/data/modules/Custom Module/main_panel/mach_meters.lua|2261
 plugins/sasl/data/modules/Custom Module/main_panel/main_panel.lua|11773
@@ -2065,7 +2065,7 @@ plugins/sasl/data/modules/Custom Module/main_panel/vbe_altimeter/vbe_scale2.png|
 plugins/sasl/data/modules/Custom Module/main_panel/vent.lua|7128
 plugins/sasl/data/modules/Custom Module/main_panel/vers.lua|1356
 plugins/sasl/data/modules/Custom Module/main_panel/vhf2_display.lua|2310
-plugins/sasl/data/modules/Custom Module/main_panel/vhf2_freq_text.lua|2834
+plugins/sasl/data/modules/Custom Module/main_panel/vhf2_freq_text.lua|5072
 plugins/sasl/data/modules/Custom Module/main_panel/water_panel.lua|8527
 plugins/sasl/data/modules/Custom Module/morse.ttf|36976
 plugins/sasl/data/modules/Custom Module/msrp/msrp.lua|96
@@ -2189,7 +2189,7 @@ plugins/sasl/data/modules/Custom Module/textureLit_alpha_coords.lua|347
 plugins/sasl/data/modules/Custom Module/texture_ctr.lua|190
 plugins/sasl/data/modules/Custom Module/time_logic.lua|1451
 plugins/sasl/data/modules/Custom Module/transsonic.lua|30922
-plugins/sasl/data/modules/Custom Module/uns_logic.lua|8965
+plugins/sasl/data/modules/Custom Module/uns_logic.lua|10700
 plugins/sasl/data/modules/Custom Module/walk.lua|9129
 plugins/sasl/data/modules/Custom Sounds/ROD_OFF.wav|52490
 plugins/sasl/data/modules/Custom Sounds/ROD_OFF_L.wav|52260
