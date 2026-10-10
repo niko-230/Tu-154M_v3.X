@@ -110,6 +110,14 @@ out_high_left_2  = loadSample(moduleDirectory .. '/Custom Sounds/engines/out_hig
 out_high_right_2 = loadSample(moduleDirectory .. '/Custom Sounds/engines/out_high_right.wav')
 out_high_left_3  = loadSample(moduleDirectory .. '/Custom Sounds/engines/out_high_left.wav')
 out_high_right_3 = loadSample(moduleDirectory .. '/Custom Sounds/engines/out_high_right.wav')
+-- 2026-10-10: out_mid layer ADDED alongside out_high (same rules: outside view only, N2 gain/pitch curves).
+OUT_MID = {}
+for e = 1, 3 do
+	OUT_MID[e] = {
+		loadSample(moduleDirectory .. '/Custom Sounds/engines/out_mid_left.wav'),
+		loadSample(moduleDirectory .. '/Custom Sounds/engines/out_mid_right.wav'),
+	}
+end
 -- Gain: develops from idle N2 (~60%) up to full at 98, instead of staying silent until 70.
 -- Pitch: starts rising from the same idle point, 850 -> 1200 at N2 98.
 -- 2026-09-25: +10% above 80% N2 (boost blended in over 80-82% so there is no jump); below 80% unchanged
@@ -125,6 +133,9 @@ out_high_pitch_tbl = {{-100, 850}, {60, 850}, {98, 1200}, {10000, 1200}}
 ENG_VOL_TRIM = 0.70
 INN_MIDDLE_LEVEL = 1.012 -- cockpit inn_middle only (on top of ENG_VOL_TRIM). 2026-09-27: +10% (was 0.92; before that 0.80 after an earlier -20%)
 out_idle_level = 1.15 * ENG_VOL_TRIM -- 1.15 = previous level
+out_mid_level = 0.44 * ENG_VOL_TRIM -- 2026-10-10: out_mid layer, same level as out_high
+OUT_APU_TRIM = 1.7 -- 2026-10-10: outside APU 70% louder
+INN_APU_TRIM = 1.4 -- 2026-10-10: cockpit APU 40% louder
 out_high_level = 0.44 * ENG_VOL_TRIM -- 2026-09-25: -20% (was 0.55) -- 2026-09-24: whine kept below out_idle (was 1.0; out_high max is now 550 vs out_idle ~1600 at takeoff)
 
 -- Blast (rear jet noise) and fan rattle: B's layers from engine_whine.lua, brought back 2026-09-20.
@@ -258,6 +269,7 @@ playSample(out_high_left_2, true)
 playSample(out_high_right_2, true)
 playSample(out_high_left_3, true)
 playSample(out_high_right_3, true)
+for e = 1, 3 do for k = 1, 2 do playSample(OUT_MID[e][k], true) setSampleGain(OUT_MID[e][k], 0) end end
 playSample(blast_full_1_L, true)
 playSample(blast_full_1_R, true)
 playSample(blast_low_1_L, true)
@@ -773,6 +785,12 @@ function update()
 	setSamplePitch(out_high_right_2, out_high_pitch_2)
 	setSamplePitch(out_high_left_3, out_high_pitch_3)
 	setSamplePitch(out_high_right_3, out_high_pitch_3)
+	setSamplePitch(OUT_MID[1][1], out_high_pitch_1)
+	setSamplePitch(OUT_MID[1][2], out_high_pitch_1)
+	setSamplePitch(OUT_MID[2][1], out_high_pitch_2)
+	setSamplePitch(OUT_MID[2][2], out_high_pitch_2)
+	setSamplePitch(OUT_MID[3][1], out_high_pitch_3)
+	setSamplePitch(OUT_MID[3][2], out_high_pitch_3)
 	
 	setSamplePitch(out_behind_left_1, 1000 + (out_ptch_1 - 1000) * 0.4)
 	setSamplePitch(out_behind_right_1, 1000 + (out_ptch_1 - 1000) * 0.4)
@@ -1021,9 +1039,10 @@ function update()
 		setSampleGain(out_high_right_2, 0)
 		setSampleGain(out_high_left_3, 0)
 		setSampleGain(out_high_right_3, 0)
+		for e = 1, 3 do setSampleGain(OUT_MID[e][1], 0) setSampleGain(OUT_MID[e][2], 0) end
 		
-		setSampleGain(out_apu_left, chan_left2 * inn_gain * main_vol * rpm_gain_apu/2)
-		setSampleGain(out_apu_right, chan_right2 * inn_gain * main_vol * rpm_gain_apu/2)
+		setSampleGain(out_apu_left, chan_left2 * inn_gain * main_vol * rpm_gain_apu/2 * OUT_APU_TRIM)
+		setSampleGain(out_apu_right, chan_right2 * inn_gain * main_vol * rpm_gain_apu/2 * OUT_APU_TRIM)
 		
 		
 		
@@ -1061,8 +1080,8 @@ function update()
 		setSampleGain(inn_starter_right_new_2, 950 * bal_R * main_vol*(0.75+0.75*cockpit_dr))
 		setSampleGain(inn_starter_right_new_3, 950 * bal_R * main_vol*(0.75+0.75*cockpit_dr))
 		
-		setSampleGain(inn_apu_left, 680 * bal_L * rpm_gain_apu * main_vol*(0.75+0.75*cockpit_dr))
-		setSampleGain(inn_apu_right, 680 * bal_R * rpm_gain_apu * main_vol*(0.75+0.75*cockpit_dr))
+		setSampleGain(inn_apu_left, 680 * bal_L * rpm_gain_apu * main_vol*(0.75+0.75*cockpit_dr) * INN_APU_TRIM)
+		setSampleGain(inn_apu_right, 680 * bal_R * rpm_gain_apu * main_vol*(0.75+0.75*cockpit_dr) * INN_APU_TRIM)
 		
 		local rev_snd =  math.min(R_1_in*rev_L*0.75+R_3_in*rev_R*0.75,1)*600* main_vol
 		--set(db1,rev_snd)
@@ -1260,9 +1279,16 @@ function update()
 		setSampleGain(out_high_right_2, eng_2_R * interpolate(out_high_gain_tbl, rpm_2) * out_high_level * main_vol)
 		setSampleGain(out_high_left_3, eng_3_L * interpolate(out_high_gain_tbl, rpm_3) * out_high_level * main_vol)
 		setSampleGain(out_high_right_3, eng_3_R * interpolate(out_high_gain_tbl, rpm_3) * out_high_level * main_vol)
+		-- out_mid: same rules as out_high
+		setSampleGain(OUT_MID[1][1], eng_1_L * interpolate(out_high_gain_tbl, rpm_1) * out_mid_level * main_vol)
+		setSampleGain(OUT_MID[1][2], eng_1_R * interpolate(out_high_gain_tbl, rpm_1) * out_mid_level * main_vol)
+		setSampleGain(OUT_MID[2][1], eng_2_L * interpolate(out_high_gain_tbl, rpm_2) * out_mid_level * main_vol)
+		setSampleGain(OUT_MID[2][2], eng_2_R * interpolate(out_high_gain_tbl, rpm_2) * out_mid_level * main_vol)
+		setSampleGain(OUT_MID[3][1], eng_3_L * interpolate(out_high_gain_tbl, rpm_3) * out_mid_level * main_vol)
+		setSampleGain(OUT_MID[3][2], eng_3_R * interpolate(out_high_gain_tbl, rpm_3) * out_mid_level * main_vol)
 		
-		setSampleGain(out_apu_left, 1000 * apu_L * rpm_gain_apu * main_vol)
-		setSampleGain(out_apu_right, 1000 * apu_R * rpm_gain_apu * main_vol)
+		setSampleGain(out_apu_left, 1000 * apu_L * rpm_gain_apu * main_vol * OUT_APU_TRIM)
+		setSampleGain(out_apu_right, 1000 * apu_R * rpm_gain_apu * main_vol * OUT_APU_TRIM)
 		setSampleGain(deice_out_L, 200 * main_vol*dist_coef*deice_coef)
 		setSampleGain(deice_out_R, 200 * main_vol*dist_coef*deice_coef)
 		setSampleGain(inn_reverse,0)
@@ -1307,6 +1333,7 @@ function update()
 		setSampleGain(out_high_right_2, 0)
 		setSampleGain(out_high_left_3, 0)
 		setSampleGain(out_high_right_3, 0)
+		for e = 1, 3 do setSampleGain(OUT_MID[e][1], 0) setSampleGain(OUT_MID[e][2], 0) end
 		setSampleGain(blast_full_1_L, 0)
 		setSampleGain(blast_full_1_R, 0)
 		setSampleGain(blast_low_1_L, 0)
