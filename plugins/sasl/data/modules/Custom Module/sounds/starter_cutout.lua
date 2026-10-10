@@ -52,19 +52,21 @@ defineProperty("burn3", globalProperty("sim/flightmodel2/engines/engine_is_burni
 -- defineProperty("db2", globalPropertyf("tu154b2/custom/controlls/debug2"))
 -- defineProperty("db3", globalPropertyf("tu154b2/custom/controlls/debug3"))
 
-local inn_starter_cut_left_1 = loadSample(moduleDirectory .. '/Custom Sounds/engines/inn_starter_cutout_L_new.wav')
-local inn_starter_cut_right_1 = loadSample(moduleDirectory .. '/Custom Sounds/engines/inn_starter_cutout_R_new.wav')
+-- 2026-10-10: cockpit starter-cutout one-shot (inn_starter_cutout_L/R_new.wav) removed;
+-- the cockpit starter sound is now only inn_starter_left/right_new.wav (engines_sound.lua).
+-- 2026-10-10 inn_starter_cutout no longer used: local inn_starter_cut_left_1 = loadSample(moduleDirectory .. '/Custom Sounds/engines/inn_starter_cutout_L_new.wav')
+-- 2026-10-10 inn_starter_cutout no longer used: local inn_starter_cut_right_1 = loadSample(moduleDirectory .. '/Custom Sounds/engines/inn_starter_cutout_R_new.wav')
 local out_starter_cut_left_1 = loadSample(moduleDirectory .. '/Custom Sounds/engines/out_starter_cutout_L_new.wav')
 local out_starter_cut_right_1 = loadSample(moduleDirectory .. '/Custom Sounds/engines/out_starter_cutout_R_new.wav')
 
-local inn_starter_cut_left_2 = loadSample(moduleDirectory .. '/Custom Sounds/engines/inn_starter_cutout_L_new.wav')
-local inn_starter_cut_right_2 = loadSample(moduleDirectory .. '/Custom Sounds/engines/inn_starter_cutout_R_new.wav')
+-- 2026-10-10 inn_starter_cutout no longer used: local inn_starter_cut_left_2 = loadSample(moduleDirectory .. '/Custom Sounds/engines/inn_starter_cutout_L_new.wav')
+-- 2026-10-10 inn_starter_cutout no longer used: local inn_starter_cut_right_2 = loadSample(moduleDirectory .. '/Custom Sounds/engines/inn_starter_cutout_R_new.wav')
 local out_starter_cut_left_2 = loadSample(moduleDirectory .. '/Custom Sounds/engines/out_starter_cutout_L_new.wav')
 local out_starter_cut_right_2 = loadSample(moduleDirectory .. '/Custom Sounds/engines/out_starter_cutout_R_new.wav')
 
 
-local inn_starter_cut_left_3 = loadSample(moduleDirectory .. '/Custom Sounds/engines/inn_starter_cutout_L_new.wav')
-local inn_starter_cut_right_3 = loadSample(moduleDirectory .. '/Custom Sounds/engines/inn_starter_cutout_R_new.wav')
+-- 2026-10-10 inn_starter_cutout no longer used: local inn_starter_cut_left_3 = loadSample(moduleDirectory .. '/Custom Sounds/engines/inn_starter_cutout_L_new.wav')
+-- 2026-10-10 inn_starter_cutout no longer used: local inn_starter_cut_right_3 = loadSample(moduleDirectory .. '/Custom Sounds/engines/inn_starter_cutout_R_new.wav')
 local out_starter_cut_left_3 = loadSample(moduleDirectory .. '/Custom Sounds/engines/out_starter_cutout_L_new.wav')
 local out_starter_cut_right_3 = loadSample(moduleDirectory .. '/Custom Sounds/engines/out_starter_cutout_R_new.wav')
 
@@ -75,13 +77,13 @@ local out_starter_right_2 = loadSample(moduleDirectory .. '/Custom Sounds/engine
 local out_starter_left_3 = loadSample(moduleDirectory .. '/Custom Sounds/engines/kvd_start_inn_L.wav')
 local out_starter_right_3 = loadSample(moduleDirectory .. '/Custom Sounds/engines/kvd_start_inn_R.wav')
 
-setSampleGain(inn_starter_cut_left_1,0)
-setSampleGain(inn_starter_cut_left_2,0)
-setSampleGain(inn_starter_cut_left_3,0)
+-- 2026-10-10 inn_starter_cutout no longer used: setSampleGain(inn_starter_cut_left_1,0)
+-- 2026-10-10 inn_starter_cutout no longer used: setSampleGain(inn_starter_cut_left_2,0)
+-- 2026-10-10 inn_starter_cutout no longer used: setSampleGain(inn_starter_cut_left_3,0)
 
-setSampleGain(inn_starter_cut_right_1,0)
-setSampleGain(inn_starter_cut_right_2,0)
-setSampleGain(inn_starter_cut_right_3,0)
+-- 2026-10-10 inn_starter_cutout no longer used: setSampleGain(inn_starter_cut_right_1,0)
+-- 2026-10-10 inn_starter_cutout no longer used: setSampleGain(inn_starter_cut_right_2,0)
+-- 2026-10-10 inn_starter_cutout no longer used: setSampleGain(inn_starter_cut_right_3,0)
 
 setSampleGain(out_starter_cut_left_1,0)
 setSampleGain(out_starter_cut_left_2,0)
@@ -134,6 +136,21 @@ local starter_pitch_tbl =
 {45, 1100},
 {10000, 1100}
 }
+
+-- 2026-10-10: kvd_start_inn starter loop - earlier and louder
+KVD_LEAD_TIME = 7     -- seconds the loop's volume runs ahead of N2 (0 = old behaviour)
+KVD_LEVEL = 1.2       -- loop volume (1.0 = old level; 1.2 = 20 % louder)
+kvd_rate = {0, 0, 0}
+kvd_last = {-1, -1, -1}
+function kvd_lead_rpm(e, rpm, dt)
+	if dt and dt > 0 and kvd_last[e] >= 0 then
+		local inst = (rpm - kvd_last[e]) / dt
+		local k = math.min(1, dt / 1.5)          -- about 1.5 s smoothing
+		kvd_rate[e] = kvd_rate[e] + (inst - kvd_rate[e]) * k
+	end
+	kvd_last[e] = rpm
+	return rpm + math.max(0, kvd_rate[e]) * KVD_LEAD_TIME
+end
 
 local function out_balance (src_x, src_z, src_hdg, src_cone, fade_deg, fade_dist)
 
@@ -268,6 +285,10 @@ function update ()
 	local rpm_1 = get(eng1_N2_2)
 	local rpm_2 = get(eng2_N2_2)
 	local rpm_3 = get(eng3_N2_2)
+	-- 2026-10-10: kvd_start_inn starter loop comes in KVD_LEAD_TIME s earlier: its volume follows
+	-- the N2 the engine will have KVD_LEAD_TIME s from now (current N2 + smoothed N2 rise rate x time).
+	-- Pitch still follows the real N2.
+	local kvd_g = {kvd_lead_rpm(1, rpm_1, passed), kvd_lead_rpm(2, rpm_2, passed), kvd_lead_rpm(3, rpm_3, passed)}
 	
 	
 	local z_pos=get(pilot_Z)+1.42
@@ -300,22 +321,22 @@ function update ()
 	local starter_3 = get(apd_working_3)
 	
 	if starter_1 ~= starter_1_last and starter_1 == 0 then
-		playSample(inn_starter_cut_left_1, false)
-		playSample(inn_starter_cut_right_1, false)
+		-- 2026-10-10 inn_starter_cutout no longer used: playSample(inn_starter_cut_left_1, false)
+		-- 2026-10-10 inn_starter_cutout no longer used: playSample(inn_starter_cut_right_1, false)
 		-- playSample(out_starter_cut_left_1, false) -- 2026-10-06: out_starter_cutout disabled
 		-- playSample(out_starter_cut_right_1, false) -- 2026-10-06: out_starter_cutout disabled
 	end
 	
 	if starter_2 ~= starter_2_last and starter_2 == 0 then
-		playSample(inn_starter_cut_left_2, false)
-		playSample(inn_starter_cut_right_2, false)
+		-- 2026-10-10 inn_starter_cutout no longer used: playSample(inn_starter_cut_left_2, false)
+		-- 2026-10-10 inn_starter_cutout no longer used: playSample(inn_starter_cut_right_2, false)
 		-- playSample(out_starter_cut_left_2, false) -- 2026-10-06: out_starter_cutout disabled
 		-- playSample(out_starter_cut_right_2, false) -- 2026-10-06: out_starter_cutout disabled
 	end
 	
 	if starter_3 ~= starter_3_last and starter_3 == 0 then
-		playSample(inn_starter_cut_left_3, false)
-		playSample(inn_starter_cut_right_3, false)
+		-- 2026-10-10 inn_starter_cutout no longer used: playSample(inn_starter_cut_left_3, false)
+		-- 2026-10-10 inn_starter_cutout no longer used: playSample(inn_starter_cut_right_3, false)
 		-- playSample(out_starter_cut_left_3, false) -- 2026-10-06: out_starter_cutout disabled
 		-- playSample(out_starter_cut_right_3, false) -- 2026-10-06: out_starter_cutout disabled
 	end
@@ -350,17 +371,17 @@ function update ()
 		local cockpit_dr=math.max(bool2int(get(pilot_Z)+1.42>-19.1),get(cockpit_door))
 		bal_L=bal_L*(0.75+0.75*cockpit_dr)
 		bal_R=bal_R*(0.75+0.75*cockpit_dr)
-		setSampleGain(inn_starter_cut_left_1, 100 * bal_L * main_vol)
-		setSampleGain(inn_starter_cut_left_2, 100 * bal_L * main_vol)
-		setSampleGain(inn_starter_cut_left_3, 100 * bal_L * main_vol)
+		-- 2026-10-10 inn_starter_cutout no longer used: setSampleGain(inn_starter_cut_left_1, 100 * bal_L * main_vol)
+		-- 2026-10-10 inn_starter_cutout no longer used: setSampleGain(inn_starter_cut_left_2, 100 * bal_L * main_vol)
+		-- 2026-10-10 inn_starter_cutout no longer used: setSampleGain(inn_starter_cut_left_3, 100 * bal_L * main_vol)
 		
-		setSampleGain(inn_starter_cut_right_1, 100 * bal_R * main_vol)
-		setSampleGain(inn_starter_cut_right_2, 100 * bal_R * main_vol)
-		setSampleGain(inn_starter_cut_right_3, 100 * bal_R * main_vol)
+		-- 2026-10-10 inn_starter_cutout no longer used: setSampleGain(inn_starter_cut_right_1, 100 * bal_R * main_vol)
+		-- 2026-10-10 inn_starter_cutout no longer used: setSampleGain(inn_starter_cut_right_2, 100 * bal_R * main_vol)
+		-- 2026-10-10 inn_starter_cutout no longer used: setSampleGain(inn_starter_cut_right_3, 100 * bal_R * main_vol)
 		
 		if rpm_1<49 and starter_1+get(burn1)>0 then
-			setSampleGain(out_starter_left_1, 100 * bal_L * main_vol*interpolate(rpmgain_tbl,rpm_1)*70)
-			setSampleGain(out_starter_right_1, 100 * bal_R * main_vol*interpolate(rpmgain_tbl,rpm_1)*70)
+			setSampleGain(out_starter_left_1, 100 * bal_L * main_vol*interpolate(rpmgain_tbl,kvd_g[1])*70*KVD_LEVEL)
+			setSampleGain(out_starter_right_1, 100 * bal_R * main_vol*interpolate(rpmgain_tbl,kvd_g[1])*70*KVD_LEVEL)
 			setSamplePitch(out_starter_left_1, interpolate(starter_pitch_tbl,rpm_1))
 			setSamplePitch(out_starter_right_1, interpolate(starter_pitch_tbl,rpm_1))
 		else
@@ -368,8 +389,8 @@ function update ()
 			setSampleGain(out_starter_right_1,0)
 		end
 		if rpm_2<49 and starter_2+get(burn2)>0 then
-			setSampleGain(out_starter_left_2, 100 * bal_L * main_vol*interpolate(rpmgain_tbl,rpm_2)*70)
-			setSampleGain(out_starter_right_2, 100 * bal_R * main_vol*interpolate(rpmgain_tbl,rpm_2)*70)
+			setSampleGain(out_starter_left_2, 100 * bal_L * main_vol*interpolate(rpmgain_tbl,kvd_g[2])*70*KVD_LEVEL)
+			setSampleGain(out_starter_right_2, 100 * bal_R * main_vol*interpolate(rpmgain_tbl,kvd_g[2])*70*KVD_LEVEL)
 			setSamplePitch(out_starter_left_2, interpolate(starter_pitch_tbl,rpm_2))
 			setSamplePitch(out_starter_right_2, interpolate(starter_pitch_tbl,rpm_2))
 		else
@@ -378,8 +399,8 @@ function update ()
 		end
 		
 		if rpm_3<49 and starter_3+get(burn3)>0 then
-			setSampleGain(out_starter_left_3, 100 * bal_L * main_vol*interpolate(rpmgain_tbl,rpm_3)*70)
-			setSampleGain(out_starter_right_3, 100 * bal_R * main_vol*interpolate(rpmgain_tbl,rpm_3)*70)
+			setSampleGain(out_starter_left_3, 100 * bal_L * main_vol*interpolate(rpmgain_tbl,kvd_g[3])*70*KVD_LEVEL)
+			setSampleGain(out_starter_right_3, 100 * bal_R * main_vol*interpolate(rpmgain_tbl,kvd_g[3])*70*KVD_LEVEL)
 			setSamplePitch(out_starter_left_3, interpolate(starter_pitch_tbl,rpm_3))
 			setSamplePitch(out_starter_right_3, interpolate(starter_pitch_tbl,rpm_3))
 		else
@@ -387,13 +408,13 @@ function update ()
 			setSampleGain(out_starter_right_3,0)
 		end
 	else
-		setSampleGain(inn_starter_cut_left_1,0)
-		setSampleGain(inn_starter_cut_left_2,0)
-		setSampleGain(inn_starter_cut_left_3,0)
+		-- 2026-10-10 inn_starter_cutout no longer used: setSampleGain(inn_starter_cut_left_1,0)
+		-- 2026-10-10 inn_starter_cutout no longer used: setSampleGain(inn_starter_cut_left_2,0)
+		-- 2026-10-10 inn_starter_cutout no longer used: setSampleGain(inn_starter_cut_left_3,0)
 		
-		setSampleGain(inn_starter_cut_right_1,0)
-		setSampleGain(inn_starter_cut_right_2,0)
-		setSampleGain(inn_starter_cut_right_3,0)
+		-- 2026-10-10 inn_starter_cutout no longer used: setSampleGain(inn_starter_cut_right_1,0)
+		-- 2026-10-10 inn_starter_cutout no longer used: setSampleGain(inn_starter_cut_right_2,0)
+		-- 2026-10-10 inn_starter_cutout no longer used: setSampleGain(inn_starter_cut_right_3,0)
 		
 		local starter_L, starter_R = out_balance (0, 12, 0, 180, 100, 700)
 		
@@ -409,13 +430,13 @@ function update ()
 	end
 	
 	if passed == 0 or get(main_sound_on) == 0 then
-		setSampleGain(inn_starter_cut_left_1,0)
-		setSampleGain(inn_starter_cut_left_2,0)
-		setSampleGain(inn_starter_cut_left_3,0)
+		-- 2026-10-10 inn_starter_cutout no longer used: setSampleGain(inn_starter_cut_left_1,0)
+		-- 2026-10-10 inn_starter_cutout no longer used: setSampleGain(inn_starter_cut_left_2,0)
+		-- 2026-10-10 inn_starter_cutout no longer used: setSampleGain(inn_starter_cut_left_3,0)
 		
-		setSampleGain(inn_starter_cut_right_1,0)
-		setSampleGain(inn_starter_cut_right_2,0)
-		setSampleGain(inn_starter_cut_right_3,0)
+		-- 2026-10-10 inn_starter_cutout no longer used: setSampleGain(inn_starter_cut_right_1,0)
+		-- 2026-10-10 inn_starter_cutout no longer used: setSampleGain(inn_starter_cut_right_2,0)
+		-- 2026-10-10 inn_starter_cutout no longer used: setSampleGain(inn_starter_cut_right_3,0)
 		
 		setSampleGain(out_starter_cut_left_1,0)
 		setSampleGain(out_starter_cut_left_2,0)

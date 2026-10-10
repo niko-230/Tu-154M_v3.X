@@ -131,7 +131,7 @@ out_high_pitch_tbl = {{-100, 850}, {60, 850}, {98, 1200}, {10000, 1200}}
 -- NOT touched: starters, APU, reverse, shutdown one-shot, blast, fan rattle, de-ice.
 -- 1.0 = previous level, 0.70 = 30% quieter.
 ENG_VOL_TRIM = 0.70
-INN_MIDDLE_LEVEL = 1.012 -- cockpit inn_middle only (on top of ENG_VOL_TRIM). 2026-09-27: +10% (was 0.92; before that 0.80 after an earlier -20%)
+INN_MIDDLE_LEVEL = 1.214 -- 2026-10-10: +20% (was 1.012). cockpit inn_middle only (on top of ENG_VOL_TRIM). 2026-09-27: +10% (was 0.92; before that 0.80 after an earlier -20%)
 out_idle_level = 1.15 * ENG_VOL_TRIM -- 1.15 = previous level
 out_mid_level = 0.44 * ENG_VOL_TRIM -- 2026-10-10: out_mid layer, same level as out_high
 OUT_APU_TRIM = 1.7 -- 2026-10-10: outside APU 70% louder
@@ -567,12 +567,15 @@ es_starter_3_last = get(apd_working_3)
 -- play together with the starter sounds. Pitch still follows N2. Once N2 reaches idle the normal volume
 -- takes over. If the start is aborted (starter off and engine not burning fuel) the added volume fades
 -- out over IDLE_START_FADE seconds.
-IDLE_START_DELAY = 56    -- seconds after start initiation (was 51 s)
+IDLE_START_DELAY = 49    -- seconds after start initiation. 2026-10-10: 7 s earlier (was 56 s; before that 51 s). Since 2026-10-10 (later): OUTSIDE layers only (out_idle, out_behind, N1 layer)
+INN_START_DELAY  = 50    -- 2026-10-10: cockpit inn_middle comes in 50 s (was 40 s) after the starter (and inn_starter sound) is engaged
 IDLE_START_RAMP  = 3     -- seconds to fade in
 IDLE_START_GAIN  = 0.76  -- volume factor reached (= normal volume factor at idle N2 60.5%)
 IDLE_START_FADE  = 2     -- seconds to fade out after an aborted start
 es_st_clock = {-1, -1, -1}
 es_st_floor = {0, 0, 0}
+es_st_floor_inn = {0, 0, 0} -- cockpit inn_middle floor (INN_START_DELAY)
+rpm_gain_1_inn, rpm_gain_2_inn, rpm_gain_3_inn = 0, 0, 0
 es_st_apd_last = {-1, -1, -1}
 function es_start_floor(e, apd, burn, n2, dt)
 	local last = es_st_apd_last[e]
@@ -584,18 +587,19 @@ function es_start_floor(e, apd, burn, n2, dt)
 		if n2 >= 58 or (apd == 0 and burn == 0) then clk = -1 end -- reached idle, or start aborted
 		es_st_clock[e] = clk
 	end
-	local target = 0
-	if clk >= IDLE_START_DELAY then
-		target = IDLE_START_GAIN * math.min(1, (clk - IDLE_START_DELAY) / IDLE_START_RAMP)
+	local function floor_for(delay, fl)
+		local target = 0
+		if clk >= delay then
+			target = IDLE_START_GAIN * math.min(1, (clk - delay) / IDLE_START_RAMP)
+		end
+		if target >= fl then
+			return target
+		end
+		return math.max(target, fl - IDLE_START_GAIN * dt / IDLE_START_FADE)
 	end
-	local f = es_st_floor[e]
-	if target >= f then
-		f = target
-	else
-		f = math.max(target, f - IDLE_START_GAIN * dt / IDLE_START_FADE)
-	end
-	es_st_floor[e] = f
-	return f
+	es_st_floor[e] = floor_for(IDLE_START_DELAY, es_st_floor[e])
+	es_st_floor_inn[e] = floor_for(INN_START_DELAY, es_st_floor_inn[e])
+	return es_st_floor[e], es_st_floor_inn[e]
 end
 
 -- per-frame values of the N1 idle layer (called from update() after the start floors)
@@ -819,9 +823,13 @@ function update()
 	local rpm_gain_apu = interpolate(es_rpm2gain_tbl, apu_rpm)
 	-- idle sound on engine start: volume floor from IDLE_START_DELAY s after start initiation
 	do
-		local f1 = es_start_floor(1, get(apd_working_1), get(eng_working_1), get(eng1_N1), passed)
-		local f2 = es_start_floor(2, get(apd_working_2), get(eng_working_2), get(eng2_N1), passed)
-		local f3 = es_start_floor(3, get(apd_working_3), get(eng_working_3), get(eng3_N1), passed)
+		local f1, fi1 = es_start_floor(1, get(apd_working_1), get(eng_working_1), get(eng1_N1), passed)
+		local f2, fi2 = es_start_floor(2, get(apd_working_2), get(eng_working_2), get(eng2_N1), passed)
+		local f3, fi3 = es_start_floor(3, get(apd_working_3), get(eng_working_3), get(eng3_N1), passed)
+		-- cockpit inn_middle gets its own floor (INN_START_DELAY)
+		rpm_gain_1_inn = math.max(rpm_gain_1, fi1)
+		rpm_gain_2_inn = math.max(rpm_gain_2, fi2)
+		rpm_gain_3_inn = math.max(rpm_gain_3, fi3)
 		rpm_gain_1 = math.max(rpm_gain_1, f1)  rpm_gain_1_idle = math.max(rpm_gain_1_idle, f1)
 		rpm_gain_2 = math.max(rpm_gain_2, f2)  rpm_gain_2_idle = math.max(rpm_gain_2_idle, f2)
 		rpm_gain_3 = math.max(rpm_gain_3, f3)  rpm_gain_3_idle = math.max(rpm_gain_3_idle, f3)
@@ -1057,19 +1065,19 @@ function update()
 		local bal_L, bal_R = inn_balance (view_head, dist)
 		
 		
-		setSampleGain(inn_middle_left_1, 700 * ENG_VOL_TRIM * INN_MIDDLE_LEVEL * bal_L * rpm_gain_1 * main_vol*(0.75+0.75*cockpit_dr))
+		setSampleGain(inn_middle_left_1, 700 * ENG_VOL_TRIM * INN_MIDDLE_LEVEL * bal_L * rpm_gain_1_inn * main_vol*(0.75+0.75*cockpit_dr))
 		setSampleGain(es_n1_inn[1][1], 0) -- N1 layer: outside view only
-		setSampleGain(inn_middle_right_1, 700 * ENG_VOL_TRIM * INN_MIDDLE_LEVEL * bal_R * rpm_gain_1 * main_vol*(0.75+0.75*cockpit_dr))
+		setSampleGain(inn_middle_right_1, 700 * ENG_VOL_TRIM * INN_MIDDLE_LEVEL * bal_R * rpm_gain_1_inn * main_vol*(0.75+0.75*cockpit_dr))
 		setSampleGain(es_n1_inn[1][2], 0) -- N1 layer: outside view only
 		
-		setSampleGain(inn_middle_left_2, 700 * ENG_VOL_TRIM * INN_MIDDLE_LEVEL * bal_L * rpm_gain_2 * main_vol*(0.75+0.75*cockpit_dr))
+		setSampleGain(inn_middle_left_2, 700 * ENG_VOL_TRIM * INN_MIDDLE_LEVEL * bal_L * rpm_gain_2_inn * main_vol*(0.75+0.75*cockpit_dr))
 		setSampleGain(es_n1_inn[2][1], 0) -- N1 layer: outside view only
-		setSampleGain(inn_middle_right_2, 700 * ENG_VOL_TRIM * INN_MIDDLE_LEVEL * bal_R * rpm_gain_2 * main_vol*(0.75+0.75*cockpit_dr))
+		setSampleGain(inn_middle_right_2, 700 * ENG_VOL_TRIM * INN_MIDDLE_LEVEL * bal_R * rpm_gain_2_inn * main_vol*(0.75+0.75*cockpit_dr))
 		setSampleGain(es_n1_inn[2][2], 0) -- N1 layer: outside view only
 		
-		setSampleGain(inn_middle_left_3, 700 * ENG_VOL_TRIM * INN_MIDDLE_LEVEL * bal_L * rpm_gain_3 * main_vol*(0.75+0.75*cockpit_dr))
+		setSampleGain(inn_middle_left_3, 700 * ENG_VOL_TRIM * INN_MIDDLE_LEVEL * bal_L * rpm_gain_3_inn * main_vol*(0.75+0.75*cockpit_dr))
 		setSampleGain(es_n1_inn[3][1], 0) -- N1 layer: outside view only
-		setSampleGain(inn_middle_right_3, 700 * ENG_VOL_TRIM * INN_MIDDLE_LEVEL * bal_R * rpm_gain_3 * main_vol*(0.75+0.75*cockpit_dr))	
+		setSampleGain(inn_middle_right_3, 700 * ENG_VOL_TRIM * INN_MIDDLE_LEVEL * bal_R * rpm_gain_3_inn * main_vol*(0.75+0.75*cockpit_dr))	
 		setSampleGain(es_n1_inn[3][2], 0) -- N1 layer: outside view only
 		
 		setSampleGain(inn_starter_left_new_1, 950 * bal_L * main_vol*(0.75+0.75*cockpit_dr))
