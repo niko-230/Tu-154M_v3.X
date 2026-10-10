@@ -1229,7 +1229,6 @@ cockpit_3d/generic/VBE2A/bg_M.png|5077
 cockpit_3d/radios/GPS FMS/CDU739_screen.png|2908
 cockpit_3d/radios/GPS FMS/Garmin_530_screen.png|2920
 docs/ENG limitations.pdf|64657
-docs/ENG tech-manual.pdf|1072169
 docs/RUS limitations.pdf|65527
 docs/Readme.pdf|930093
 docs/Readme_rus.pdf|1030059
@@ -2164,11 +2163,11 @@ plugins/sasl/data/modules/Custom Module/sounds/cockpit_sounds.lua|23641
 plugins/sasl/data/modules/Custom Module/sounds/crew_voices.lua|1770
 plugins/sasl/data/modules/Custom Module/sounds/door_sounds.lua|10128
 plugins/sasl/data/modules/Custom Module/sounds/engine_whine.lua|33529
-plugins/sasl/data/modules/Custom Module/sounds/engines_sound.lua|67979
+plugins/sasl/data/modules/Custom Module/sounds/engines_sound.lua|68782
 plugins/sasl/data/modules/Custom Module/sounds/left_panel_sounds.lua|9149
 plugins/sasl/data/modules/Custom Module/sounds/right_panel_sounds.lua|5963
 plugins/sasl/data/modules/Custom Module/sounds/sounds.lua|264
-plugins/sasl/data/modules/Custom Module/sounds/starter_cutout.lua|19318
+plugins/sasl/data/modules/Custom Module/sounds/starter_cutout.lua|22284
 plugins/sasl/data/modules/Custom Module/sounds/touchdown.lua|3024
 plugins/sasl/data/modules/Custom Module/sounds/voice_func.lua|6370
 plugins/sasl/data/modules/Custom Module/sounds/voice_tables.lua|54013
@@ -2808,11 +2807,11 @@ plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_cutout_R_new.wav|305
 plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_left - копия copy.wav|4146294
 plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_left - копия.wav|4146294
 plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_left.wav|4146294
-plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_left_new.wav|15523244
+plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_left_new.wav|11113244
 plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_right - копия copy.wav|4079630
 plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_right - копия.wav|4079630
 plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_right.wav|4079630
-plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_right_new.wav|15523244
+plugins/sasl/data/modules/Custom Sounds/engines/inn_starter_right_new.wav|11113244
 plugins/sasl/data/modules/Custom Sounds/engines/kvd_start_inn_L.wav|571852
 plugins/sasl/data/modules/Custom Sounds/engines/kvd_start_inn_R.wav|571852
 plugins/sasl/data/modules/Custom Sounds/engines/out_apu_left.wav|9505632
