@@ -241,6 +241,9 @@ local slats_prev = 0
 local stab_pos_now = get(stab_ratio) * 5.5 -- 0 - 5.5 degrees
 local stab_pos_cmd = stab_pos_now
 local stab_dirr = 0
+-- 2026-10-11: stabilizer soft start/stop (globals on purpose: keeps update() under Lua's upvalue limit)
+STAB_EASE_TIME = 1.5  -- seconds to reach full speed, and to slow down before the target
+stab_vel = 0          -- current stabilizer speed, internal units per second
 local flaps_lever_last = get(flaps_lever)
 local flap_lever_sw=0
 
@@ -523,6 +526,7 @@ if MASTER then
 	local stab_mechs = 2 - get(stab_eng_fail) -- two engines working normally. can add failures here
 	local stab_move=0
 	local stab_move_act=0
+	stab_tgt = nil -- 2026-10-11: where the automatic drive is heading (for the soft stop)
 
 	if get(stab_man_cap) == 0 and get(stab_automatic_fail) == 0 then -- automatic controls and no automatic fails
 		local stab_set = get(stab_setting)
@@ -534,8 +538,10 @@ if MASTER then
 				if flap_pos_L_last<31 then
 					if stab_set == 2 then
 						stab_move=bool2int(stab_pos_now < mkv_2)
+						stab_tgt = mkv_2
 					elseif stab_set == 1 then
 						stab_move=bool2int(stab_pos_now < mkv_1)
+						stab_tgt = mkv_1
 					end
 				else
 					-- FIXED (2026-08-20): landing stage (flap 36/45) IS CG-dependent per real M table
@@ -546,8 +552,10 @@ if MASTER then
 					-- Previous comment "M only lets CG affect the intermediate stage" was WRONG.
 					if stab_set == 2 then
 						stab_move=bool2int(stab_pos_now < mkv_3)       -- ?: max 5.5 internal
+						stab_tgt = mkv_3
 					elseif stab_set == 1 then
 						stab_move=bool2int(stab_pos_now < 3.0)          -- C landing: M real РЛЭ value
+						stab_tgt = 3.0
 					end
 					-- ? (stab_set==0): no stab drive, stays at baseline
 				end
@@ -571,7 +579,13 @@ if MASTER then
 				end
 			end
 		else
-			stab_move=-bool2int(stab_pos_now >0)
+			-- 2026-10-11: flaps 15->0 dive fix. The stab used to start returning to 0 as soon as the flaps went
+			-- below 14.5, removing its nose-up while the aircraft needs MORE angle of attack (lift loss) -> dive.
+			-- It now keeps its takeoff setting until flaps AND slats are fully up, then returns to 0.
+			if flap_pos_L_last <= 0.5 and flap_pos_R_last <= 0.5 and get(slats) <= 0.01 then
+				stab_move=-bool2int(stab_pos_now >0)
+				stab_tgt = 0
+			end
 		end
 		stab_move_act=stab_move	
 	elseif get(stab_man_cap) == 1 then -- manual stab control
@@ -589,7 +603,32 @@ if MASTER then
 	else
 		stab_rate = 0.05  -- retraction slower
 	end
-	stab_pos_now = stab_pos_now + stab_move_act * passed * (bool2int(stab_mechs > 0) * power115_1 + bool2int(stab_mechs > 1) * power115_3) * stab_rate * bool2int(power27_L)
+	-- 2026-10-11: abrupt stab fix (flaps 0->15). Same rates, targets and start point (flaps 14.5) as before,
+	-- but the speed now builds up over STAB_EASE_TIME s and eases off before the target, instead of jumping
+	-- from 0 to full speed and stopping dead. Manual stab control and power loss behave as before.
+	local stab_v_full = (bool2int(stab_mechs > 0) * power115_1 + bool2int(stab_mechs > 1) * power115_3) * stab_rate * bool2int(power27_L)
+	if get(stab_man_cap) == 1 or stab_v_full <= 0 or passed <= 0 then
+		stab_vel = stab_move_act * stab_v_full
+	else
+		local stab_acc = stab_v_full / STAB_EASE_TIME
+		local stab_v_tgt = stab_move_act * stab_v_full
+		if stab_tgt ~= nil and stab_move_act ~= 0 then
+			local stab_v_max = math.sqrt(2 * stab_acc * math.abs(stab_tgt - stab_pos_now))
+			if stab_v_max < stab_v_full then stab_v_tgt = stab_move_act * stab_v_max end
+		end
+		local stab_dv = stab_v_tgt - stab_vel
+		local stab_step = stab_acc * passed
+		if stab_dv > stab_step then stab_dv = stab_step elseif stab_dv < -stab_step then stab_dv = -stab_step end
+		stab_vel = stab_vel + stab_dv
+	end
+	local stab_prev_pos = stab_pos_now
+	stab_pos_now = stab_pos_now + stab_vel * passed
+	if stab_tgt ~= nil and stab_move_act ~= 0 then
+		if (stab_prev_pos <= stab_tgt and stab_pos_now > stab_tgt) or (stab_prev_pos >= stab_tgt and stab_pos_now < stab_tgt) then
+			stab_pos_now = stab_tgt
+			stab_vel = 0
+		end
+	end
 	
 	if stab_move ~= 0 then
 		if stab_mechs > 1 then CC_115_1 = CC_115_1 + 6.5 end
