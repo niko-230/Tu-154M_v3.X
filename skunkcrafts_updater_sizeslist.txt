@@ -1612,7 +1612,7 @@ plugins/KLN90B/data/modules/Custom Module/KLN90_2D_display.lua|95
 plugins/KLN90B/data/modules/Custom Module/KLN90_2_0.dds|43848
 plugins/KLN90B/data/modules/Custom Module/KLN90_3.fnt|4623
 plugins/KLN90B/data/modules/Custom Module/KLN90_3_0.dds|21992
-plugins/KLN90B/data/modules/Custom Module/KLN90_panel.lua|963154
+plugins/KLN90B/data/modules/Custom Module/KLN90_panel.lua|964465
 plugins/KLN90B/data/modules/Custom Module/KLN90_panel.lua.backup|963154
 plugins/KLN90B/data/modules/Custom Module/KLN90_panel_sc.lua|972397
 plugins/KLN90B/data/modules/Custom Module/KLN90_panel_sc2.lua|965303
@@ -1873,7 +1873,7 @@ plugins/sasl/data/modules/Custom Module/fire_system/fire_panel copy.lua|22014
 plugins/sasl/data/modules/Custom Module/fire_system/fire_panel.lua|28705
 plugins/sasl/data/modules/Custom Module/fire_system/fire_system.lua|87
 plugins/sasl/data/modules/Custom Module/flap_aero.lua|10127
-plugins/sasl/data/modules/Custom Module/flaps.lua|22336
+plugins/sasl/data/modules/Custom Module/flaps.lua|24436
 plugins/sasl/data/modules/Custom Module/free_texture.lua|284
 plugins/sasl/data/modules/Custom Module/free_texture_lit.lua|294
 plugins/sasl/data/modules/Custom Module/fuel_system/fuel_engines.lua|14586
