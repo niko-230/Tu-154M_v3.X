@@ -244,6 +244,7 @@ local stab_dirr = 0
 -- 2026-10-11: stabilizer soft start/stop (globals on purpose: keeps update() under Lua's upvalue limit)
 STAB_EASE_TIME = 1.5  -- seconds to reach full speed, and to slow down before the target
 stab_vel = 0          -- current stabilizer speed, internal units per second
+stab_tgt = false      -- automatic drive target (false = none)
 local flaps_lever_last = get(flaps_lever)
 local flap_lever_sw=0
 
@@ -526,7 +527,7 @@ if MASTER then
 	local stab_mechs = 2 - get(stab_eng_fail) -- two engines working normally. can add failures here
 	local stab_move=0
 	local stab_move_act=0
-	stab_tgt = nil -- 2026-10-11: where the automatic drive is heading (for the soft stop)
+	stab_tgt = false -- 2026-10-11: where the automatic drive is heading (for the soft stop); false = no target (never nil: SASL treats nil globals as missing components)
 
 	if get(stab_man_cap) == 0 and get(stab_automatic_fail) == 0 then -- automatic controls and no automatic fails
 		local stab_set = get(stab_setting)
@@ -612,7 +613,7 @@ if MASTER then
 	else
 		local stab_acc = stab_v_full / STAB_EASE_TIME
 		local stab_v_tgt = stab_move_act * stab_v_full
-		if stab_tgt ~= nil and stab_move_act ~= 0 then
+		if stab_tgt and stab_move_act ~= 0 then
 			local stab_v_max = math.sqrt(2 * stab_acc * math.abs(stab_tgt - stab_pos_now))
 			if stab_v_max < stab_v_full then stab_v_tgt = stab_move_act * stab_v_max end
 		end
@@ -623,7 +624,7 @@ if MASTER then
 	end
 	local stab_prev_pos = stab_pos_now
 	stab_pos_now = stab_pos_now + stab_vel * passed
-	if stab_tgt ~= nil and stab_move_act ~= 0 then
+	if stab_tgt and stab_move_act ~= 0 then
 		if (stab_prev_pos <= stab_tgt and stab_pos_now > stab_tgt) or (stab_prev_pos >= stab_tgt and stab_pos_now < stab_tgt) then
 			stab_pos_now = stab_tgt
 			stab_vel = 0
