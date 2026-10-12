@@ -2062,6 +2062,11 @@ function getmagvar(lat, lon)
 end
 
 function intermediat(lat1, lon1, lat2, lon2, f)
+  -- guard: an undefined/unresolved waypoint in the flight plan has no lat/lon.
+  -- Return nil so distance() treats it as 99999 (same workaround it already uses).
+  if invalid_latlon(lat1) or invalid_latlon(lon1) or invalid_latlon(lat2) or invalid_latlon(lon2) then
+    return nil, nil
+  end
   lat1 =  lat1 * pi / 180
   lon1 =  lon1 * pi / -180
   lat2 =  lat2 * pi / 180
