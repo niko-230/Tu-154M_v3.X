@@ -1612,7 +1612,7 @@ plugins/KLN90B/data/modules/Custom Module/KLN90_2D_display.lua|1946697649
 plugins/KLN90B/data/modules/Custom Module/KLN90_2_0.dds|3566028547
 plugins/KLN90B/data/modules/Custom Module/KLN90_3.fnt|3872656922
 plugins/KLN90B/data/modules/Custom Module/KLN90_3_0.dds|129238993
-plugins/KLN90B/data/modules/Custom Module/KLN90_panel.lua|4146164790
+plugins/KLN90B/data/modules/Custom Module/KLN90_panel.lua|927677566
 plugins/KLN90B/data/modules/Custom Module/KLN90_panel.lua.backup|927677566
 plugins/KLN90B/data/modules/Custom Module/KLN90_panel_sc.lua|1438595594
 plugins/KLN90B/data/modules/Custom Module/KLN90_panel_sc2.lua|1047270534
