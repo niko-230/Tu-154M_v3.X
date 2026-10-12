@@ -302,11 +302,6 @@ end
 local lpage = -5
 local rpage = -5
 local lsubpage = {0, 10, 0, 20, 10, 10, 10, 10}
-MAP_REFRESH_RATE = 4   -- 2026-10-10 FPS: map redraws per second (was every frame)
-kln_map_page_key = ""
-kln_map_last = -1
-POPUP_COPY_RATE = 10   -- 2026-10-10 FPS: 2D window screen updates per second (was every frame)
-kln_popup_copy_last = -1
 local rsubpage = {10, 10, 10, 10, 10, 10, 10, 10, 10, 10}
 lsubpage[100] = 0
 rsubpage[100] = 0
@@ -2062,11 +2057,6 @@ function getmagvar(lat, lon)
 end
 
 function intermediat(lat1, lon1, lat2, lon2, f)
-  -- guard: an undefined/unresolved waypoint in the flight plan has no lat/lon.
-  -- Return nil so distance() treats it as 99999 (same workaround it already uses).
-  if invalid_latlon(lat1) or invalid_latlon(lon1) or invalid_latlon(lat2) or invalid_latlon(lon2) then
-    return nil, nil
-  end
   lat1 =  lat1 * pi / 180
   lon1 =  lon1 * pi / -180
   lat2 =  lat2 * pi / 180
@@ -8624,21 +8614,11 @@ function update()
 
 
 
-			-- 2026-10-10 FPS: the maps (NAV 5 / super NAV 5 / APT 3) used to be thrown away and rebuilt
-			-- every frame. Now they are rebuilt at most MAP_REFRESH_RATE times per second, or at once
-			-- when the page changes. The real KLN-90B redraws its map about once per second.
-			local map_page_key = tostring(lpage) .. "/" .. tostring(rpage) .. "/" .. tostring(lsubpage[lpage]) .. "/" .. tostring(rsubpage[rpage])
-			local map_now = get(sim_run_time)
-			local map_due = map_page_key ~= kln_map_page_key or map_now - kln_map_last >= 1 / MAP_REFRESH_RATE or map_now < kln_map_last
-			if map_due then
-			  kln_map_page_key = map_page_key
-			  kln_map_last = map_now
-			end
-			if map_due and (values["CALC1timer"] > 1 or not((lpage == 4 and lsubpage[4] == 50) or (rpage == 5 and rsubpage[5] == 50))) then
+			if values["CALC1timer"] > 1 or not((lpage == 4 and lsubpage[4] == 50) or (rpage == 5 and rsubpage[5] == 50)) then
 			  Nav5Comp = {}
 			 ----Nav5Comp_Serializer = {}
 			end
-			if map_due and (not(rpage == 6 and rsubpage[6] == 30) or (rpage == 3 and rsubpage[3] == 30))  then
+			if not(rpage == 6 and rsubpage[6] == 30) or (rpage == 3 and rsubpage[3] == 30)  then
 			  APT3Comp = {}
 			  --APT3Comp_Serializer = {}
 			end
@@ -18642,16 +18622,11 @@ function draw()
 			drawAll(components2)
 
 		---------------------------draws 2D panel display---------------------------
-		-- 2026-10-10 FPS: copying the screen back from the graphics card stalls the GPU, so it is now
-		-- done POPUP_COPY_RATE times per second instead of every frame (only while a 2D window is open).
+
 			if KLN90B:isVisible () or KLN90B_DISPLAY:isVisible () then
-				local copy_now = get(sim_run_time)
-				if copy_now - kln_popup_copy_last >= 1 / POPUP_COPY_RATE or copy_now < kln_popup_copy_last then
-					kln_popup_copy_last = copy_now
-					sasl.gl.getTargetTextureData(display , currentPosition[1], currentPosition[2], currentPosition[3], currentPosition[4])
-				end
-			else
-				kln_popup_copy_last = -1 -- copy at once when a window is opened
+
+		------------------------------------------------------------------------------------
+			sasl.gl.getTargetTextureData(display , currentPosition[1], currentPosition[2], currentPosition[3], currentPosition[4])
 			end
 		else
 			sasl.gl.setRenderTarget(display , true)
