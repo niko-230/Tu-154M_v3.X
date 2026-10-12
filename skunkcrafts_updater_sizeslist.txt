@@ -1421,7 +1421,7 @@ objects/cockpit_side_panel_RUS_LIT.png|3775
 objects/cockpit_side_panel_RUS_NML.png|14398778
 objects/cockpit_side_panel_blend_RUS.obj|21009
 objects/cockpit_windows_RUS.obj|917434
-objects/cockpit_windows_RUS.png|4385151
+objects/cockpit_windows_RUS.png|4245998
 objects/drops_window.obj|49403
 objects/drops_window.png|25365
 objects/drops_window_LIT.png|901680
