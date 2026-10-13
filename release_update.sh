@@ -27,6 +27,44 @@ while true; do
 done
 echo
 
+# Retired files: anything listed in skunkcrafts_updater_blacklist.txt is removed
+# from this folder automatically (so it also disappears from GitHub and from the
+# update lists), and SkunkCrafts uses the same blacklist to remove it from users.
+if [ -f skunkcrafts_updater_blacklist.txt ]; then
+  echo "== Removing retired files listed in skunkcrafts_updater_blacklist.txt =="
+  python3 - << 'PY'
+import os
+root = os.path.realpath(os.getcwd())
+removed = 0
+dirs = set()
+for line in open("skunkcrafts_updater_blacklist.txt", encoding="utf-8"):
+    p = line.strip().replace("\\", "/")
+    if not p or p.startswith("#"):
+        continue
+    full = os.path.realpath(os.path.join(root, p))
+    if not full.startswith(root + os.sep):      # never touch anything outside this folder
+        continue
+    if os.path.isfile(full):
+        os.remove(full)
+        removed += 1
+        dirs.add(os.path.dirname(full))
+# remove folders that are now empty (macOS .DS_Store files don't count)
+for d in sorted(dirs, key=len, reverse=True):
+    while d.startswith(root + os.sep):
+        try:
+            for junk in (".DS_Store",):
+                jp = os.path.join(d, junk)
+                if os.path.isfile(jp):
+                    os.remove(jp)
+            os.rmdir(d)
+        except OSError:
+            break
+        d = os.path.dirname(d)
+print(f"   {removed} retired files removed" if removed else "   nothing to remove (already gone)")
+PY
+  echo
+fi
+
 echo "== Step 1 of 3: building the new update lists =="
 TMP=$(mktemp -d)
 python3 - "$TMP" << 'PY'
