@@ -1908,7 +1908,7 @@ plugins/sasl/data/modules/Custom Module/lights_system/lights_system.lua|12797375
 plugins/sasl/data/modules/Custom Module/main_panel/absu/absu.lua|3636877055
 plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_at.lua|2893247531
 plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_commands.lua|1791297223
-plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_controls.lua|3703222042
+plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_controls.lua|1019456356
 plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_fails.lua|903252600
 plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_indicator.lua|1856700851
 plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_integrator.lua|17986017
