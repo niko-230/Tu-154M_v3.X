@@ -1675,11 +1675,11 @@ plugins/KLN90B/liblinux/libc++abi.so.1|194968
 plugins/KLN90B/liblinux/libc++abi.so.1.0|194968
 plugins/KLN90B/liblinux/readme.txt|44
 plugins/KLN90B/version.txt|176
-plugins/sasl/64/libcrypto-3-x64.dll|6879232
-plugins/sasl/64/libssl-3-x64.dll|1346560
-plugins/sasl/64/lin.xpl|16672752
-plugins/sasl/64/mac.xpl|29173104
-plugins/sasl/64/win.xpl|6125056
+plugins/sasl/64/libcrypto-3-x64.dll|6872064
+plugins/sasl/64/libssl-3-x64.dll|1347072
+plugins/sasl/64/lin.xpl|16539552
+plugins/sasl/64/mac.xpl|28922848
+plugins/sasl/64/win.xpl|6043136
 plugins/sasl/License|3350
 plugins/sasl/OpenAL32.dll|294774
 plugins/sasl/changelog.txt|52660
@@ -1764,17 +1764,17 @@ plugins/sasl/data/components/texture.lua|135
 plugins/sasl/data/components/textureLit.lua|184
 plugins/sasl/data/components/togglePanelButton.lua|480
 plugins/sasl/data/components/white-digits.png|1323
-plugins/sasl/data/init/initAvionics.lua|13752
+plugins/sasl/data/init/initAvionics.lua|13353
 plugins/sasl/data/init/initBasicHelpers.lua|1334
-plugins/sasl/data/init/initContextWindows.lua|21245
-plugins/sasl/data/init/initDefaultEventHandlers.lua|5198
-plugins/sasl/data/init/initFilesystemHelpers.lua|4701
-plugins/sasl/data/init/initMain.lua|39448
+plugins/sasl/data/init/initContextWindows.lua|20448
+plugins/sasl/data/init/initDefaultEventHandlers.lua|5180
+plugins/sasl/data/init/initFilesystemHelpers.lua|4770
+plugins/sasl/data/init/initMain.lua|38528
 plugins/sasl/data/init/initMathHelpers.lua|4771
-plugins/sasl/data/init/initProcessing.lua|9916
+plugins/sasl/data/init/initProcessing.lua|9909
 plugins/sasl/data/init/initProjectTree.lua|4400
-plugins/sasl/data/init/initProperties.lua|34389
-plugins/sasl/data/init/initResourcesLoaders.lua|8829
+plugins/sasl/data/init/initProperties.lua|34234
+plugins/sasl/data/init/initResourcesLoaders.lua|8399
 plugins/sasl/data/init/initSubpanelCreator.lua|8175
 plugins/sasl/data/init/initTableHelpers.lua|3666
 plugins/sasl/data/init/readme.txt|47
@@ -1908,7 +1908,7 @@ plugins/sasl/data/modules/Custom Module/lights_system/lights_system.lua|235
 plugins/sasl/data/modules/Custom Module/main_panel/absu/absu.lua|277
 plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_at.lua|18356
 plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_commands.lua|9291
-plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_controls.lua|78303
+plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_controls.lua|75137
 plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_fails.lua|17176
 plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_indicator.lua|1778
 plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_integrator.lua|4943
