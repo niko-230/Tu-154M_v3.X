@@ -23428,10 +23428,6 @@ ANIM_end
 ATTR_draw_enable
 ANIM_begin
 ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
-TRIS 27375 6
-ANIM_end
-ANIM_begin
-ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
 ATTR_solid_camera
 ATTR_draw_enable
 ATTR_light_level 0.000000 1.000000 tu154b2/custom/light/no_LIT 1000.000000
