@@ -1665,7 +1665,6 @@ plugins/KLN90B/data/modules/configuration/wprefs.ini|4267642933
 plugins/KLN90B/data/modules/main.lua|3535876057
 plugins/KLN90B/data/modules/popupsPositions.txt|1935643396
 plugins/KLN90B/data/modules/state.txt|4226601272
-plugins/KLN90B/data/output/SASLLog.txt|881456239
 plugins/KLN90B/data/output/readme.txt|1889794412
 plugins/KLN90B/functions.txt|3249875689
 plugins/KLN90B/liblinux/libc++.so|644484154
@@ -1676,16 +1675,16 @@ plugins/KLN90B/liblinux/libc++abi.so.1|126283024
 plugins/KLN90B/liblinux/libc++abi.so.1.0|126283024
 plugins/KLN90B/liblinux/readme.txt|1538643556
 plugins/KLN90B/version.txt|2225128295
-plugins/sasl/64/libcrypto-3-x64.dll|159876504
-plugins/sasl/64/libssl-3-x64.dll|1603419901
-plugins/sasl/64/lin.xpl|2988520251
-plugins/sasl/64/mac.xpl|513659679
-plugins/sasl/64/win.xpl|109697470
-plugins/sasl/License|1607398952
+plugins/sasl/64/libcrypto-3-x64.dll|991692244
+plugins/sasl/64/libssl-3-x64.dll|161571549
+plugins/sasl/64/lin.xpl|829324096
+plugins/sasl/64/mac.xpl|901846658
+plugins/sasl/64/win.xpl|379718116
+plugins/sasl/License|3070240115
 plugins/sasl/OpenAL32.dll|3600708951
-plugins/sasl/changelog.txt|3236786541
+plugins/sasl/changelog.txt|709856497
 plugins/sasl/data/.vscode/settings.json|2035468846
-plugins/sasl/data/api/api.lua|3053097978
+plugins/sasl/data/api/api.lua|1863607467
 plugins/sasl/data/components/Roboto-Regular-LICENSE.txt|2263004340
 plugins/sasl/data/components/Roboto-Regular.ttf|3583548654
 plugins/sasl/data/components/bu/Roboto-Regular-LICENSE.txt|2263004340
@@ -1765,17 +1764,17 @@ plugins/sasl/data/components/texture.lua|2780984902
 plugins/sasl/data/components/textureLit.lua|824074567
 plugins/sasl/data/components/togglePanelButton.lua|3246034381
 plugins/sasl/data/components/white-digits.png|223411218
-plugins/sasl/data/init/initAvionics.lua|2078921058
+plugins/sasl/data/init/initAvionics.lua|2986938693
 plugins/sasl/data/init/initBasicHelpers.lua|1472302477
-plugins/sasl/data/init/initContextWindows.lua|1823763928
-plugins/sasl/data/init/initDefaultEventHandlers.lua|1510071501
-plugins/sasl/data/init/initFilesystemHelpers.lua|3384004779
-plugins/sasl/data/init/initMain.lua|976970061
+plugins/sasl/data/init/initContextWindows.lua|1259028032
+plugins/sasl/data/init/initDefaultEventHandlers.lua|700076346
+plugins/sasl/data/init/initFilesystemHelpers.lua|3463190647
+plugins/sasl/data/init/initMain.lua|2806113301
 plugins/sasl/data/init/initMathHelpers.lua|1362382491
-plugins/sasl/data/init/initProcessing.lua|3365491890
+plugins/sasl/data/init/initProcessing.lua|3847648966
 plugins/sasl/data/init/initProjectTree.lua|3400866564
-plugins/sasl/data/init/initProperties.lua|1041753767
-plugins/sasl/data/init/initResourcesLoaders.lua|2410274477
+plugins/sasl/data/init/initProperties.lua|244496072
+plugins/sasl/data/init/initResourcesLoaders.lua|2321483119
 plugins/sasl/data/init/initSubpanelCreator.lua|715211282
 plugins/sasl/data/init/initTableHelpers.lua|4131520496
 plugins/sasl/data/init/readme.txt|2409820552
@@ -1835,7 +1834,7 @@ plugins/sasl/data/modules/Custom Module/controls/trimmers.lua|1069990597
 plugins/sasl/data/modules/Custom Module/creator_script.lua|3810326189
 plugins/sasl/data/modules/Custom Module/creator_script_SC.lua|111584067
 plugins/sasl/data/modules/Custom Module/dataref_creator_1.lua|924872808
-plugins/sasl/data/modules/Custom Module/dataref_creator_2.lua|3931157952
+plugins/sasl/data/modules/Custom Module/dataref_creator_2.lua|1207094524
 plugins/sasl/data/modules/Custom Module/dataref_creator_3.lua|3857652991
 plugins/sasl/data/modules/Custom Module/digit_background.png|1692763091
 plugins/sasl/data/modules/Custom Module/digital7.fnt|3777592078
@@ -1924,6 +1923,7 @@ plugins/sasl/data/modules/Custom Module/main_panel/achs1.lua|2618968740
 plugins/sasl/data/modules/Custom Module/main_panel/agr.lua|3903518078
 plugins/sasl/data/modules/Custom Module/main_panel/bkk.lua|3940782686
 plugins/sasl/data/modules/Custom Module/main_panel/clock24.lua|2803754153
+plugins/sasl/data/modules/Custom Module/main_panel/crew_session.lua|3100438950
 plugins/sasl/data/modules/Custom Module/main_panel/diss/diss.lua|45584016
 plugins/sasl/data/modules/Custom Module/main_panel/diss/diss_logic.lua|1735054668
 plugins/sasl/data/modules/Custom Module/main_panel/diss/diss_panel.lua|3120126999
@@ -1936,7 +1936,7 @@ plugins/sasl/data/modules/Custom Module/main_panel/ils_display.lua|2780003759
 plugins/sasl/data/modules/Custom Module/main_panel/ils_freq_text.lua|2466107672
 plugins/sasl/data/modules/Custom Module/main_panel/ins_test.lua|2161270574
 plugins/sasl/data/modules/Custom Module/main_panel/mach_meters.lua|1123370734
-plugins/sasl/data/modules/Custom Module/main_panel/main_panel.lua|1847133652
+plugins/sasl/data/modules/Custom Module/main_panel/main_panel.lua|866753830
 plugins/sasl/data/modules/Custom Module/main_panel/mech_aneroid.lua|2435294302
 plugins/sasl/data/modules/Custom Module/main_panel/mgv.lua|2062529328
 plugins/sasl/data/modules/Custom Module/main_panel/misc_fails.lua|3044151566
@@ -1969,7 +1969,7 @@ plugins/sasl/data/modules/Custom Module/main_panel/radar/radar_line.png|78657098
 plugins/sasl/data/modules/Custom Module/main_panel/radar/radar_mask.png|1808843093
 plugins/sasl/data/modules/Custom Module/main_panel/radar/radar_mask_drift.png|3131120754
 plugins/sasl/data/modules/Custom Module/main_panel/radar/radar_mask_drift2.png|2868637760
-plugins/sasl/data/modules/Custom Module/main_panel/radar_kontur.lua|325790616
+plugins/sasl/data/modules/Custom Module/main_panel/radar_kontur.lua|4179534591
 plugins/sasl/data/modules/Custom Module/main_panel/radar_test.lua|4084577334
 plugins/sasl/data/modules/Custom Module/main_panel/radar_test_draw.lua|1514156573
 plugins/sasl/data/modules/Custom Module/main_panel/radio/ark15.lua|2342067845
@@ -1990,23 +1990,23 @@ plugins/sasl/data/modules/Custom Module/main_panel/sc_controls.lua|1190921477
 plugins/sasl/data/modules/Custom Module/main_panel/svs.lua|3501248850
 plugins/sasl/data/modules/Custom Module/main_panel/taws/draw_map.lua|4108216244
 plugins/sasl/data/modules/Custom Module/main_panel/taws/envelope_draw.lua|482114725
-plugins/sasl/data/modules/Custom Module/main_panel/taws/scr_clock.lua|1135164112
+plugins/sasl/data/modules/Custom Module/main_panel/taws/scr_clock.lua|212790213
 plugins/sasl/data/modules/Custom Module/main_panel/taws/scr_clock_crs.lua|3976949233
 plugins/sasl/data/modules/Custom Module/main_panel/taws/scr_clock_sec.lua|934794864
 plugins/sasl/data/modules/Custom Module/main_panel/taws/scr_clock_spd.lua|1377900545
 plugins/sasl/data/modules/Custom Module/main_panel/taws/scr_game.lua|2552084743
-plugins/sasl/data/modules/Custom Module/main_panel/taws/scr_map_side.lua|3828364765
-plugins/sasl/data/modules/Custom Module/main_panel/taws/scr_map_top.lua|4259812211
-plugins/sasl/data/modules/Custom Module/main_panel/taws/scr_test.lua|2258613090
-plugins/sasl/data/modules/Custom Module/main_panel/taws/scr_welcome.lua|3832404193
-plugins/sasl/data/modules/Custom Module/main_panel/taws/side_draw.lua|2750882260
-plugins/sasl/data/modules/Custom Module/main_panel/taws/taws.lua|2411527017
+plugins/sasl/data/modules/Custom Module/main_panel/taws/scr_map_side.lua|1686190109
+plugins/sasl/data/modules/Custom Module/main_panel/taws/scr_map_top.lua|1299608510
+plugins/sasl/data/modules/Custom Module/main_panel/taws/scr_test.lua|1076032883
+plugins/sasl/data/modules/Custom Module/main_panel/taws/scr_welcome.lua|2222705326
+plugins/sasl/data/modules/Custom Module/main_panel/taws/side_draw.lua|3616757311
+plugins/sasl/data/modules/Custom Module/main_panel/taws/taws.lua|3480317222
 plugins/sasl/data/modules/Custom Module/main_panel/taws/taws.ttf|4045856595
 plugins/sasl/data/modules/Custom Module/main_panel/taws/taws_clock.png|1893762444
 plugins/sasl/data/modules/Custom Module/main_panel/taws/taws_clock.psd|75840836
-plugins/sasl/data/modules/Custom Module/main_panel/taws/taws_logic.lua|207828059
-plugins/sasl/data/modules/Custom Module/main_panel/taws/taws_msg.lua|2209476598
-plugins/sasl/data/modules/Custom Module/main_panel/taws/taws_panel.lua|1010282131
+plugins/sasl/data/modules/Custom Module/main_panel/taws/taws_logic.lua|2991961609
+plugins/sasl/data/modules/Custom Module/main_panel/taws/taws_msg.lua|3132897319
+plugins/sasl/data/modules/Custom Module/main_panel/taws/taws_panel.lua|1028761549
 plugins/sasl/data/modules/Custom Module/main_panel/taws/taws_scale.png|1583575147
 plugins/sasl/data/modules/Custom Module/main_panel/taws/taws_scale_1.png|877751742
 plugins/sasl/data/modules/Custom Module/main_panel/taws/taws_scale_1.psd|1178870705
@@ -2014,21 +2014,21 @@ plugins/sasl/data/modules/Custom Module/main_panel/taws/taws_scale_2.png|1730098
 plugins/sasl/data/modules/Custom Module/main_panel/taws/taws_scale_2.psd|4118011956
 plugins/sasl/data/modules/Custom Module/main_panel/taws/taws_scr.fnt|2742511865
 plugins/sasl/data/modules/Custom Module/main_panel/taws/taws_scr_0.png|1388118370
-plugins/sasl/data/modules/Custom Module/main_panel/taws/taws_sound.lua|249382889
-plugins/sasl/data/modules/Custom Module/main_panel/taws/taws_warn_logic.lua|1852314749
+plugins/sasl/data/modules/Custom Module/main_panel/taws/taws_sound.lua|2677479727
+plugins/sasl/data/modules/Custom Module/main_panel/taws/taws_warn_logic.lua|1038301062
 plugins/sasl/data/modules/Custom Module/main_panel/taws/taws_welcome.png|279030940
 plugins/sasl/data/modules/Custom Module/main_panel/taws/taws_welcome.psd|3116753238
 plugins/sasl/data/modules/Custom Module/main_panel/tcas/fl_text.lua|3470149742
 plugins/sasl/data/modules/Custom Module/main_panel/tcas/segmental.fnt|2853166380
 plugins/sasl/data/modules/Custom Module/main_panel/tcas/segmental_0.png|3229792377
 plugins/sasl/data/modules/Custom Module/main_panel/tcas/so72_panel.lua|2073250201
-plugins/sasl/data/modules/Custom Module/main_panel/tcas/tcas.lua|2011884508
-plugins/sasl/data/modules/Custom Module/main_panel/tcas/tcas_draw.lua|3762493629
-plugins/sasl/data/modules/Custom Module/main_panel/tcas/tcas_gau.lua|4047621088
-plugins/sasl/data/modules/Custom Module/main_panel/tcas/tcas_logic.lua|1839078286
+plugins/sasl/data/modules/Custom Module/main_panel/tcas/tcas.lua|2036056158
+plugins/sasl/data/modules/Custom Module/main_panel/tcas/tcas_draw.lua|574958340
+plugins/sasl/data/modules/Custom Module/main_panel/tcas/tcas_gau.lua|752855316
+plugins/sasl/data/modules/Custom Module/main_panel/tcas/tcas_logic.lua|1777595690
 plugins/sasl/data/modules/Custom Module/main_panel/tcas/tcas_marks.png|2811310534
 plugins/sasl/data/modules/Custom Module/main_panel/tcas/tcas_marks.psd|1977074679
-plugins/sasl/data/modules/Custom Module/main_panel/tcas/tcas_panel.lua|3070041515
+plugins/sasl/data/modules/Custom Module/main_panel/tcas/tcas_panel.lua|3114094878
 plugins/sasl/data/modules/Custom Module/main_panel/tcas/tcas_scale.png|3342513694
 plugins/sasl/data/modules/Custom Module/main_panel/tcas/tcas_scale.psd|2710904175
 plugins/sasl/data/modules/Custom Module/main_panel/tcas/tcas_scale_RA.psd|4282705440
@@ -2047,7 +2047,7 @@ plugins/sasl/data/modules/Custom Module/main_panel/tcas/tcas_text.lua|1147382290
 plugins/sasl/data/modules/Custom Module/main_panel/tcas_nd_draw.lua|512446340
 plugins/sasl/data/modules/Custom Module/main_panel/termo.lua|3977053021
 plugins/sasl/data/modules/Custom Module/main_panel/test_hud.lua|2052140875
-plugins/sasl/data/modules/Custom Module/main_panel/tks/bgmk.lua|2559677883
+plugins/sasl/data/modules/Custom Module/main_panel/tks/bgmk.lua|28226623
 plugins/sasl/data/modules/Custom Module/main_panel/tks/gyro.lua|3389141021
 plugins/sasl/data/modules/Custom Module/main_panel/tks/km5.lua|1835119487
 plugins/sasl/data/modules/Custom Module/main_panel/tks/tks.lua|1373166083
@@ -2063,7 +2063,7 @@ plugins/sasl/data/modules/Custom Module/main_panel/vbe_altimeter/vbe_scale.psd|2
 plugins/sasl/data/modules/Custom Module/main_panel/vbe_altimeter/vbe_scale2.png|3268808992
 plugins/sasl/data/modules/Custom Module/main_panel/vent.lua|577254796
 plugins/sasl/data/modules/Custom Module/main_panel/vers.lua|3459965402
-plugins/sasl/data/modules/Custom Module/main_panel/vhf2_display.lua|3945485368
+plugins/sasl/data/modules/Custom Module/main_panel/vhf2_display.lua|2461971522
 plugins/sasl/data/modules/Custom Module/main_panel/vhf2_freq_text.lua|3526782320
 plugins/sasl/data/modules/Custom Module/main_panel/water_panel.lua|2484036438
 plugins/sasl/data/modules/Custom Module/morse.ttf|4039758605
@@ -3150,7 +3150,6 @@ plugins/sasl/data/modules/configuration/wprefs.ini|3943853981
 plugins/sasl/data/modules/main.lua|3588895513
 plugins/sasl/data/modules/state.txt|1239276517
 plugins/sasl/data/modulesdataref_creator_4.lua|0
-plugins/sasl/data/output/SASLLog.txt|560402814
 plugins/sasl/data/output/readme.txt|1889794412
 plugins/sasl/data/scripts/init.lua|2732355382
 plugins/sasl/functions.txt|3249875689
@@ -3160,8 +3159,8 @@ plugins/sasl/liblinux/libc++.so.1.0|3505504099
 plugins/sasl/liblinux/libc++abi.so|126283024
 plugins/sasl/liblinux/libc++abi.so.1|126283024
 plugins/sasl/liblinux/libc++abi.so.1.0|126283024
-plugins/sasl/liblinux/readme.txt|1538643556
-plugins/sasl/version.txt|160857366
+plugins/sasl/liblinux/readme.txt|3968703348
+plugins/sasl/version.txt|3120011235
 plugins/xtlua/.vscode/sftp.json|2782490967
 plugins/xtlua/64/lin.xpl|2849138199
 plugins/xtlua/64/mac.xpl|206847166
@@ -3174,7 +3173,7 @@ plugins/xtlua/init/scripts/T154.btwo/T154.btwo.lua|2580981375
 plugins/xtlua/init/scripts/T154.config_i/T154.config_i.lua|490124425
 plugins/xtlua/init/scripts/T154.egpws/T154.egpws.lua|1775297070
 plugins/xtlua/init/scripts/T154.ipad/T154.ipad.lua|196402086
-plugins/xtlua/init/scripts/T154.kontur/T154.kontur.lua|2302842219
+plugins/xtlua/init/scripts/T154.kontur/T154.kontur.lua|3150684445
 plugins/xtlua/init/scripts/T154.radio/T154.radio.lua|2758145694
 plugins/xtlua/init/scripts/T154.systems/T154.systems.lua|3554891135
 plugins/xtlua/init/scripts/T154.tcasCAS67/T154.tcasCAS67.lua|3164984505
@@ -3194,17 +3193,6 @@ plugins/xtlua/scripts/T154.ipad_s/T154.ipad_s.lua|2937749371
 plugins/xtlua/scripts/T154.ipad_s/json/LICENSE|1170876161
 plugins/xtlua/scripts/T154.ipad_s/json/json.lua|2792159939
 plugins/xtlua/scripts/T154.zwalk/T154.zwalk.lua|2655735238
-plugins/xtlua_keysystems/64/lin.xpl|2849138199
-plugins/xtlua_keysystems/64/mac.xpl|206847166
-plugins/xtlua_keysystems/64/win.xpl|2501787253
-plugins/xtlua_keysystems/StackTracePlus.lua|2753230619
-plugins/xtlua_keysystems/init.lua|3538877786
-plugins/xtlua_keysystems/init/init.lua|2064971322
-plugins/xtlua_keysystems/init/scripts/T154.kontur.nd_in/T154.kontur.nd_in.lua|352493969
-plugins/xtlua_keysystems/scripts/T154.kontur.nd/T154.kontur.nd.lua|4289627376
-plugins/xtlua_keysystems/scripts/T154.kontur.nd/json/LICENSE|1170876161
-plugins/xtlua_keysystems/scripts/T154.kontur.nd/json/json.lua|2860559897
-plugins/xtlua_keysystems/scripts/T154.kontur.nd/numberlua.lua|1255200620
 rsbn.dat|4100489803
 smartcopilot.cfg|1358742210
 sounds/alert/dash_INNER.wav|2005905547
@@ -3264,7 +3252,7 @@ sounds/systems/flap.wav|2005905547
 sounds/systems/gear.wav|2005905547
 sounds/weather/wind.wav|1395809330
 tu154.acf|1445365385
-tu154_cockpit.obj|194097278
+tu154_cockpit.obj|376162636
 tu154_icon11.png|2913622315
 tu154_icon11_thumb.png|2223285862
 tu154_paint.png|1900202556
