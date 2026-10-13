@@ -3252,7 +3252,7 @@ sounds/systems/flap.wav|2188
 sounds/systems/gear.wav|2188
 sounds/weather/wind.wav|520560
 tu154.acf|2839967
-tu154_cockpit.obj|1460353
+tu154_cockpit.obj|1460264
 tu154_icon11.png|113962
 tu154_icon11_thumb.png|10010
 tu154_paint.png|6686
