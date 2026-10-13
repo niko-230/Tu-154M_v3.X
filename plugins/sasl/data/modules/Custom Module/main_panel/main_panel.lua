@@ -103,6 +103,7 @@ components = {
 		rv_сс = globalPropertyf("tu154b2/custom/elec/rv5_right_cc"),  -- RV current
 		rv5_alt = globalPropertyf("tu154b2/custom/misc/rv5_alt_right"),  -- высота на правом высотомере
 		rv_fail = globalPropertyi("tu154b2/custom/failures/rv2_fail"),  -- fail
+		light_lim = globalPropertyf("sim/custom/b2/rv5_2_lit_lim")
 	},
 	
 	
@@ -117,7 +118,7 @@ components = {
 	},
 
 	taws {
-		position = {1034, 1270, 1000, 770},
+		position = {1034, 1270, 666, 513},
 	},
 
 	tks {},
@@ -215,5 +216,12 @@ components = {
 	-- --ins_test {},
 	
 	misc_fails {},
+	
+	nav_draw {
+		position = {2067, 1660, 500, 400},
+	},
+	radar_test {
+		position = {1034, 1270, 666, 513},
+	},
 	
 }

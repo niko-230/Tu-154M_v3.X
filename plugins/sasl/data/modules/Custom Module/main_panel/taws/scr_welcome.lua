@@ -1,9 +1,10 @@
 -- this is the clock screen of TAWS
 size = {1000, 770}
 
-defineProperty("mode_set", globalPropertyi("tu154b2/custom/taws/mode_set")) -- режим работы экрана. 0 - выкл, 1 - карта высот, 2 - вид сбоку, 3 - часы, 4 - процесс включения
-defineProperty("brt_handle", globalPropertyf("tu154b2/custom/rotary/srpbz/brightness")) -- ручка яркости
-defineProperty("distance_set", globalPropertyi("tu154b2/custom/taws/distance_set")) -- дистанция для рисования карты, км. 0 = 10, 1 = 20, 2 = 40, 3 = 80, 4 = 160, 5 = 320, 6 = 640
+mode_set = globalPropertyi("tu154b2/custom/taws/mode_set") -- режим работы экрана. 0 - выкл, 1 - карта высот, 2 - вид сбоку, 3 - часы, 4 - процесс включения
+brt_handle = globalPropertyf("sim/custom/kontur/kntr_1_brt_sw") -- ручка яркости
+brt_handle2 = globalPropertyf("sim/custom/kontur/kntr_2_brt_sw") -- ручка яркости
+distance_set = globalPropertyi("tu154b2/custom/taws/distance_set") -- дистанция для рисования карты, км. 0 = 10, 1 = 20, 2 = 40, 3 = 80, 4 = 160, 5 = 320, 6 = 640
 
 defineProperty("course_fly", globalPropertyf("sim/flightmodel/position/hpath")) -- course, where aircraft actually flies
 
@@ -27,6 +28,7 @@ local text_font = loadBitmapFont(moduleDirectory .. '/Custom Module/main_panel/t
 
 local screen_work = get(mode_set) == 4
 local brightness = 0.8
+local brightness_fo = 0.8
 
 
 --[[ start sequence
@@ -63,10 +65,12 @@ function update()
 
 	if not screen_work then 
 		brightness = 0 
+		brightness_fo = 0 
 		time_counter = 0	
 	
 	else
 		brightness = get(brt_handle)
+		brightness_fo = get(brt_handle2)
 	
 		if current_mode == 0 then time_counter = 0 end -- reset counter when power off
 		
@@ -108,178 +112,192 @@ end
 
 
 
-components = {
+-- components = {
 	
-	rectangle {
-		position = {0, 0, size[1], size[2]},
-		color = {0.1, 0.1, 0.1, 1},
-		visible = function()
-			return screen_work
-		end,
-	},
+	-- rectangle {
+		-- position = {0, 0, size[1], size[2]},
+		-- color = {0.1, 0.1, 0.1, 1},
+		-- visible = function()
+			-- return screen_work
+		-- end,
+	-- },
 	
-	--------------------------------
-	-- phase 1 - yellow screen --
-	--------------------------------
-	rectangle {
-		position = {0, 0, size[1], size[2]},
-		color = {1, 1, 0.5, 1},
-		visible = function()
-			return screen_work and sequence_phase == 1
-		end,
-	},	
+	-- --------------------------------
+	-- -- phase 1 - yellow screen --
+	-- --------------------------------
+	-- rectangle {
+		-- position = {0, 0, size[1], size[2]},
+		-- color = {1, 1, 0.5, 1},
+		-- visible = function()
+			-- return screen_work and sequence_phase == 1
+		-- end,
+	-- },	
 	
-	--------------------------------
-	-- phase 2 - blue screen and counter --
-	--------------------------------
-	rectangle {
-		position = {0, 0, size[1], size[2]},
-		color = {0.2, 0.5, 1, 1},
-		visible = function()
-			return screen_work and sequence_phase == 2
-		end,
-	},	
+	-- --------------------------------
+	-- -- phase 2 - blue screen and counter --
+	-- --------------------------------
+	-- rectangle {
+		-- position = {0, 0, size[1], size[2]},
+		-- color = {0.2, 0.5, 1, 1},
+		-- visible = function()
+			-- return screen_work and sequence_phase == 2
+		-- end,
+	-- },	
 	
-	-- counter background
-	rectangle {
-		position = {380, 400, 330, 200},
-		color = {1, 1, 1, 1},
-		visible = function()
-			return screen_work and sequence_phase == 2
-		end,
-	},
-	rectangle {
-		position = {385, 405, 320, 190},
-		color = {0.2, 0.5, 1, 1},
-		visible = function()
-			return screen_work and sequence_phase == 2
-		end,
-	},	
+	-- -- counter background
+	-- rectangle {
+		-- position = {380, 400, 330, 200},
+		-- color = {1, 1, 1, 1},
+		-- visible = function()
+			-- return screen_work and sequence_phase == 2
+		-- end,
+	-- },
+	-- rectangle {
+		-- position = {385, 405, 320, 190},
+		-- color = {0.2, 0.5, 1, 1},
+		-- visible = function()
+			-- return screen_work and sequence_phase == 2
+		-- end,
+	-- },	
 	
-	rectangle {
-		position = {390, 410, 100, 180},
-		color = {1, 1, 1, 1},
-		visible = function()
-			return screen_work and sequence_phase == 2
-		end,
-	},	
+	-- rectangle {
+		-- position = {390, 410, 100, 180},
+		-- color = {1, 1, 1, 1},
+		-- visible = function()
+			-- return screen_work and sequence_phase == 2
+		-- end,
+	-- },	
 	
-	rectangle {
-		position = {395, 415, 90, 170},
-		color = {0.2, 0.5, 1, 1},
-		visible = function()
-			return screen_work and sequence_phase == 2
-		end,
-	},		
-	rectangle {
-		position = {495, 410, 100, 180},
-		color = {1, 1, 1, 1},
-		visible = function()
-			return screen_work and sequence_phase == 2
-		end,
-	},	
+	-- rectangle {
+		-- position = {395, 415, 90, 170},
+		-- color = {0.2, 0.5, 1, 1},
+		-- visible = function()
+			-- return screen_work and sequence_phase == 2
+		-- end,
+	-- },		
+	-- rectangle {
+		-- position = {495, 410, 100, 180},
+		-- color = {1, 1, 1, 1},
+		-- visible = function()
+			-- return screen_work and sequence_phase == 2
+		-- end,
+	-- },	
 	
-	rectangle {
-		position = {500, 415, 90, 170},
-		color = {0.2, 0.5, 1, 1},
-		visible = function()
-			return screen_work and sequence_phase == 2
-		end,
-	},	
+	-- rectangle {
+		-- position = {500, 415, 90, 170},
+		-- color = {0.2, 0.5, 1, 1},
+		-- visible = function()
+			-- return screen_work and sequence_phase == 2
+		-- end,
+	-- },	
 
-	rectangle {
-		position = {600, 410, 100, 180},
-		color = {1, 1, 1, 1},
-		visible = function()
-			return screen_work and sequence_phase == 2
-		end,
-	},	
+	-- rectangle {
+		-- position = {600, 410, 100, 180},
+		-- color = {1, 1, 1, 1},
+		-- visible = function()
+			-- return screen_work and sequence_phase == 2
+		-- end,
+	-- },	
 	
-	rectangle {
-		position = {605, 415, 90, 170},
-		color = {0.2, 0.5, 1, 1},
-		visible = function()
-			return screen_work and sequence_phase == 2
-		end,
-	},	
-
-
-	-- counter text
-	text_draw2 {
-		position = {413, 480, 220, 150},
-		text = function()
-			return counter_text
-		end,
-		font = text_font,
-		color = {1,1,1,1},
-		visible = function()
-			return screen_work and sequence_phase == 2
-		end,
-	},
-
-	-------------------------------
-	-- phase 4 - welcome screen --
-	-------------------------------
-	textureLit {
-		position = {0, 0, size[1], size[2]},
-		image = get(wc_screen_img),
-		visible = function()
-			return screen_work and sequence_phase == 4
-		end,
-	},
-
-	
-	-------------------------------
-	-- phase 5 - NO RP --
-	-------------------------------
-	rectangle {
-		position = {0, 0, size[1], size[2]},
-		color = {0.7, 0.7, 0.6, 1},
-		visible = function()
-			return screen_work and sequence_phase == 5
-		end,
-	},	
-	
-	rectangle {
-		position = {330, 335, 340, 80},
-		color = {0.1, 0.1, 0.1, 1},
-		visible = function()
-			return screen_work and sequence_phase == 5
-		end,
-	},	
-	
-	-- counter text
-	text_draw2 {
-		position = {360, 350, 185, 160},
-		text = function()
-			return "НЕТ РП"
-		end,
-		font = text_font,
-		color = {1,0.8,0,1},
-		visible = function()
-			return screen_work and sequence_phase == 5
-		end,
-	},	
-	
-	-- brightness controll
-	rectangle_ctr {
-		R = 0,
-		G = 0,
-		B = 0,
-		A = function()
-			return 1 - brightness
-		end, -- controll via alpha
-		position_x = 0,
-		position_y = 0,
-		width = size[1],
-		height = size[2],
-		visible = function()
-			return screen_work
-		end,
-	},
+	-- rectangle {
+		-- position = {605, 415, 90, 170},
+		-- color = {0.2, 0.5, 1, 1},
+		-- visible = function()
+			-- return screen_work and sequence_phase == 2
+		-- end,
+	-- },	
 
 
+	-- -- counter text
+	-- text_draw2 {
+		-- position = {413, 480, 220, 150},
+		-- text = function()
+			-- return counter_text
+		-- end,
+		-- font = text_font,
+		-- color = {1,1,1,1},
+		-- visible = function()
+			-- return screen_work and sequence_phase == 2
+		-- end,
+	-- },
+
+	-- -------------------------------
+	-- -- phase 4 - welcome screen --
+	-- -------------------------------
+	-- textureLit {
+		-- position = {0, 0, size[1], size[2]},
+		-- image = get(wc_screen_img),
+		-- visible = function()
+			-- return screen_work and sequence_phase == 4
+		-- end,
+	-- },
+
+	
+	-- -------------------------------
+	-- -- phase 5 - NO RP --
+	-- -------------------------------
+	-- rectangle {
+		-- position = {0, 0, size[1], size[2]},
+		-- color = {0.7, 0.7, 0.6, 1},
+		-- visible = function()
+			-- return screen_work and sequence_phase == 5
+		-- end,
+	-- },	
+	
+	-- rectangle {
+		-- position = {330, 335, 340, 80},
+		-- color = {0.1, 0.1, 0.1, 1},
+		-- visible = function()
+			-- return screen_work and sequence_phase == 5
+		-- end,
+	-- },	
+	
+	-- -- counter text
+	-- text_draw2 {
+		-- position = {360, 350, 185, 160},
+		-- text = function()
+			-- return "НЕТ РП"
+		-- end,
+		-- font = text_font,
+		-- color = {1,0.8,0,1},
+		-- visible = function()
+			-- return screen_work and sequence_phase == 5
+		-- end,
+	-- },	
+	
+	-- -- brightness controll
+	-- -- rectangle_ctr {
+		-- -- R = 0,
+		-- -- G = 0,
+		-- -- B = 0,
+		-- -- A = function()
+			-- -- return 1 - brightness
+		-- -- end, -- controll via alpha
+		-- -- position_x = 0,
+		-- -- position_y = 0,
+		-- -- width = size[1],
+		-- -- height = size[2],
+		-- -- visible = function()
+			-- -- return screen_work
+		-- -- end,
+	-- -- },
+	-- -- rectangle_ctr {
+		-- -- R = 0,
+		-- -- G = 0,
+		-- -- B = 0,
+		-- -- A = function()
+			-- -- return 1 - brightness_fo
+		-- -- end, -- controll via alpha
+		-- -- position_x = 0,
+		-- -- position_y = size[2],
+		-- -- width = size[1],
+		-- -- height = size[2],
+		-- -- visible = function()
+			-- -- return screen_work
+		-- -- end,
+	-- -- },
 
 
 
-}
+
+-- }

@@ -776,3 +776,30 @@ createGlobalPropertyf("tu154b2/custom/hydro/gear_fluid_3",0)
 -- these -- Target's copy was missing them.
 createGlobalPropertyi("tu154b2/custom/controlls/flap_chan_1", 0)
 createGlobalPropertyi("tu154b2/custom/controlls/flap_chan_2", 0)
+
+-- Kontur MFI / radar / TAWS / TCAS upgrade to current B donor (2026-10-12).
+-- Datarefs the B donor's newer Kontur, radar_kontur, TAWS, TCAS and ND
+-- scripts need. Values and types copied from B donor's own creators.
+createGlobalPropertyi("tu154b2/custom/radar/mode_set", 2) -- radar mode: 2 standby, 3 WX, 4 ground map
+createGlobalPropertyf("tu154b2/custom/taws/elev_1000_l", 0)
+createGlobalPropertyf("tu154b2/custom/taws/elev_100_l", 0)
+createGlobalPropertyf("tu154b2/custom/taws/elev_1000_r", 0)
+createGlobalPropertyf("tu154b2/custom/taws/elev_100_r", 0)
+createGlobalPropertyf("tu154b2/custom/taws/max_l",0)
+createGlobalPropertyf("tu154b2/custom/taws/min_l",0)
+createGlobalPropertyf("tu154b2/custom/taws/max_r",0)
+createGlobalPropertyf("tu154b2/custom/taws/min_r",0)
+createGlobalPropertyf("tu154b2/custom/taws/max_l_1000",0)
+createGlobalPropertyf("tu154b2/custom/taws/min_l_1000",0)
+createGlobalPropertyf("tu154b2/custom/taws/max_r_1000",0)
+createGlobalPropertyf("tu154b2/custom/taws/min_r_1000",0)
+createGlobalPropertyi("tu154b2/custom/taws/disp_rdy",0)
+createGlobalPropertyi("tu154b2/custom/taws/phase",0)
+createGlobalPropertyi("tu154b2/custom/tcas/vvi_left",0)
+createGlobalPropertyi("tu154b2/custom/anim/show_taws", 1) -- 1 = TAWS logic active (B creates this in dataref_creator_1)
+createGlobalPropertyf("tu154b2/custom/tks/kln_psi",0) -- magnetic heading from BGMK, written by bgmk.lua (B creates this in its KLN90B plugin)
+createGlobalPropertyi("tu154b2/custom/radio/appr_n_waypoints",0) -- ND approach waypoints (B creates these in dataref_creator_3)
+createGlobalPropertyia("tu154b2/custom/radio/app_names",30)
+createGlobalPropertyia("tu154b2/custom/radio/app_alt",30)
+createGlobalPropertyfa("tu154b2/custom/radio/app_lat",30)
+createGlobalPropertyfa("tu154b2/custom/radio/app_lon",30)

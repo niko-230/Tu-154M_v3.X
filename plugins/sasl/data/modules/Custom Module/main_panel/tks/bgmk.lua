@@ -44,7 +44,8 @@ defineProperty("course_gmk", globalPropertyf("tu154b2/custom/tks/course_gmk")) -
 defineProperty("bgmk_1_cc", globalPropertyf("tu154b2/custom/tks/bgmk_1_cc")) -- потребление тока БГМК
 defineProperty("bgmk_2_cc", globalPropertyf("tu154b2/custom/tks/bgmk_2_cc")) -- потребление тока БГМК
 -- correction interrupter VK90
-defineProperty("vk90", globalPropertyi("tu154b2/custom/tks/vk90"))
+vk90 = globalPropertyi("tu154b2/custom/tks/vk90")
+kln_psi = globalPropertyf("tu154b2/custom/tks/kln_psi")
 -- engines
 defineProperty("eng1_N1", globalProperty("sim/flightmodel/engine/ENGN_N1_[0]")) -- engine 1 rpm
 defineProperty("eng2_N1", globalProperty("sim/flightmodel/engine/ENGN_N1_[1]")) -- engine 2 rpm
@@ -251,21 +252,32 @@ function update()
 	
 	
 	-- set res course
-if MASTER then	
-	set(course_bgmk_1, bgmk_cur_1)
-	set(course_bgmk_2, bgmk_cur_2)	
-	
-	local users = get(tks_user) -- потребители 0 - контр, 1 - осн
-	
-	if users == 1 then
-		set(course_gpk, ga1)
-		set(course_gmk, bgmk_cur_1)
+	if MASTER then	
+		local kln_mag=bgmk_cur_1
+		if kln_mag<0 then
+			kln_mag=kln_mag+360
+		end
+		set(kln_psi,kln_mag)
+		set(course_bgmk_1, bgmk_cur_1)
+		set(course_bgmk_2, bgmk_cur_2)	
+		
+		local users = get(tks_user) -- потребители 0 - контр, 1 - осн
+		
+		if users == 1 then
+			set(course_gpk, ga1)
+			set(course_gmk, bgmk_cur_1)
+		else
+			set(course_gpk, ga2)
+			set(course_gmk, bgmk_cur_2)
+		end
 	else
-		set(course_gpk, ga2)
-		set(course_gmk, bgmk_cur_2)
-	end
+		local kln_mag=get(course_bgmk_1)
+		if kln_mag<0 then
+			kln_mag=kln_mag+360
+		end
+		set(kln_psi,kln_mag)
 
-end
+	end
 	
 	set(bgmk_1_cc, bool2int(power_1))
 	set(bgmk_2_cc, bool2int(power_2))

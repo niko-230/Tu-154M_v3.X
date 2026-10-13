@@ -19,10 +19,17 @@ bus27_volt_right = globalPropertyf("tu154b2/custom/elec/bus27_volt_right")
 -- VHF1's real lighting response, even though the underlying mechanism differs.
 sun_pitch = globalPropertyf("sim/graphics/scenery/sun_pitch_degrees")
 
-local NIGHT_BRIGHTNESS = 0.20
-local DAY_BRIGHTNESS = 0.75
+-- Matched by eye to VHF1 (2026-10-13): VHF2 read slightly brighter in daylight
+-- and clearly brighter at night, so night drops more than day.
+local NIGHT_BRIGHTNESS = 0.04   -- was 0.20 originally (retuned 0.13 -> 0.07 -> 0.04)
+local DAY_BRIGHTNESS = 0.62     -- was 0.75 originally (retuned 0.68 -> 0.62)
 local TWILIGHT_START = -6.0   -- sun pitch (deg) where dimming to night begins
 local TWILIGHT_END = 15.0     -- sun pitch (deg) where full day brightness is reached
+-- Dusk/dawn curve shape. VHF1 (X-Plane's own lighting) darkens quickly once the
+-- sun gets low, so VHF2 also read too bright at dusk with a straight-line blend.
+-- 1.0 = straight line (old behaviour); 2.0 = stays dim longer through dusk and
+-- only brightens once the sun is well up. Higher = darker at dusk.
+local DUSK_CURVE = 3.0
 
 local function dayNightBrightness()
 	local pitch = get(sun_pitch)
@@ -32,6 +39,7 @@ local function dayNightBrightness()
 		return DAY_BRIGHTNESS
 	else
 		local t = (pitch - TWILIGHT_START) / (TWILIGHT_END - TWILIGHT_START)
+		t = t ^ DUSK_CURVE
 		return NIGHT_BRIGHTNESS + t * (DAY_BRIGHTNESS - NIGHT_BRIGHTNESS)
 	end
 end

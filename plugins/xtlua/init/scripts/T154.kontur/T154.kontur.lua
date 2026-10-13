@@ -47,16 +47,18 @@ simDR_gs					= find_dataref("sim/flightmodel/position/groundspeed")
 simDR_gps_dme					= find_dataref("sim/cockpit2/radios/indicators/gps_dme_distance_nm")
 simDR_passed                    = find_dataref("sim/operation/misc/frame_rate_period")
 simDR_time                    = find_dataref("sim/time/total_running_time_sec")
-simDR_weather_alpha                    = find_dataref("sim/cockpit/switches/EFIS_weather_alpha")
+--simDR_weather_alpha                    = find_dataref("sim/cockpit/switches/EFIS_weather_alpha")
 simDR_bus27left                    = find_dataref("tu154b2/custom/elec/bus27_volt_left")
 simDR_bus27right                    = find_dataref("tu154b2/custom/elec/bus27_volt_right")
 simDR_taws_dist                    = find_dataref("tu154b2/custom/taws/distance_set")
 simDR_taws_mode                    = find_dataref("tu154b2/custom/taws/mode_set")
 simDR_tcas_mode                    = find_dataref("tu154b2/custom/tcas/mode_set")
+simDR_wx_mode                    = find_dataref("tu154b2/custom/radar/mode_set")
 simDR_tcas_disp_mod                    = find_dataref("tu154b2/custom/tcas/screen_mode")
 simDR_but_sound                    = find_dataref("tu154b2/custom/buttons/srpbz/but_down")
 --simDR_sw_sound                      = find_dataref("tu154b2/custom/lights/tech_light_set")
 simDR_tcas_on                    = find_dataref("sim/cockpit2/EFIS/EFIS_tcas_on")
+simDR_tcas_on_fo                    = find_dataref("sim/cockpit2/EFIS/EFIS_tcas_on_copilot")
 simDR_taws_but_mode                    = find_dataref("tu154b2/custom/buttons/srpbz/but_view")
 simDR_vbe1                   = find_dataref("tu154b2/custom/switchers/ovhd/vbe_1_on")
 simDR_vbe2                   = find_dataref("tu154b2/custom/switchers/ovhd/vbe_2_on")
@@ -72,12 +74,21 @@ simDR_nav_select                    = find_dataref("tu154b2/custom/switchers/nav
 simDR_efis_1_mode					= find_dataref("sim/cockpit/switches/EFIS_map_submode")
 simDR_efis_1_range					= find_dataref("sim/cockpit/switches/EFIS_map_range_selector")
 simDR_efis_1_fix					= find_dataref("sim/cockpit2/EFIS/EFIS_fix_on")
-simDR_efis_1_wxr					= find_dataref("sim/cockpit/switches/EFIS_shows_weather")
+simDR_efis_1_wxr					= find_dataref("sim/cockpit2/EFIS/EFIS_weather_on")
 simDR_efis_1_ndb					= find_dataref("sim/cockpit2/EFIS/EFIS_ndb_on")
 simDR_efis_1_vor					= find_dataref("sim/cockpit2/EFIS/EFIS_vor_on")
 simDR_efis_1_apt					= find_dataref("sim/cockpit2/EFIS/EFIS_airport_on")
 simDR_efis_1_tcas					= find_dataref("sim/cockpit2/EFIS/EFIS_tcas_on")
-simDR_fms_line					= find_dataref("sim/graphics/misc/kill_map_fms_line")
+simDR_efis_2_mode					= find_dataref("sim/cockpit2/EFIS/map_mode_copilot")
+simDR_efis_2_range					= find_dataref("sim/cockpit2/EFIS/map_range_copilot")
+simDR_efis_2_fix					= find_dataref("sim/cockpit2/EFIS/EFIS_fix_on_copilot")
+simDR_efis_2_wxr					= find_dataref("sim/cockpit2/EFIS/EFIS_weather_on_copilot")
+simDR_efis_2_ndb					= find_dataref("sim/cockpit2/EFIS/EFIS_ndb_on_copilot")
+simDR_efis_2_vor					= find_dataref("sim/cockpit2/EFIS/EFIS_vor_on_copilot")
+simDR_efis_2_apt					= find_dataref("sim/cockpit2/EFIS/EFIS_airport_on_copilot")
+simDR_efis_2_tcas					= find_dataref("sim/cockpit2/EFIS/EFIS_tcas_on_copilot")
+
+--simDR_fms_line					= find_dataref("sim/graphics/misc/kill_map_fms_line")
 simDR_36v				= find_dataref("tu154b2/custom/elec/bus36_volt_left")
 simDR_rv2				= find_dataref("tu154b2/custom/elec/rv5_right_cc")
 simDRutchours				= find_dataref("sim/cockpit2/clock_timer/zulu_time_hours")
@@ -93,23 +104,28 @@ simDRcrs_plank2				= find_dataref("tu154b2/custom/radio/nav2_cs")
 simDRgs_plank2				= find_dataref("tu154b2/custom/radio/nav2_gs")
 simDRcrs_flag2				= find_dataref("tu154b2/custom/radio/nav2_cs_flag")
 simDRgs_flag2				= find_dataref("tu154b2/custom/radio/nav2_gs_flag")
-simDR_gmk_crs = find_dataref("tu154b2/custom/tks/course_gmk")
+simDR_gmk_crs = find_dataref("tu154b2/custom/tks/kln_psi")
 simDR_diss_slipe = find_dataref("tu154b2/custom/nvu/diss_slip_angle")
 simDR_dtk = find_dataref("sim/cockpit/radios/gps_course_degtm")
 simDR_rel_bear = find_dataref("sim/cockpit2/radios/indicators/gps_relative_bearing_deg")
 simDR_bear = find_dataref("sim/cockpit2/radios/indicators/gps_bearing_deg_mag")
-simDR_hdg = find_dataref("sim/cockpit2/gauges/indicators/heading_electric_deg_mag_pilot")
+simDR_rdr_fail = find_dataref("tu154b2/custom/failures/radar_fail")
+simDR_wxr_mode = find_dataref("sim/cockpit2/EFIS/EFIS_weather_mode")
+-- simDR_hdg = find_dataref("tu154b2/custom/tks/kln_psi")
 
 simDR_radioalt					= find_dataref("sim/cockpit2/gauges/indicators/radio_altimeter_height_ft_pilot")
 simDR_vvi					= find_dataref("tu154b2/custom/gauges/vvi_left")
 simDR_vvi_rv					= find_dataref("sim/cockpit2/gauges/indicators/vvi_fpm_pilot")
+simDR_tcas_pow				= find_dataref("sim/custom/tcas2000/tcas_pwr")
 T154_kontur_on = find_dataref("tu154b2/custom/b2/kontur_on")
+simDR_taws_message = find_dataref("tu154b2/custom/taws/taws_message")
 
 
 
 kntr_1_brt_sw		= deferred_dataref("sim/custom/kontur/kntr_1_brt_sw", "number")
 kntr_2_brt_sw		= deferred_dataref("sim/custom/kontur/kntr_2_brt_sw", "number")
 map_center_capt = deferred_dataref("sim/custom/kontur/map_center/capt", "number")
+map_center_fo = deferred_dataref("sim/custom/kontur/map_center/fo", "number")
 z_bok = deferred_dataref("sim/custom/kontur/zbok", "number")
 z_bok_nm = deferred_dataref("sim/custom/kontur/zbok_nm", "number")
 radioalt = deferred_dataref("sim/custom/kontur/radioalt", "number")
@@ -136,7 +152,11 @@ weather_sys = deferred_dataref("sim/custom/kontur/weather_sys", "number",tu154_k
 weather_mode = deferred_dataref("sim/custom/kontur/weather_mode", "number",tu154_kontur_weather_mode_DRhandler)
 kontur_nav_l = deferred_dataref("sim/custom/kontur/left_nav", "number")
 kontur_wx_l = deferred_dataref("sim/custom/kontur/left_wx", "number")
+kontur_wx_l_aux = deferred_dataref("sim/custom/kontur/left_wx_aux", "number")
 kontur_tcas_l = deferred_dataref("sim/custom/kontur/left_tcas", "number")
+kontur_tcas_l_aux = deferred_dataref("sim/custom/kontur/left_tcas_aux", "number")
+kontur_tcas_r = deferred_dataref("sim/custom/kontur/right_tcas", "number")
+kontur_tcas_r_aux = deferred_dataref("sim/custom/kontur/right_tcas_aux", "number")
 kontur_wx_test_l = deferred_dataref("sim/custom/kontur/left_wx_test", "number")
 kontur_taws_l = deferred_dataref("sim/custom/kontur/left_taws", "number")
 kontur_pow_l = deferred_dataref("sim/custom/kontur/left_power", "number")
@@ -149,8 +169,10 @@ kontur_nav_menu_r = deferred_dataref("sim/custom/kontur/right_nav_menu", "number
 kontur_nav_r = deferred_dataref("sim/custom/kontur/right_nav", "number")
 kontur_taws_r = deferred_dataref("sim/custom/kontur/right_taws", "number")
 kontur_wx_r = deferred_dataref("sim/custom/kontur/right_wx", "number")
+kontur_wx_r_aux = deferred_dataref("sim/custom/kontur/right_wx_aux", "number")
 kontur_onoff_r = deferred_dataref("sim/custom/kontur/right_onoff", "number")
 kontur_test_r = deferred_dataref("sim/custom/kontur/right_test", "number")
+wx_test_init = deferred_dataref("sim/custom/kontur/wx_test_run", "number")
 diff_gs = deferred_dataref("sim/custom/kontur/gs_diff", "number")
 diff_crs = deferred_dataref("sim/custom/kontur/crs_diff", "number")
 gs_fl = deferred_dataref("sim/custom/kontur/gs_fl", "number")
@@ -177,11 +199,14 @@ kontur_info_knob2_r = deferred_dataref("sim/custom/kontur/info_knob2_r", "number
 
 kontur_zbok_test = deferred_dataref("sim/custom/kontur/zbok_test", "number")
 
+kontur_wx_side = deferred_dataref("sim/custom/kontur/wx_side", "number")
+
 lat_string = deferred_dataref("sim/custom/kontur/latitude", "string")
 long_string = deferred_dataref("sim/custom/kontur/longitude", "string")
 
 simDRradar_tilt = find_dataref("sim/cockpit2/EFIS/EFIS_weather_tilt")
 simDRauto_tilt = find_dataref("sim/cockpit2/EFIS/EFIS_weather_auto_tilt")
+simDRtaws_rdy = find_dataref("tu154b2/custom/taws/disp_rdy")
 
 
 local radioalt_loc = 0
@@ -211,14 +236,22 @@ local nostab_l = 0
 local nostab_r = 0
 local relative_brg = 0
 local true_brg = 0
+local rng_wx_l = 3
+local rng_tcas_l = 2
+local rng_taws_l = 2
+local rng_wx_r = 3
+local rng_tcas_r = 2
+local rng_taws_r = 2
+local simDR_taws_message_prev = 0
 wx2000_gain = 0
-kontur_rru_l = 0.8
-kontur_rru_r = 0
+kontur_rru_l = 0.5
+kontur_rru_r = 0.5
 weather_mode = 1
 kntr_1_brt_sw = 0.7
 kntr_2_brt_sw = 0.7
 simDR_kontur_1_brt = 0.6
 simDR_kontur_2_brt = 0.6
+taws_timer = 0
 
 function kontur_onoff_button_l_CMDhandler(phase, duration)
     if phase == 0 then
@@ -240,9 +273,17 @@ function kontur_onoff_button_l_CMDhandler(phase, duration)
         else
             kontur_onoff_l = 0
             kontur_nav_l = 0
+			kontur_tcas_l = 0
+			kontur_tcas_l_aux = 0
+			kontur_taws_l = 0
+			kontur_wx_l = 0
+			kontur_wx_l_aux = 0
             kontur_test_start_l = 1
             kontur_test_timer_l = 0
             kontur_test_l = 0
+			rng_wx_l = 3
+			rng_tcas_l = 2
+			rng_taws_l = 2
         end
         
     end   	
@@ -252,17 +293,129 @@ local wx_last=2
 
 function kontur_rls_button_l_CMDhandler(phase, duration)
     if phase == 0 then
-        if kontur_pow_l > 0 and simDR_bus27left > 0 and kontur_onoff_l < 1 and kontur_wx_l < 1 then
+        if kontur_pow_l > 0 and simDR_bus27left > 0 and kontur_onoff_l < 1 and kontur_wx_l<1 then
             -- if kontur_wx_test_l == -1 and weather_sys > 0 and simDR_36v > 0 then
                 -- kontur_wx_l = 2
             -- else
 		      -- kontur_wx_l = 1
             -- end
-			kontur_wx_l=wx_last
+			kontur_tcas_l = 0
+			kontur_taws_l = 0
+			kontur_tcas_l_aux = 0
+		    kontur_wx_l_aux = 0
+			kontur_wx_l=1
+        --else
+			-- wx_last=kontur_wx_l
+			-- kontur_wx_l = 0
+        end
+		if kontur_pow_l > 0 and simDR_bus27left > 0 and kontur_onoff_l < 1 and kontur_test_start_l > 0 then
+			if kontur_test_timer_l > 17 then
+				kontur_test_timer_l = 0
+				kontur_test_start_l = 0
+				kontur_test_l = 0
+				kontur_on_l = 1   
+				info_page_l = 0
+				simDR_efis_1_fix					= 0
+				simDR_efis_1_wxr					= 0
+				simDR_efis_1_ndb					= 0
+				simDR_efis_1_tcas					= 0
+				if simDR_efis_1_range < 5 then
+					simDR_efis_1_vor					= 1
+				else
+					simDR_efis_1_vor					= 0
+				end
+				simDR_efis_1_apt					= 1
+				kontur_nav_l = 0
+				kontur_tcas_l = 0
+				kontur_taws_l = 0
+			end  
+		end
+    end   	
+end	
+
+
+function kontur_nav_button_l_CMDhandler(phase, duration)
+    if phase == 0 then
+        if kontur_pow_l > 0 and simDR_bus27left > 0 and kontur_onoff_l < 1 and kontur_nav_l < 1 and (kontur_tcas_l>0 or kontur_taws_l>0 or kontur_wx_l>0) then
+			kontur_nav_l = 1
         else
+			kontur_nav_l = 0
+        end
+		if kontur_pow_l > 0 and simDR_bus27left > 0 and kontur_onoff_l < 1 and kontur_test_start_l > 0 then
+			if kontur_test_timer_l > 17 then
+				-- kontur_test_timer_l = 0
+				-- kontur_test_start_l = 0
+				-- kontur_test_l = 0
+				-- kontur_on_l = 1   
+				-- info_page_l = 0
+				-- simDR_efis_1_fix					= 0
+				-- simDR_efis_1_wxr					= 0
+				-- simDR_efis_1_ndb					= 0
+				-- simDR_efis_1_tcas					= 0
+			-- -- if simDR_efis_1_range < 5 then
+				-- -- simDR_efis_1_vor					= 1
+			-- -- else
+				-- -- simDR_efis_1_vor					= 0
+			-- -- end
+				-- simDR_efis_1_apt					= 0
+				-- kontur_nav_l = 0
+				-- kontur_wx_l = 0
+				-- kontur_taws_l = 0
+			end  
+		end
+    end   	
+end	
+
+function kontur_tcas_button_l_CMDhandler(phase, duration)
+    if phase == 0 then
+        if kontur_pow_l > 0 and simDR_bus27left > 0 and kontur_onoff_l < 1 and kontur_tcas_l<1 then
+			kontur_tcas_l = 1
+			kontur_tcas_l_aux = 0
 			wx_last=kontur_wx_l
 			kontur_wx_l = 0
+			kontur_wx_l_aux = 0
+			kontur_taws_l = 0
+        -- else
+        -- kontur_tcas_l = 0
         end
+		if kontur_pow_l > 0 and simDR_bus27left > 0 and kontur_onoff_l < 1 and kontur_test_start_l > 0 then
+			if kontur_test_timer_l > 17 then
+				kontur_test_timer_l = 0
+				kontur_test_start_l = 0
+				kontur_test_l = 0
+				kontur_on_l = 1   
+				info_page_l = 0
+				simDR_efis_1_fix					= 0
+				simDR_efis_1_wxr					= 0
+				simDR_efis_1_ndb					= 0
+				simDR_efis_1_tcas					= 0
+				if simDR_efis_1_range < 5 then
+					simDR_efis_1_vor					= 1
+				else
+					simDR_efis_1_vor					= 0
+				end
+				simDR_efis_1_apt					= 1
+				kontur_nav_l = 0
+				kontur_wx_l = 0
+				kontur_taws_l = 0
+			end  
+		end
+    end   	
+end	
+
+function kontur_taws_button_l_CMDhandler(phase, duration)
+    if phase == 0 then
+        if kontur_pow_l > 0 and simDR_bus27left > 0 and kontur_onoff_l < 1 and info_page_l < 1 and kontur_taws_l<1 then
+			kontur_tcas_l = 0
+			kontur_tcas_l_aux = 0
+			wx_last=kontur_wx_l
+			kontur_wx_l = 0
+			kontur_wx_l_aux = 0
+			kontur_taws_l = 1
+		end
+        -- else
+			-- kontur_taws_l = 0
+        --end
     if kontur_pow_l > 0 and simDR_bus27left > 0 and kontur_onoff_l < 1 and kontur_test_start_l > 0 then
         if kontur_test_timer_l > 17 then
             kontur_test_timer_l = 0
@@ -282,104 +435,7 @@ function kontur_rls_button_l_CMDhandler(phase, duration)
             simDR_efis_1_apt					= 1
             kontur_nav_l = 0
             kontur_wx_l = 0
-            kontur_taws_l = 0
-        end  
-    end
-    end   	
-end	
-
-
-function kontur_nav_button_l_CMDhandler(phase, duration)
-    if phase == 0 then
-        if kontur_pow_l > 0 and simDR_bus27left > 0 and kontur_onoff_l < 1 and kontur_nav_l < 1 then
-		kontur_nav_l = 1
-        else
-        kontur_nav_l = 0
-        end
-    if kontur_pow_l > 0 and simDR_bus27left > 0 and kontur_onoff_l < 1 and kontur_test_start_l > 0 then
-        if kontur_test_timer_l > 17 then
-            kontur_test_timer_l = 0
-            kontur_test_start_l = 0
-            kontur_test_l = 0
-            kontur_on_l = 1   
-            info_page_l = 0
-            simDR_efis_1_fix					= 0
-            simDR_efis_1_wxr					= 0
-            simDR_efis_1_ndb					= 0
-            simDR_efis_1_tcas					= 0
-        if simDR_efis_1_range < 5 then
-            simDR_efis_1_vor					= 1
-        else
-            simDR_efis_1_vor					= 0
-        end
-            simDR_efis_1_apt					= 1
-            kontur_nav_l = 0
-            kontur_wx_l = 0
-            kontur_taws_l = 0
-        end  
-    end
-    end   	
-end	
-
-function kontur_tcas_button_l_CMDhandler(phase, duration)
-    if phase == 0 then
-        if kontur_pow_l > 0 and simDR_bus27left > 0 and kontur_onoff_l < 1 and kontur_tcas_l < 1 then
-		kontur_tcas_l = 1
-        else
-        kontur_tcas_l = 0
-        end
-    if kontur_pow_l > 0 and simDR_bus27left > 0 and kontur_onoff_l < 1 and kontur_test_start_l > 0 then
-        if kontur_test_timer_l > 17 then
-            kontur_test_timer_l = 0
-            kontur_test_start_l = 0
-            kontur_test_l = 0
-            kontur_on_l = 1   
-            info_page_l = 0
-            simDR_efis_1_fix					= 0
-            simDR_efis_1_wxr					= 0
-            simDR_efis_1_ndb					= 0
-            simDR_efis_1_tcas					= 0
-        if simDR_efis_1_range < 5 then
-            simDR_efis_1_vor					= 1
-        else
-            simDR_efis_1_vor					= 0
-        end
-            simDR_efis_1_apt					= 1
-            kontur_nav_l = 0
-            kontur_wx_l = 0
-            kontur_taws_l = 0
-        end  
-    end
-    end   	
-end	
-
-function kontur_taws_button_l_CMDhandler(phase, duration)
-    if phase == 0 then
-        if kontur_pow_l > 0 and simDR_bus27left > 0 and kontur_onoff_l < 1 and kontur_taws_l < 1 and info_page_l < 1 then
-		kontur_taws_l = 1
-        else
-        kontur_taws_l = 0
-        end
-    if kontur_pow_l > 0 and simDR_bus27left > 0 and kontur_onoff_l < 1 and kontur_test_start_l > 0 then
-        if kontur_test_timer_l > 17 then
-            kontur_test_timer_l = 0
-            kontur_test_start_l = 0
-            kontur_test_l = 0
-            kontur_on_l = 1   
-            info_page_l = 0
-            simDR_efis_1_fix					= 0
-            simDR_efis_1_wxr					= 0
-            simDR_efis_1_ndb					= 0
-            simDR_efis_1_tcas					= 0
-        if simDR_efis_1_range < 5 then
-            simDR_efis_1_vor					= 1
-        else
-            simDR_efis_1_vor					= 0
-        end
-            simDR_efis_1_apt					= 1
-            kontur_nav_l = 0
-            kontur_wx_l = 0
-            kontur_taws_l = 0
+            kontur_tcas_l = 0
         end  
     end
     end   	
@@ -390,8 +446,14 @@ function kontur_zoomin_button_l_CMDhandler(phase, duration)
         if info_page_l > 0 then
             info_page_l = 1
         end
-        if kontur_pow_l > 0 and simDR_bus27left > 0 and kontur_onoff_l < 1 and simDR_efis_1_range > 1 and info_page_l < 1 then
-		simDR_efis_1_range = simDR_efis_1_range -1
+        if kontur_pow_l > 0 and simDR_bus27left > 0 and kontur_onoff_l < 1 and info_page_l < 1 then
+			if kontur_wx_l>0 and rng_wx_l>1 and kontur_wx_side == 0 then
+				rng_wx_l = rng_wx_l -1
+			elseif kontur_taws_l>0 and rng_taws_l>1 and simDRtaws_rdy == 1 then
+				rng_taws_l = rng_taws_l -1
+			elseif kontur_tcas_l>0 and rng_tcas_l>1 then
+				rng_tcas_l = rng_tcas_l -1
+			end
         end
     if kontur_pow_l > 0 and simDR_bus27left > 0 and kontur_onoff_l < 1 and kontur_test_start_l > 0 then
         if kontur_test_timer_l > 17 then
@@ -424,8 +486,14 @@ function kontur_zoomout_button_l_CMDhandler(phase, duration)
         if info_page_l > 0 then
             info_page_l = 2
         end
-        if kontur_pow_l > 0 and simDR_bus27left > 0 and kontur_onoff_l < 1 and simDR_efis_1_range < 6 and info_page_l < 1 then
-		simDR_efis_1_range = simDR_efis_1_range +1
+        if kontur_pow_l > 0 and simDR_bus27left > 0 and kontur_onoff_l < 1 and info_page_l < 1 then
+			if kontur_wx_l>0 and rng_wx_l <5 and kontur_wx_side == 0 then
+				rng_wx_l = rng_wx_l + 1
+			elseif kontur_taws_l>0 and rng_taws_l <7 and simDRtaws_rdy == 1 then
+				rng_taws_l = rng_taws_l + 1
+			elseif kontur_tcas_l>0 and rng_tcas_l<4 then
+				rng_tcas_l = rng_tcas_l + 1
+			end
         end
 	
     if kontur_pow_l > 0 and simDR_bus27left > 0 and kontur_onoff_l < 1 and kontur_test_start_l > 0 then
@@ -439,11 +507,11 @@ function kontur_zoomout_button_l_CMDhandler(phase, duration)
             simDR_efis_1_wxr					= 0
             simDR_efis_1_ndb					= 0
             simDR_efis_1_tcas					= 0
-        if simDR_efis_1_range < 5 then
-            simDR_efis_1_vor					= 1
-        else
-            simDR_efis_1_vor					= 0
-        end
+        -- if simDR_efis_1_range < 5 then
+            -- simDR_efis_1_vor					= 1
+        -- else
+            -- simDR_efis_1_vor					= 0
+        -- end
             simDR_efis_1_apt					= 1
             kontur_nav_l = 0
             kontur_wx_l = 0
@@ -455,23 +523,35 @@ end
 
 function kontur_btn1_button_l_CMDhandler(phase, duration)
     if phase == 0 then
-        
-        if kontur_nav_menu_l == 2 then
-            if kontur_dist_mode_l < 1 then
-                kontur_dist_mode_l = 1
-            else
-                kontur_dist_mode_l = 0
-            end
-        end
-        
-        if kontur_nav_menu_l == 3 then
-            if gps_time_mode_l < 1 then
-                gps_time_mode_l = 1
-            else
-                gps_time_mode_l = 0
-            end
-        end
-
+        if kontur_wx_side == 0 then
+			if kontur_nav_menu_l == 2 then
+				if kontur_dist_mode_l < 1 then
+					kontur_dist_mode_l = 1
+				else
+					kontur_dist_mode_l = 0
+				end
+			elseif kontur_nav_menu_l == 3 then
+				if gps_time_mode_l < 1 then
+					gps_time_mode_l = 1
+				else
+					gps_time_mode_l = 0
+				end
+			end
+		else	
+			if kontur_nav_menu_l == 2 then
+				if kontur_nav_l > 0 then
+					if gps_time_mode_l < 1 then
+						gps_time_mode_l = 1
+					else
+						gps_time_mode_l = 0
+					end
+				else
+					kontur_wx_side = 0 
+				end
+			elseif kontur_nav_menu_l == 3 then
+				kontur_wx_side = 0 
+			end
+		end
         
     if kontur_pow_l > 0 and simDR_bus27left > 0 and kontur_onoff_l < 1 and kontur_test_start_l > 0 then
         if kontur_test_timer_l > 17 then
@@ -484,11 +564,11 @@ function kontur_btn1_button_l_CMDhandler(phase, duration)
             simDR_efis_1_wxr					= 0
             simDR_efis_1_ndb					= 0
             simDR_efis_1_tcas					= 0
-        if simDR_efis_1_range < 5 then
-            simDR_efis_1_vor					= 1
-        else
-            simDR_efis_1_vor					= 0
-        end
+        -- if simDR_efis_1_range < 5 then
+            -- simDR_efis_1_vor					= 1
+        -- else
+            -- simDR_efis_1_vor					= 0
+        -- end
             simDR_efis_1_apt					= 1
             kontur_nav_l = 0
             kontur_wx_l = 0
@@ -503,36 +583,35 @@ function kontur_btn2_button_l_CMDhandler(phase, duration)
         if info_page_l > 0 and ubs_pow_l > 0 then
             info_page_l = 3
         end
-        if kontur_tcas_l > 0 and info_page_l < 1 then
-           if kontur_tcas_l < 2 then
-                kontur_tcas_l = 2
-            else
-                kontur_tcas_l = 1
-            end
-        end
-    if kontur_pow_l > 0 and simDR_bus27left > 0 and kontur_onoff_l < 1 and kontur_test_start_l > 0 then
-        if kontur_test_timer_l > 17 then
-            kontur_test_timer_l = 0
-            kontur_test_start_l = 0
-            kontur_test_l = 0
-            kontur_on_l = 1   
-            info_page_l = 0
-            simDR_efis_1_fix					= 0
-            simDR_efis_1_wxr					= 0
-            simDR_efis_1_ndb					= 0
-            simDR_efis_1_tcas					= 0
-        if simDR_efis_1_range < 5 then
-            simDR_efis_1_vor					= 1
-        else
-            simDR_efis_1_vor					= 0
-        end
-            simDR_efis_1_apt					= 1
-            kontur_nav_l = 0
-            kontur_wx_l = 0
-            kontur_taws_l = 0
-        end  
-    end
-        
+		if kontur_wx_l>0 and simDR_tcas_pow > 0 then
+			if kontur_tcas_l_aux==0 then
+				kontur_tcas_l_aux=1
+			else
+				kontur_tcas_l_aux=0
+			end
+		end
+		if kontur_pow_l > 0 and simDR_bus27left > 0 and kontur_onoff_l < 1 and kontur_test_start_l > 0 then
+			if kontur_test_timer_l > 17 then
+				kontur_test_timer_l = 0
+				kontur_test_start_l = 0
+				kontur_test_l = 0
+				kontur_on_l = 1   
+				info_page_l = 0
+				simDR_efis_1_fix					= 0
+				simDR_efis_1_wxr					= 0
+				simDR_efis_1_ndb					= 0
+				simDR_efis_1_tcas					= 0
+			-- if simDR_efis_1_range < 5 then
+				-- simDR_efis_1_vor					= 1
+			-- else
+				-- simDR_efis_1_vor					= 0
+			-- end
+				simDR_efis_1_apt					= 1
+				kontur_nav_l = 0
+				kontur_wx_l = 0
+				kontur_taws_l = 0
+			end  
+		end       
     end   	
 end	
 
@@ -547,41 +626,46 @@ function kontur_btn3_button_l_CMDhandler(phase, duration)
 			kontur_wx_l = 0
 			kontur_taws_l = 0
 		end
+		if kontur_tcas_l>0 then
+			if kontur_wx_l_aux==0 and weather_lit == 1 then
+				kontur_wx_l_aux=1
+			else
+				kontur_wx_l_aux=0
+			end
+		end
         if kontur_taws_l > 0 and info_page_l < 1 then
-            if simDR_taws_mode > 0 and simDR_taws_mode < 3 then
-               if simDR_taws_mode < 2 then
-                    simDR_taws_mode = 2
-                else
-                    simDR_taws_mode = 1
-                end
-            end
+			if kontur_taws_l == 1 and simDRtaws_rdy == 1 then
+				kontur_taws_l = 2
+			else
+				kontur_taws_l = 1
+			end
         end
         
-        if kontur_wx_l > 0 and info_page_l < 1 then
-            if kontur_wx_l == 2 then
+        if kontur_wx_l > 0 and info_page_l < 1 and kontur_wx_side == 0 and kontur_nav_menu_l == 0 then
+            if simDR_wx_mode == 2 then
 				radar_test_init = 1
-                kontur_wx_l = 1
-                if kontur_wx_r == 2 then
-                  kontur_wx_r = 1  
-                end
-			elseif kontur_wx_l == 1 then
+                simDR_wx_mode = 1
+                -- if kontur_wx_r == 2 then
+                  -- kontur_wx_r = 1  
+                -- end
+			elseif simDR_wx_mode == 1 then
 				radar_test_init = 0
-                kontur_wx_l = 3
+                simDR_wx_mode = 3
 				kontur_wx_test_l = -1
 				simDRauto_tilt=1
-                if kontur_wx_r == 1 then
-                  kontur_wx_r = 3  
-                end
-			elseif kontur_wx_l == 3 then
-                kontur_wx_l = 4
-                if kontur_wx_r == 3 then
-                  kontur_wx_r = 4  
-                end
-			elseif kontur_wx_l == 4 then
-                kontur_wx_l = 3
-                if kontur_wx_r == 4 then
-                  kontur_wx_r = 3  
-                end
+                -- if kontur_wx_r == 1 then
+                  -- kontur_wx_r = 3  
+                -- end
+			elseif simDR_wx_mode == 3 then
+                simDR_wx_mode = 4
+                -- if kontur_wx_r == 3 then
+                  -- kontur_wx_r = 4  
+                -- end
+			elseif simDR_wx_mode == 4 then
+                simDR_wx_mode = 3
+                -- if kontur_wx_r == 4 then
+                  -- kontur_wx_r = 3  
+                -- end
             end
         end
     
@@ -596,11 +680,11 @@ function kontur_btn3_button_l_CMDhandler(phase, duration)
 				simDR_efis_1_wxr					= 0
 				simDR_efis_1_ndb					= 0
 				simDR_efis_1_tcas					= 0
-			if simDR_efis_1_range < 5 then
-				simDR_efis_1_vor					= 1
-			else
-				simDR_efis_1_vor					= 0
-			end
+			-- if simDR_efis_1_range < 5 then
+				-- simDR_efis_1_vor					= 1
+			-- else
+				-- simDR_efis_1_vor					= 0
+			-- end
 				simDR_efis_1_apt					= 1
 				kontur_nav_l = 0
 				kontur_wx_l = 0
@@ -608,13 +692,13 @@ function kontur_btn3_button_l_CMDhandler(phase, duration)
 			end  
 		end
 	elseif phase == 1 then		
-		if duration>4 then
-			kontur_wx_l = 2
+		if duration>4 and kontur_wx_l > 0 and info_page_l < 1 and kontur_wx_side == 0 then
+			simDR_wx_mode = 2
 			kontur_wx_test_l = 0
 			simDRradar_tilt = 0
-			if kontur_wx_r > 1 then
-			  kontur_wx_r = 2  
-			end
+			-- if kontur_wx_r > 1 then
+			  -- kontur_wx_r = 2  
+			-- end
 		end
     end    	
 end	
@@ -627,28 +711,28 @@ function kontur_info_button_l_CMDhandler(phase, duration)
         elseif kontur_nav_menu_l > 0 then
             kontur_nav_menu_l = 0
         end
-    if kontur_pow_l > 0 and simDR_bus27left > 0 and kontur_onoff_l < 1 and kontur_test_start_l > 0 then
-        if kontur_test_timer_l > 17 then
-            kontur_test_timer_l = 0
-            kontur_test_start_l = 0
-            kontur_test_l = 0
-            kontur_on_l = 1   
-            info_page_l = 0
-            simDR_efis_1_fix					= 0
-            simDR_efis_1_wxr					= 0
-            simDR_efis_1_ndb					= 0
-            simDR_efis_1_tcas					= 0
-        if simDR_efis_1_range < 5 then
-            simDR_efis_1_vor					= 1
-        else
-            simDR_efis_1_vor					= 0
-        end
-            simDR_efis_1_apt					= 1
-            kontur_nav_l = 0
-            kontur_wx_l = 0
-            kontur_taws_l = 0
-        end  
-    end
+		if kontur_pow_l > 0 and simDR_bus27left > 0 and kontur_onoff_l < 1 and kontur_test_start_l > 0 then
+			if kontur_test_timer_l > 17 then
+				kontur_test_timer_l = 0
+				kontur_test_start_l = 0
+				kontur_test_l = 0
+				kontur_on_l = 1   
+				info_page_l = 0
+				simDR_efis_1_fix					= 0
+				simDR_efis_1_wxr					= 0
+				simDR_efis_1_ndb					= 0
+				simDR_efis_1_tcas					= 0
+			-- if simDR_efis_1_range < 5 then
+				-- simDR_efis_1_vor					= 1
+			-- else
+				-- simDR_efis_1_vor					= 0
+			-- end
+				simDR_efis_1_apt					= 1
+				kontur_nav_l = 0
+				kontur_wx_l = 0
+				kontur_taws_l = 0
+			end  
+		end
     end
     if phase == 1 then
         if duration > 3 then
@@ -664,9 +748,7 @@ function kontur_info_button_l_CMDhandler(phase, duration)
             if change_gps_time > 0 then
                 change_gps_time = 0       
             end
-        end
-	
-        
+        end       
     end   	
 end
 
@@ -690,8 +772,16 @@ function kontur_onoff_button_r_CMDhandler(phase, duration)
             kontur_onoff_r = 0
             kontur_test_r = 0
             kontur_nav_r = 0
+			kontur_tcas_r = 0
+			kontur_tcas_r_aux = 0
+			kontur_taws_r = 0
+			kontur_wx_r = 0
+			kontur_wx_r_aux = 0
             kontur_test_start_r = 1
             kontur_test_timer_r = 0
+			rng_wx_r = 3
+			rng_tcas_r = 2
+			rng_taws_r = 2
         end
     end   	
 end		
@@ -700,13 +790,19 @@ function kontur_rls_button_r_CMDhandler(phase, duration)
 	if phase == 0 then
 		if kontur_pow_r > 0 and simDR_bus27right > 0 and kontur_onoff_r < 1 then
 			if kontur_wx_r < 1 then
-				if kontur_wx_test_l == -1 and weather_sys > 0 and simDR_36v > 0 then
-					kontur_wx_r = 2
-				else
-				  kontur_wx_r = 1
-				end
-			else
-				kontur_wx_r = 0
+				-- if kontur_wx_test_l == -1 and weather_sys > 0 and simDR_36v > 0 then
+					-- kontur_wx_r = 2
+				-- else
+				kontur_wx_r = 1
+				kontur_taws_r = 0
+				kontur_tcas_r = 0
+				kontur_tcas_r_aux = 0
+				kontur_wx_r_aux = 0
+				-- end
+				--simDR_efis_2_wxr=1
+			-- else
+				-- kontur_wx_r = 0
+				-- simDR_efis_2_wxr=0
 			end 
         if  kontur_test_start_r > 0 then 
             if kontur_test_timer_r > 19 then
@@ -715,18 +811,18 @@ function kontur_rls_button_r_CMDhandler(phase, duration)
                 kontur_test_r = 0
                 kontur_on_r = 1     
                 info_page_r = 0
-                simDR_efis_1_fix					= 0
-                simDR_efis_1_wxr					= 0
-                simDR_efis_1_ndb					= 0
-                simDR_efis_1_tcas					= 0
-        if simDR_efis_1_range < 5 then
-            simDR_efis_1_vor					= 1
-        else
-            simDR_efis_1_vor					= 0
-        end
-                simDR_efis_1_apt					= 1
+                simDR_efis_2_fix					= 0
+                simDR_efis_2_wxr					= 0
+                simDR_efis_2_ndb					= 0
+                simDR_efis_2_tcas					= 0
+        -- if simDR_efis_1_range < 5 then
+            -- simDR_efis_1_vor					= 1
+        -- else
+            -- simDR_efis_1_vor					= 0
+        -- end
+                simDR_efis_1_apt					= 0
                 kontur_nav_r = 0
-                kontur_wx_r = 0
+                kontur_tcas_r = 0
                 kontur_taws_r = 0
             end
         end
@@ -738,31 +834,31 @@ end
 function kontur_nav_button_r_CMDhandler(phase, duration)
     if phase == 0 then
         if kontur_pow_r > 0 and simDR_bus27right > 0 and kontur_onoff_r < 1 then
-            if kontur_nav_r < 1 then
+            if kontur_nav_r < 1 and kontur_taws_r + kontur_tcas_r + kontur_wx_r>0 then
             kontur_nav_r = 1
             else
             kontur_nav_r = 0
             end 
             if  kontur_test_start_r > 0 then 
             if kontur_test_timer_r > 19 then
-                kontur_test_timer_r = 0
-                kontur_test_start_r = 0
-                kontur_test_r = 0
-                kontur_on_r = 1     
-                info_page_r = 0
-                simDR_efis_1_fix					= 0
-                simDR_efis_1_wxr					= 0
-                simDR_efis_1_ndb					= 0
-                simDR_efis_1_tcas					= 0
-                if simDR_efis_1_range < 5 then
-                    simDR_efis_1_vor					= 1
-                else
-                    simDR_efis_1_vor					= 0
-                end
-                simDR_efis_1_apt					= 1
-                kontur_nav_r = 0
-                kontur_wx_r = 0
-                kontur_taws_r = 0
+                -- kontur_test_timer_r = 0
+                -- kontur_test_start_r = 0
+                -- kontur_test_r = 0
+                -- kontur_on_r = 1     
+                -- info_page_r = 0
+                -- simDR_efis_1_fix					= 0
+                -- simDR_efis_1_wxr					= 0
+                -- simDR_efis_1_ndb					= 0
+                -- simDR_efis_1_tcas					= 0
+                -- -- if simDR_efis_1_range < 5 then
+                    -- -- simDR_efis_1_vor					= 1
+                -- -- else
+                    -- -- simDR_efis_1_vor					= 0
+                -- -- end
+                -- simDR_efis_1_apt					= 1
+                -- kontur_nav_r = 0
+                -- kontur_wx_r = 0
+                -- kontur_taws_r = 0
             end
             end
         end
@@ -771,10 +867,14 @@ end
 
 function kontur_tcas_button_r_CMDhandler(phase, duration)
     if phase == 0 then
-        if kontur_pow_r > 0 and simDR_bus27right > 0 and kontur_onoff_r < 1 and kontur_tcas_l < 1 and kontur_onoff_r < 1 then
-		kontur_tcas_l = 1
-        else
-        kontur_tcas_l = 0
+        if kontur_pow_r > 0 and simDR_bus27right > 0 and kontur_onoff_r < 1 and kontur_tcas_r < 1 and kontur_onoff_r < 1 then
+			kontur_tcas_r = 1
+			kontur_taws_r = 0
+			kontur_wx_r = 0
+			kontur_tcas_r_aux = 0
+			kontur_wx_r_aux = 0
+        -- else
+        -- kontur_tcas_r = 0
         end 
         if kontur_pow_r > 0 and simDR_bus27right > 0 and kontur_onoff_r < 1 and kontur_test_start_r > 0 then 
             if kontur_test_timer_r > 19 then
@@ -787,11 +887,11 @@ function kontur_tcas_button_r_CMDhandler(phase, duration)
                 simDR_efis_1_wxr					= 0
                 simDR_efis_1_ndb					= 0
                 simDR_efis_1_tcas					= 0
-        if simDR_efis_1_range < 5 then
-            simDR_efis_1_vor					= 1
-        else
-            simDR_efis_1_vor					= 0
-        end
+        -- if simDR_efis_1_range < 5 then
+            -- simDR_efis_1_vor					= 1
+        -- else
+            -- simDR_efis_1_vor					= 0
+        -- end
                 simDR_efis_1_apt					= 1
                 kontur_nav_r = 0
                 kontur_wx_r = 0
@@ -804,9 +904,13 @@ end
 function kontur_taws_button_r_CMDhandler(phase, duration)
     if phase == 0 then
         if kontur_pow_r > 0 and simDR_bus27right > 0 and kontur_onoff_r < 1 and kontur_taws_r < 1 and info_page_r < 1 then
-		  kontur_taws_r = 1
-        else
-          kontur_taws_r = 0
+			kontur_tcas_r = 0
+			kontur_taws_r = 1
+			kontur_wx_r = 0
+			kontur_tcas_r_aux = 0
+			kontur_wx_r_aux = 0
+        -- else
+          -- kontur_taws_r = 0
         end 
         if kontur_pow_r > 0 and simDR_bus27right > 0 and kontur_onoff_r < 1 and kontur_test_start_r > 0 then 
             if kontur_test_timer_r > 19 then
@@ -819,15 +923,15 @@ function kontur_taws_button_r_CMDhandler(phase, duration)
                 simDR_efis_1_wxr					= 0
                 simDR_efis_1_ndb					= 0
                 simDR_efis_1_tcas					= 0
-        if simDR_efis_1_range < 5 then
-            simDR_efis_1_vor					= 1
-        else
-            simDR_efis_1_vor					= 0
-        end
+        -- if simDR_efis_1_range < 5 then
+            -- simDR_efis_1_vor					= 1
+        -- else
+            -- simDR_efis_1_vor					= 0
+        -- end
                 simDR_efis_1_apt					= 1
                 kontur_nav_r = 0
                 kontur_wx_r = 0
-                kontur_taws_r = 0
+                kontur_tcas_r = 0
             end
         end
     end   	
@@ -838,8 +942,14 @@ function kontur_zoomin_button_r_CMDhandler(phase, duration)
         if info_page_r > 0 then
             info_page_r = 1
         end
-        if kontur_pow_r > 0 and simDR_bus27right > 0 and kontur_onoff_r < 1 and simDR_efis_1_range > 1 and info_page_r < 1 then
-		simDR_efis_1_range = simDR_efis_1_range -1
+        if kontur_pow_r > 0 and simDR_bus27right > 0 and kontur_onoff_r < 1 and info_page_r < 1 then
+			if kontur_wx_r>0 and rng_wx_l>1 and kontur_wx_side == 1 then
+				rng_wx_l = rng_wx_l -1
+			elseif kontur_taws_r>0 and rng_taws_r>1 and simDRtaws_rdy == 1 then
+				rng_taws_r = rng_taws_r -1
+			elseif kontur_tcas_r>0 and rng_tcas_r>1 then
+				rng_tcas_r = rng_tcas_r -1
+			end
         end 
         if kontur_pow_r > 0 and simDR_bus27right > 0 and kontur_onoff_r < 1 and kontur_test_start_r > 0 then 
             if kontur_test_timer_r > 19 then
@@ -852,7 +962,7 @@ function kontur_zoomin_button_r_CMDhandler(phase, duration)
                 simDR_efis_1_wxr					= 0
                 simDR_efis_1_ndb					= 0
                 simDR_efis_1_tcas					= 0
-        if simDR_efis_1_range < 5 then
+        if simDR_efis_2_range < 5 then
             simDR_efis_1_vor					= 1
         else
             simDR_efis_1_vor					= 0
@@ -871,8 +981,14 @@ function kontur_zoomout_button_r_CMDhandler(phase, duration)
         if info_page_r > 0 then
             info_page_r = 2
         end
-        if kontur_pow_r > 0 and simDR_bus27right > 0 and kontur_onoff_r < 1 and simDR_efis_1_range < 6 and info_page_r < 1 then
-		simDR_efis_1_range = simDR_efis_1_range +1
+        if kontur_pow_r > 0 and simDR_bus27right > 0 and kontur_onoff_r < 1 and info_page_r < 1 then
+			if kontur_wx_r>0 and rng_wx_l<5 and kontur_wx_side == 1 then
+				rng_wx_l = rng_wx_l + 1
+			elseif kontur_taws_r>0 and rng_taws_r <7 and simDRtaws_rdy == 1 then
+				rng_taws_r = rng_taws_r + 1
+			elseif kontur_tcas_r>0 and rng_tcas_r<4 then
+				rng_tcas_r = rng_tcas_r + 1
+			end
         end 
         if kontur_pow_r > 0 and simDR_bus27right > 0 and kontur_onoff_r < 1 and kontur_test_start_r > 0 then 
             if kontur_test_timer_r > 19 then
@@ -885,7 +1001,7 @@ function kontur_zoomout_button_r_CMDhandler(phase, duration)
                 simDR_efis_1_wxr					= 0
                 simDR_efis_1_ndb					= 0
                 simDR_efis_1_tcas					= 0
-        if simDR_efis_1_range < 5 then
+        if simDR_efis_2_range < 5 then
             simDR_efis_1_vor					= 1
         else
             simDR_efis_1_vor					= 0
@@ -901,21 +1017,35 @@ end
 
 function kontur_btn1_button_r_CMDhandler(phase, duration)
     if phase == 0 then
-        if kontur_nav_menu_r == 2 then
-            if kontur_dist_mode_r < 1 then
-                kontur_dist_mode_r = 1
-            else
-                kontur_dist_mode_r = 0
-            end
-        end
-        
-        if kontur_nav_menu_r == 3 then
-            if gps_time_mode_r < 1 then
-                gps_time_mode_r = 1
-            else
-                gps_time_mode_r = 0
-            end
-        end
+        if kontur_wx_side == 1 then
+			if kontur_nav_menu_r == 2 then
+				if kontur_dist_mode_l < 1 then
+					kontur_dist_mode_l = 1
+				else
+					kontur_dist_mode_l = 0
+				end
+			elseif kontur_nav_menu_r == 3 then
+				if gps_time_mode_r < 1 then
+					gps_time_mode_r = 1
+				else
+					gps_time_mode_r = 0
+				end
+			end
+		else	
+			if kontur_nav_menu_r == 2 then
+				if kontur_nav_r > 0 then
+					if gps_time_mode_r < 1 then
+						gps_time_mode_r = 1
+					else
+						gps_time_mode_r = 0
+					end
+				else
+					kontur_wx_side = 1 
+				end
+			elseif kontur_nav_menu_r == 3 then
+				kontur_wx_side = 1 
+			end
+		end
         if kontur_pow_r > 0 and simDR_bus27right > 0 and kontur_onoff_r < 1 and kontur_test_start_r > 0 then 
             if kontur_test_timer_r > 19 then
                 kontur_test_timer_r = 0
@@ -927,11 +1057,11 @@ function kontur_btn1_button_r_CMDhandler(phase, duration)
                 simDR_efis_1_wxr					= 0
                 simDR_efis_1_ndb					= 0
                 simDR_efis_1_tcas					= 0
-        if simDR_efis_1_range < 5 then
-            simDR_efis_1_vor					= 1
-        else
-            simDR_efis_1_vor					= 0
-        end
+        -- if simDR_efis_1_range < 5 then
+            -- simDR_efis_1_vor					= 1
+        -- else
+            -- simDR_efis_1_vor					= 0
+        -- end
                 simDR_efis_1_apt					= 1
                 kontur_nav_r = 0
                 kontur_wx_r = 0
@@ -946,13 +1076,20 @@ function kontur_btn2_button_r_CMDhandler(phase, duration)
         if info_page_r > 0 and ubs_pow_r > 0 then
             info_page_r = 3
         end
-        if kontur_tcas_l > 0 and info_page_r < 1 then
-           if kontur_tcas_l < 2 then
-                kontur_tcas_l = 2
-            else
-                kontur_tcas_l = 1
-            end
-        end 
+        -- if kontur_tcas_r > 0 and info_page_r < 1 then
+           -- if kontur_tcas_r < 2 then
+                -- kontur_tcas_r = 2
+            -- else
+                -- kontur_tcas_r = 1
+            -- end
+        -- end
+		if kontur_wx_r>0 then
+			if kontur_tcas_r_aux==0 and simDR_tcas_pow > 0 then
+				kontur_tcas_r_aux=1
+			else
+				kontur_tcas_r_aux=0
+			end
+		end
         if kontur_pow_r > 0 and simDR_bus27right > 0 and kontur_onoff_r < 1 and kontur_test_start_r > 0 then 
             if kontur_test_timer_r > 19 then
                 kontur_test_timer_r = 0
@@ -964,11 +1101,11 @@ function kontur_btn2_button_r_CMDhandler(phase, duration)
                 simDR_efis_1_wxr					= 0
                 simDR_efis_1_ndb					= 0
                 simDR_efis_1_tcas					= 0
-        if simDR_efis_1_range < 5 then
-            simDR_efis_1_vor					= 1
-        else
-            simDR_efis_1_vor					= 0
-        end
+        -- if simDR_efis_1_range < 5 then
+            -- simDR_efis_1_vor					= 1
+        -- else
+            -- simDR_efis_1_vor					= 0
+        -- end
                 simDR_efis_1_apt					= 1
                 kontur_nav_r = 0
                 kontur_wx_r = 0
@@ -981,33 +1118,59 @@ end
 function kontur_btn3_button_r_CMDhandler(phase, duration)
      if phase == 0 then
         if info_page_r > 0 then
-        info_page_r = 0
-        kontur_nav_r = 0
-        kontur_wx_r = 0
-        kontur_taws_r = 0
+			info_page_r = 0
+			kontur_nav_r = 0
+			kontur_wx_r = 0
+			kontur_taws_r = 0
         end
+		if kontur_tcas_r>0 then
+			if kontur_wx_r_aux==0 and weather_lit == 1 then
+				kontur_wx_r_aux=1
+			else
+				kontur_wx_r_aux=0
+			end
+		end
         if kontur_taws_r > 0 and info_page_r < 1 then
-            if simDR_taws_mode > 0 and simDR_taws_mode < 3 then
-                if simDR_taws_mode < 2 then
-                    simDR_taws_mode = 2
-                else
-                    simDR_taws_mode = 1
-                end
-            end
-        end
-        
-        if kontur_wx_r > 1 and info_page_r < 1 then
-            -- if kontur_wx_r == 2 then
-                -- kontur_wx_r = 3
-                -- if kontur_wx_l == 2 then
-                  -- kontur_wx_l = 3  
-                -- end
-            -- else
-                -- kontur_wx_r = 2
-                -- if kontur_wx_l == 3 then
-                  -- kontur_wx_l = 2  
+			if kontur_taws_r == 1 and simDRtaws_rdy == 1 then
+				kontur_taws_r = 2
+			else
+				kontur_taws_r = 1
+			end
+            -- if simDR_taws_mode > 0 and simDR_taws_mode < 3 then
+                -- if simDR_taws_mode < 2 then
+                    -- simDR_taws_mode = 2
+                -- else
+                    -- simDR_taws_mode = 1
                 -- end
             -- end
+        end
+        
+        if kontur_wx_r > 0 and info_page_r < 1 and kontur_wx_side == 1 and kontur_nav_menu_r == 0 then
+            if simDR_wx_mode == 2 then
+				radar_test_init = 1
+                simDR_wx_mode = 1
+                -- if kontur_wx_r == 2 then
+                  -- kontur_wx_r = 1  
+                -- end
+			elseif simDR_wx_mode == 1 then
+				radar_test_init = 0
+                simDR_wx_mode = 3
+				kontur_wx_test_l = -1
+				simDRauto_tilt=1
+                -- if kontur_wx_r == 1 then
+                  -- kontur_wx_r = 3  
+                -- end
+			elseif simDR_wx_mode == 3 then
+                simDR_wx_mode = 4
+                -- if kontur_wx_r == 3 then
+                  -- kontur_wx_r = 4  
+                -- end
+			elseif simDR_wx_mode == 4 then
+                simDR_wx_mode = 3
+                -- if kontur_wx_r == 4 then
+                  -- kontur_wx_r = 3  
+                -- end
+            end
         end
          
         if kontur_pow_r > 0 and simDR_bus27right > 0 and kontur_onoff_r < 1 and kontur_test_start_r > 0 then 
@@ -1021,18 +1184,27 @@ function kontur_btn3_button_r_CMDhandler(phase, duration)
                 simDR_efis_1_wxr					= 0
                 simDR_efis_1_ndb					= 0
                 simDR_efis_1_tcas					= 0
-        if simDR_efis_1_range < 5 then
-            simDR_efis_1_vor					= 1
-        else
-            simDR_efis_1_vor					= 0
-        end
+        -- if simDR_efis_1_range < 5 then
+            -- simDR_efis_1_vor					= 1
+        -- else
+            -- simDR_efis_1_vor					= 0
+        -- end
                 simDR_efis_1_apt					= 1
                 kontur_nav_r = 0
                 kontur_wx_r = 0
                 kontur_taws_r = 0
             end
         end
-    end    	
+	elseif phase == 1 then		
+		if duration>4 and kontur_wx_r > 0 and info_page_r < 1 and kontur_wx_side == 1 then
+			simDR_wx_mode = 2
+			kontur_wx_test_l = 0
+			simDRradar_tilt = 0
+			-- if kontur_wx_r > 1 then
+			  -- kontur_wx_r = 2  
+			-- end
+		end
+	 end    	
 end	
 
 
@@ -1054,11 +1226,11 @@ function kontur_info_button_r_CMDhandler(phase, duration)
                 simDR_efis_1_wxr					= 0
                 simDR_efis_1_ndb					= 0
                 simDR_efis_1_tcas					= 0
-        if simDR_efis_1_range < 5 then
-            simDR_efis_1_vor					= 1
-        else
-            simDR_efis_1_vor					= 0
-        end
+        -- if simDR_efis_1_range < 5 then
+            -- simDR_efis_1_vor					= 1
+        -- else
+            -- simDR_efis_1_vor					= 0
+        -- end
                 simDR_efis_1_apt					= 1
                 kontur_nav_r = 0
                 kontur_wx_r = 0
@@ -1090,6 +1262,11 @@ function kontur_ovhd_onoff_l_CMDhandler(phase, duration)
                 kontur_pow_l = 0
                 kontur_onoff_l = 0
                 kontur_nav_l = 0
+				kontur_tcas_l = 0
+				kontur_tcas_l_aux = 0
+				kontur_taws_l = 0
+				kontur_wx_l = 0
+				kontur_wx_l_aux = 0
                 kontur_test_timer_l = 0
                 kontur_test_start_l = 0
                 kontur_test_l = 0
@@ -1115,6 +1292,11 @@ function kontur_ovhd_onoff_r_CMDhandler(phase, duration)
                 kontur_pow_r = 0
                 kontur_onoff_r = 0
                 kontur_nav_r = 0
+				kontur_tcas_r = 0
+				kontur_tcas_r_aux = 0
+				kontur_taws_r = 0
+				kontur_wx_r = 0
+				kontur_wx_r_aux = 0
                 kontur_test_timer_r = 0
                 kontur_test_start_r = 0
                 kontur_test_r = 0
@@ -1170,12 +1352,12 @@ function aircraft_load()
     simDR_efis_1_wxr					= 0
     simDR_efis_1_ndb					= 0
     simDR_efis_1_tcas					= 0
-        if simDR_efis_1_range < 5 then
-            simDR_efis_1_vor					= 1
-        else
-            simDR_efis_1_vor					= 0
-        end
-    simDR_efis_1_apt					= 1
+        -- if simDR_efis_1_range < 5 then
+            -- simDR_efis_1_vor					= 1
+        -- else
+            -- simDR_efis_1_vor					= 0
+        -- end
+    -- simDR_efis_1_apt					= 1
     kontur_nav_l = 0
     kontur_on_l = 0
     kontur_test_l = 0
@@ -1204,6 +1386,11 @@ function kontur_left()
         kontur_onoff_l = 1
         kontur_on_l = 0
         kontur_nav_l = 0
+		kontur_tcas_l = 0
+		kontur_tcas_l_aux = 0
+		kontur_taws_l = 0
+		kontur_wx_l = 0
+		kontur_wx_l_aux = 0
         kontur_test_start_l = 0
         kontur_test_timer_l = 0
         kontur_test_l = 0
@@ -1260,17 +1447,20 @@ end
 if kontur_nav_menu_l > 2 and kontur_nav_l < 1 then
     kontur_nav_menu_l = 2
 end
+
+if kontur_nav_menu_l > 1 and kontur_nav_l < 1 and kontur_wx_side == 1 and kontur_wx_l == 0 then
+    kontur_nav_menu_l = 1
+end
+  
     
-    
-    
-    if kontur_taws_l > 0 then
-        if simDR_taws_mode > 0 and simDR_taws_mode < 3 then
-        kontur_taws_l = simDR_taws_mode
-        if kontur_taws_l == 2 then
-                kontur_nav_l = 0
-        end
-        end
-    end
+    -- if kontur_taws_l > 0 then
+        -- if simDR_taws_mode > 0 and simDR_taws_mode < 3 then
+        -- kontur_taws_l = simDR_taws_mode
+        -- if kontur_taws_l == 2 then
+                -- kontur_nav_l = 0
+        -- end
+        -- end
+    -- end
     
     if kontur_pow_l > 0 and simDR_bus27left > 0 and kontur_onoff_l < 1 then
      kontur_pow_l_lit = 1
@@ -1313,32 +1503,48 @@ end
         
     
     
-    if kontur_wx_l > 0 and wx_taws_sw_l == 2 then
-        wx_taws_sw_l = 1
-        kontur_taws_l = 0
-    end
-    if kontur_taws_l > 0 and wx_taws_sw_l == 1 then
-        kontur_wx_l = 0
-        wx_taws_sw_l = 2
-    end
-    if kontur_taws_l > 0 then
-        wx_taws_sw_l = 2
-        kontur_tcas_l = 0
-    end
-    if kontur_wx_l > 0 then
-        wx_taws_sw_l = 1
-    end
+    -- if kontur_wx_l > 0 and wx_taws_sw_l == 2 then
+        -- wx_taws_sw_l = 1
+        -- kontur_taws_l = 0
+    -- end
+    -- if kontur_taws_l > 0 and wx_taws_sw_l == 1 then
+        -- kontur_wx_l = 0
+        -- wx_taws_sw_l = 2
+    -- end
+    -- if kontur_taws_l > 0 then
+        -- --wx_taws_sw_l = 2
+        -- kontur_tcas_l = 0
+    -- end
+	-- if kontur_tcas_l > 0 then
+        -- --wx_taws_sw_l = 2
+        -- kontur_taws_l = 0
+    -- end
+    -- if kontur_wx_l > 0 then
+        -- wx_taws_sw_l = 1
+    -- end
     
-    if weather_sys < 1 and kontur_wx_test_l < 0 then
-        kontur_wx_test_l = -1
-        weather_test_timer = 0
-        --if kontur_wx_l > 1 then
-        kontur_wx_l = 1
-        --end
-        --if kontur_wx_r > 1 then
-        kontur_wx_r = 1
-        --end
+    if weather_sys < 1 then
+		weather_test_timer = 0
+		radar_test_init = 0
+		kontur_wx_test_l =  0
+		simDR_wx_mode = 2
+		-- if kontur_wx_l>2 then
+			-- kontur_wx_l=2
+		-- end
+		-- if kontur_wx_test_l < 0 then
+			-- kontur_wx_test_l = -1
+			-- --if kontur_wx_l > 1 then
+			-- kontur_wx_l = 1
+			-- --end
+			-- --if kontur_wx_r > 1 then
+			-- kontur_wx_r = 1
+		-- end
     end
+	-- if weather_sys < 1  then
+		-- radar_test_init = 0
+		-- weather_test_timer = 0
+		-- kontur_wx_test_l = 0
+    -- end
     if weather_sys > 0 and simDR_36v > 0 and kontur_wx_test_l > -1 then
 		if kontur_on_l > 0 and radar_test_init>0 then
 			weather_test_timer = weather_test_timer + simDR_passed
@@ -1359,12 +1565,12 @@ end
 					radar_test_init = 0
 					kontur_wx_test_l = -1
 					simDRauto_tilt=1
-					if kontur_wx_l > 0 then
-					kontur_wx_l = 3
-					end
-					if kontur_wx_r > 0 then
-					kontur_wx_r = 3
-					end
+					-- if kontur_wx_l > 0 then
+					-- kontur_wx_l = 3
+					-- end
+					-- if kontur_wx_r > 0 then
+					-- kontur_wx_r = 3
+					-- end
 				end
 			end
 		-- elseif kontur_on_r > 0 then
@@ -1408,29 +1614,28 @@ end
 					-- kontur_wx_r = 2
 					-- end
 				-- end
-			-- end
+			-- end 
 			-- kontur_wx_test_l = -1
 			weather_test_timer = 0
 		end
     end
     
-    
-    
-    if weather_mode > 0 and weather_sys > 0 and simDR_36v > 0 and (kontur_wx_l > 0) then
-        -- if kontur_wx_l > 2 or kontur_wx_test_l~=-1 then
-            simDR_efis_1_wxr = 1
-        -- else
-            -- simDR_efis_1_wxr = 0
-        -- end
-    elseif weather_mode > 0 and weather_sys > 0 and simDR_36v > 0 and kontur_wx_r > 1 then
-        if kontur_wx_r > 2 and nostab_r < 1 then
-            simDR_efis_1_wxr = 1
-        else
-            simDR_efis_1_wxr = 0
-        end
-    else
-       simDR_efis_1_wxr = 0
-    end
+	if (kontur_tcas_l>0 or kontur_tcas_l_aux>0) and (simDR_tcas_mode > 2 or simDR_tcas_mode==-1) then
+		simDR_tcas_on = 1
+	else
+		simDR_tcas_on = 0
+	end
+	if simDR_wxr_mode > 0 and weather_sys > 0 and simDR_36v > 0 and (kontur_wx_l > 0 or kontur_wx_l_aux > 0) then
+		simDR_efis_1_wxr = 1
+	else
+		simDR_efis_1_wxr = 0
+	end
+    if simDR_wxr_mode > 0 and weather_sys > 0 and simDR_36v > 0 and (kontur_wx_r > 0 or kontur_wx_r_aux > 0) then
+		simDR_efis_2_wxr = 1
+	else
+		simDR_efis_2_wxr = 0
+	end
+	wx_test_init=radar_test_init
 end
 
 function kontur_right()
@@ -1440,6 +1645,11 @@ function kontur_right()
     kontur_onoff_r = 1
     kontur_on_r = 0
     kontur_nav_r = 0
+	kontur_tcas_r = 0
+	kontur_tcas_r_aux = 0
+	kontur_taws_r = 0
+	kontur_wx_r = 0
+	kontur_wx_r_aux = 0
     kontur_test_start_r = 0
     kontur_test_timer_r = 0
     kontur_test_r = 0
@@ -1496,16 +1706,20 @@ end
 if kontur_nav_menu_r > 2 and kontur_nav_r < 1 then
     kontur_nav_menu_r = 2
 end
+
+if kontur_nav_menu_r > 1 and kontur_nav_r == 0 and kontur_wx_side == 0 and kontur_wx_r == 0 then
+    kontur_nav_menu_r = 1
+end
     
     
-    if kontur_taws_r > 0 then
-        if simDR_taws_mode > 0 and simDR_taws_mode < 3 then
-        kontur_taws_r = simDR_taws_mode
-        if kontur_taws_r == 2 then
-                kontur_nav_r = 0
-        end
-        end
-    end
+    -- if kontur_taws_r > 0 then
+        -- if simDR_taws_mode > 0 and simDR_taws_mode < 3 then
+        -- kontur_taws_r = simDR_taws_mode
+        -- if kontur_taws_r == 2 then
+                -- kontur_nav_r = 0
+        -- end
+        -- end
+    -- end
     
     
     if kontur_pow_r > 0 and simDR_bus27right > 0 and kontur_onoff_r < 1 then
@@ -1557,7 +1771,7 @@ end
     end
     if kontur_taws_r > 0 then
         wx_taws_sw_r = 2
-        kontur_tcas_l = 0
+        kontur_tcas_r = 0
     end
     if kontur_wx_r > 0 then
         wx_taws_sw_r = 1
@@ -1593,19 +1807,19 @@ else
    simDR_kontur_2_brt = 0
 end
     
-if simDR_efis_1_range < 5 then
-    simDR_efis_1_vor					= 1
-else
-    simDR_efis_1_vor					= 0
-end
+-- if simDR_efis_1_range < 5 then
+    -- simDR_efis_1_vor					= 1
+-- else
+    -- simDR_efis_1_vor					= 0
+-- end
     
-if  simDR_gmk_crs < 0 then
-     gmk_crs = 360 + simDR_gmk_crs       
-else
-     gmk_crs = simDR_gmk_crs    
-end
+-- if  simDR_gmk_crs < 0 then
+     -- gmk_crs = 360 + simDR_gmk_crs       
+-- else
+      gmk_crs = simDR_gmk_crs    
+-- end
         
-fpu_crs =gnd_trk --gmk_crs + simDR_diss_slipe
+fpu_crs =simDR_gmk_crs + simDR_diss_slipe
 
  
 if simDRcrs_flag1 < 1 then
@@ -1631,7 +1845,7 @@ else
 end
     
 
-if weather_sys > 0 and simDR_36v > 0 then
+if weather_sys > 0 and simDR_36v > 0 and simDR_rdr_fail == 0 then
     weather_lit = 1
 else
     weather_lit = 0
@@ -1711,69 +1925,184 @@ end
     
     
     if kontur_tcas_l > 0 then
-        if kontur_taws_l < 2 and kontur_taws_r < 2 then
-                if kontur_tcas_l > 1 then
-            simDR_efis_1_mode = 2
-                else
-            simDR_efis_1_mode = 5
-                end
-            if simDR_tcas_mode > 2 and kontur_tcas_l > 0 and simDR_tcas_disp_mod < 100 and simDR_tcas_disp_mod > -1 then
-                simDR_tcas_on = 1
-            else
-                simDR_tcas_on = 0
-            end
-        else
-            simDR_efis_1_mode = 2
-            simDR_tcas_on = 0
-        end
+        -- if kontur_taws_l then
+			-- if kontur_tcas_l > 1 then
+            -- simDR_efis_1_mode = 2
+                -- else
+		simDR_efis_1_mode = 5
+		--simDR_tcas_on = 1
+                -- end
+            -- if (simDR_tcas_mode > 2 or simDR_tcas_mode==-1) and kontur_tcas_l > 0 and simDR_tcas_disp_mod < 100 and simDR_tcas_disp_mod > -1 then
+                -- simDR_tcas_on = 1
+            -- else
+                -- simDR_tcas_on = 0
+            -- end
+        -- else
+            -- simDR_efis_1_mode = 2
+            -- simDR_tcas_on = 0
+        -- end
+    else
+		-- simDR_tcas_on = 0
+		if kontur_nav_l>0 then
+			simDR_efis_1_mode = 2
+		else
+			simDR_efis_1_mode = 1
+		end
+		--simDR_tcas_on = 0
+    end
+	
+	if kontur_tcas_r > 0 then
+        -- if kontur_taws_l then
+			-- if kontur_tcas_l > 1 then
+            -- simDR_efis_1_mode = 2
+                -- else
+		simDR_efis_2_mode = 5
+		--simDR_tcas_on = 1
+                -- end
+            -- if (simDR_tcas_mode > 2 or simDR_tcas_mode==-1) and kontur_tcas_l > 0 and simDR_tcas_disp_mod < 100 and simDR_tcas_disp_mod > -1 then
+                -- simDR_tcas_on = 1
+            -- else
+                -- simDR_tcas_on = 0
+            -- end
+        -- else
+            -- simDR_efis_1_mode = 2
+            -- simDR_tcas_on = 0
+        -- end
+    else
+		-- simDR_tcas_on = 0
+		if kontur_nav_r>0 then
+			simDR_efis_2_mode = 2
+		else
+			simDR_efis_2_mode = 1
+		end
+		--simDR_tcas_on = 0
+    end
+	
+	-- if kontur_tcas_r > 0 then
+        -- -- if kontur_taws_r then
+			-- -- if kontur_tcas_r > 1 then
+				-- -- simDR_efis_2_mode = 2
+			-- -- else
+			-- simDR_efis_2_mode = 5
+			-- -- end
+            -- -- if (simDR_tcas_mode > 2 or simDR_tcas_mode==-1) and kontur_tcas_r > 0 and simDR_tcas_disp_mod < 100 and simDR_tcas_disp_mod > -1 then
+                -- -- simDR_tcas_on_fo = 1
+            -- -- else
+                -- -- simDR_tcas_on_fo = 0
+            -- -- end
+        -- -- else
+
+        -- -- end
             
         
         
-    else
-            simDR_tcas_on = 0
-            simDR_efis_1_mode = 2
-    end
-    
+    -- else
+		-- if kontur_nav_r>0 then
+			-- simDR_efis_2_mode = 2
+		-- else
+			-- simDR_efis_2_mode = 1
+		-- end
+		-- simDR_tcas_on_fo = 0
+    -- end
+	
+    if (kontur_tcas_r>0 or kontur_tcas_r_aux>0) and (simDR_tcas_mode > 2 or simDR_tcas_mode==-1) then
+		simDR_tcas_on_fo = 1
+	else
+		simDR_tcas_on_fo = 0
+	end
         
     
-    if simDR_weather_alpha > 0.4 and kontur_taws_l > 0 and kontur_wx_r > 0 then
-    simDR_weather_alpha = 0.4
-    end
-    if simDR_weather_alpha > 0.4 and kontur_taws_r > 0 and kontur_wx_l > 0 then
-    simDR_weather_alpha = 0.4
-    end
+    -- if simDR_weather_alpha > 0.4 and kontur_taws_l > 0 and kontur_wx_r > 0 then
+    -- simDR_weather_alpha = 0.4
+    -- end
+    -- if simDR_weather_alpha > 0.4 and kontur_taws_r > 0 and kontur_wx_l > 0 then
+    -- simDR_weather_alpha = 0.4
+    -- end
     
-    if wx2000_gain == 0 then
-       if kontur_rru_l > kontur_rru_r then
-          kontur_rru_r = 0
-          --simDR_weather_alpha = kontur_rru_l
-       else
-          kontur_rru_l = 0
-          --simDR_weather_alpha = kontur_rru_r
-       end
-    else
-       --simDR_weather_alpha = wx2000_gain
-    end
+    -- if wx2000_gain == 0 then
+       -- if kontur_rru_l > kontur_rru_r then
+          -- kontur_rru_r = 0
+          -- --simDR_weather_alpha = kontur_rru_l
+       -- else
+          -- kontur_rru_l = 0
+          -- --simDR_weather_alpha = kontur_rru_r
+       -- end
+    -- else
+       -- --simDR_weather_alpha = wx2000_gain
+    -- end
     
     if aircraft_loaded > 0 then
         simDR_rls = 1
     end
     
-    if simDR_efis_1_range > 0 then
-    simDR_taws_dist =  simDR_efis_1_range - 1
-    else
-        simDR_taws_dist = 0
-    end
+    -- if simDR_efis_1_range > 0 then
+    -- simDR_taws_dist =  simDR_efis_1_range - 1
+    -- else
+        -- simDR_taws_dist = 0
+    -- end
     
-    if kontur_nav_l > 0 and uns1_on > 0 then
-        simDR_fms_line = 0
-    elseif kontur_nav_r > 0 and uns2_on > 0 then
-        simDR_fms_line = 0
-    else
-        simDR_fms_line = 1
-    end 
-    
-    
+    -- if T154_kontur_on == 1 then
+		-- simDR_fms_line = 0
+	-- else
+		-- simDR_fms_line = 1
+	-- end
+	
+	if kontur_wx_l>0 then
+		simDR_efis_1_range = rng_wx_l
+	elseif kontur_taws_l>0 then
+		simDR_efis_1_range = rng_taws_l
+	elseif kontur_tcas_l>0 then
+		simDR_efis_1_range = rng_tcas_l
+	end
+	
+	if kontur_wx_r>0 then
+		simDR_efis_2_range = rng_wx_r
+	elseif kontur_taws_r>0 then
+		simDR_efis_2_range = rng_taws_r
+	elseif kontur_tcas_r>0 then
+		simDR_efis_2_range = rng_tcas_r
+	end
+	
+	rng_wx_r = rng_wx_l
+	-- automatic taws display
+	if simDR_taws_message>0 and simDR_taws_message~=simDR_taws_message_prev and simDR_taws_message~=10 then
+		taws_timer = 0.1
+	elseif simDR_taws_message == 0 then
+		taws_timer = 0
+	end
+	if taws_timer > 0 then
+		taws_timer = taws_timer + simDR_passed
+	end
+	
+	if taws_timer>0.5 then
+		if kontur_taws_l ~= 1 then
+			kontur_tcas_l = 0
+			kontur_tcas_l_aux = 0
+			wx_last=kontur_wx_l
+			kontur_wx_l = 0
+			kontur_wx_l_aux = 0
+			kontur_taws_l = 1
+			rng_taws_l = 2
+		end
+		if kontur_taws_r ~= 1 then
+			kontur_tcas_r = 0
+			kontur_tcas_r_aux = 0
+			wx_last=kontur_wx_r
+			kontur_wx_r = 0
+			kontur_wx_r_aux = 0
+			kontur_taws_r = 1
+			rng_taws_r = 2
+		end
+		taws_timer = 0
+	end
+	if kontur_taws_l > 1 and simDRtaws_rdy == 0 then
+		kontur_taws_l = 1
+	end
+	if kontur_taws_r > 1 and simDRtaws_rdy == 0 then
+		kontur_taws_r = 1
+	end
+	kontur_dist_mode_r = kontur_dist_mode_l
+    simDR_taws_message_prev = simDR_taws_message
     uns1_on					= simDR_kln
     uns2_on					= simDR_kln
     

@@ -1,6 +1,8 @@
 -- this is TCAS gauge
+local crew_session = dofile(sasl.getAircraftPath() .. "/plugins/sasl/data/modules/Custom Module/main_panel/crew_session.lua")
 
 size = {482, 530}
+defineProperty("side")
 defineProperty("frame_time", globalPropertyf("tu154b2/custom/time/frame_time")) -- time of frame
 
 -- power and controls
@@ -16,7 +18,7 @@ defineProperty("vsi_brt", globalPropertyf("tu154b2/custom/gauges/vsi/vsi_brt_lef
 -- source
 defineProperty("vvi", globalPropertyf("sim/cockpit2/gauges/indicators/vvi_fpm_pilot")) -- VVI
 
-defineProperty("vvi_int2", globalPropertyi("tu154b2/custom/gauges/vvi_left")) -- VVI
+defineProperty("vvi_int2", globalPropertyf("tu154b2/custom/gauges/vvi_left")) -- VVI
 defineProperty("vvi_int", globalPropertyi("sim/custom/gauges/vvi_left_new")) -- VVI
 defineProperty("ta_sel", globalPropertyi("sim/custom/tcas2000/ta_sel"))  -- появление желтых или красных меток
 defineProperty("static_fail", globalPropertyi("sim/operation/failures/rel_static"))  -- static fail
@@ -25,7 +27,7 @@ defineProperty("slow_vario", globalPropertyi("sim/custom/t154cfg/slow_vario"))
 
 -- load images
 defineProperty("scale_img", loadImage("tcas_scale.png", 14, 47, 482, 482))
-defineProperty("needle_img", loadImage("tcas_scale.png", 2, 0, 346, 38))
+defineProperty("needle_img", loadImage("tcas_scale.png", 2, 0, 346, 37))
 
 defineProperty("scale_40", loadImage("tcas_marks.png", 35, 391, 38, 38))
 defineProperty("scale_15", loadImage("tcas_marks.png", 18, 377, 72, 72))
@@ -68,16 +70,16 @@ defineProperty("fl_mode", globalPropertyi("tu154b2/custom/tcas/fl_mode"))  -- 0 
 defineProperty("flt_id", globalPropertyi("tu154b2/custom/tcas/flt_id"))  -- 0 = cover, 1 = show / change code
 defineProperty("altitude", globalPropertyf("sim/flightmodel2/position/pressure_altitude"))
 
-defineProperty("ra_scale_set", globalPropertyi("tu154b2/custom/tcas/ra_scale_set"))  -- RA mode scale set. 0 = none.
+defineProperty("ra_scale_set", globalPropertyi("sim/cockpit2/tcas/indicators/tcas_message"))  -- RA mode scale set. 0 = none.
 -- defineProperty("db1", globalPropertyf("tu154b2/custom/controlls/debug1"))
 -- defineProperty("db2", globalPropertyf("tu154b2/custom/controlls/debug2"))
 -- defineProperty("db3", globalPropertyf("tu154b2/custom/controlls/debug3"))
 -- fail
 
-defineProperty("vvi_fail", globalPropertyi("sim/operation/failures/rel_ss_vvi")) -- fail
-defineProperty("cas_fail", globalPropertyi("tu154b2/custom/tcas/tcas_fail"))
-defineProperty("cas_alt_fail", globalPropertyi("tu154b2/custom/tcas/tcas_alt_fail"))
-
+vvi_fail = globalPropertyi("sim/operation/failures/rel_ss_vvi") -- fail
+cas_fail = globalPropertyi("tu154b2/custom/tcas/tcas_fail")
+cas_alt_fail = globalPropertyi("tu154b2/custom/tcas/tcas_alt_fail")
+defineProperty("vvi_show", globalPropertyf("tu154b2/custom/tcas/vvi_left"))
 
 
 -- Smart Copilot
@@ -165,12 +167,21 @@ function update()
     ta_select = get(ta_sel)
 	
 	
-if get(ismaster) ~= 1 then set(vvi_int2, get(vvi_int)) end
+local source_vvi = get(vvi)
+if crew_session.active() then
+    if get(ismaster) == 1 then
+        source_vvi = get(vvi_int2)
+    else
+        set(vvi_int2, source_vvi)
+    end
+elseif get(ismaster) ~= 1 then
+    set(vvi_int2, get(vvi_int))
+end
 	
 	local staticFail_left = get(static_fail) == 6
 
 	-- variometers
-	local var=get(vvi) * 0.00508 * bool2int(not staticFail_left)
+	local var=source_vvi * 0.00508 * bool2int(not staticFail_left)
 	local T=0
 	if get(slow_vario)>0 then
 		T=7
@@ -184,7 +195,9 @@ if get(ismaster) ~= 1 then set(vvi_int2, get(vvi_int)) end
 	elseif vvi_ms <= -30 then vvi_ang_act = -170
 	else vvi_ang_act = interpolate(vvi_tbl, vvi_ms)
 	end
-	
+	if get(side) == 1 then
+		set(vvi_show,vvi_ms)
+	end
 	level = get(level_mode) 
 	
 	ra_mode = get(ra_scale_set)
@@ -265,7 +278,7 @@ components = {
 		position = {0, 60, 482, 482},
 		image = get(tcas_scale_climb),
 		visible = function()
-			return ra_mode == 1 and tcas_power
+			return (ra_mode == 1 or ra_mode==2) and tcas_power
 		end,
 	},
 
@@ -274,7 +287,7 @@ components = {
 		position = {0, 60, 482, 482},
 		image = get(tcas_scale_climb_10),
 		visible = function()
-			return ra_mode == 2 and tcas_power
+			return (ra_mode == 3 or ra_mode==4) and tcas_power
 		end,
 	},
 	
@@ -283,7 +296,7 @@ components = {
 		position = {0, 60, 482, 482},
 		image = get(tcas_scale_descend),
 		visible = function()
-			return ra_mode == 3 and tcas_power
+			return (ra_mode == 6 or ra_mode == 7) and tcas_power
 		end,
 	},
 
@@ -292,7 +305,7 @@ components = {
 		position = {0, 60, 482, 482},
 		image = get(tcas_scale_descend_10),
 		visible = function()
-			return ra_mode == 4 and tcas_power
+			return (ra_mode == 8 or ra_mode==9) and tcas_power
 		end,
 	},
 
@@ -301,45 +314,45 @@ components = {
 		position = {0, 60, 482, 482},
 		image = get(tcas_scale_maintain_lvl),
 		visible = function()
-			return ra_mode == 5 and tcas_power
+			return ra_mode == 13 and tcas_power
 		end,
 	},
 
-	-- tcas_scale_not_climb
-	textureLit {
-		position = {0, 60, 482, 482},
-		image = get(tcas_scale_not_climb),
-		visible = function()
-			return ra_mode == 6 and tcas_power
-		end,
-	},
+	-- -- tcas_scale_not_climb
+	-- textureLit {
+		-- position = {0, 60, 482, 482},
+		-- image = get(tcas_scale_not_climb),
+		-- visible = function()
+			-- return ra_mode == 6 and tcas_power
+		-- end,
+	-- },
 
-	-- tcas_scale_not_climb_2
-	textureLit {
-		position = {0, 60, 482, 482},
-		image = get(tcas_scale_not_climb_2),
-		visible = function()
-			return ra_mode == 7 and tcas_power
-		end,
-	},
+	-- -- tcas_scale_not_climb_2
+	-- textureLit {
+		-- position = {0, 60, 482, 482},
+		-- image = get(tcas_scale_not_climb_2),
+		-- visible = function()
+			-- return ra_mode == 7 and tcas_power
+		-- end,
+	-- },
 
-	-- tcas_scale_not_descend
-	textureLit {
-		position = {0, 60, 482, 482},
-		image = get(tcas_scale_not_descend),
-		visible = function()
-			return ra_mode == 8 and tcas_power
-		end,
-	},
+	-- -- tcas_scale_not_descend
+	-- textureLit {
+		-- position = {0, 60, 482, 482},
+		-- image = get(tcas_scale_not_descend),
+		-- visible = function()
+			-- return ra_mode == 8 and tcas_power
+		-- end,
+	-- },
 
-	-- tcas_scale_not_descend_2
-	textureLit {
-		position = {0, 60, 482, 482},
-		image = get(tcas_scale_not_descend_2),
-		visible = function()
-			return (ra_mode == 9 or mode_show == -1) and tcas_power
-		end,
-	},
+	-- -- tcas_scale_not_descend_2
+	-- textureLit {
+		-- position = {0, 60, 482, 482},
+		-- image = get(tcas_scale_not_descend_2),
+		-- visible = function()
+			-- return (ra_mode == 9 or mode_show == -1) and tcas_power
+		-- end,
+	-- },
 	
     
     -- vsi
