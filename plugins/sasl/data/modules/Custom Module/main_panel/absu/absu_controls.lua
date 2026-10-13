@@ -391,9 +391,6 @@ absu_uns_leg_printed = false  -- one-time index-base debug print
 absu_uns_leg_bank = 22        -- deg, bank assumed for turn radius (ABSU roll limit is 25)
 absu_uns_leg_rollin = 5       -- s, roll-in lead added to the anticipation distance
 absu_uns_leg_dtk_tol = 10     -- deg, max FMS-leg vs X-Plane DTK mismatch accepted
-absu_uns_icpt_deg = 45       -- deg, intercept angle when far off the leg (FIX 2026-10-13)
-absu_uns_icpt_km = 2.5        -- km, leg-tracker cross-track beyond which the intercept is flown
-absu_uns_leg_max_antic = 90   -- deg, FIX 2026-10-13: no early leg switch for turns sharper than this
 
 -- FREEZE FIX 2026-10-13: angle wrapping used to be done with while-loops (a = a - 360
 -- repeated). If any input is ever infinite or absurdly large (bad dataref value, divide by
@@ -419,15 +416,6 @@ function absu_uns_wpt(i)
 	if not ok or la == nil or lo == nil then return nil end
 	if la == 0 and lo == 0 then return nil end
 	return la, lo, nme
-end
-
--- FIX 2026-10-13: X-Plane plan entries named in brackets -- "(INTC)", "(2300)", "(VECTORS)" --
--- are not real fixes (intercepts, altitude-terminated legs). Their stored position is only an
--- approximation, so a leg built from them points the wrong way (seen in the log as a "175 deg"
--- turn right after takeoff). The tracker now leaves such legs to the fallback, which follows
--- X-Plane's own course and deviation for them.
-function absu_uns_pseudo(name)
-	return type(name) == "string" and string.sub(name, 1, 1) == "("
 end
 
 function absu_uns_gc(la1, lo1, la2, lo2) -- returns distance (m), initial true course (deg)
@@ -469,12 +457,8 @@ function absu_uns_leg_track(raw_course, passed)
 	local magoff = absu_uns_wrap180(get(absu_uns_mag_psi) - get(absu_uns_true_psi)) -- mag = true + magoff
 
 	-- cross-check X-Plane's own active leg against its DTK
-	local xla, xlo, xnm = absu_uns_wpt(xd - 1)
-	local bla, blo, bnm = absu_uns_wpt(xd)
-	if absu_uns_pseudo(xnm) or absu_uns_pseudo(bnm) then
-		absu_uns_leg_idx = xd
-		return nil
-	end
+	local xla, xlo = absu_uns_wpt(xd - 1)
+	local bla, blo = absu_uns_wpt(xd)
 	local okleg = false
 	if xla ~= nil and bla ~= nil then
 		local _, cxp = absu_uns_gc(xla, xlo, bla, blo)
@@ -488,18 +472,13 @@ function absu_uns_leg_track(raw_course, passed)
 
 	-- turn anticipation: only while we are still on X-Plane's leg and a next leg exists
 	if absu_uns_leg_idx == xd and xd + 1 <= last then
-		local cla, clo, cnm = absu_uns_wpt(xd + 1)
-		if cla ~= nil and xla ~= nil and not absu_uns_pseudo(cnm) then
+		local cla, clo = absu_uns_wpt(xd + 1)
+		if cla ~= nil and xla ~= nil then
 			local _, back = absu_uns_gc(bla, blo, xla, xlo)
 			local crs_in = back + 180                       -- track arriving at the waypoint
 			local _, crs_out = absu_uns_gc(bla, blo, cla, clo)
 			local turn = math.abs(absu_uns_wrap180(crs_out - crs_in))
-			-- FIX 2026-10-13: turns sharper than absu_uns_leg_max_antic are NOT anticipated. For the
-			-- 138/140 deg reversals in the log the old formula switched legs ~16 km before the
-			-- waypoint, putting the aircraft ~10 km off the new leg; with only the cross-track law
-			-- active it overshot and lost the track. Sharp turns now switch when X-Plane sequences,
-			-- and the heading term added in update() turns the aircraft onto the new course.
-			if turn > 3 and turn <= absu_uns_leg_max_antic then
+			if turn > 3 then
 				local gs = math.max(get(absu_uns_gs), 50)    -- m/s
 				local r = gs * gs / (9.81 * math.tan(math.rad(absu_uns_leg_bank)))
 				local lead = r * math.tan(math.rad(math.min(turn, 120)) / 2) + gs * absu_uns_leg_rollin
@@ -1157,41 +1136,12 @@ function update()
 					-- the course jump at the anticipated leg switch zeroes PZ for that frame (|dcourse|>2).
 					nvu_course = leg_course
 					nvu_z = leg_z
-					-- FIX 2026-10-13 (missed approach wandering): far off the leg (> 2.5 km) the
-					-- cross-track law alone flies roughly perpendicular to the leg line, which looks like
-					-- wandering. Like the B donor's GNS430 mode, intercept at a fixed angle instead:
-					-- desired track +/- 45 deg toward the line, steered by the heading term below.
-					if math.abs(leg_z) > absu_uns_icpt_km then
-						if leg_z > 0 then nvu_course = absu_uns_norm360(leg_course - absu_uns_icpt_deg)
-						else nvu_course = absu_uns_norm360(leg_course + absu_uns_icpt_deg) end
-						nvu_z = 0
-					end
-					-- FIX 2026-10-13: same heading-error boost the fallback below uses (same sign, same
-					-- 1.8 km scale), so a large course change after a leg switch gets a decisive turn
-					-- toward the new course instead of a cross-track-only intercept that overshoots.
-					local leg_heading_error = absu_uns_wrap180(nvu_course - course_now)
-					local leg_heading_virtual_z = -1 * (leg_heading_error / 90) * 1.8
-					if math.abs(leg_heading_virtual_z) > math.abs(nvu_z) then
-						nvu_z = leg_heading_virtual_z
-					end
 					-- keep the fallback filters primed so switching back to it is seamless
 					absu_uns_course_smooth = raw_course
 					absu_uns_z_smooth = raw_z
 					absu_uns_last_dist = nil
 				else
-				-- FALLBACK (no usable FMS leg data, e.g. direct-to, bracketed legs): previous UNS logic
-					-- FIX 2026-10-13 (missed approach wandering): X-Plane's deviation tops out at 2.5
-					-- dots. When it is pinned there the aircraft is far off X-Plane's leg and the
-					-- cross-track law alone has no sense of direction; fly a 45 deg intercept toward the
-					-- leg instead (same idea as the B donor's GNS430 >2.499-dot mode).
-					local uns_hdef = get(gps_hdef_dot)
-					if uns_hdef >= 2.49 then
-						raw_course = absu_uns_norm360(raw_course + absu_uns_icpt_deg)
-						raw_z = 0
-					elseif uns_hdef <= -2.49 then
-						raw_course = absu_uns_norm360(raw_course - absu_uns_icpt_deg)
-						raw_z = 0
-					end
+				-- FALLBACK (no usable FMS leg data, e.g. direct-to): previous UNS logic, unchanged
 
 					-- Smooth the raw native-FMS values (~2s time constant) before use, since unlike
 					-- KLN's own internally-filtered course/deviation, these can jump sharply the

@@ -103,9 +103,9 @@ function private.defaultOnMouseMove(comp, _, _, _, parentX, parentY)
         end
 
         if toboolean(get(comp.resizeProportional)) then
-            local ratio =  comp.dragStartSizeX / comp.dragStartSizeY
-            local propHeight = newSizeX / ratio;
-            local propWidth = newSizeY * ratio;
+            ratio =  comp.dragStartSizeX / comp.dragStartSizeY
+            propHeight = newSizeX / ratio;
+            propWidth = newSizeY * ratio;
             if propHeight > newSizeY then
                 newSizeY = propHeight
             else

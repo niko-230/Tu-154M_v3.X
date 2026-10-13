@@ -48,9 +48,6 @@ end
 
 --- @class Property
 --- @field v any
---- @field get fun(self:Property):any
---- @field set fun(self:Property, value:any)
---- @field raw fun():any
 
 --- @class GlobalProperty
 --- @field name string
@@ -63,14 +60,6 @@ end
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 
-local function getPropValue(value)
-    if type(value) ~= 'function' then
-        return value
-    else
-        return value()
-    end
-end
-
 --- Creates new property with initial value.
 --- @param value any
 --- @return Property
@@ -80,13 +69,7 @@ function createProperty(value)
     if isProperty(value) then
         return value
     end
-    return {
-        __p = 1,
-        v = value,
-        get = function(self) return getPropValue(self.v) end,
-        set = function(self, v) self.v = v end,
-        raw = function(self) return self.v end
-    }
+    return { __p = 1, v = value }
 end
 
 -------------------------------------------------------------------------------
@@ -115,13 +98,21 @@ end
 --- : https://1-sim.com/files/SASL3Manual.pdf#get
 function get(property, offset, numValues)
     if isProperty(property) then
-        if isProperty(property.v) then
-            return get(property.v, offset, numValues)
-        else
+        if property.get then
             return property:get(offset, numValues)
+        else
+            if isProperty(property.v) then
+                return get(property.v, offset, numValues)
+            else
+                return property.v
+            end
         end
     else
-        return getPropValue(property)
+        if type(property) == "function" then
+            return property()
+        else
+            return property
+        end
     end
 end
 
@@ -139,10 +130,14 @@ end
 --- : https://1-sim.com/files/SASL3Manual.pdf#set
 function set(property, value, offset, numValues)
     if isProperty(property) then
-        if isProperty(property.v) then
-            set(property.v, value, offset, numValues)
-        else
+        if property.set then
             property:set(value, offset, numValues)
+        else
+            if isProperty(property.v) then
+                set(property.v, value, offset, numValues)
+            else
+                property.v = value
+            end
         end
     end
 end
@@ -797,8 +792,7 @@ function globalPropertyfae(name, index)
         get = function(_) return sasl.getDataRef(ref, index, nil) end
         set = function(_, value) sasl.setDataRef(ref, value, index, nil) end
     else
-        logWarning('"' .. name .. '": ' .. "Can't cast " .. propTypeToString(t) .. " to float array element")
-        return nil
+        logWarning('"'..name..'": '.."Can't cast "..propTypeToString(t).." to float array element")
     end
 
     return {
