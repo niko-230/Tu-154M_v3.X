@@ -1,0 +1,11 @@
+plugins/xtlua_keysystems/64/lin.xpl
+plugins/xtlua_keysystems/64/mac.xpl
+plugins/xtlua_keysystems/64/win.xpl
+plugins/xtlua_keysystems/StackTracePlus.lua
+plugins/xtlua_keysystems/init.lua
+plugins/xtlua_keysystems/init/init.lua
+plugins/xtlua_keysystems/init/scripts/T154.kontur.nd_in/T154.kontur.nd_in.lua
+plugins/xtlua_keysystems/scripts/T154.kontur.nd/T154.kontur.nd.lua
+plugins/xtlua_keysystems/scripts/T154.kontur.nd/json/LICENSE
+plugins/xtlua_keysystems/scripts/T154.kontur.nd/json/json.lua
+plugins/xtlua_keysystems/scripts/T154.kontur.nd/numberlua.lua
