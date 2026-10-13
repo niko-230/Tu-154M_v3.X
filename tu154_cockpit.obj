@@ -19291,11 +19291,11 @@ ANIM_begin
 ANIM_hide 0.000000 0.000000 sim/cockpit/electrical/avionics_on
 ANIM_hide 0.000000 0.000000 sim/custom/kontur/left_on
 ANIM_begin
-ANIM_hide 0.000000 0.000000 sim/custom/kontur/left_taws
+##ANIM_hide 0.000000 0.000000 sim/custom/kontur/left_taws
 ANIM_hide 0.000000 0.000000 sim/custom/kontur/left_on
 ANIM_begin
-ANIM_hide 0.000000 0.000000 tu154b2/custom/taws/mode_set
-ANIM_hide 3.000000 10.000000 tu154b2/custom/taws/mode_set
+##ANIM_hide 0.000000 0.000000 tu154b2/custom/taws/mode_set
+##ANIM_hide 3.000000 10.000000 tu154b2/custom/taws/mode_set
 ATTR_cockpit
 TRIS 3672 6
 ANIM_end
@@ -19308,11 +19308,11 @@ ANIM_begin
 ANIM_hide 0.000000 0.000000 sim/cockpit/electrical/avionics_on
 ANIM_hide 0.000000 0.000000 sim/custom/kontur/right_on
 ANIM_begin
-ANIM_hide 0.000000 0.000000 sim/custom/kontur/right_taws
+##ANIM_hide 0.000000 0.000000 sim/custom/kontur/right_taws
 ANIM_hide 0.000000 0.000000 sim/custom/kontur/right_on
 ANIM_begin
-ANIM_hide 0.000000 0.000000 tu154b2/custom/taws/mode_set
-ANIM_hide 3.000000 10.000000 tu154b2/custom/taws/mode_set
+##ANIM_hide 0.000000 0.000000 tu154b2/custom/taws/mode_set
+##ANIM_hide 3.000000 10.000000 tu154b2/custom/taws/mode_set
 TRIS 3684 6
 ANIM_end
 ANIM_end
