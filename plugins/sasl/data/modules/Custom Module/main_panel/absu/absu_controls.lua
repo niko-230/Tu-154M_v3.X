@@ -392,23 +392,10 @@ absu_uns_leg_bank = 22        -- deg, bank assumed for turn radius (ABSU roll li
 absu_uns_leg_rollin = 5       -- s, roll-in lead added to the anticipation distance
 absu_uns_leg_dtk_tol = 10     -- deg, max FMS-leg vs X-Plane DTK mismatch accepted
 
--- FREEZE FIX 2026-10-13: angle wrapping used to be done with while-loops (a = a - 360
--- repeated). If any input is ever infinite or absurdly large (bad dataref value, divide by
--- a near-zero number, uninitialised FMS data) such a loop never ends and freezes the whole
--- sim with nothing in Log.txt. These versions use arithmetic instead, so they always finish
--- in one step. A non-finite input returns 0 (no correction) instead of hanging.
-function absu_uns_finite(a)
-	return a ~= nil and a == a and a ~= math.huge and a ~= -math.huge
-end
-
-function absu_uns_wrap180(a) -- result in [-180, 180)
-	if not absu_uns_finite(a) then return 0 end
-	return (a + 180) % 360 - 180
-end
-
-function absu_uns_norm360(a) -- result in [0, 360)
-	if not absu_uns_finite(a) then return 0 end
-	return a % 360
+function absu_uns_wrap180(a)
+	while a > 180 do a = a - 360 end
+	while a < -180 do a = a + 360 end
+	return a
 end
 
 function absu_uns_wpt(i)
@@ -1149,7 +1136,8 @@ function update()
 					-- sharp turn waypoint, which was pinning roll_need against its ceiling.
 					if absu_uns_course_smooth == nil then absu_uns_course_smooth = raw_course end
 					local course_delta = raw_course - absu_uns_course_smooth
-					course_delta = absu_uns_wrap180(course_delta)
+					while course_delta > 180 do course_delta = course_delta - 360 end
+					while course_delta < -180 do course_delta = course_delta + 360 end
 					local uns_alpha = math.min(passed/2, 1)
 					-- Turn-approach softening: X-Plane's native FMS gives no next-leg data (confirmed
 					-- -- Laminar deliberately doesn't expose it as a plain dataref, only via the
@@ -1184,7 +1172,8 @@ function update()
 					end
 					if uns_dist > 0 then absu_uns_last_dist = uns_dist end
 					absu_uns_course_smooth = absu_uns_course_smooth + course_delta * uns_alpha
-					absu_uns_course_smooth = absu_uns_norm360(absu_uns_course_smooth)
+					while absu_uns_course_smooth >= 360 do absu_uns_course_smooth = absu_uns_course_smooth - 360 end
+					while absu_uns_course_smooth < 0 do absu_uns_course_smooth = absu_uns_course_smooth + 360 end
 					absu_uns_z_smooth = absu_uns_z_smooth + (raw_z - absu_uns_z_smooth) * uns_alpha
 
 					nvu_course = absu_uns_course_smooth
@@ -1225,7 +1214,8 @@ function update()
 					-- correctly-signed cross-track term each frame whenever it dominated. Needs
 					-- confirming the plane now turns cleanly toward the target on a large heading error.
 					local uns_heading_error = absu_uns_course_smooth - course_now
-					uns_heading_error = absu_uns_wrap180(uns_heading_error)
+					while uns_heading_error > 180 do uns_heading_error = uns_heading_error - 360 end
+					while uns_heading_error < -180 do uns_heading_error = uns_heading_error + 360 end
 					local uns_heading_virtual_z = uns_heading_sign * (uns_heading_error / 90) * uns_z_cap -- +-90deg maps to +-full z_cap
 					if math.abs(uns_heading_virtual_z) > math.abs(nvu_z) then
 						nvu_z = uns_heading_virtual_z
