@@ -5807,304 +5807,354 @@ ANIM_hide 10.500 300.000000 tu154b2/custom/lights/left_panel_int_set
 LIGHT_PARAM airplane_inst_sp -0.584907 -1.737361 -21.598519 7.000000 3.675000 1.225000 1.500000 0.120000 -0.581238 -0.813733 0.000000 0.400000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 0.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 1.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.021845 -1.738913 -21.598072 0.700000 0.367500 0.122500 1.500000 0.176000 0.514496 -0.857493 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.738913 -21.598072 0.700000 0.367500 0.122500 1.500000 0.130000 0.514496 -0.857493 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 1.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 2.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.021845 -1.738913 -21.598072 1.400000 0.735000 0.245000 1.500000 0.176000 0.514496 -0.857493 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.738913 -21.598072 1.400000 0.735000 0.245000 1.500000 0.130000 0.514496 -0.857493 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 2.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 3.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.021845 -1.738913 -21.598072 2.100000 1.102500 0.367500 1.500000 0.176000 0.514496 -0.857493 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.738913 -21.598072 2.100000 1.102500 0.367500 1.500000 0.130000 0.514496 -0.857493 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 3.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 4.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.021845 -1.738913 -21.598072 2.800000 1.470000 0.490000 1.500000 0.176000 0.514496 -0.857493 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.738913 -21.598072 2.800000 1.470000 0.490000 1.500000 0.130000 0.514496 -0.857493 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 4.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 5.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.021845 -1.738913 -21.598072 3.500000 1.837500 0.612500 1.500000 0.176000 0.514496 -0.857493 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.738913 -21.598072 3.500000 1.837500 0.612500 1.500000 0.130000 0.514496 -0.857493 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 5.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 6.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.021845 -1.738913 -21.598072 4.200000 2.205000 0.735000 1.500000 0.176000 0.514496 -0.857493 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.738913 -21.598072 4.200000 2.205000 0.735000 1.500000 0.130000 0.514496 -0.857493 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 6.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 7.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.021845 -1.738913 -21.598072 4.900000 2.572500 0.857500 1.500000 0.176000 0.514496 -0.857493 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.738913 -21.598072 4.900000 2.572500 0.857500 1.500000 0.130000 0.514496 -0.857493 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 7.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 8.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.021845 -1.738913 -21.598072 5.600000 2.940000 0.980000 1.500000 0.176000 0.514496 -0.857493 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.738913 -21.598072 5.600000 2.940000 0.980000 1.500000 0.130000 0.514496 -0.857493 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 8.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 9.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.021845 -1.738913 -21.598072 6.300000 3.307500 1.102500 1.500000 0.176000 0.514496 -0.857493 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.738913 -21.598072 6.300000 3.307500 1.102500 1.500000 0.130000 0.514496 -0.857493 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 9.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 10.500 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.021845 -1.738913 -21.598072 7.000000 3.675000 1.225000 1.500000 0.176000 0.514496 -0.857493 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.738913 -21.598072 7.000000 3.675000 1.225000 1.500000 0.130000 0.514496 -0.857493 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 0.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 1.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.108889 -1.734249 -21.598800 0.700000 0.367500 0.122500 1.500000 0.178370 0.514496 -0.857493 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.734249 -21.598800 0.700000 0.367500 0.122500 1.500000 0.130000 0.514496 -0.857493 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 1.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 2.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.108889 -1.734249 -21.598800 1.400000 0.735000 0.245000 1.500000 0.178370 0.514496 -0.857493 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.734249 -21.598800 1.400000 0.735000 0.245000 1.500000 0.130000 0.514496 -0.857493 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 2.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 3.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.108889 -1.734249 -21.598800 2.100000 1.102500 0.367500 1.500000 0.178370 0.514496 -0.857493 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.734249 -21.598800 2.100000 1.102500 0.367500 1.500000 0.130000 0.514496 -0.857493 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 3.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 4.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.108889 -1.734249 -21.598800 2.800000 1.470000 0.490000 1.500000 0.178370 0.514496 -0.857493 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.734249 -21.598800 2.800000 1.470000 0.490000 1.500000 0.130000 0.514496 -0.857493 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 4.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 5.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.108889 -1.734249 -21.598800 3.500000 1.837500 0.612500 1.500000 0.178370 0.514496 -0.857493 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.734249 -21.598800 3.500000 1.837500 0.612500 1.500000 0.130000 0.514496 -0.857493 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 5.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 6.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.108889 -1.734249 -21.598800 4.200000 2.205000 0.735000 1.500000 0.178370 0.514496 -0.857493 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.734249 -21.598800 4.200000 2.205000 0.735000 1.500000 0.130000 0.514496 -0.857493 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 6.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 7.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.108889 -1.734249 -21.598800 4.900000 2.572500 0.857500 1.500000 0.178370 0.514496 -0.857493 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.734249 -21.598800 4.900000 2.572500 0.857500 1.500000 0.130000 0.514496 -0.857493 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 7.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 8.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.108889 -1.734249 -21.598800 5.600000 2.940000 0.980000 1.500000 0.178370 0.514496 -0.857493 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.734249 -21.598800 5.600000 2.940000 0.980000 1.500000 0.130000 0.514496 -0.857493 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 8.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 9.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.108889 -1.734249 -21.598800 6.300000 3.307500 1.102500 1.500000 0.178370 0.514496 -0.857493 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.734249 -21.598800 6.300000 3.307500 1.102500 1.500000 0.130000 0.514496 -0.857493 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 9.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 10.500 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.108889 -1.734249 -21.598800 7.000000 3.675000 1.225000 1.500000 0.178370 0.514496 -0.857493 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.734249 -21.598800 7.000000 3.675000 1.225000 1.500000 0.130000 0.514496 -0.857493 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 0.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 1.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.040388 -1.735037 -21.598652 0.700000 0.367500 0.122500 1.500000 0.178370 -0.581238 -0.813733 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.735037 -21.598652 0.700000 0.367500 0.122500 1.500000 0.130000 -0.581238 -0.813733 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 1.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 2.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.040388 -1.735037 -21.598652 1.400000 0.735000 0.245000 1.500000 0.178370 -0.581238 -0.813733 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.735037 -21.598652 1.400000 0.735000 0.245000 1.500000 0.130000 -0.581238 -0.813733 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 2.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 3.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.040388 -1.735037 -21.598652 2.100000 1.102500 0.367500 1.500000 0.178370 -0.581238 -0.813733 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.735037 -21.598652 2.100000 1.102500 0.367500 1.500000 0.130000 -0.581238 -0.813733 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 3.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 4.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.040388 -1.735037 -21.598652 2.800000 1.470000 0.490000 1.500000 0.178370 -0.581238 -0.813733 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.735037 -21.598652 2.800000 1.470000 0.490000 1.500000 0.130000 -0.581238 -0.813733 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 4.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 5.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.040388 -1.735037 -21.598652 3.500000 1.837500 0.612500 1.500000 0.178370 -0.581238 -0.813733 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.735037 -21.598652 3.500000 1.837500 0.612500 1.500000 0.130000 -0.581238 -0.813733 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 5.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 6.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.040388 -1.735037 -21.598652 4.200000 2.205000 0.735000 1.500000 0.178370 -0.581238 -0.813733 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.735037 -21.598652 4.200000 2.205000 0.735000 1.500000 0.130000 -0.581238 -0.813733 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 6.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 7.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.040388 -1.735037 -21.598652 4.900000 2.572500 0.857500 1.500000 0.178370 -0.581238 -0.813733 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.735037 -21.598652 4.900000 2.572500 0.857500 1.500000 0.130000 -0.581238 -0.813733 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 7.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 8.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.040388 -1.735037 -21.598652 5.600000 2.940000 0.980000 1.500000 0.178370 -0.581238 -0.813733 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.735037 -21.598652 5.600000 2.940000 0.980000 1.500000 0.130000 -0.581238 -0.813733 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 8.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 9.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.040388 -1.735037 -21.598652 6.300000 3.307500 1.102500 1.500000 0.178370 -0.581238 -0.813733 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.735037 -21.598652 6.300000 3.307500 1.102500 1.500000 0.130000 -0.581238 -0.813733 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 9.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 10.500 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.040388 -1.735037 -21.598652 7.000000 3.675000 1.225000 1.500000 0.178370 -0.581238 -0.813733 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.735037 -21.598652 7.000000 3.675000 1.225000 1.500000 0.130000 -0.581238 -0.813733 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 0.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 1.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.089436 -1.880074 -21.578270 0.700000 0.367500 0.122500 1.500000 0.176000 -0.581238 0.782210 -0.224295 0.400000
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.880074 -21.578270 0.700000 0.367500 0.122500 1.500000 0.120000 -0.581238 0.782210 -0.224295 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 1.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 2.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.089436 -1.880074 -21.578270 1.400000 0.735000 0.245000 1.500000 0.176000 -0.581238 0.782210 -0.224295 0.400000
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.880074 -21.578270 1.400000 0.735000 0.245000 1.500000 0.120000 -0.581238 0.782210 -0.224295 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 2.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 3.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.089436 -1.880074 -21.578270 2.100000 1.102500 0.367500 1.500000 0.176000 -0.581238 0.782210 -0.224295 0.400000
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.880074 -21.578270 2.100000 1.102500 0.367500 1.500000 0.120000 -0.581238 0.782210 -0.224295 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 3.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 4.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.089436 -1.880074 -21.578270 2.800000 1.470000 0.490000 1.500000 0.176000 -0.581238 0.782210 -0.224295 0.400000
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.880074 -21.578270 2.800000 1.470000 0.490000 1.500000 0.120000 -0.581238 0.782210 -0.224295 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 4.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 5.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.089436 -1.880074 -21.578270 3.500000 1.837500 0.612500 1.500000 0.176000 -0.581238 0.782210 -0.224295 0.400000
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.880074 -21.578270 3.500000 1.837500 0.612500 1.500000 0.120000 -0.581238 0.782210 -0.224295 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 5.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 6.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.089436 -1.880074 -21.578270 4.200000 2.205000 0.735000 1.500000 0.176000 -0.581238 0.782210 -0.224295 0.400000
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.880074 -21.578270 4.200000 2.205000 0.735000 1.500000 0.120000 -0.581238 0.782210 -0.224295 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 6.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 7.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.089436 -1.880074 -21.578270 4.900000 2.572500 0.857500 1.500000 0.176000 -0.581238 0.782210 -0.224295 0.400000
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.880074 -21.578270 4.900000 2.572500 0.857500 1.500000 0.120000 -0.581238 0.782210 -0.224295 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 7.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 8.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.089436 -1.880074 -21.578270 5.600000 2.940000 0.980000 1.500000 0.176000 -0.581238 0.782210 -0.224295 0.400000
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.880074 -21.578270 5.600000 2.940000 0.980000 1.500000 0.120000 -0.581238 0.782210 -0.224295 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 8.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 9.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.089436 -1.880074 -21.578270 6.300000 3.307500 1.102500 1.500000 0.176000 -0.581238 0.782210 -0.224295 0.400000
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.880074 -21.578270 6.300000 3.307500 1.102500 1.500000 0.120000 -0.581238 0.782210 -0.224295 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 9.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 10.500 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.089436 -1.880074 -21.578270 7.000000 3.675000 1.225000 1.500000 0.176000 -0.581238 0.782210 -0.224295 0.400000
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.880074 -21.578270 7.000000 3.675000 1.225000 1.500000 0.120000 -0.581238 0.782210 -0.224295 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 0.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 1.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.089436 -1.739691 -21.597980 0.700000 0.367500 0.122500 1.500000 0.176000 -0.581238 -0.813733 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.739691 -21.597980 0.700000 0.367500 0.122500 1.500000 0.130000 -0.581238 -0.813733 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 1.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 2.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.089436 -1.739691 -21.597980 1.400000 0.735000 0.245000 1.500000 0.176000 -0.581238 -0.813733 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.739691 -21.597980 1.400000 0.735000 0.245000 1.500000 0.130000 -0.581238 -0.813733 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 2.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 3.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.089436 -1.739691 -21.597980 2.100000 1.102500 0.367500 1.500000 0.176000 -0.581238 -0.813733 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.739691 -21.597980 2.100000 1.102500 0.367500 1.500000 0.130000 -0.581238 -0.813733 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 3.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 4.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.089436 -1.739691 -21.597980 2.800000 1.470000 0.490000 1.500000 0.176000 -0.581238 -0.813733 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.739691 -21.597980 2.800000 1.470000 0.490000 1.500000 0.130000 -0.581238 -0.813733 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 4.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 5.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.089436 -1.739691 -21.597980 3.500000 1.837500 0.612500 1.500000 0.176000 -0.581238 -0.813733 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.739691 -21.597980 3.500000 1.837500 0.612500 1.500000 0.130000 -0.581238 -0.813733 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 5.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 6.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.089436 -1.739691 -21.597980 4.200000 2.205000 0.735000 1.500000 0.176000 -0.581238 -0.813733 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.739691 -21.597980 4.200000 2.205000 0.735000 1.500000 0.130000 -0.581238 -0.813733 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 6.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 7.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.089436 -1.739691 -21.597980 4.900000 2.572500 0.857500 1.500000 0.176000 -0.581238 -0.813733 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.739691 -21.597980 4.900000 2.572500 0.857500 1.500000 0.130000 -0.581238 -0.813733 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 7.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 8.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.089436 -1.739691 -21.597980 5.600000 2.940000 0.980000 1.500000 0.176000 -0.581238 -0.813733 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.739691 -21.597980 5.600000 2.940000 0.980000 1.500000 0.130000 -0.581238 -0.813733 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 8.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 9.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.089436 -1.739691 -21.597980 6.300000 3.307500 1.102500 1.500000 0.176000 -0.581238 -0.813733 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.739691 -21.597980 6.300000 3.307500 1.102500 1.500000 0.130000 -0.581238 -0.813733 0.000000 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 9.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 10.500 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.089436 -1.739691 -21.597980 7.000000 3.675000 1.225000 1.500000 0.176000 -0.581238 -0.813733 0.000000 0.400000
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.739691 -21.597980 7.000000 3.675000 1.225000 1.500000 0.130000 -0.581238 -0.813733 0.000000 0.550000
 ANIM_end
 ANIM_begin
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
@@ -6787,264 +6837,284 @@ ANIM_hide 10.500 300.000000 tu154b2/custom/lights/left_panel_int_set
 LIGHT_PARAM airplane_inst_sp -0.677205 -1.808278 -21.576269 7.000000 3.675000 1.225000 1.500000 0.120000 -0.581238 -0.813733 0.000000 0.400000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 0.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 1.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.021845 -1.880821 -21.578158 0.700000 0.367500 0.122500 1.500000 0.176000 0.514496 0.824275 -0.236357 0.400000
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.880821 -21.578158 0.700000 0.367500 0.122500 1.500000 0.120000 0.514496 0.824275 -0.236357 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 1.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 2.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.021845 -1.880821 -21.578158 1.400000 0.735000 0.245000 1.500000 0.176000 0.514496 0.824275 -0.236357 0.400000
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.880821 -21.578158 1.400000 0.735000 0.245000 1.500000 0.120000 0.514496 0.824275 -0.236357 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 2.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 3.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.021845 -1.880821 -21.578158 2.100000 1.102500 0.367500 1.500000 0.176000 0.514496 0.824275 -0.236357 0.400000
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.880821 -21.578158 2.100000 1.102500 0.367500 1.500000 0.120000 0.514496 0.824275 -0.236357 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 3.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 4.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.021845 -1.880821 -21.578158 2.800000 1.470000 0.490000 1.500000 0.176000 0.514496 0.824275 -0.236357 0.400000
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.880821 -21.578158 2.800000 1.470000 0.490000 1.500000 0.120000 0.514496 0.824275 -0.236357 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 4.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 5.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.021845 -1.880821 -21.578158 3.500000 1.837500 0.612500 1.500000 0.176000 0.514496 0.824275 -0.236357 0.400000
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.880821 -21.578158 3.500000 1.837500 0.612500 1.500000 0.120000 0.514496 0.824275 -0.236357 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 5.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 6.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.021845 -1.880821 -21.578158 4.200000 2.205000 0.735000 1.500000 0.176000 0.514496 0.824275 -0.236357 0.400000
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.880821 -21.578158 4.200000 2.205000 0.735000 1.500000 0.120000 0.514496 0.824275 -0.236357 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 6.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 7.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.021845 -1.880821 -21.578158 4.900000 2.572500 0.857500 1.500000 0.176000 0.514496 0.824275 -0.236357 0.400000
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.880821 -21.578158 4.900000 2.572500 0.857500 1.500000 0.120000 0.514496 0.824275 -0.236357 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 7.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 8.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.021845 -1.880821 -21.578158 5.600000 2.940000 0.980000 1.500000 0.176000 0.514496 0.824275 -0.236357 0.400000
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.880821 -21.578158 5.600000 2.940000 0.980000 1.500000 0.120000 0.514496 0.824275 -0.236357 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 8.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 9.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.021845 -1.880821 -21.578158 6.300000 3.307500 1.102500 1.500000 0.176000 0.514496 0.824275 -0.236357 0.400000
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.880821 -21.578158 6.300000 3.307500 1.102500 1.500000 0.120000 0.514496 0.824275 -0.236357 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 9.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 10.500 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.021845 -1.880821 -21.578158 7.000000 3.675000 1.225000 1.500000 0.176000 0.514496 0.824275 -0.236357 0.400000
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.880821 -21.578158 7.000000 3.675000 1.225000 1.500000 0.120000 0.514496 0.824275 -0.236357 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 0.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 1.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.108889 -1.878068 -21.578549 0.700000 0.367500 0.122500 1.500000 0.178370 0.514496 0.824275 -0.236357 0.400000
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.878068 -21.578549 0.700000 0.367500 0.122500 1.500000 0.120000 0.514496 0.824275 -0.236357 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 1.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 2.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.108889 -1.878068 -21.578549 1.400000 0.735000 0.245000 1.500000 0.178370 0.514496 0.824275 -0.236357 0.400000
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.878068 -21.578549 1.400000 0.735000 0.245000 1.500000 0.120000 0.514496 0.824275 -0.236357 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 2.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 3.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.108889 -1.878068 -21.578549 2.100000 1.102500 0.367500 1.500000 0.178370 0.514496 0.824275 -0.236357 0.400000
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.878068 -21.578549 2.100000 1.102500 0.367500 1.500000 0.120000 0.514496 0.824275 -0.236357 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 3.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 4.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.108889 -1.878068 -21.578549 2.800000 1.470000 0.490000 1.500000 0.178370 0.514496 0.824275 -0.236357 0.400000
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.878068 -21.578549 2.800000 1.470000 0.490000 1.500000 0.120000 0.514496 0.824275 -0.236357 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 4.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 5.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.108889 -1.878068 -21.578549 3.500000 1.837500 0.612500 1.500000 0.178370 0.514496 0.824275 -0.236357 0.400000
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.878068 -21.578549 3.500000 1.837500 0.612500 1.500000 0.120000 0.514496 0.824275 -0.236357 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 5.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 6.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.108889 -1.878068 -21.578549 4.200000 2.205000 0.735000 1.500000 0.178370 0.514496 0.824275 -0.236357 0.400000
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.878068 -21.578549 4.200000 2.205000 0.735000 1.500000 0.120000 0.514496 0.824275 -0.236357 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 6.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 7.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.108889 -1.878068 -21.578549 4.900000 2.572500 0.857500 1.500000 0.178370 0.514496 0.824275 -0.236357 0.400000
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.878068 -21.578549 4.900000 2.572500 0.857500 1.500000 0.120000 0.514496 0.824275 -0.236357 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 7.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 8.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.108889 -1.878068 -21.578549 5.600000 2.940000 0.980000 1.500000 0.178370 0.514496 0.824275 -0.236357 0.400000
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.878068 -21.578549 5.600000 2.940000 0.980000 1.500000 0.120000 0.514496 0.824275 -0.236357 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 8.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 9.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.108889 -1.878068 -21.578549 6.300000 3.307500 1.102500 1.500000 0.178370 0.514496 0.824275 -0.236357 0.400000
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.878068 -21.578549 6.300000 3.307500 1.102500 1.500000 0.120000 0.514496 0.824275 -0.236357 0.550000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 9.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 10.500 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.108889 -1.878068 -21.578549 7.000000 3.675000 1.225000 1.500000 0.178370 0.514496 0.824275 -0.236357 0.400000
-ANIM_end
-ANIM_begin
-ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
-ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
-ANIM_hide -300.000000 0.001 tu154b2/custom/lights/mid_right_panel_int_set
-ANIM_hide 1.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.161185 -1.934651 -21.490887 0.700000 0.367500 0.122500 1.500000 0.120000 0.000000 -0.010000 0.200000 0.400000
-ANIM_end
-ANIM_begin
-ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
-ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
-ANIM_hide -300.000000 1.001 tu154b2/custom/lights/mid_right_panel_int_set
-ANIM_hide 2.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.161185 -1.934651 -21.490887 1.400000 0.735000 0.245000 1.500000 0.120000 0.000000 -0.010000 0.200000 0.400000
-ANIM_end
-ANIM_begin
-ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
-ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
-ANIM_hide -300.000000 2.001 tu154b2/custom/lights/mid_right_panel_int_set
-ANIM_hide 3.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.161185 -1.934651 -21.490887 2.100000 1.102500 0.367500 1.500000 0.120000 0.000000 -0.010000 0.200000 0.400000
-ANIM_end
-ANIM_begin
-ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
-ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
-ANIM_hide -300.000000 3.001 tu154b2/custom/lights/mid_right_panel_int_set
-ANIM_hide 4.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.161185 -1.934651 -21.490887 2.800000 1.470000 0.490000 1.500000 0.120000 0.000000 -0.010000 0.200000 0.400000
-ANIM_end
-ANIM_begin
-ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
-ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
-ANIM_hide -300.000000 4.001 tu154b2/custom/lights/mid_right_panel_int_set
-ANIM_hide 5.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.161185 -1.934651 -21.490887 3.500000 1.837500 0.612500 1.500000 0.120000 0.000000 -0.010000 0.200000 0.400000
-ANIM_end
-ANIM_begin
-ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
-ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
-ANIM_hide -300.000000 5.001 tu154b2/custom/lights/mid_right_panel_int_set
-ANIM_hide 6.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.161185 -1.934651 -21.490887 4.200000 2.205000 0.735000 1.500000 0.120000 0.000000 -0.010000 0.200000 0.400000
-ANIM_end
-ANIM_begin
-ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
-ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
-ANIM_hide -300.000000 6.001 tu154b2/custom/lights/mid_right_panel_int_set
-ANIM_hide 7.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.161185 -1.934651 -21.490887 4.900000 2.572500 0.857500 1.500000 0.120000 0.000000 -0.010000 0.200000 0.400000
-ANIM_end
-ANIM_begin
-ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
-ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
-ANIM_hide -300.000000 7.001 tu154b2/custom/lights/mid_right_panel_int_set
-ANIM_hide 8.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.161185 -1.934651 -21.490887 5.600000 2.940000 0.980000 1.500000 0.120000 0.000000 -0.010000 0.200000 0.400000
-ANIM_end
-ANIM_begin
-ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
-ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
-ANIM_hide -300.000000 8.001 tu154b2/custom/lights/mid_right_panel_int_set
-ANIM_hide 9.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.161185 -1.934651 -21.490887 6.300000 3.307500 1.102500 1.500000 0.120000 0.000000 -0.010000 0.200000 0.400000
-ANIM_end
-ANIM_begin
-ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
-ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
-ANIM_hide -300.000000 9.001 tu154b2/custom/lights/mid_right_panel_int_set
-ANIM_hide 10.500 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.161185 -1.934651 -21.490887 7.000000 3.675000 1.225000 1.500000 0.120000 0.000000 -0.010000 0.200000 0.400000
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.878068 -21.578549 7.000000 3.675000 1.225000 1.500000 0.120000 0.514496 0.824275 -0.236357 0.550000
 ANIM_end
 ANIM_begin
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 1.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.127633 -1.935038 -21.491566 0.700000 0.367500 0.122500 1.500000 0.120000 0.000000 -0.010000 0.200000 0.400000
+LIGHT_PARAM airplane_inst_sp 0.167341 -1.928162 -21.508506 0.175000 0.091875 0.030625 1.500000 0.113766 -0.581278 -0.396973 0.710301 0.400000
 ANIM_end
 ANIM_begin
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 1.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 2.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.127633 -1.935038 -21.491566 1.400000 0.735000 0.245000 1.500000 0.120000 0.000000 -0.010000 0.200000 0.400000
+LIGHT_PARAM airplane_inst_sp 0.167341 -1.928162 -21.508506 0.350000 0.183750 0.061250 1.500000 0.113766 -0.581278 -0.396973 0.710301 0.400000
 ANIM_end
 ANIM_begin
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 2.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 3.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.127633 -1.935038 -21.491566 2.100000 1.102500 0.367500 1.500000 0.120000 0.000000 -0.010000 0.200000 0.400000
+LIGHT_PARAM airplane_inst_sp 0.167341 -1.928162 -21.508506 0.525000 0.275625 0.091875 1.500000 0.113766 -0.581278 -0.396973 0.710301 0.400000
 ANIM_end
 ANIM_begin
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 3.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 4.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.127633 -1.935038 -21.491566 2.800000 1.470000 0.490000 1.500000 0.120000 0.000000 -0.010000 0.200000 0.400000
+LIGHT_PARAM airplane_inst_sp 0.167341 -1.928162 -21.508506 0.700000 0.367500 0.122500 1.500000 0.113766 -0.581278 -0.396973 0.710301 0.400000
 ANIM_end
 ANIM_begin
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 4.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 5.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.127633 -1.935038 -21.491566 3.500000 1.837500 0.612500 1.500000 0.120000 0.000000 -0.010000 0.200000 0.400000
+LIGHT_PARAM airplane_inst_sp 0.167341 -1.928162 -21.508506 0.875000 0.459375 0.153125 1.500000 0.113766 -0.581278 -0.396973 0.710301 0.400000
 ANIM_end
 ANIM_begin
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 5.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 6.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.127633 -1.935038 -21.491566 4.200000 2.205000 0.735000 1.500000 0.120000 0.000000 -0.010000 0.200000 0.400000
+LIGHT_PARAM airplane_inst_sp 0.167341 -1.928162 -21.508506 1.050000 0.551250 0.183750 1.500000 0.113766 -0.581278 -0.396973 0.710301 0.400000
 ANIM_end
 ANIM_begin
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 6.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 7.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.127633 -1.935038 -21.491566 4.900000 2.572500 0.857500 1.500000 0.120000 0.000000 -0.010000 0.200000 0.400000
+LIGHT_PARAM airplane_inst_sp 0.167341 -1.928162 -21.508506 1.225000 0.643125 0.214375 1.500000 0.113766 -0.581278 -0.396973 0.710301 0.400000
 ANIM_end
 ANIM_begin
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 7.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 8.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.127633 -1.935038 -21.491566 5.600000 2.940000 0.980000 1.500000 0.120000 0.000000 -0.010000 0.200000 0.400000
+LIGHT_PARAM airplane_inst_sp 0.167341 -1.928162 -21.508506 1.400000 0.735000 0.245000 1.500000 0.113766 -0.581278 -0.396973 0.710301 0.400000
 ANIM_end
 ANIM_begin
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 8.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 9.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.127633 -1.935038 -21.491566 6.300000 3.307500 1.102500 1.500000 0.120000 0.000000 -0.010000 0.200000 0.400000
+LIGHT_PARAM airplane_inst_sp 0.167341 -1.928162 -21.508506 1.575000 0.826875 0.275625 1.500000 0.113766 -0.581278 -0.396973 0.710301 0.400000
 ANIM_end
 ANIM_begin
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 9.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 10.500 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp 0.127633 -1.935038 -21.491566 7.000000 3.675000 1.225000 1.500000 0.120000 0.000000 -0.010000 0.200000 0.400000
+LIGHT_PARAM airplane_inst_sp 0.167341 -1.928162 -21.508506 1.750000 0.918750 0.306250 1.500000 0.113766 -0.581278 -0.396973 0.710301 0.400000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 0.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 1.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.123650 -1.927982 -21.508975 0.175000 0.091875 0.030625 1.500000 0.113766 0.514766 -0.417963 0.748548 0.400000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 1.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 2.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.123650 -1.927982 -21.508975 0.350000 0.183750 0.061250 1.500000 0.113766 0.514766 -0.417963 0.748548 0.400000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 2.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 3.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.123650 -1.927982 -21.508975 0.525000 0.275625 0.091875 1.500000 0.113766 0.514766 -0.417963 0.748548 0.400000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 3.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 4.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.123650 -1.927982 -21.508975 0.700000 0.367500 0.122500 1.500000 0.113766 0.514766 -0.417963 0.748548 0.400000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 4.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 5.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.123650 -1.927982 -21.508975 0.875000 0.459375 0.153125 1.500000 0.113766 0.514766 -0.417963 0.748548 0.400000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 5.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 6.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.123650 -1.927982 -21.508975 1.050000 0.551250 0.183750 1.500000 0.113766 0.514766 -0.417963 0.748548 0.400000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 6.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 7.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.123650 -1.927982 -21.508975 1.225000 0.643125 0.214375 1.500000 0.113766 0.514766 -0.417963 0.748548 0.400000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 7.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 8.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.123650 -1.927982 -21.508975 1.400000 0.735000 0.245000 1.500000 0.113766 0.514766 -0.417963 0.748548 0.400000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 8.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 9.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.123650 -1.927982 -21.508975 1.575000 0.826875 0.275625 1.500000 0.113766 0.514766 -0.417963 0.748548 0.400000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 9.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 10.500 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.123650 -1.927982 -21.508975 1.750000 0.918750 0.306250 1.500000 0.113766 0.514766 -0.417963 0.748548 0.400000
 ANIM_end
 ANIM_begin
 ANIM_hide 0.000000 0.000000 sim/cockpit/electrical/avionics_on
@@ -9647,64 +9717,896 @@ ANIM_hide 10.500 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
 LIGHT_PARAM airplane_inst_sp 0.304619 -1.646227 -21.610532 7.000000 3.675000 1.225000 1.500000 0.120000 -0.581238 0.782210 -0.224295 0.400000
 ANIM_end
 ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 0.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 1.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.040388 -1.877311 -21.578650 0.700000 0.367500 0.122500 1.500000 0.178370 -0.581238 0.782210 -0.224295 0.400000
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.877311 -21.578650 0.700000 0.367500 0.122500 1.500000 0.120000 -0.581238 0.782210 -0.224295 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 1.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 2.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.877311 -21.578650 1.400000 0.735000 0.245000 1.500000 0.120000 -0.581238 0.782210 -0.224295 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 2.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 3.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.877311 -21.578650 2.100000 1.102500 0.367500 1.500000 0.120000 -0.581238 0.782210 -0.224295 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 3.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 4.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.877311 -21.578650 2.800000 1.470000 0.490000 1.500000 0.120000 -0.581238 0.782210 -0.224295 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 4.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 5.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.877311 -21.578650 3.500000 1.837500 0.612500 1.500000 0.120000 -0.581238 0.782210 -0.224295 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 5.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 6.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.877311 -21.578650 4.200000 2.205000 0.735000 1.500000 0.120000 -0.581238 0.782210 -0.224295 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 6.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 7.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.877311 -21.578650 4.900000 2.572500 0.857500 1.500000 0.120000 -0.581238 0.782210 -0.224295 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 7.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 8.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.877311 -21.578650 5.600000 2.940000 0.980000 1.500000 0.120000 -0.581238 0.782210 -0.224295 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 8.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 9.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.877311 -21.578650 6.300000 3.307500 1.102500 1.500000 0.120000 -0.581238 0.782210 -0.224295 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 9.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 10.500 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.877311 -21.578650 7.000000 3.675000 1.225000 1.500000 0.120000 -0.581238 0.782210 -0.224295 0.550000
+ANIM_end
+# --- v1 copies of the centre-instrument lights (instruments tilted 5 deg in cockpit v1) ---
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 0.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 1.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.736994 -21.612472 0.700000 0.367500 0.122500 1.500000 0.130000 0.514496 -0.854230 0.074735 0.550000
 ANIM_end
 ANIM_begin
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 1.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 2.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.040388 -1.877311 -21.578650 1.400000 0.735000 0.245000 1.500000 0.178370 -0.581238 0.782210 -0.224295 0.400000
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.736994 -21.612472 1.400000 0.735000 0.245000 1.500000 0.130000 0.514496 -0.854230 0.074735 0.550000
 ANIM_end
 ANIM_begin
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 2.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 3.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.040388 -1.877311 -21.578650 2.100000 1.102500 0.367500 1.500000 0.178370 -0.581238 0.782210 -0.224295 0.400000
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.736994 -21.612472 2.100000 1.102500 0.367500 1.500000 0.130000 0.514496 -0.854230 0.074735 0.550000
 ANIM_end
 ANIM_begin
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 3.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 4.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.040388 -1.877311 -21.578650 2.800000 1.470000 0.490000 1.500000 0.178370 -0.581238 0.782210 -0.224295 0.400000
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.736994 -21.612472 2.800000 1.470000 0.490000 1.500000 0.130000 0.514496 -0.854230 0.074735 0.550000
 ANIM_end
 ANIM_begin
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 4.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 5.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.040388 -1.877311 -21.578650 3.500000 1.837500 0.612500 1.500000 0.178370 -0.581238 0.782210 -0.224295 0.400000
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.736994 -21.612472 3.500000 1.837500 0.612500 1.500000 0.130000 0.514496 -0.854230 0.074735 0.550000
 ANIM_end
 ANIM_begin
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 5.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 6.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.040388 -1.877311 -21.578650 4.200000 2.205000 0.735000 1.500000 0.178370 -0.581238 0.782210 -0.224295 0.400000
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.736994 -21.612472 4.200000 2.205000 0.735000 1.500000 0.130000 0.514496 -0.854230 0.074735 0.550000
 ANIM_end
 ANIM_begin
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 6.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 7.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.040388 -1.877311 -21.578650 4.900000 2.572500 0.857500 1.500000 0.178370 -0.581238 0.782210 -0.224295 0.400000
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.736994 -21.612472 4.900000 2.572500 0.857500 1.500000 0.130000 0.514496 -0.854230 0.074735 0.550000
 ANIM_end
 ANIM_begin
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 7.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 8.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.040388 -1.877311 -21.578650 5.600000 2.940000 0.980000 1.500000 0.178370 -0.581238 0.782210 -0.224295 0.400000
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.736994 -21.612472 5.600000 2.940000 0.980000 1.500000 0.130000 0.514496 -0.854230 0.074735 0.550000
 ANIM_end
 ANIM_begin
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 8.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 9.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.040388 -1.877311 -21.578650 6.300000 3.307500 1.102500 1.500000 0.178370 -0.581238 0.782210 -0.224295 0.400000
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.736994 -21.612472 6.300000 3.307500 1.102500 1.500000 0.130000 0.514496 -0.854230 0.074735 0.550000
 ANIM_end
 ANIM_begin
 ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
 ANIM_hide -300.000000 9.001 tu154b2/custom/lights/mid_right_panel_int_set
 ANIM_hide 10.500 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
-LIGHT_PARAM airplane_inst_sp -0.040388 -1.877311 -21.578650 7.000000 3.675000 1.225000 1.500000 0.178370 -0.581238 0.782210 -0.224295 0.400000
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.736994 -21.612472 7.000000 3.675000 1.225000 1.500000 0.130000 0.514496 -0.854230 0.074735 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 0.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 1.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.737766 -21.612256 0.700000 0.367500 0.122500 1.500000 0.130000 -0.581238 -0.810637 0.070922 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 1.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 2.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.737766 -21.612256 1.400000 0.735000 0.245000 1.500000 0.130000 -0.581238 -0.810637 0.070922 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 2.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 3.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.737766 -21.612256 2.100000 1.102500 0.367500 1.500000 0.130000 -0.581238 -0.810637 0.070922 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 3.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 4.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.737766 -21.612256 2.800000 1.470000 0.490000 1.500000 0.130000 -0.581238 -0.810637 0.070922 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 4.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 5.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.737766 -21.612256 3.500000 1.837500 0.612500 1.500000 0.130000 -0.581238 -0.810637 0.070922 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 5.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 6.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.737766 -21.612256 4.200000 2.205000 0.735000 1.500000 0.130000 -0.581238 -0.810637 0.070922 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 6.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 7.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.737766 -21.612256 4.900000 2.572500 0.857500 1.500000 0.130000 -0.581238 -0.810637 0.070922 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 7.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 8.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.737766 -21.612256 5.600000 2.940000 0.980000 1.500000 0.130000 -0.581238 -0.810637 0.070922 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 8.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 9.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.737766 -21.612256 6.300000 3.307500 1.102500 1.500000 0.130000 -0.581238 -0.810637 0.070922 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 9.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 10.500 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.737766 -21.612256 7.000000 3.675000 1.225000 1.500000 0.130000 -0.581238 -0.810637 0.070922 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 0.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 1.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.878501 -21.579763 0.700000 0.367500 0.122500 1.500000 0.120000 0.514496 0.800539 -0.307298 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 1.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 2.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.878501 -21.579763 1.400000 0.735000 0.245000 1.500000 0.120000 0.514496 0.800539 -0.307298 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 2.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 3.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.878501 -21.579763 2.100000 1.102500 0.367500 1.500000 0.120000 0.514496 0.800539 -0.307298 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 3.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 4.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.878501 -21.579763 2.800000 1.470000 0.490000 1.500000 0.120000 0.514496 0.800539 -0.307298 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 4.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 5.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.878501 -21.579763 3.500000 1.837500 0.612500 1.500000 0.120000 0.514496 0.800539 -0.307298 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 5.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 6.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.878501 -21.579763 4.200000 2.205000 0.735000 1.500000 0.120000 0.514496 0.800539 -0.307298 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 6.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 7.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.878501 -21.579763 4.900000 2.572500 0.857500 1.500000 0.120000 0.514496 0.800539 -0.307298 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 7.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 8.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.878501 -21.579763 5.600000 2.940000 0.980000 1.500000 0.120000 0.514496 0.800539 -0.307298 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 8.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 9.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.878501 -21.579763 6.300000 3.307500 1.102500 1.500000 0.120000 0.514496 0.800539 -0.307298 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 9.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 10.500 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.108889 -1.878501 -21.579763 7.000000 3.675000 1.225000 1.500000 0.120000 0.514496 0.800539 -0.307298 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 0.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 1.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.877755 -21.579930 0.700000 0.367500 0.122500 1.500000 0.120000 -0.581238 0.759685 -0.291616 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 1.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 2.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.877755 -21.579930 1.400000 0.735000 0.245000 1.500000 0.120000 -0.581238 0.759685 -0.291616 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 2.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 3.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.877755 -21.579930 2.100000 1.102500 0.367500 1.500000 0.120000 -0.581238 0.759685 -0.291616 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 3.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 4.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.877755 -21.579930 2.800000 1.470000 0.490000 1.500000 0.120000 -0.581238 0.759685 -0.291616 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 4.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 5.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.877755 -21.579930 3.500000 1.837500 0.612500 1.500000 0.120000 -0.581238 0.759685 -0.291616 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 5.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 6.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.877755 -21.579930 4.200000 2.205000 0.735000 1.500000 0.120000 -0.581238 0.759685 -0.291616 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 6.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 7.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.877755 -21.579930 4.900000 2.572500 0.857500 1.500000 0.120000 -0.581238 0.759685 -0.291616 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 7.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 8.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.877755 -21.579930 5.600000 2.940000 0.980000 1.500000 0.120000 -0.581238 0.759685 -0.291616 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 8.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 9.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.877755 -21.579930 6.300000 3.307500 1.102500 1.500000 0.120000 -0.581238 0.759685 -0.291616 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 9.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 10.500 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp -0.040388 -1.877755 -21.579930 7.000000 3.675000 1.225000 1.500000 0.120000 -0.581238 0.759685 -0.291616 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 0.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 1.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.741577 -21.611340 0.700000 0.367500 0.122500 1.500000 0.130000 0.514496 -0.854230 0.074735 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 1.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 2.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.741577 -21.611340 1.400000 0.735000 0.245000 1.500000 0.130000 0.514496 -0.854230 0.074735 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 2.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 3.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.741577 -21.611340 2.100000 1.102500 0.367500 1.500000 0.130000 0.514496 -0.854230 0.074735 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 3.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 4.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.741577 -21.611340 2.800000 1.470000 0.490000 1.500000 0.130000 0.514496 -0.854230 0.074735 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 4.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 5.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.741577 -21.611340 3.500000 1.837500 0.612500 1.500000 0.130000 0.514496 -0.854230 0.074735 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 5.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 6.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.741577 -21.611340 4.200000 2.205000 0.735000 1.500000 0.130000 0.514496 -0.854230 0.074735 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 6.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 7.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.741577 -21.611340 4.900000 2.572500 0.857500 1.500000 0.130000 0.514496 -0.854230 0.074735 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 7.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 8.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.741577 -21.611340 5.600000 2.940000 0.980000 1.500000 0.130000 0.514496 -0.854230 0.074735 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 8.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 9.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.741577 -21.611340 6.300000 3.307500 1.102500 1.500000 0.130000 0.514496 -0.854230 0.074735 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 9.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 10.500 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.741577 -21.611340 7.000000 3.675000 1.225000 1.500000 0.130000 0.514496 -0.854230 0.074735 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 0.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 1.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.742344 -21.611181 0.700000 0.367500 0.122500 1.500000 0.130000 -0.581238 -0.810637 0.070922 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 1.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 2.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.742344 -21.611181 1.400000 0.735000 0.245000 1.500000 0.130000 -0.581238 -0.810637 0.070922 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 2.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 3.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.742344 -21.611181 2.100000 1.102500 0.367500 1.500000 0.130000 -0.581238 -0.810637 0.070922 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 3.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 4.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.742344 -21.611181 2.800000 1.470000 0.490000 1.500000 0.130000 -0.581238 -0.810637 0.070922 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 4.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 5.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.742344 -21.611181 3.500000 1.837500 0.612500 1.500000 0.130000 -0.581238 -0.810637 0.070922 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 5.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 6.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.742344 -21.611181 4.200000 2.205000 0.735000 1.500000 0.130000 -0.581238 -0.810637 0.070922 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 6.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 7.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.742344 -21.611181 4.900000 2.572500 0.857500 1.500000 0.130000 -0.581238 -0.810637 0.070922 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 7.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 8.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.742344 -21.611181 5.600000 2.940000 0.980000 1.500000 0.130000 -0.581238 -0.810637 0.070922 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 8.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 9.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.742344 -21.611181 6.300000 3.307500 1.102500 1.500000 0.130000 -0.581238 -0.810637 0.070922 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 9.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 10.500 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.742344 -21.611181 7.000000 3.675000 1.225000 1.500000 0.130000 -0.581238 -0.810637 0.070922 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 0.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 1.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.881209 -21.579134 0.700000 0.367500 0.122500 1.500000 0.120000 0.514496 0.800539 -0.307298 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 1.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 2.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.881209 -21.579134 1.400000 0.735000 0.245000 1.500000 0.120000 0.514496 0.800539 -0.307298 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 2.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 3.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.881209 -21.579134 2.100000 1.102500 0.367500 1.500000 0.120000 0.514496 0.800539 -0.307298 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 3.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 4.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.881209 -21.579134 2.800000 1.470000 0.490000 1.500000 0.120000 0.514496 0.800539 -0.307298 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 4.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 5.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.881209 -21.579134 3.500000 1.837500 0.612500 1.500000 0.120000 0.514496 0.800539 -0.307298 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 5.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 6.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.881209 -21.579134 4.200000 2.205000 0.735000 1.500000 0.120000 0.514496 0.800539 -0.307298 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 6.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 7.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.881209 -21.579134 4.900000 2.572500 0.857500 1.500000 0.120000 0.514496 0.800539 -0.307298 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 7.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 8.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.881209 -21.579134 5.600000 2.940000 0.980000 1.500000 0.120000 0.514496 0.800539 -0.307298 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 8.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 9.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.881209 -21.579134 6.300000 3.307500 1.102500 1.500000 0.120000 0.514496 0.800539 -0.307298 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 9.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 10.500 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.021845 -1.881209 -21.579134 7.000000 3.675000 1.225000 1.500000 0.120000 0.514496 0.800539 -0.307298 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 0.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 1.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.880475 -21.579310 0.700000 0.367500 0.122500 1.500000 0.120000 -0.581238 0.759685 -0.291616 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 1.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 2.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.880475 -21.579310 1.400000 0.735000 0.245000 1.500000 0.120000 -0.581238 0.759685 -0.291616 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 2.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 3.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.880475 -21.579310 2.100000 1.102500 0.367500 1.500000 0.120000 -0.581238 0.759685 -0.291616 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 3.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 4.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.880475 -21.579310 2.800000 1.470000 0.490000 1.500000 0.120000 -0.581238 0.759685 -0.291616 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 4.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 5.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.880475 -21.579310 3.500000 1.837500 0.612500 1.500000 0.120000 -0.581238 0.759685 -0.291616 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 5.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 6.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.880475 -21.579310 4.200000 2.205000 0.735000 1.500000 0.120000 -0.581238 0.759685 -0.291616 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 6.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 7.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.880475 -21.579310 4.900000 2.572500 0.857500 1.500000 0.120000 -0.581238 0.759685 -0.291616 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 7.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 8.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.880475 -21.579310 5.600000 2.940000 0.980000 1.500000 0.120000 -0.581238 0.759685 -0.291616 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 8.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 9.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.880475 -21.579310 6.300000 3.307500 1.102500 1.500000 0.120000 -0.581238 0.759685 -0.291616 0.550000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 9.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 10.500 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+LIGHT_PARAM airplane_inst_sp 0.089436 -1.880475 -21.579310 7.000000 3.675000 1.225000 1.500000 0.120000 -0.581238 0.759685 -0.291616 0.550000
+ANIM_end
+# --- pedestal: RSBN azimuth (v1) bottom pair + map instrument small glass ---
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 0.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 1.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.123650 -1.960855 -21.423339 0.175000 0.091875 0.030625 1.500000 0.113766 0.514766 0.190273 -0.835950 0.400000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 1.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 2.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.123650 -1.960855 -21.423339 0.350000 0.183750 0.061250 1.500000 0.113766 0.514766 0.190273 -0.835950 0.400000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 2.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 3.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.123650 -1.960855 -21.423339 0.525000 0.275625 0.091875 1.500000 0.113766 0.514766 0.190273 -0.835950 0.400000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 3.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 4.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.123650 -1.960855 -21.423339 0.700000 0.367500 0.122500 1.500000 0.113766 0.514766 0.190273 -0.835950 0.400000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 4.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 5.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.123650 -1.960855 -21.423339 0.875000 0.459375 0.153125 1.500000 0.113766 0.514766 0.190273 -0.835950 0.400000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 5.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 6.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.123650 -1.960855 -21.423339 1.050000 0.551250 0.183750 1.500000 0.113766 0.514766 0.190273 -0.835950 0.400000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 6.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 7.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.123650 -1.960855 -21.423339 1.225000 0.643125 0.214375 1.500000 0.113766 0.514766 0.190273 -0.835950 0.400000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 7.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 8.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.123650 -1.960855 -21.423339 1.400000 0.735000 0.245000 1.500000 0.113766 0.514766 0.190273 -0.835950 0.400000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 8.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 9.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.123650 -1.960855 -21.423339 1.575000 0.826875 0.275625 1.500000 0.113766 0.514766 0.190273 -0.835950 0.400000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 9.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 10.500 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.123650 -1.960855 -21.423339 1.750000 0.918750 0.306250 1.500000 0.113766 0.514766 0.190273 -0.835950 0.400000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 0.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 1.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.167341 -1.960682 -21.423789 0.175000 0.091875 0.030625 1.500000 0.113766 -0.581278 0.180279 -0.793483 0.400000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 1.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 2.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.167341 -1.960682 -21.423789 0.350000 0.183750 0.061250 1.500000 0.113766 -0.581278 0.180279 -0.793483 0.400000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 2.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 3.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.167341 -1.960682 -21.423789 0.525000 0.275625 0.091875 1.500000 0.113766 -0.581278 0.180279 -0.793483 0.400000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 3.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 4.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.167341 -1.960682 -21.423789 0.700000 0.367500 0.122500 1.500000 0.113766 -0.581278 0.180279 -0.793483 0.400000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 4.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 5.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.167341 -1.960682 -21.423789 0.875000 0.459375 0.153125 1.500000 0.113766 -0.581278 0.180279 -0.793483 0.400000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 5.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 6.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.167341 -1.960682 -21.423789 1.050000 0.551250 0.183750 1.500000 0.113766 -0.581278 0.180279 -0.793483 0.400000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 6.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 7.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.167341 -1.960682 -21.423789 1.225000 0.643125 0.214375 1.500000 0.113766 -0.581278 0.180279 -0.793483 0.400000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 7.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 8.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.167341 -1.960682 -21.423789 1.400000 0.735000 0.245000 1.500000 0.113766 -0.581278 0.180279 -0.793483 0.400000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 8.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 9.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.167341 -1.960682 -21.423789 1.575000 0.826875 0.275625 1.500000 0.113766 -0.581278 0.180279 -0.793483 0.400000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide -300.000000 9.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 10.500 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.167341 -1.960682 -21.423789 1.750000 0.918750 0.306250 1.500000 0.113766 -0.581278 0.180279 -0.793483 0.400000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 0.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 1.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.003600 -1.909935 -21.537852 1.400000 0.735000 0.245000 1.500000 0.060000 0.523139 -0.176449 -0.833782 0.500000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 1.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 2.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.003600 -1.909935 -21.537852 2.800000 1.470000 0.490000 1.500000 0.060000 0.523139 -0.176449 -0.833782 0.500000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 2.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 3.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.003600 -1.909935 -21.537852 4.200000 2.205000 0.735000 1.500000 0.060000 0.523139 -0.176449 -0.833782 0.500000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 3.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 4.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.003600 -1.909935 -21.537852 5.600000 2.940000 0.980000 1.500000 0.060000 0.523139 -0.176449 -0.833782 0.500000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 4.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 5.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.003600 -1.909935 -21.537852 7.000000 3.675000 1.225000 1.500000 0.060000 0.523139 -0.176449 -0.833782 0.500000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 5.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 6.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.003600 -1.909935 -21.537852 8.400000 4.410000 1.470000 1.500000 0.060000 0.523139 -0.176449 -0.833782 0.500000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 6.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 7.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.003600 -1.909935 -21.537852 9.800000 5.145000 1.715000 1.500000 0.060000 0.523139 -0.176449 -0.833782 0.500000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 7.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 8.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.003600 -1.909935 -21.537852 11.200000 5.880000 1.960000 1.500000 0.060000 0.523139 -0.176449 -0.833782 0.500000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 8.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 9.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.003600 -1.909935 -21.537852 12.600000 6.615000 2.205000 1.500000 0.060000 0.523139 -0.176449 -0.833782 0.500000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 9.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 10.500 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.003600 -1.909935 -21.537852 14.000000 7.350000 2.450000 1.500000 0.060000 0.523139 -0.176449 -0.833782 0.500000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 0.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 1.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.019500 -1.909935 -21.537852 1.400000 0.735000 0.245000 1.500000 0.060000 -0.527923 -0.175837 -0.830890 0.500000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 1.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 2.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.019500 -1.909935 -21.537852 2.800000 1.470000 0.490000 1.500000 0.060000 -0.527923 -0.175837 -0.830890 0.500000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 2.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 3.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.019500 -1.909935 -21.537852 4.200000 2.205000 0.735000 1.500000 0.060000 -0.527923 -0.175837 -0.830890 0.500000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 3.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 4.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.019500 -1.909935 -21.537852 5.600000 2.940000 0.980000 1.500000 0.060000 -0.527923 -0.175837 -0.830890 0.500000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 4.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 5.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.019500 -1.909935 -21.537852 7.000000 3.675000 1.225000 1.500000 0.060000 -0.527923 -0.175837 -0.830890 0.500000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 5.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 6.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.019500 -1.909935 -21.537852 8.400000 4.410000 1.470000 1.500000 0.060000 -0.527923 -0.175837 -0.830890 0.500000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 6.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 7.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.019500 -1.909935 -21.537852 9.800000 5.145000 1.715000 1.500000 0.060000 -0.527923 -0.175837 -0.830890 0.500000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 7.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 8.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.019500 -1.909935 -21.537852 11.200000 5.880000 1.960000 1.500000 0.060000 -0.527923 -0.175837 -0.830890 0.500000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 8.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 9.001 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.019500 -1.909935 -21.537852 12.600000 6.615000 2.205000 1.500000 0.060000 -0.527923 -0.175837 -0.830890 0.500000
+ANIM_end
+ANIM_begin
+ANIM_hide -300.000000 0.000000 tu154b2/custom/elec/bus36_volt_left
+ANIM_hide -300.000000 9.001 tu154b2/custom/lights/mid_right_panel_int_set
+ANIM_hide 10.500 300.000000 tu154b2/custom/lights/mid_right_panel_int_set
+LIGHT_PARAM airplane_inst_sp 0.019500 -1.909935 -21.537852 14.000000 7.350000 2.450000 1.500000 0.060000 -0.527923 -0.175837 -0.830890 0.500000
 ANIM_end
 # --- front-panel lights from Blender marker edit (new_lights_6.obj) ---
 ANIM_begin
