@@ -1349,7 +1349,7 @@ objects/aux_stuff_1.obj|793819
 objects/aux_stuff_1.png|1318245
 objects/azs_panel.png|3321949
 objects/azs_panel_LIT.png|2323715
-objects/azs_panels.obj|608625
+objects/azs_panels.obj|664025
 objects/cockpit_1.obj|14699191
 objects/cockpit_1.png|10212772
 objects/cockpit_1_NML.png|11659837
