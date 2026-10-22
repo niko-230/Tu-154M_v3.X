@@ -1390,7 +1390,7 @@ objects/cockpit_front_panel_90th_RUS.png|1012208730
 objects/cockpit_front_panel_90th_RUS_LIT.png|2731952455
 objects/cockpit_front_panel_RUS.obj|37104541
 objects/cockpit_front_panel_RUS.png|3523386760
-objects/cockpit_front_panel_RUS_LIT.png|400428649
+objects/cockpit_front_panel_RUS_LIT.png|2686489037
 objects/cockpit_front_panel_RUS_NML.png|1152811260
 objects/cockpit_front_panel_blend_RUS.obj|2093338815
 objects/cockpit_front_panel_kontur_RUS.obj|1477939822
