@@ -1349,7 +1349,7 @@ objects/aux_stuff_1.obj|793819
 objects/aux_stuff_1.png|1318245
 objects/azs_panel.png|3321949
 objects/azs_panel_LIT.png|2323715
-objects/azs_panels.obj|491157
+objects/azs_panels.obj|483236
 objects/cockpit_1.obj|14699191
 objects/cockpit_1.png|10212772
 objects/cockpit_1_NML.png|11659837
@@ -1388,12 +1388,12 @@ objects/cockpit_front_panel_70th_RUS.png|17702289
 objects/cockpit_front_panel_90th_RUS.obj|40
 objects/cockpit_front_panel_90th_RUS.png|17697453
 objects/cockpit_front_panel_90th_RUS_LIT.png|236912
-objects/cockpit_front_panel_RUS.obj|823468
+objects/cockpit_front_panel_RUS.obj|846453
 objects/cockpit_front_panel_RUS.png|15446017
-objects/cockpit_front_panel_RUS_LIT.png|229787
+objects/cockpit_front_panel_RUS_LIT.png|252586
 objects/cockpit_front_panel_RUS_NML.png|6961442
-objects/cockpit_front_panel_blend_RUS.obj|461832
-objects/cockpit_front_panel_kontur_RUS.obj|925426
+objects/cockpit_front_panel_blend_RUS.obj|461742
+objects/cockpit_front_panel_kontur_RUS.obj|925600
 objects/cockpit_front_panel_kontur_RUS.png|15381785
 objects/cockpit_front_panel_kontur_RUS_NML.png|8309948
 objects/cockpit_front_panel_notaws_RUS.obj|814077
@@ -1433,8 +1433,8 @@ objects/engines_b2_NML.png|1257883
 objects/ext_stuff.png|20464
 objects/fuselage.obj|2295732
 objects/fuselage.png|5796635
-objects/fuselage_NML.png|7123212
-objects/gears.obj|5432368
+objects/fuselage_NML.png|999647
+objects/gears.obj|5432333
 objects/gears.png|3094004
 objects/gears_NML.png|3059539
 objects/gears_b2.png|2871965
@@ -1545,7 +1545,7 @@ objects/windshield_thermal_out.png|158344
 objects/windshield_thermal_side.png|90405
 objects/wings.obj|1164948
 objects/wings.png|4590917
-objects/wings_NML.png|1384013
+objects/wings_NML.png|3076916
 objects/wings_b2.png|5522707
 objects/wings_b2_NML.png|623060
 objects/wiper.png|42601
@@ -1827,7 +1827,7 @@ plugins/sasl/data/modules/Custom Module/close.png|399
 plugins/sasl/data/modules/Custom Module/controls/control_fails.lua|13502
 plugins/sasl/data/modules/Custom Module/controls/controls.lua|174
 plugins/sasl/data/modules/Custom Module/controls/controls_panel.lua|41339
-plugins/sasl/data/modules/Custom Module/controls/flight_controls.lua|30012
+plugins/sasl/data/modules/Custom Module/controls/flight_controls.lua|32189
 plugins/sasl/data/modules/Custom Module/controls/landing_gears.lua|12902
 plugins/sasl/data/modules/Custom Module/controls/nosewheel.lua|6036
 plugins/sasl/data/modules/Custom Module/controls/trimmers.lua|16839
@@ -3253,10 +3253,9 @@ sounds/systems/gear.wav|2188
 sounds/weather/wind.wav|520560
 tu154.acf|2839967
 tu154_cockpit.obj|1460264
-tu154_icon11.png|113962
-tu154_icon11_thumb.png|10010
+tu154_icon11.png|135845
+tu154_icon11_thumb.png|11140
 tu154_paint.png|6686
 tu154_paint2.png|1215
 tu154_prefs.txt|4281
 tu154_vrconfig.txt|12187
-version.mak|19
