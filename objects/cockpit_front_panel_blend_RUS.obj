@@ -4328,10 +4328,6 @@ ATTR_light_level 0.000000 1.000000 tu154b2/custom/lights/ovhd_panel_int
 ATTR_no_cull
 TRIS 546 144
 ATTR_cull
-ANIM_begin
-ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
-TRIS 7632 264
-ANIM_end
 ATTR_light_level 0.000000 1.000000 tu154b2/custom/lights/ark1_all_lit
 TRIS 990 18
 TRIS 1008 12

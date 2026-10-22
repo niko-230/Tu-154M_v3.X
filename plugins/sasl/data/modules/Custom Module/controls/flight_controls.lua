@@ -383,10 +383,36 @@ end
 
 	local spd_brk_L = spd_brk_cmd * 45 * bool2int(power_27_L)
 	local spd_brk_R = spd_brk_cmd * 45 * bool2int(power_27_L)
-	if HS1 > 0.01 then
-		left_mid_sp_act = left_mid_sp_act + (spd_brk_L - left_mid_sp_act) * HS1 * passed * 15
-		right_mid_sp_act = right_mid_sp_act + (spd_brk_R - right_mid_sp_act) * HS1 * passed * 15
+	-- deployment speed copied from B donor (fixed deg/s rate, slower at high IAS)
+	if HS1 > 0.15 then
+		if (spd_brk_L - left_mid_sp_act)<=0 then
+			if math.abs(spd_brk_L - left_mid_sp_act)>1 then
+				left_mid_sp_act = left_mid_sp_act - 31.5 * HS1 * passed 
+			else
+				left_mid_sp_act = left_mid_sp_act +(spd_brk_L - left_mid_sp_act) * HS1 * passed * 31.5
+			end
+		elseif (spd_brk_L - left_mid_sp_act)>0 then
+			if math.abs(spd_brk_L - left_mid_sp_act)>1 then
+				left_mid_sp_act = left_mid_sp_act + 31.5* HS1 * passed*math.max(1-get(ias_L)/500*math.min(left_mid_sp_act/20,1),0.7)*1.5
+			else
+				left_mid_sp_act = left_mid_sp_act + (spd_brk_L - left_mid_sp_act) * HS1 * passed * 31.5*math.max(1-get(ias_L)/500*math.min(left_mid_sp_act/20,1),0.7)*1.5
+			end
+		end
+		if (spd_brk_R - right_mid_sp_act)<=0 then
+			if math.abs(spd_brk_R - right_mid_sp_act)>1 then
+				right_mid_sp_act = right_mid_sp_act - 31.5 * HS1 * passed
+			else
+				right_mid_sp_act = right_mid_sp_act +(spd_brk_R - right_mid_sp_act) * HS1 * passed * 31.5
+			end
+		elseif (spd_brk_R - right_mid_sp_act)>0 then
+			if math.abs(spd_brk_R - right_mid_sp_act)>1 then
+				right_mid_sp_act = right_mid_sp_act + 31.5 * HS1 * passed*math.max(1-get(ias_L)/500*math.min(right_mid_sp_act/20,1),0.7)*1.5
+			else
+				right_mid_sp_act = right_mid_sp_act + (spd_brk_R - right_mid_sp_act) * HS1 * passed * 31.5*math.max(1-get(ias_L)/500*math.min(right_mid_sp_act/20,1),0.7)*1.5
+			end
+		end
 	end
+
 
 if MASTER then	
 	set(spd_brk_mid_L, left_mid_sp_act * (1 - get(fail_spoil_mid_left)))
@@ -401,13 +427,31 @@ end
 
 	local spoil_L = spoilers_cmd * 50 * bool2int(power_27_L)
 	local spoil_R = spoilers_cmd * 50 * bool2int(power_27_L)
-	if HS1 > 0.01 then
-		if spoilers_cmd == 1 then 
-			left_inn_sp_act = left_inn_sp_act + (spoil_L - left_inn_sp_act) * HS1 * passed * 10
-			right_inn_sp_act = right_inn_sp_act + (spoil_R - right_inn_sp_act) * HS1 * passed * 10
+	-- deployment speed copied from B donor (fixed deg/s rate, slower at high IAS)
+	if (spoil_L - left_inn_sp_act)<=0 then
+		if math.abs(spoil_L - left_inn_sp_act)>1 then
+			left_inn_sp_act = left_inn_sp_act - 30 * HS1 * passed 
 		else
-			left_inn_sp_act = left_inn_sp_act + (spoil_L - left_inn_sp_act) * HS1 * passed * 1
-			right_inn_sp_act = right_inn_sp_act + (spoil_R - right_inn_sp_act) * HS1 * passed * 1
+			left_inn_sp_act = left_inn_sp_act +(spoil_L - left_inn_sp_act) * HS1 * passed * 30
+		end
+	elseif (spoil_L - left_inn_sp_act)>0 then
+		if math.abs(spoil_L - left_inn_sp_act)>1 then
+			left_inn_sp_act = left_inn_sp_act + 30 * HS1 * passed*math.max(1-get(ias_L)/500*math.min(left_inn_sp_act/20,1),0.1)*1.5
+		else
+			left_inn_sp_act = left_inn_sp_act + (spoil_L - left_inn_sp_act) * HS1 * passed * 30*math.max(1-get(ias_L)/500*math.min(left_inn_sp_act/20,1),0.1)*1.5
+		end
+	end
+	if (spoil_R - right_inn_sp_act)<=0 then
+		if math.abs(spoil_R - right_inn_sp_act)>1 then
+			right_inn_sp_act = right_inn_sp_act - 30* HS1 * passed
+		else
+			right_inn_sp_act = right_inn_sp_act +(spoil_R - right_inn_sp_act) * HS1 * passed * 30
+		end
+	elseif (spoil_R - right_inn_sp_act)>0 then
+		if math.abs(spoil_R - right_inn_sp_act)>1 then
+			right_inn_sp_act = right_inn_sp_act + 30 * HS1 * passed*math.max(1-get(ias_L)/500*math.min(right_inn_sp_act/20,1),0.1)*1.5
+		else
+			right_inn_sp_act = right_inn_sp_act + (spoil_R - right_inn_sp_act) * HS1 * passed * 30*math.max(1-get(ias_L)/500*math.min(right_inn_sp_act/20,1),0.1)*1.5
 		end
 	end
 
