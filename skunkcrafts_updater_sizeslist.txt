@@ -1,5 +1,5 @@
 AviTab.json|124
-KLNconfig.txt|653
+KLNconfig.txt|652
 README.md|1486
 airfoils/NACA 0009 (symmetrical).afl|25075
 airfoils/hstab.afl|22301
@@ -9,65 +9,6 @@ airfoils/wing_mod.afl|25048
 airfoils/wing_orig.afl|25047
 airfoils/wing_tip.afl|25078
 airfoils/wing_tip_orig.afl|25046
-black_box/01_08_26_000.bbox|17334
-black_box/01_09_00_000.bbox|9804
-black_box/01_09_26_000.bbox|3935729
-black_box/02_01_00_000.bbox|635642
-black_box/02_08_26_000.bbox|46108
-black_box/02_09_26_000.bbox|4574706
-black_box/03_08_26_000.bbox|496358
-black_box/03_09_26_000.bbox|3750654
-black_box/04_08_26_000.bbox|10528
-black_box/06_05_26_000.bbox|1201848
-black_box/07_05_26_000.bbox|2636979
-black_box/07_09_26_000.bbox|9139803
-black_box/08_09_26_000.bbox|7870046
-black_box/09_05_26_000.bbox|534951
-black_box/09_09_26_000.bbox|4378819
-black_box/09_10_26_000.bbox|138991
-black_box/10_08_26_000.bbox|122186
-black_box/10_09_26_000.bbox|5659400
-black_box/11_07_26_000.bbox|303355
-black_box/11_09_26_000.bbox|4721150
-black_box/12_05_26_000.bbox|13639
-black_box/12_09_26_000.bbox|6230420
-black_box/13_08_26_000.bbox|27974
-black_box/13_09_26_000.bbox|4935058
-black_box/14_09_26_000.bbox|2968932
-black_box/15_08_26_000.bbox|2157326
-black_box/16_05_26_000.bbox|797246
-black_box/16_08_26_000.bbox|2665816
-black_box/16_09_26_000.bbox|1920643
-black_box/17_08_26_000.bbox|2790433
-black_box/17_09_26_000.bbox|4137313
-black_box/18_08_26_000.bbox|3544977
-black_box/18_09_26_000.bbox|3057650
-black_box/19_08_26_000.bbox|2535068
-black_box/19_09_26_000.bbox|6136383
-black_box/20_08_26_000.bbox|4348973
-black_box/20_09_26_000.bbox|6949682
-black_box/21_06_26_000.bbox|325814
-black_box/21_08_26_000.bbox|4479664
-black_box/21_09_26_000.bbox|3148390
-black_box/22_08_26_000.bbox|2473619
-black_box/22_09_26_000.bbox|6541684
-black_box/23_08_26_000.bbox|5274177
-black_box/23_09_26_000.bbox|3544629
-black_box/24_08_26_000.bbox|2682028
-black_box/24_09_26_000.bbox|7602787
-black_box/25_08_26_000.bbox|819483
-black_box/25_09_00_000.bbox|480317
-black_box/25_09_26_000.bbox|6305826
-black_box/26_08_26_000.bbox|677523
-black_box/26_09_26_000.bbox|5843491
-black_box/27_06_26_000.bbox|904088
-black_box/27_08_26_000.bbox|6763515
-black_box/27_09_26_000.bbox|3620486
-black_box/28_08_26_000.bbox|5643434
-black_box/29_08_26_000.bbox|2762698
-black_box/30_08_26_000.bbox|5542360
-black_box/31_07_26_000.bbox|18695
-black_box/31_08_26_000.bbox|1013195
 cockpit/-PANELS-/Panel.png|298229
 cockpit/EFIS/EFIS maps/map_s_HM-1.png|3504
 cockpit/EFIS/EFIS maps/map_s_HM-2.png|3771
@@ -1229,6 +1170,7 @@ cockpit_3d/generic/VBE2A/bg_M.png|5077
 cockpit_3d/radios/GPS FMS/CDU739_screen.png|2908
 cockpit_3d/radios/GPS FMS/Garmin_530_screen.png|2920
 docs/ENG limitations.pdf|64657
+docs/ENG tech-manual.pdf|1072169
 docs/RUS limitations.pdf|65527
 docs/Readme.pdf|930093
 docs/Readme_rus.pdf|1030059
@@ -1335,7 +1277,6 @@ objects/Groza_Glass.obj|136539
 objects/Groza_Glass.png|191397
 objects/Ipad.png|1240183
 objects/Ipad_NML.png|3729549
-objects/PA3.obj|792222
 objects/Planchet.obj|465356
 objects/Planchet.png|4167053
 objects/Planchet_LIT.png|2523583
@@ -1349,7 +1290,7 @@ objects/aux_stuff_1.obj|793819
 objects/aux_stuff_1.png|1318245
 objects/azs_panel.png|3321949
 objects/azs_panel_LIT.png|2323715
-objects/azs_panels.obj|664025
+objects/azs_panels.obj|874534
 objects/cockpit_1.obj|14699191
 objects/cockpit_1.png|10212772
 objects/cockpit_1_NML.png|11659837
@@ -1357,16 +1298,12 @@ objects/cockpit_1_RUS.obj|28528677
 objects/cockpit_1_RUS.png|10396316
 objects/cockpit_1_RUS_LIT.png|106187
 objects/cockpit_1_RUS_NML.png|10445991
-objects/cockpit_1_RUS_nm.obj|18020135
-objects/cockpit_1_RUS_nm.png|9261685
 objects/cockpit_2.obj|1648278
 objects/cockpit_2.png|17029111
 objects/cockpit_2_LIT.png|312604
 objects/cockpit_center_panel.obj|769841
 objects/cockpit_center_panel_RUS.obj|730682
 objects/cockpit_center_panel_RUS.png|15915330
-objects/cockpit_center_panel_RUS_70th.obj|40
-objects/cockpit_center_panel_RUS_70th.png|18308348
 objects/cockpit_center_panel_RUS_LIT.png|573507
 objects/cockpit_center_panel_RUS_NML.png|8762506
 objects/cockpit_center_panel_blend_RUS.obj|739901
@@ -1383,11 +1320,6 @@ objects/cockpit_details_NML.png|7330058
 objects/cockpit_eng_panel_RUS.obj|1631227
 objects/cockpit_eng_panel_RUS.png|18911159
 objects/cockpit_eng_panel_RUS_LIT.png|33242
-objects/cockpit_front_panel_70th_RUS.obj|40
-objects/cockpit_front_panel_70th_RUS.png|17702289
-objects/cockpit_front_panel_90th_RUS.obj|40
-objects/cockpit_front_panel_90th_RUS.png|17697453
-objects/cockpit_front_panel_90th_RUS_LIT.png|236912
 objects/cockpit_front_panel_RUS.obj|846453
 objects/cockpit_front_panel_RUS.png|15446017
 objects/cockpit_front_panel_RUS_LIT.png|236670
@@ -1396,8 +1328,6 @@ objects/cockpit_front_panel_blend_RUS.obj|461742
 objects/cockpit_front_panel_kontur_RUS.obj|925600
 objects/cockpit_front_panel_kontur_RUS.png|15381785
 objects/cockpit_front_panel_kontur_RUS_NML.png|8309948
-objects/cockpit_front_panel_notaws_RUS.obj|814077
-objects/cockpit_front_panel_notaws_RUS.png|17508412
 objects/cockpit_glass.obj|469373
 objects/cockpit_glass.png|2372793
 objects/cockpit_glass_LIT.png|46733
@@ -1413,8 +1343,6 @@ objects/cockpit_prefill.obj|287361
 objects/cockpit_shtorki.obj|1247615
 objects/cockpit_shtorki.png|4944257
 objects/cockpit_shtorki_NML.png|6304746
-objects/cockpit_side_panel_90th_RUS.obj|40
-objects/cockpit_side_panel_90th_RUS.png|18738573
 objects/cockpit_side_panel_RUS.obj|1138018
 objects/cockpit_side_panel_RUS.png|18837654
 objects/cockpit_side_panel_RUS_LIT.png|3775
@@ -1428,8 +1356,6 @@ objects/drops_window_LIT.png|901680
 objects/engines.obj|1786107
 objects/engines.png|1998536
 objects/engines_NML.png|2543524
-objects/engines_b2.png|2185966
-objects/engines_b2_NML.png|1257883
 objects/ext_stuff.png|20464
 objects/fuselage.obj|2295732
 objects/fuselage.png|5796635
@@ -1437,8 +1363,6 @@ objects/fuselage_NML.png|999647
 objects/gears.obj|5432333
 objects/gears.png|3094004
 objects/gears_NML.png|3059539
-objects/gears_b2.png|2871965
-objects/gears_b2_NML.png|3059539
 objects/glass.obj|79538
 objects/glass.png|2773316
 objects/glass1.obj|76929
@@ -1529,10 +1453,6 @@ objects/textures_rus/GrozaGlass_ALB.png|606895
 objects/textures_rus/GrozaGlass_LIT.png|12332
 objects/textures_rus/GrozaGlass_MAT.png|353768
 objects/textures_rus/GrozaGlass_NRM.png|311812
-objects/textures_rus/PA3_ALB.png|3440839
-objects/textures_rus/PA3_LIT.png|93588
-objects/textures_rus/PA3_MAT.png|8071399
-objects/textures_rus/PA3_NRM.png|11559381
 objects/textures_rus/WXR_Screen.png|88686
 objects/tks_scale_RUS.obj|3821
 objects/tks_scale_RUS.png|38494
@@ -1664,7 +1584,8 @@ plugins/KLN90B/data/modules/configuration/widgetResources/SourceCodePro.ttf|2121
 plugins/KLN90B/data/modules/configuration/wprefs.ini|266
 plugins/KLN90B/data/modules/main.lua|8155
 plugins/KLN90B/data/modules/popupsPositions.txt|17
-plugins/KLN90B/data/modules/state.txt|937
+plugins/KLN90B/data/modules/state.txt|936
+plugins/KLN90B/data/output/SASLLog.txt|1817
 plugins/KLN90B/data/output/readme.txt|57
 plugins/KLN90B/functions.txt|6374
 plugins/KLN90B/liblinux/libc++.so|28
@@ -1684,7 +1605,7 @@ plugins/sasl/License|3350
 plugins/sasl/OpenAL32.dll|294774
 plugins/sasl/changelog.txt|52660
 plugins/sasl/data/.vscode/settings.json|69
-plugins/sasl/data/api/api.lua|115033
+plugins/sasl/data/api/api.lua|113970
 plugins/sasl/data/components/Roboto-Regular-LICENSE.txt|11358
 plugins/sasl/data/components/Roboto-Regular.ttf|171676
 plugins/sasl/data/components/bu/Roboto-Regular-LICENSE.txt|11358
@@ -1969,7 +1890,7 @@ plugins/sasl/data/modules/Custom Module/main_panel/radar/radar_line.png|4393
 plugins/sasl/data/modules/Custom Module/main_panel/radar/radar_mask.png|11141
 plugins/sasl/data/modules/Custom Module/main_panel/radar/radar_mask_drift.png|7586
 plugins/sasl/data/modules/Custom Module/main_panel/radar/radar_mask_drift2.png|3142
-plugins/sasl/data/modules/Custom Module/main_panel/radar_kontur.lua|9107
+plugins/sasl/data/modules/Custom Module/main_panel/radar_kontur.lua|8478
 plugins/sasl/data/modules/Custom Module/main_panel/radar_test.lua|1698
 plugins/sasl/data/modules/Custom Module/main_panel/radar_test_draw.lua|2985
 plugins/sasl/data/modules/Custom Module/main_panel/radio/ark15.lua|15671
@@ -2063,7 +1984,7 @@ plugins/sasl/data/modules/Custom Module/main_panel/vbe_altimeter/vbe_scale.psd|2
 plugins/sasl/data/modules/Custom Module/main_panel/vbe_altimeter/vbe_scale2.png|7930
 plugins/sasl/data/modules/Custom Module/main_panel/vent.lua|7128
 plugins/sasl/data/modules/Custom Module/main_panel/vers.lua|1356
-plugins/sasl/data/modules/Custom Module/main_panel/vhf2_display.lua|2915
+plugins/sasl/data/modules/Custom Module/main_panel/vhf2_display.lua|2310
 plugins/sasl/data/modules/Custom Module/main_panel/vhf2_freq_text.lua|5072
 plugins/sasl/data/modules/Custom Module/main_panel/water_panel.lua|8527
 plugins/sasl/data/modules/Custom Module/morse.ttf|36976
@@ -3146,10 +3067,11 @@ plugins/sasl/data/modules/configuration/configurationExample.ini|1437
 plugins/sasl/data/modules/configuration/readme.txt|54
 plugins/sasl/data/modules/configuration/widgetResources/SourceCodePro-LICENSE.txt|4529
 plugins/sasl/data/modules/configuration/widgetResources/SourceCodePro.ttf|212160
-plugins/sasl/data/modules/configuration/wprefs.ini|275
+plugins/sasl/data/modules/configuration/wprefs.ini|274
 plugins/sasl/data/modules/main.lua|4229
 plugins/sasl/data/modules/state.txt|2715
 plugins/sasl/data/modulesdataref_creator_4.lua|0
+plugins/sasl/data/output/SASLLog.txt|36432
 plugins/sasl/data/output/readme.txt|57
 plugins/sasl/data/scripts/init.lua|43226
 plugins/sasl/functions.txt|6374
@@ -3251,11 +3173,12 @@ sounds/systems/click.wav|2188
 sounds/systems/flap.wav|2188
 sounds/systems/gear.wav|2188
 sounds/weather/wind.wav|520560
-tu154.acf|2839967
+tu154.acf|2836140
 tu154_cockpit.obj|1460264
-tu154_icon11.png|135845
-tu154_icon11_thumb.png|11140
+tu154_icon11.png|113962
+tu154_icon11_thumb.png|10010
 tu154_paint.png|6686
 tu154_paint2.png|1215
-tu154_prefs.txt|4281
+tu154_prefs.txt|4283
 tu154_vrconfig.txt|12187
+version.mak|19
