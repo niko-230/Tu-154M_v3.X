@@ -153,18 +153,14 @@ function update()
 				-- set(az,brg-1)
 			-- end
 		-- end
-		--- gain (radar sensitivity), now in meteo (WX, mode 3) AND ground map (mode 4)
-		-- X-Plane's radar gain runs 0..2; 1.0 = its calibrated/auto setting, which
-		-- mainly shows strong (thunderstorm) returns. Higher gain also shows the
-		-- weaker returns of ordinary rain. B donor applied the РРУ knob only in
-		-- ground map and fixed meteo at 1.0 - that is why only storms showed.
-		-- The РРУ knob of the side that controls the radar (gn, 0..1) now sweeps
-		-- from GAIN_MIN to GAIN_MAX. Default knob position 0.8 -> 1.88.
-		local GAIN_MIN = 1.4   -- knob fully left
-		local GAIN_MAX = 2.0   -- knob fully right (X-Plane maximum)
+		--- gain (works only for MAP mode)
 		if get(kontur_on) == 1 then
-			if wx_mode == 3 or wx_mode == 4 then
-				wx_gain = GAIN_MIN + (GAIN_MAX - GAIN_MIN) * math.max(0, math.min(1, gn))
+			if wx_mode == 4 then
+				if gn==0 then
+					wx_gain=1
+				else
+					wx_gain=gn*2
+				end
 			else
 				wx_gain=1
 			end

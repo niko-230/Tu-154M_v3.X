@@ -2,8 +2,19 @@ state = {
     ['legacyPopups'] = {
     };
     ['contextWindows'] = {
-        ['KLN90B_DISPLAY'] = {
+        ['KLN90B'] = {
+            ['mode'] = {
+                [1] = 0;
+            };
+            ['position'] = {
+                [1] = 628;
+                [2] = 54;
+                [3] = 718;
+                [4] = 257;
+            };
             ['visible'] = false;
+        };
+        ['KLN90B_DISPLAY'] = {
             ['mode'] = {
                 [1] = 0;
             };
@@ -13,9 +24,9 @@ state = {
                 [3] = 477;
                 [4] = 282;
             };
+            ['visible'] = false;
         };
         ['MD41'] = {
-            ['visible'] = false;
             ['mode'] = {
                 [1] = 0;
             };
@@ -25,18 +36,7 @@ state = {
                 [3] = 411;
                 [4] = 177;
             };
-        };
-        ['KLN90B'] = {
             ['visible'] = false;
-            ['mode'] = {
-                [1] = 0;
-            };
-            ['position'] = {
-                [1] = 374;
-                [2] = 297;
-                [3] = 718;
-                [4] = 257;
-            };
         };
     };
 };
