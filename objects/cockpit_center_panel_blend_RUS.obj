@@ -9889,7 +9889,6 @@ ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 TRIS 0 1230
 ANIM_end
 TRIS 1230 5472
-TRIS 6702 30
 TRIS 6732 2382
 ANIM_begin
 ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on

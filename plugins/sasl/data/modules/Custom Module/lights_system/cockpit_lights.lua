@@ -320,7 +320,7 @@ set(eng_panel_flood, eng_flood)
     
     
 local km_flood = get(km_panel_flood_set) * light_coef_27
-set(l10_3, km_flood * 1.5)
+set(l10_3, km_flood * 0.5)  -- KM panel spill lamps under the oil quantity indicator: max brightness 1/3 of original (was 1.5)
 set(km_panel_flood, km_flood)
 
 local azs_flood = get(azs_panel_flood_set) * light_coef_27

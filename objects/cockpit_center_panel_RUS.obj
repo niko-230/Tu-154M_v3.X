@@ -10034,7 +10034,9 @@ TRIS 408 6
 ATTR_light_level 0.000000 1.000000 tu154b2/custom/lights/nvu_panel_int
 TRIS 414 120
 ATTR_light_level_reset
-TRIS 534 19275
+TRIS 534 759
+TRIS 1353 3
+TRIS 1677 18132
 TRIS 20577 5259
 ATTR_light_level 0.000000 1.000000 tu154b2/custom/light/no_LIT
 TRIS 25836 192
