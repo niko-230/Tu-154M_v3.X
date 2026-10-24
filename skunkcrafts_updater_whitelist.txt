@@ -1290,11 +1290,11 @@ objects/aux_stuff_1.obj|1541727277
 objects/aux_stuff_1.png|2584167065
 objects/azs_panel.png|3950294998
 objects/azs_panel_LIT.png|47489282
-objects/azs_panels.obj|4275338943
+objects/azs_panels.obj|1130761224
 objects/cockpit_1.obj|875589475
 objects/cockpit_1.png|2779735781
 objects/cockpit_1_NML.png|4001591915
-objects/cockpit_1_RUS.obj|952831723
+objects/cockpit_1_RUS.obj|2587248594
 objects/cockpit_1_RUS.png|976430686
 objects/cockpit_1_RUS_LIT.png|3268489700
 objects/cockpit_1_RUS_NML.png|677432332
@@ -1302,40 +1302,40 @@ objects/cockpit_2.obj|2368475654
 objects/cockpit_2.png|1681218525
 objects/cockpit_2_LIT.png|4024883899
 objects/cockpit_center_panel.obj|3141048619
-objects/cockpit_center_panel_RUS.obj|808005209
-objects/cockpit_center_panel_RUS.png|4143224163
+objects/cockpit_center_panel_RUS.obj|78187454
+objects/cockpit_center_panel_RUS.png|823545602
 objects/cockpit_center_panel_RUS_LIT.png|1082739747
 objects/cockpit_center_panel_RUS_NML.png|2323546716
-objects/cockpit_center_panel_blend_RUS.obj|2003705317
-objects/cockpit_center_panel_v1_RUS.obj|1108261195
-objects/cockpit_center_panel_v1_RUS.png|2983657794
+objects/cockpit_center_panel_blend_RUS.obj|411836873
+objects/cockpit_center_panel_v1_RUS.obj|1297990773
+objects/cockpit_center_panel_v1_RUS.png|465927261
 objects/cockpit_center_panel_v1_RUS_LIT.png|3547530027
 objects/cockpit_center_panel_v1_RUS_NML.png|3109606282
-objects/cockpit_chairs.obj|2172652798
+objects/cockpit_chairs.obj|1334948345
 objects/cockpit_chairs.png|1886447054
 objects/cockpit_chairs_NML.png|3721951477
-objects/cockpit_details.obj|3259350685
+objects/cockpit_details.obj|3754340895
 objects/cockpit_details.png|3761200128
 objects/cockpit_details_NML.png|856661332
 objects/cockpit_eng_panel_RUS.obj|4021711602
 objects/cockpit_eng_panel_RUS.png|2865374119
 objects/cockpit_eng_panel_RUS_LIT.png|2981392672
 objects/cockpit_front_panel_RUS.obj|37104541
-objects/cockpit_front_panel_RUS.png|3523386760
-objects/cockpit_front_panel_RUS_LIT.png|2686489037
+objects/cockpit_front_panel_RUS.png|2954373369
+objects/cockpit_front_panel_RUS_LIT.png|3246139668
 objects/cockpit_front_panel_RUS_NML.png|1152811260
 objects/cockpit_front_panel_blend_RUS.obj|2093338815
 objects/cockpit_front_panel_kontur_RUS.obj|1477939822
-objects/cockpit_front_panel_kontur_RUS.png|4178739598
+objects/cockpit_front_panel_kontur_RUS.png|2246550831
 objects/cockpit_front_panel_kontur_RUS_NML.png|3697007778
 objects/cockpit_glass.obj|1580617548
 objects/cockpit_glass.png|3901994029
 objects/cockpit_glass_LIT.png|1291223038
 objects/cockpit_glass_NML.png|1150728792
-objects/cockpit_lamps_RUS.obj|1223953701
+objects/cockpit_lamps_RUS.obj|71060225
 objects/cockpit_lamps_RUS.png|1998942280
 objects/cockpit_lamps_RUS_LIT.png|3723819279
-objects/cockpit_lamps_v1_RUS.obj|4177738383
+objects/cockpit_lamps_v1_RUS.obj|267967621
 objects/cockpit_lamps_v1_RUS.png|2237885086
 objects/cockpit_lamps_v1_RUS_LIT.png|3635468353
 objects/cockpit_lt.obj|1988476229
@@ -1819,7 +1819,7 @@ plugins/sasl/data/modules/Custom Module/kskv/kskv_panel.lua|2993057878
 plugins/sasl/data/modules/Custom Module/kskv/kskv_sard.lua|649720222
 plugins/sasl/data/modules/Custom Module/lever.lua|1111308067
 plugins/sasl/data/modules/Custom Module/lever_hor.lua|3928778329
-plugins/sasl/data/modules/Custom Module/lights_system/cockpit_lights.lua|2665377543
+plugins/sasl/data/modules/Custom Module/lights_system/cockpit_lights.lua|1990200505
 plugins/sasl/data/modules/Custom Module/lights_system/cockpit_lights_bright.lua|3343264481
 plugins/sasl/data/modules/Custom Module/lights_system/ext_lights.lua|3550814695
 plugins/sasl/data/modules/Custom Module/lights_system/light_commands.lua|2898357829
@@ -3174,7 +3174,7 @@ sounds/systems/flap.wav|2005905547
 sounds/systems/gear.wav|2005905547
 sounds/weather/wind.wav|1395809330
 tu154.acf|310691446
-tu154_cockpit.obj|3501503326
+tu154_cockpit.obj|2777874913
 tu154_icon11.png|2913622315
 tu154_icon11_thumb.png|2223285862
 tu154_paint.png|1900202556
