@@ -41,6 +41,13 @@ local function fullBrightness()
 	end
 end
 
+-- Digit brightness knobs (the two small cream knobs next to the DME screens):
+-- 0..1, 1 = full (the original look). Driven by click zones in tu154_cockpit.obj,
+-- knobs animated in cockpit_1_RUS.obj. Only the lit red digits are dimmed
+-- (dme_dist_text.lua); the faint unlit segments keep following daylight.
+dme_bright_l = createGlobalPropertyf("tu154b2/custom/lights/dme_bright_l", 1.0)
+dme_bright_r = createGlobalPropertyf("tu154b2/custom/lights/dme_bright_r", 1.0)
+
 -- MILE/KM indicator lamps next to each DME screen (datarefs already created in
 -- dataref_creator_1.lua). Same rule as M donor's dme.lua: exactly one lamp lit per
 -- side, matching that side's own mile_km switch (0 = miles, 1 = km); both off when
@@ -82,7 +89,7 @@ dme_display_l = avionicsDevice {
 	screenClear = true,
 	brightnessCallback = fullBrightness,
 	components = {
-		dme_dist_text { distNm = nav1_dme_nm, mileKm = nav_1_mile_km, powered = powered_1 }
+		dme_dist_text { distNm = nav1_dme_nm, mileKm = nav_1_mile_km, powered = powered_1, bright = dme_bright_l }
 	}
 }
 
@@ -94,6 +101,6 @@ dme_display_r = avionicsDevice {
 	screenClear = true,
 	brightnessCallback = fullBrightness,
 	components = {
-		dme_dist_text { distNm = nav2_dme_nm, mileKm = nav_2_mile_km, powered = powered_2 }
+		dme_dist_text { distNm = nav2_dme_nm, mileKm = nav_2_mile_km, powered = powered_2, bright = dme_bright_r }
 	}
 }

@@ -17,6 +17,7 @@
 defineProperty("distNm", 0)
 defineProperty("mileKm", 1)
 defineProperty("powered", true)
+defineProperty("bright", 1)    -- digit brightness knob 0..1 (dme_display.lua)
 
 local dme_font = loadFont("digital7.ttf")
 
@@ -30,6 +31,8 @@ local CENTER_Y = 35        -- vertical centre of the digits (35 = middle of scre
 local DIGIT_GAP = 21       -- px of empty space between neighbouring digits
 local POINT_EXTRA = 8      -- extra px added to the gap that holds the decimal point
 local DIGIT_COLOR = {0.89, 0.23, 0.17, 1}   -- LED red-orange
+local BRIGHT_MIN = 0.50      -- lit-digit brightness at the knob's lowest stop (50% of full)
+local LIT_COLOR = {0, 0, 0, 1}
 local UNLIT_SEGMENTS = true    -- faint "888.8" behind the digits, like a real LED display
 local UNLIT_LEVEL = 0.33       -- brightness of the unlit segments (0.33 = 33%).
                                -- In-sim the screen is drawn on the emissive (LIT) layer,
@@ -186,9 +189,18 @@ function draw()
 			dist = dist * 1.852  -- nm -> km, same factor as course_mp.lua
 		end
 
+		-- digit brightness knob: scales only the lit digits
+		local b = get(bright)
+		if b == nil then b = 1 end
+		if b < 0 then b = 0 elseif b > 1 then b = 1 end
+		local k = BRIGHT_MIN + (1 - BRIGHT_MIN) * b
+		LIT_COLOR[1] = DIGIT_COLOR[1] * k
+		LIT_COLOR[2] = DIGIT_COLOR[2] * k
+		LIT_COLOR[3] = DIGIT_COLOR[3] * k
+
 		local text = formatDist(dist)
 		for i = 1, 5 do
-			drawChar(i, text:sub(i, i))
+			drawChar(i, text:sub(i, i), LIT_COLOR)
 		end
 	end
 
