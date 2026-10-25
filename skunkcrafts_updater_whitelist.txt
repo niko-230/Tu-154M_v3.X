@@ -1290,11 +1290,11 @@ objects/aux_stuff_1.obj|1541727277
 objects/aux_stuff_1.png|2584167065
 objects/azs_panel.png|3950294998
 objects/azs_panel_LIT.png|47489282
-objects/azs_panels.obj|1130761224
+objects/azs_panels.obj|2929950193
 objects/cockpit_1.obj|875589475
 objects/cockpit_1.png|2779735781
 objects/cockpit_1_NML.png|4001591915
-objects/cockpit_1_RUS.obj|2587248594
+objects/cockpit_1_RUS.obj|3777369771
 objects/cockpit_1_RUS.png|976430686
 objects/cockpit_1_RUS_LIT.png|3268489700
 objects/cockpit_1_RUS_NML.png|677432332
@@ -1328,14 +1328,14 @@ objects/cockpit_front_panel_blend_RUS.obj|2093338815
 objects/cockpit_front_panel_kontur_RUS.obj|1477939822
 objects/cockpit_front_panel_kontur_RUS.png|2246550831
 objects/cockpit_front_panel_kontur_RUS_NML.png|3697007778
-objects/cockpit_glass.obj|1580617548
+objects/cockpit_glass.obj|534521796
 objects/cockpit_glass.png|3901994029
 objects/cockpit_glass_LIT.png|1291223038
 objects/cockpit_glass_NML.png|1150728792
-objects/cockpit_lamps_RUS.obj|71060225
+objects/cockpit_lamps_RUS.obj|3786903292
 objects/cockpit_lamps_RUS.png|1998942280
 objects/cockpit_lamps_RUS_LIT.png|3723819279
-objects/cockpit_lamps_v1_RUS.obj|267967621
+objects/cockpit_lamps_v1_RUS.obj|474731625
 objects/cockpit_lamps_v1_RUS.png|2237885086
 objects/cockpit_lamps_v1_RUS_LIT.png|3635468353
 objects/cockpit_lt.obj|1988476229
@@ -1420,7 +1420,7 @@ objects/particles/particles.obj|3461815660
 objects/plackards.obj|2585673336
 objects/plackards.png|2205193085
 objects/prefill.obj|3045401947
-objects/salon.obj|2569038384
+objects/salon.obj|284609054
 objects/salon.png|207548374
 objects/salon2.obj|242817647
 objects/salon2.png|494355731
@@ -1848,8 +1848,8 @@ plugins/sasl/data/modules/Custom Module/main_panel/crew_session.lua|3100438950
 plugins/sasl/data/modules/Custom Module/main_panel/diss/diss.lua|45584016
 plugins/sasl/data/modules/Custom Module/main_panel/diss/diss_logic.lua|1735054668
 plugins/sasl/data/modules/Custom Module/main_panel/diss/diss_panel.lua|3120126999
-plugins/sasl/data/modules/Custom Module/main_panel/dme_display.lua|2219686525
-plugins/sasl/data/modules/Custom Module/main_panel/dme_dist_text.lua|4246895560
+plugins/sasl/data/modules/Custom Module/main_panel/dme_display.lua|3387779634
+plugins/sasl/data/modules/Custom Module/main_panel/dme_dist_text.lua|3133561903
 plugins/sasl/data/modules/Custom Module/main_panel/door_panel.lua|327954315
 plugins/sasl/data/modules/Custom Module/main_panel/eup53.lua|1690184004
 plugins/sasl/data/modules/Custom Module/main_panel/gns430.lua|1613272055
@@ -3174,7 +3174,7 @@ sounds/systems/flap.wav|2005905547
 sounds/systems/gear.wav|2005905547
 sounds/weather/wind.wav|1395809330
 tu154.acf|310691446
-tu154_cockpit.obj|2777874913
+tu154_cockpit.obj|2910226057
 tu154_icon11.png|2913622315
 tu154_icon11_thumb.png|2223285862
 tu154_paint.png|1900202556
