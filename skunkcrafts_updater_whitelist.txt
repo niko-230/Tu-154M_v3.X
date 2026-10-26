@@ -1294,7 +1294,7 @@ objects/azs_panels.obj|2929950193
 objects/cockpit_1.obj|875589475
 objects/cockpit_1.png|2779735781
 objects/cockpit_1_NML.png|4001591915
-objects/cockpit_1_RUS.obj|798477004
+objects/cockpit_1_RUS.obj|3993229964
 objects/cockpit_1_RUS.png|976430686
 objects/cockpit_1_RUS_LIT.png|3268489700
 objects/cockpit_1_RUS_NML.png|677432332
@@ -1303,12 +1303,12 @@ objects/cockpit_2.png|1681218525
 objects/cockpit_2_LIT.png|4024883899
 objects/cockpit_center_panel.obj|3141048619
 objects/cockpit_center_panel_RUS.obj|78187454
-objects/cockpit_center_panel_RUS.png|4221159547
+objects/cockpit_center_panel_RUS.png|3160185221
 objects/cockpit_center_panel_RUS_LIT.png|1082739747
 objects/cockpit_center_panel_RUS_NML.png|2323546716
 objects/cockpit_center_panel_blend_RUS.obj|411836873
 objects/cockpit_center_panel_v1_RUS.obj|1297990773
-objects/cockpit_center_panel_v1_RUS.png|249135629
+objects/cockpit_center_panel_v1_RUS.png|1848527146
 objects/cockpit_center_panel_v1_RUS_LIT.png|3547530027
 objects/cockpit_center_panel_v1_RUS_NML.png|3109606282
 objects/cockpit_chairs.obj|1334948345
@@ -1321,12 +1321,12 @@ objects/cockpit_eng_panel_RUS.obj|4021711602
 objects/cockpit_eng_panel_RUS.png|2865374119
 objects/cockpit_eng_panel_RUS_LIT.png|2981392672
 objects/cockpit_front_panel_RUS.obj|3955728562
-objects/cockpit_front_panel_RUS.png|3291220355
+objects/cockpit_front_panel_RUS.png|2972189606
 objects/cockpit_front_panel_RUS_LIT.png|3246139668
 objects/cockpit_front_panel_RUS_NML.png|1152811260
 objects/cockpit_front_panel_blend_RUS.obj|2093338815
 objects/cockpit_front_panel_kontur_RUS.obj|2705433887
-objects/cockpit_front_panel_kontur_RUS.png|1937124183
+objects/cockpit_front_panel_kontur_RUS.png|428578949
 objects/cockpit_front_panel_kontur_RUS_NML.png|3697007778
 objects/cockpit_glass.obj|534521796
 objects/cockpit_glass.png|3901994029
@@ -1848,12 +1848,12 @@ plugins/sasl/data/modules/Custom Module/main_panel/crew_session.lua|3100438950
 plugins/sasl/data/modules/Custom Module/main_panel/diss/diss.lua|45584016
 plugins/sasl/data/modules/Custom Module/main_panel/diss/diss_logic.lua|1735054668
 plugins/sasl/data/modules/Custom Module/main_panel/diss/diss_panel.lua|3120126999
-plugins/sasl/data/modules/Custom Module/main_panel/dme_display.lua|3387779634
+plugins/sasl/data/modules/Custom Module/main_panel/dme_display.lua|3920205207
 plugins/sasl/data/modules/Custom Module/main_panel/dme_dist_text.lua|3133561903
 plugins/sasl/data/modules/Custom Module/main_panel/door_panel.lua|327954315
 plugins/sasl/data/modules/Custom Module/main_panel/eup53.lua|1690184004
 plugins/sasl/data/modules/Custom Module/main_panel/gns430.lua|1613272055
-plugins/sasl/data/modules/Custom Module/main_panel/ils_display.lua|2780003759
+plugins/sasl/data/modules/Custom Module/main_panel/ils_display.lua|448002147
 plugins/sasl/data/modules/Custom Module/main_panel/ils_freq_text.lua|2466107672
 plugins/sasl/data/modules/Custom Module/main_panel/ins_test.lua|2161270574
 plugins/sasl/data/modules/Custom Module/main_panel/mach_meters.lua|1123370734
@@ -2109,7 +2109,7 @@ plugins/sasl/data/modules/Custom Module/textureLit_alpha_coords.lua|3259576509
 plugins/sasl/data/modules/Custom Module/texture_ctr.lua|3556765118
 plugins/sasl/data/modules/Custom Module/time_logic.lua|3306150783
 plugins/sasl/data/modules/Custom Module/transsonic.lua|2494849523
-plugins/sasl/data/modules/Custom Module/uns_logic.lua|330615510
+plugins/sasl/data/modules/Custom Module/uns_logic.lua|1993857974
 plugins/sasl/data/modules/Custom Module/walk.lua|2363159110
 plugins/sasl/data/modules/Custom Sounds/ROD_OFF.wav|4024833285
 plugins/sasl/data/modules/Custom Sounds/ROD_OFF_L.wav|3395022817
