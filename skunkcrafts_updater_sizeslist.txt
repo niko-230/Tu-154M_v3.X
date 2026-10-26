@@ -1869,7 +1869,7 @@ plugins/sasl/data/modules/Custom Module/main_panel/ils_freq_text.lua|5802
 plugins/sasl/data/modules/Custom Module/main_panel/ins_test.lua|1779
 plugins/sasl/data/modules/Custom Module/main_panel/mach_meters.lua|2261
 plugins/sasl/data/modules/Custom Module/main_panel/main_panel.lua|11943
-plugins/sasl/data/modules/Custom Module/main_panel/mech_aneroid.lua|16106
+plugins/sasl/data/modules/Custom Module/main_panel/mech_aneroid.lua|16543
 plugins/sasl/data/modules/Custom Module/main_panel/mgv.lua|9149
 plugins/sasl/data/modules/Custom Module/main_panel/misc_fails.lua|7379
 plugins/sasl/data/modules/Custom Module/main_panel/misc_lamps.lua|14716
