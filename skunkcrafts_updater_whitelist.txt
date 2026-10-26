@@ -1,5 +1,5 @@
 AviTab.json|1925732311
-KLNconfig.txt|4244301241
+KLNconfig.txt|700533605
 README.md|3829004420
 airfoils/NACA 0009 (symmetrical).afl|3143184736
 airfoils/hstab.afl|1473583538
@@ -9,6 +9,7 @@ airfoils/wing_mod.afl|2994963053
 airfoils/wing_orig.afl|2361956735
 airfoils/wing_tip.afl|3602086378
 airfoils/wing_tip_orig.afl|1296979795
+black_box/26_10_26_000.bbox|450261693
 cockpit/-PANELS-/Panel.png|1294082873
 cockpit/EFIS/EFIS maps/map_s_HM-1.png|746417493
 cockpit/EFIS/EFIS maps/map_s_HM-2.png|2086776577
@@ -1331,8 +1332,8 @@ objects/cockpit_eng_misc_M_RUS_LIT.png|603628597
 objects/cockpit_eng_panel_RUS.obj|3468960347
 objects/cockpit_eng_panel_RUS.png|2865374119
 objects/cockpit_eng_panel_RUS_LIT.png|2981392672
-objects/cockpit_eng_shell_M_RUS.obj|402034279
-objects/cockpit_eng_shell_M_RUS.png|1702152682
+objects/cockpit_eng_shell_M_RUS.obj|3564876917
+objects/cockpit_eng_shell_M_RUS.png|567648824
 objects/cockpit_eng_stp_B_RUS.obj|526345463
 objects/cockpit_front_panel_RUS.obj|3955728562
 objects/cockpit_front_panel_RUS.png|2972189606
@@ -1598,8 +1599,8 @@ plugins/KLN90B/data/modules/configuration/widgetResources/SourceCodePro.ttf|1932
 plugins/KLN90B/data/modules/configuration/wprefs.ini|4267642933
 plugins/KLN90B/data/modules/main.lua|3535876057
 plugins/KLN90B/data/modules/popupsPositions.txt|1935643396
-plugins/KLN90B/data/modules/state.txt|2253335534
-plugins/KLN90B/data/output/SASLLog.txt|249370534
+plugins/KLN90B/data/modules/state.txt|2762326008
+plugins/KLN90B/data/output/SASLLog.txt|881456239
 plugins/KLN90B/data/output/readme.txt|1889794412
 plugins/KLN90B/functions.txt|3249875689
 plugins/KLN90B/liblinux/libc++.so|644484154
@@ -1795,8 +1796,8 @@ plugins/sasl/data/modules/Custom Module/electric_system/fms_test.txt|177047676
 plugins/sasl/data/modules/Custom Module/electric_system/generators_logic.lua|2605208726
 plugins/sasl/data/modules/Custom Module/electric_system/gpu_logic.lua|457027566
 plugins/sasl/data/modules/Custom Module/engines_system/eng_fails.lua|2682745784
-plugins/sasl/data/modules/Custom Module/engines_system/eng_panel_m.lua|2019786176
-plugins/sasl/data/modules/Custom Module/engines_system/engine_gauges.lua|1231647746
+plugins/sasl/data/modules/Custom Module/engines_system/eng_panel_m.lua|4224201259
+plugins/sasl/data/modules/Custom Module/engines_system/engine_gauges.lua|28683335
 plugins/sasl/data/modules/Custom Module/engines_system/engines_panel.lua|2445929969
 plugins/sasl/data/modules/Custom Module/engines_system/engines_system.lua|730277265
 plugins/sasl/data/modules/Custom Module/engines_system/fuel_consumption.lua|3661891985
@@ -3084,9 +3085,9 @@ plugins/sasl/data/modules/configuration/widgetResources/SourceCodePro-LICENSE.tx
 plugins/sasl/data/modules/configuration/widgetResources/SourceCodePro.ttf|193207767
 plugins/sasl/data/modules/configuration/wprefs.ini|2180162431
 plugins/sasl/data/modules/main.lua|3588895513
-plugins/sasl/data/modules/state.txt|2432305760
+plugins/sasl/data/modules/state.txt|920719776
 plugins/sasl/data/modulesdataref_creator_4.lua|0
-plugins/sasl/data/output/SASLLog.txt|1926462335
+plugins/sasl/data/output/SASLLog.txt|3951056072
 plugins/sasl/data/output/readme.txt|1889794412
 plugins/sasl/data/scripts/init.lua|2732355382
 plugins/sasl/functions.txt|3249875689
@@ -3189,11 +3190,11 @@ sounds/systems/flap.wav|2005905547
 sounds/systems/gear.wav|2005905547
 sounds/weather/wind.wav|1395809330
 tu154.acf|3877233587
-tu154_cockpit.obj|3991075958
+tu154_cockpit.obj|63206022
 tu154_icon11.png|2913622315
 tu154_icon11_thumb.png|2223285862
 tu154_paint.png|1900202556
 tu154_paint2.png|50155071
-tu154_prefs.txt|163109852
-tu154_vrconfig.txt|3693813385
+tu154_prefs.txt|2351327766
+tu154_vrconfig.txt|1305436609
 version.mak|1415776742
