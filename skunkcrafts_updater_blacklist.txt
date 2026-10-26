@@ -27,3 +27,14 @@ objects/textures_rus/PA3_ALB.png
 objects/textures_rus/PA3_LIT.png
 objects/textures_rus/PA3_MAT.png
 objects/textures_rus/PA3_NRM.png
+objects/Cabin Rain Glass Left.obj
+objects/Cabin Rain Glass Left2.obj
+objects/Cabin Rain Glass.obj
+objects/Cabin Rain Glass2.obj
+objects/Cockpit_glass_in.obj
+objects/Cockpit_glass_in2.obj
+objects/Cockpit_glass_out2.obj
+objects/Door_Right_Rain.obj
+objects/Door_Right_Rain2.obj
+objects/glass1.obj
+objects/glass2.obj
