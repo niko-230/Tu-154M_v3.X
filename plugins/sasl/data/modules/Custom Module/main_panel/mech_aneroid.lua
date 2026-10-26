@@ -214,19 +214,27 @@ local T_stat=2
 
 
 local function needle_pos (ang_actual_prev,ang_need,dt,v_prev,k_spr,k_dmp,k_v,c_v)
+	-- the needle spring model is only stable for small time steps (about 1/18 s or less).
+	-- at low or uneven FPS the needles started to swing wildly, so the frame time is split
+	-- into sub-steps of at most 1/60 s; the needle still moves in real time at any FPS.
 	local v_needle_max=5000*c_v
-	local e_c=(ang_need-ang_actual_prev)*k_spr
-    local v=v_prev+e_c*k_v*dt-v_prev*k_dmp
-	if v>v_needle_max then
-		v=v_needle_max
-	elseif v<-v_needle_max then
-		v=-v_needle_max
+	local v=v_prev
+	local ang_actual=ang_actual_prev
+	if dt<=0 then return v,ang_actual end
+	if dt>0.25 then dt=0.25 end
+	local steps=math.ceil(dt*60)
+	local h=dt/steps
+	local damp=1-math.pow(1-k_dmp,h*60) -- same damping per second as before at 60 fps
+	for i=1,steps do
+		local e_c=(ang_need-ang_actual)*k_spr
+		v=v+e_c*k_v*h-v*damp
+		if v>v_needle_max then
+			v=v_needle_max
+		elseif v<-v_needle_max then
+			v=-v_needle_max
+		end
+		ang_actual=ang_actual+v*h
 	end
-    local ang_actual=ang_actual_prev+v*dt
-	-- if ang_actual<-100 then
-		-- ang_actual=-100
-		-- v=0
-	-- end
 	return v,ang_actual
 end
 
