@@ -1256,22 +1256,13 @@ liveries/alrosa/objects/wings.png|3616749028
 liveries/alrosa/tu154_icon11.png|716440096
 liveries/alrosa/tu154_icon11_thumb.png|365540813
 mag_dec.dat|272610606
-objects/Cabin Rain Glass Left.obj|2888942428
-objects/Cabin Rain Glass Left2.obj|235009278
-objects/Cabin Rain Glass.obj|2814088176
-objects/Cabin Rain Glass2.obj|3564414731
 objects/Cabin_Rain.png|1914850632
 objects/Cabin_Rain_Left.png|1914850632
 objects/Cabin_Rain_thermal.png|3705429068
-objects/Cockpit_glass_in.obj|3719780672
 objects/Cockpit_glass_in.png|1914850632
-objects/Cockpit_glass_in2.obj|1634586976
-objects/Cockpit_glass_out.obj|1991023277
-objects/Cockpit_glass_out.png|1914850632
-objects/Cockpit_glass_out2.obj|2846387465
-objects/Door_Right_Rain.obj|286419266
+objects/Cockpit_glass_out.obj|317125254
+objects/Cockpit_glass_out.png|4091374038
 objects/Door_Right_Rain.png|1914850632
-objects/Door_Right_Rain2.obj|1219802436
 objects/Floor.png|3355269007
 objects/Floor_LIT.png|1208099769
 objects/Groza_Glass.obj|1624590522
@@ -1292,6 +1283,7 @@ objects/aux_stuff_1.png|2584167065
 objects/azs_panel.png|3950294998
 objects/azs_panel_LIT.png|47489282
 objects/azs_panels.obj|2929950193
+objects/cabin_glass_out.obj|2272218505
 objects/cockpit_1.obj|875589475
 objects/cockpit_1.png|2779735781
 objects/cockpit_1_NML.png|4001591915
@@ -1378,15 +1370,15 @@ objects/fuselage_NML.png|2601589478
 objects/gears.obj|2693320172
 objects/gears.png|1988345228
 objects/gears_NML.png|3266345967
-objects/glass.obj|1217132501
-objects/glass.png|1544424938
-objects/glass1.obj|1102458037
-objects/glass2.obj|4275021341
+objects/glass.obj|110188888
+objects/glass.png|832392503
 objects/glass2.png|1439950380
 objects/glass2_LIT.png|182879220
 objects/glass2_NML.png|2662120511
 objects/glass_LIT.png|4180819564
 objects/glass_NML.png|2662120511
+objects/glass_out.png|4092664209
+objects/glass_outside_doors.obj|765420023
 objects/gns430.obj|1355510642
 objects/gns430.png|1364139620
 objects/gns430_LIT.png|1364944192
@@ -1450,6 +1442,7 @@ objects/sard_panel_RUS.obj|3075688531
 objects/sard_scales.obj|1828980485
 objects/sard_scales.png|4274033360
 objects/sard_scales_LIT.png|265877268
+objects/side_wiper.png|2795817853
 objects/snow_on_fuse.obj|866482546
 objects/snow_on_fuse.png|2371783371
 objects/snow_on_fuse_NML.png|520408085
@@ -1476,8 +1469,9 @@ objects/vm15_scale.obj|291662801
 objects/vm15_scale.png|1802933560
 objects/vm15_scale_LIT.png|3048920610
 objects/windshield_thermal.png|2766508969
-objects/windshield_thermal_out.png|1736708862
-objects/windshield_thermal_side.png|3330504173
+objects/windshield_thermal_cabin.png|1318016605
+objects/windshield_thermal_out.png|199659623
+objects/windshield_thermal_side.png|1197933461
 objects/wings.obj|609081508
 objects/wings.png|176230894
 objects/wings_NML.png|1586357424
@@ -1485,6 +1479,7 @@ objects/wings_b2.png|3719715911
 objects/wings_b2_NML.png|2765239761
 objects/wiper.png|1324392964
 objects/wiper_out.png|3224037843
+objects/wipers.png|2164995692
 pa3/gen_plans/LBWN-LBSF.json|362394294
 pa3/gen_plans/USRR-UWUU.json|1958861853
 pa3/gen_plans/fpln.json|2869203586
@@ -1734,7 +1729,7 @@ plugins/sasl/data/modules/Custom Module/Verdana.ttf|3954709801
 plugins/sasl/data/modules/Custom Module/afl_ch.lua|408473625
 plugins/sasl/data/modules/Custom Module/animation/animation.lua|3302829135
 plugins/sasl/data/modules/Custom Module/animation/ext_anim.lua|3939086265
-plugins/sasl/data/modules/Custom Module/animation/rain_mask.lua|3318468538
+plugins/sasl/data/modules/Custom Module/animation/rain_mask.lua|4060803030
 plugins/sasl/data/modules/Custom Module/animation/slow_load.lua|23318824
 plugins/sasl/data/modules/Custom Module/antiice/antiice.lua|2388107875
 plugins/sasl/data/modules/Custom Module/antiice/antiice_fails.lua|3027516295
@@ -3189,7 +3184,7 @@ sounds/systems/click.wav|2005905547
 sounds/systems/flap.wav|2005905547
 sounds/systems/gear.wav|2005905547
 sounds/weather/wind.wav|1395809330
-tu154.acf|3877233587
+tu154.acf|3273770237
 tu154_cockpit.obj|63206022
 tu154_icon11.png|2913622315
 tu154_icon11_thumb.png|2223285862
