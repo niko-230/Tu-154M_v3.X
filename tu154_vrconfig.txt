@@ -49,35 +49,6 @@ BEGIN_TELEPORT_HOTSPOT SITTING Engineer's Seat
 	PRESET_PHI 0.0
 END_TELEPORT_HOTSPOT
 
-BEGIN_MANIP command_knob t154/bus27_sel1_up t154/bus27_sel1_dn 
-	DEG_PER_ACTION 30
-END_MANIP
-
-BEGIN_MANIP command_knob t154/bus27_sel2_up t154/bus27_sel2_dn 
-	DEG_PER_ACTION 30
-END_MANIP
-
-BEGIN_MANIP command_knob t154/bus36_sel_up t154/bus36_sel_dn
-	DEG_PER_ACTION 30
-END_MANIP
-
-BEGIN_MANIP command_knob t154/bus115_sel4_up t154/bus115_sel4_dn 
-	DEG_PER_ACTION 25
-END_MANIP
-
-BEGIN_MANIP command_knob t154/bus115_sel3_up t154/bus115_sel3_dn 
-	DEG_PER_ACTION 25
-END_MANIP
-
-BEGIN_MANIP command_knob t154/bus115_sel2_up t154/bus115_sel2_dn 
-	DEG_PER_ACTION 25
-END_MANIP
-
-BEGIN_MANIP command_knob t154/bus115_sel1_up t154/bus115_sel1_dn 
-	DEG_PER_ACTION 25
-END_MANIP
-
-
 BEGIN_MANIP command_knob tcas2000/r2_up tcas2000/r2_dn Transponder 1s
 	DEG_PER_ACTION 10
 END_MANIP
@@ -329,11 +300,6 @@ BEGIN_MANIP drag_axis tu154b2/custom/lights/eng_panel_flood_set
 	DEG_PER_ACTION 30
 END_MANIP
 
-BEGIN_MANIP drag_axis sim/custom/lights/ard_panel_flood_set
-	ACTION axis_knob 0 1 0.1 sim/custom/lights/ard_panel_flood_set
-	DEG_PER_ACTION 30
-END_MANIP
-
 BEGIN_MANIP drag_axis tu154b2/custom/lights/ovhd_panel_int_set
 	ACTION axis_knob 0 10 1 tu154b2/custom/lights/ovhd_panel_int_set
 	DEG_PER_ACTION 30
@@ -362,10 +328,6 @@ END_MANIP
 BEGIN_MANIP drag_axis tu154b2/custom/rotary/ovhd/tks_lat_set
 	ACTION axis_knob -90 90 0.5 tu154b2/custom/rotary/ovhd/tks_lat_set
 	DEG_PER_ACTION 10
-END_MANIP
-BEGIN_MANIP drag_axis tu154b2/custom/switchers/airbleed/sys_temp_select
-	ACTION axis_knob 0 5 1 tu154b2/custom/switchers/airbleed/sys_temp_select
-	DEG_PER_ACTION 25
 END_MANIP
 BEGIN_MANIP drag_axis tu154b2/custom/gauges/console/map_angle
 	ACTION axis_knob -360 720 0.1 tu154b2/custom/gauges/console/map_angle
