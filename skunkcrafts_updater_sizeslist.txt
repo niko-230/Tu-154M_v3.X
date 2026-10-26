@@ -1,5 +1,5 @@
 AviTab.json|124
-KLNconfig.txt|652
+KLNconfig.txt|653
 README.md|1486
 airfoils/NACA 0009 (symmetrical).afl|25075
 airfoils/hstab.afl|22301
@@ -9,6 +9,7 @@ airfoils/wing_mod.afl|25048
 airfoils/wing_orig.afl|25047
 airfoils/wing_tip.afl|25078
 airfoils/wing_tip_orig.afl|25046
+black_box/26_10_26_000.bbox|25440
 cockpit/-PANELS-/Panel.png|298229
 cockpit/EFIS/EFIS maps/map_s_HM-1.png|3504
 cockpit/EFIS/EFIS maps/map_s_HM-2.png|3771
@@ -1331,8 +1332,8 @@ objects/cockpit_eng_misc_M_RUS_LIT.png|6488
 objects/cockpit_eng_panel_RUS.obj|1663173
 objects/cockpit_eng_panel_RUS.png|18911159
 objects/cockpit_eng_panel_RUS_LIT.png|33242
-objects/cockpit_eng_shell_M_RUS.obj|344533
-objects/cockpit_eng_shell_M_RUS.png|15847554
+objects/cockpit_eng_shell_M_RUS.obj|488446
+objects/cockpit_eng_shell_M_RUS.png|14543027
 objects/cockpit_eng_stp_B_RUS.obj|55578
 objects/cockpit_front_panel_RUS.obj|846453
 objects/cockpit_front_panel_RUS.png|15432950
@@ -1795,8 +1796,8 @@ plugins/sasl/data/modules/Custom Module/electric_system/fms_test.txt|451
 plugins/sasl/data/modules/Custom Module/electric_system/generators_logic.lua|34141
 plugins/sasl/data/modules/Custom Module/electric_system/gpu_logic.lua|18506
 plugins/sasl/data/modules/Custom Module/engines_system/eng_fails.lua|21030
-plugins/sasl/data/modules/Custom Module/engines_system/eng_panel_m.lua|1760
-plugins/sasl/data/modules/Custom Module/engines_system/engine_gauges.lua|56274
+plugins/sasl/data/modules/Custom Module/engines_system/eng_panel_m.lua|2844
+plugins/sasl/data/modules/Custom Module/engines_system/engine_gauges.lua|56960
 plugins/sasl/data/modules/Custom Module/engines_system/engines_panel.lua|47164
 plugins/sasl/data/modules/Custom Module/engines_system/engines_system.lua|244
 plugins/sasl/data/modules/Custom Module/engines_system/fuel_consumption.lua|14554
@@ -3086,7 +3087,7 @@ plugins/sasl/data/modules/configuration/wprefs.ini|274
 plugins/sasl/data/modules/main.lua|4229
 plugins/sasl/data/modules/state.txt|2715
 plugins/sasl/data/modulesdataref_creator_4.lua|0
-plugins/sasl/data/output/SASLLog.txt|36432
+plugins/sasl/data/output/SASLLog.txt|36414
 plugins/sasl/data/output/readme.txt|57
 plugins/sasl/data/scripts/init.lua|43226
 plugins/sasl/functions.txt|6374
@@ -3189,11 +3190,11 @@ sounds/systems/flap.wav|2188
 sounds/systems/gear.wav|2188
 sounds/weather/wind.wav|520560
 tu154.acf|2839079
-tu154_cockpit.obj|1582411
+tu154_cockpit.obj|1588759
 tu154_icon11.png|113962
 tu154_icon11_thumb.png|10010
 tu154_paint.png|6686
 tu154_paint2.png|1215
-tu154_prefs.txt|4283
-tu154_vrconfig.txt|12187
+tu154_prefs.txt|4282
+tu154_vrconfig.txt|11194
 version.mak|19
