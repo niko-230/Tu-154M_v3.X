@@ -12,8 +12,10 @@
 nav1_freq_hz = globalPropertyf("sim/cockpit2/radios/actuators/nav1_frequency_hz")
 nav2_freq_hz = globalPropertyf("sim/cockpit2/radios/actuators/nav2_frequency_hz")
 
-curs_np_on_1 = globalPropertyi("tu154b2/custom/switchers/ovhd/curs_np_on_1")
-curs_np_on_2 = globalPropertyi("tu154b2/custom/switchers/ovhd/curs_np_on_2")
+-- Power switches: SD-67 1 / SD-67 2 on the overhead (files call them sd75_1_on / sd75_2_on).
+-- The Kurs-MP 1/2 switches keep all their other functions (Kurs-MP needles, ABSU, SP-50 lamps).
+sd67_on_1 = globalPropertyi("tu154b2/custom/switchers/ovhd/sd75_1_on")
+sd67_on_2 = globalPropertyi("tu154b2/custom/switchers/ovhd/sd75_2_on")
 bus36_volt = globalPropertyf("tu154b2/custom/elec/bus36_volt_pts250_2")
 bus115_volt = globalPropertyf("tu154b2/custom/elec/bus115_1_volt")
 
@@ -40,11 +42,11 @@ local function fullBrightness()
 end
 
 local function powered_1()
-	return get(curs_np_on_1) == 1 and get(bus36_volt) > 30 and get(bus115_volt) > 100
+	return get(sd67_on_1) == 1 and get(bus36_volt) > 30 and get(bus115_volt) > 100
 end
 
 local function powered_2()
-	return get(curs_np_on_2) == 1 and get(bus36_volt) > 30 and get(bus115_volt) > 100
+	return get(sd67_on_2) == 1 and get(bus36_volt) > 30 and get(bus115_volt) > 100
 end
 
 -- RIGHT screen = NAV2

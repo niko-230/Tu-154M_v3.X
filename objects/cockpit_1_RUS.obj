@@ -346130,7 +346130,12 @@ ANIM_end
 # --- moved out of v1-only wrapper: existing VHF1 device now shared, both cockpits ---
 ATTR_light_level_reset
 ATTR_no_cull
+ANIM_begin
+ANIM_trans -0.042023 -1.048822 -21.153608 -0.042023 -1.048822 -21.153608 0.000000 0.000000 none
+ANIM_rotate 0.000000 0.917084 -0.398693 0.000000 270.000000 0.000000 1.000000 sim/custom/radios/vhf1_vol
+ANIM_trans 0.042023 1.048822 21.153608 0.042023 1.048822 21.153608 0.000000 0.000000 none
 TRIS 115251 540
+ANIM_end
 ATTR_cull
 ANIM_begin
 ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
@@ -357176,7 +357181,12 @@ IDX 293484
 ANIM_begin
 ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ATTR_no_cull
+ANIM_begin
+ANIM_trans -0.042593 -1.082372 -21.227354 -0.042593 -1.082372 -21.227354 0.000000 0.000000 none
+ANIM_rotate 0.000000 0.917084 -0.398693 0.000000 270.000000 0.000000 1.000000 sim/custom/radios/vhf2_vol
+ANIM_trans 0.042593 1.082372 21.227354 0.042593 1.082372 21.227354 0.000000 0.000000 none
 TRIS 551808 540
+ANIM_end
 ATTR_cull
 ANIM_end
 # --- button position CORRECTED: restored to screen-anchored (not bezel-fraction) target ---
@@ -378250,7 +378260,12 @@ IDX 304173
 ANIM_begin
 ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
 ATTR_no_cull
+ANIM_begin
+ANIM_trans -0.041645 -1.015177 -21.082138 -0.041645 -1.015177 -21.082138 0.000000 0.000000 none
+ANIM_rotate 0.000000 0.917084 -0.398693 0.000000 270.000000 0.000000 1.000000 sim/custom/radios/vhf2new_vol
+ANIM_trans 0.041645 1.015177 21.082138 0.041645 1.015177 21.082138 0.000000 0.000000 none
 TRIS 546276 540
+ANIM_end
 ATTR_cull
 ANIM_end
 ANIM_begin

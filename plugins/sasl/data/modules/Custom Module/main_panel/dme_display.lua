@@ -5,8 +5,7 @@
 -- Device size 430 x 140 = 215 x 70 with 2x the dots (same method as the VHF2
 -- screen's 440 x 130), so the digits are sharp.
 -- Unit (NM/KM) follows the existing nav_1/2_mile_km switches, same as course_mp.lua.
--- Power follows the real Kurs-MP unit's own power condition (course_mp.lua):
--- curs_np_on_1/2 (the Kurs-MP N1/N2 overhead switch) + both buses powered.
+-- Power: SD-67 1/2 overhead switch (sd75_1_on / sd75_2_on) + both buses powered.
 
 nav1_dme_nm = globalPropertyf("sim/cockpit2/radios/indicators/nav1_dme_distance_nm")
 nav2_dme_nm = globalPropertyf("sim/cockpit2/radios/indicators/nav2_dme_distance_nm")
@@ -14,8 +13,9 @@ nav2_dme_nm = globalPropertyf("sim/cockpit2/radios/indicators/nav2_dme_distance_
 nav_1_mile_km = globalPropertyi("tu154b2/custom/switchers/nav_1_mile_km")
 nav_2_mile_km = globalPropertyi("tu154b2/custom/switchers/nav_2_mile_km")
 
-curs_np_on_1 = globalPropertyi("tu154b2/custom/switchers/ovhd/curs_np_on_1")
-curs_np_on_2 = globalPropertyi("tu154b2/custom/switchers/ovhd/curs_np_on_2")
+-- Power switches: SD-67 1 / SD-67 2 on the overhead (files call them sd75_1_on / sd75_2_on).
+sd67_on_1 = globalPropertyi("tu154b2/custom/switchers/ovhd/sd75_1_on")
+sd67_on_2 = globalPropertyi("tu154b2/custom/switchers/ovhd/sd75_2_on")
 bus36_volt = globalPropertyf("tu154b2/custom/elec/bus36_volt_pts250_2")
 bus115_volt = globalPropertyf("tu154b2/custom/elec/bus115_1_volt")
 
@@ -66,7 +66,7 @@ dme_km_right = globalPropertyf("tu154b2/custom/lights/small/dme_km_right")
 -- so this reuses an already-proven-working per-frame call site instead of adding a
 -- new, riskier one.
 local function powered_1()
-	local pow = get(curs_np_on_1) == 1 and get(bus36_volt) > 30 and get(bus115_volt) > 100
+	local pow = get(sd67_on_1) == 1 and get(bus36_volt) > 30 and get(bus115_volt) > 100
 	local mode = get(nav_1_mile_km)
 	set(dme_mile_left, (pow and mode == 0) and 1 or 0)
 	set(dme_km_left, (pow and mode == 1) and 1 or 0)
@@ -74,7 +74,7 @@ local function powered_1()
 end
 
 local function powered_2()
-	local pow = get(curs_np_on_2) == 1 and get(bus36_volt) > 30 and get(bus115_volt) > 100
+	local pow = get(sd67_on_2) == 1 and get(bus36_volt) > 30 and get(bus115_volt) > 100
 	local mode = get(nav_2_mile_km)
 	set(dme_mile_right, (pow and mode == 0) and 1 or 0)
 	set(dme_km_right, (pow and mode == 1) and 1 or 0)

@@ -1,7 +1,6 @@
 -- UNS (CDU739) power logic
--- UNS1/UNS2 power now follows the real DME (СД-75) switches per side
--- (sd75_1_on/sd75_2_on + bus36/115 volt), matching course_mp.lua's own
--- dme_power condition, instead of the earlier generic avionics-only gating.
+-- UNS1/UNS2 power: GPS toggle (kln_on, shared with the KLN) + bus36/115 volt.
+-- (UNS exists only in cockpit v1.)
 
 -- sim variables
 defineProperty("sim_avionics_uns", globalPropertyi("sim/cockpit2/switches/avionics_power_on")) -- default sim avionics switcher (same dataref as electric_system/electric_panel.lua's sim_avionics)
@@ -153,8 +152,12 @@ function update()
 
 	local avionics = get(sim_avionics_uns) == 1
 
-	local uns1_power = get(sd75_1_on) == 1 and get(bus36_volt) > 30 and get(bus115_volt) > 100
-	local uns2_power = get(sd75_2_on) == 1 and get(bus36_volt) > 30 and get(bus115_volt) > 100
+	-- UNS power switch: both UNS units follow the GPS toggle (kln_on, last toggle of
+	-- the upper overhead row) - the same toggle that powers the KLN. (UNS exists only
+	-- in cockpit v1; the SD-67 switches no longer power it.)
+	local uns_sw = get(gps_toggle) == 1
+	local uns1_power = uns_sw and get(bus36_volt) > 30 and get(bus115_volt) > 100
+	local uns2_power = uns1_power
 
 	if uns1_power then
 		set_if_changed(uns1_on, 1)
