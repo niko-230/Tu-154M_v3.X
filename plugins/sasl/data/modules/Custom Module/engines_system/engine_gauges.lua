@@ -393,9 +393,21 @@ local function vibra_gau()
 	end
 	-- smooth movement
 	vibr_actual = vibr_actual + (vibr - vibr_actual) * passed 
-	vibr_1_actual = vibr_1_actual + (math.max(vibrat_1_f,vibrat_1_b) - vibr_1_actual) * passed * 10
-	vibr_2_actual = vibr_2_actual + (math.max(vibrat_2_f,vibrat_2_b) - vibr_2_actual) * passed * 8
-	vibr_3_actual = vibr_3_actual + (math.max(vibrat_3_f,vibrat_3_b) - vibr_3_actual) * passed * 9
+	-- M engineer panel: one ИВ gauge per engine, each with its own ПП/ЗП selector
+	-- (vibro_sel_N: 0 = ПП front mount, 1 = ЗП rear mount) and КОНТРОЛЬ ВИБРАЦИИ button
+	-- (control_vibro_N, drives the needle to the check value while held). Needs 27 V.
+	local function m_vibro(f, b, sel, test, pwr, on27)
+		if not on27 then return 0 end
+		local v = f
+		if get(sel) == 1 then v = b end
+		return math.min(100, v + 95 * get(test) * get(pwr))
+	end
+	local m_v1 = m_vibro(vibrat_1_f, vibrat_1_b, vibro_sel_1, control_vibro_1, vibr_1_pwr, power_27_L)
+	local m_v2 = m_vibro(vibrat_2_f, vibrat_2_b, vibro_sel_2, control_vibro_2, vibr_2_pwr, power_27_R)
+	local m_v3 = m_vibro(vibrat_3_f, vibrat_3_b, vibro_sel_3, control_vibro_3, vibr_3_pwr, power_27_R)
+	vibr_1_actual = vibr_1_actual + (m_v1 - vibr_1_actual) * passed * 10
+	vibr_2_actual = vibr_2_actual + (m_v2 - vibr_2_actual) * passed * 8
+	vibr_3_actual = vibr_3_actual + (m_v3 - vibr_3_actual) * passed * 9
 
 	-- -- set results
 	set(vibra_1, vibr_1_actual)

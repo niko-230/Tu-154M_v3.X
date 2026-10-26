@@ -1,42 +1,42 @@
 state = {
-    ['legacyPopups'] = {
-    };
     ['contextWindows'] = {
-        ['KLN90B'] = {
-            ['mode'] = {
-                [1] = 0;
-            };
-            ['position'] = {
-                [1] = 628;
-                [2] = 54;
-                [3] = 718;
-                [4] = 257;
-            };
-            ['visible'] = false;
-        };
-        ['KLN90B_DISPLAY'] = {
-            ['mode'] = {
-                [1] = 0;
-            };
-            ['position'] = {
-                [1] = 127;
-                [2] = 381;
-                [3] = 477;
-                [4] = 282;
-            };
-            ['visible'] = false;
-        };
         ['MD41'] = {
             ['mode'] = {
                 [1] = 0;
             };
+            ['visible'] = false;
             ['position'] = {
                 [1] = 120;
                 [2] = 522;
                 [3] = 411;
                 [4] = 177;
             };
-            ['visible'] = false;
         };
+        ['KLN90B'] = {
+            ['mode'] = {
+                [1] = 0;
+            };
+            ['visible'] = false;
+            ['position'] = {
+                [1] = 628;
+                [2] = 54;
+                [3] = 718;
+                [4] = 257;
+            };
+        };
+        ['KLN90B_DISPLAY'] = {
+            ['mode'] = {
+                [1] = 0;
+            };
+            ['visible'] = false;
+            ['position'] = {
+                [1] = 127;
+                [2] = 381;
+                [3] = 477;
+                [4] = 282;
+            };
+        };
+    };
+    ['legacyPopups'] = {
     };
 };
