@@ -838,8 +838,8 @@ function misc()
     -- simDR_crew_pld = 53
     -- simDR_cabin_pld = -110
     
-    simDR_fire_buzzer = simDR_srd_buzzer
-    simDR_fire_buzzer_cap = simDR_srd_buzzer_cap
+-- [M eng panel]     simDR_fire_buzzer = simDR_srd_buzzer
+-- [M eng panel]     simDR_fire_buzzer_cap = simDR_srd_buzzer_cap
     
     if simDR_srd_buzzer_cap < 1 then
        simDR_srd_buzzer = 1
@@ -1317,7 +1317,7 @@ end
           -- opora_sel_vibro = 0
        -- end
        -- simDR_eng_1_vibro_ctrl = front_opora_push_vibro + back_opora_push_vibro
-       simDR_vibro_sel_1 = opora_sel_vibro
+-- [M eng panel]        simDR_vibro_sel_1 = opora_sel_vibro
     -- elseif eng_sel_vibro == 2 and vibro_pwr2 > 0 then
        -- if opora_sel_vibro == 0 and front_opora_push_vibro < 1 and back_opora_push_vibro < 1 then
         -- needle_eng_vibro_loc = simDR_eng2_vibro - 0.3
@@ -1436,6 +1436,10 @@ function apu()
         -- end
     -- end 
     
+    -- [M eng panel] the M engineer panel has no APU fire valve switch: keep the valve always open
+    apu_fire_crane = 1
+    apu_fire_crane_cap = 0
+
     if apu_fire_crane < 1 then
         simDR_apu_p_fuel = 0
     end
@@ -1465,16 +1469,16 @@ function elec()
     end
     
     
-    if apu_rap_sel > 0 then
-        simDR_apu_gen = 1
-        simDR_gpu_gen = 0
-    elseif apu_rap_sel < 0 then
-        simDR_apu_gen = 0
-        simDR_gpu_gen = 1
-    else
-        simDR_apu_gen = 0
-        simDR_gpu_gen = 0
-    end
+-- [M eng panel]     if apu_rap_sel > 0 then
+-- [M eng panel]         simDR_apu_gen = 1
+-- [M eng panel]         simDR_gpu_gen = 0
+-- [M eng panel]     elseif apu_rap_sel < 0 then
+-- [M eng panel]         simDR_apu_gen = 0
+-- [M eng panel]         simDR_gpu_gen = 1
+-- [M eng panel]     else
+-- [M eng panel]         simDR_apu_gen = 0
+-- [M eng panel]         simDR_gpu_gen = 0
+-- [M eng panel]     end
     
     
 
@@ -1489,17 +1493,17 @@ function elec()
     
     
 
-    if sel_27_volt == 0 then
-       simDR_sel_27_volt = 2
-    elseif sel_27_volt == 1 then
-       simDR_sel_27_volt = 0
-    elseif sel_27_volt == 2 then
-       simDR_sel_27_volt = 4
-    elseif sel_27_volt == 3 then
-       simDR_sel_27_volt = 1
-    elseif sel_27_volt == 4 then
-       simDR_sel_27_volt = 5
-    end
+-- [M eng panel]     if sel_27_volt == 0 then
+-- [M eng panel]        simDR_sel_27_volt = 2
+-- [M eng panel]     elseif sel_27_volt == 1 then
+-- [M eng panel]        simDR_sel_27_volt = 0
+-- [M eng panel]     elseif sel_27_volt == 2 then
+-- [M eng panel]        simDR_sel_27_volt = 4
+-- [M eng panel]     elseif sel_27_volt == 3 then
+-- [M eng panel]        simDR_sel_27_volt = 1
+-- [M eng panel]     elseif sel_27_volt == 4 then
+-- [M eng panel]        simDR_sel_27_volt = 5
+-- [M eng panel]     end
     
     
     
@@ -2048,12 +2052,12 @@ end
   
 function data()
     
-        simDR_gauges1_cap = 0
-        simDR_gauges2_cap = 0
-        simDR_gauges3_cap = 0
-        simDR_gauges1 = 1
-        simDR_gauges2 = 1
-        simDR_gauges3 = 1
+-- [M eng panel]         simDR_gauges1_cap = 0
+-- [M eng panel]         simDR_gauges2_cap = 0
+-- [M eng panel]         simDR_gauges3_cap = 0
+-- [M eng panel]         simDR_gauges1 = 1
+-- [M eng panel]         simDR_gauges2 = 1
+-- [M eng panel]         simDR_gauges3 = 1
     
     if aircraft_loaded > 0 then
         -- simDR_left_pnppkp_light = 5
@@ -2072,8 +2076,8 @@ function data()
        aircraft_loaded = 0
     end
     
-    simDR_bus_connect = 1
-    simDR_bus_connect_cap = 1
+-- [M eng panel]     simDR_bus_connect = 1
+-- [M eng panel]     simDR_bus_connect_cap = 1
     if simDR_36vl > 5 then
         bus36 = 1
     elseif simDR_36vr > 5 then

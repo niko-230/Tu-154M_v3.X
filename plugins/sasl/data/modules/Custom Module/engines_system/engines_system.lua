@@ -9,5 +9,6 @@ components = {
 	eng_fails{},
 	rt12{},
 	fuel_consumption{},
+	eng_panel_m{}, -- M-donor engineer panel glue (UT test button, panel caps)
 
 }
