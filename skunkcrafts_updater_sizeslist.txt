@@ -1256,22 +1256,13 @@ liveries/alrosa/objects/wings.png|19983516
 liveries/alrosa/tu154_icon11.png|163893
 liveries/alrosa/tu154_icon11_thumb.png|12453
 mag_dec.dat|60702
-objects/Cabin Rain Glass Left.obj|273856
-objects/Cabin Rain Glass Left2.obj|273661
-objects/Cabin Rain Glass.obj|258233
-objects/Cabin Rain Glass2.obj|264003
 objects/Cabin_Rain.png|1175
 objects/Cabin_Rain_Left.png|1175
 objects/Cabin_Rain_thermal.png|272
-objects/Cockpit_glass_in.obj|47795
 objects/Cockpit_glass_in.png|1175
-objects/Cockpit_glass_in2.obj|47363
-objects/Cockpit_glass_out.obj|47955
-objects/Cockpit_glass_out.png|1175
-objects/Cockpit_glass_out2.obj|47518
-objects/Door_Right_Rain.obj|7479
+objects/Cockpit_glass_out.obj|48370
+objects/Cockpit_glass_out.png|167480
 objects/Door_Right_Rain.png|1175
-objects/Door_Right_Rain2.obj|7478
 objects/Floor.png|1790146
 objects/Floor_LIT.png|1165326
 objects/Groza_Glass.obj|136539
@@ -1292,6 +1283,7 @@ objects/aux_stuff_1.png|1318245
 objects/azs_panel.png|3321949
 objects/azs_panel_LIT.png|2323715
 objects/azs_panels.obj|387409
+objects/cabin_glass_out.obj|857612
 objects/cockpit_1.obj|14699191
 objects/cockpit_1.png|10212772
 objects/cockpit_1_NML.png|11659837
@@ -1378,15 +1370,15 @@ objects/fuselage_NML.png|999647
 objects/gears.obj|5432333
 objects/gears.png|3094004
 objects/gears_NML.png|3059539
-objects/glass.obj|79538
-objects/glass.png|2773316
-objects/glass1.obj|76929
-objects/glass2.obj|76966
+objects/glass.obj|120097
+objects/glass.png|3142760
 objects/glass2.png|10345
 objects/glass2_LIT.png|3870
 objects/glass2_NML.png|7979
 objects/glass_LIT.png|71581
 objects/glass_NML.png|7979
+objects/glass_out.png|6542
+objects/glass_outside_doors.obj|37146
 objects/gns430.obj|271459
 objects/gns430.png|3944957
 objects/gns430_LIT.png|142943
@@ -1450,6 +1442,7 @@ objects/sard_panel_RUS.obj|211475
 objects/sard_scales.obj|42
 objects/sard_scales.png|113931
 objects/sard_scales_LIT.png|83102
+objects/side_wiper.png|37261
 objects/snow_on_fuse.obj|81794
 objects/snow_on_fuse.png|820770
 objects/snow_on_fuse_NML.png|1073168
@@ -1476,8 +1469,9 @@ objects/vm15_scale.obj|7493
 objects/vm15_scale.png|40380
 objects/vm15_scale_LIT.png|37441
 objects/windshield_thermal.png|186745
-objects/windshield_thermal_out.png|158344
-objects/windshield_thermal_side.png|90405
+objects/windshield_thermal_cabin.png|206144
+objects/windshield_thermal_out.png|162854
+objects/windshield_thermal_side.png|38209
 objects/wings.obj|1164948
 objects/wings.png|4590917
 objects/wings_NML.png|3076916
@@ -1485,6 +1479,7 @@ objects/wings_b2.png|5522707
 objects/wings_b2_NML.png|623060
 objects/wiper.png|42601
 objects/wiper_out.png|42309
+objects/wipers.png|46180
 pa3/gen_plans/LBWN-LBSF.json|70
 pa3/gen_plans/USRR-UWUU.json|239
 pa3/gen_plans/fpln.json|781
@@ -1734,7 +1729,7 @@ plugins/sasl/data/modules/Custom Module/Verdana.ttf|153096
 plugins/sasl/data/modules/Custom Module/afl_ch.lua|4387
 plugins/sasl/data/modules/Custom Module/animation/animation.lua|89
 plugins/sasl/data/modules/Custom Module/animation/ext_anim.lua|28156
-plugins/sasl/data/modules/Custom Module/animation/rain_mask.lua|7499
+plugins/sasl/data/modules/Custom Module/animation/rain_mask.lua|2591
 plugins/sasl/data/modules/Custom Module/animation/slow_load.lua|8041
 plugins/sasl/data/modules/Custom Module/antiice/antiice.lua|102
 plugins/sasl/data/modules/Custom Module/antiice/antiice_fails.lua|5808
@@ -3189,7 +3184,7 @@ sounds/systems/click.wav|2188
 sounds/systems/flap.wav|2188
 sounds/systems/gear.wav|2188
 sounds/weather/wind.wav|520560
-tu154.acf|2839079
+tu154.acf|2834727
 tu154_cockpit.obj|1588759
 tu154_icon11.png|113962
 tu154_icon11_thumb.png|10010
