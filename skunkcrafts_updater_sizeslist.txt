@@ -1305,19 +1305,19 @@ objects/cockpit_center_panel_v1_RUS.png|19468702
 objects/cockpit_center_panel_v1_RUS_LIT.png|501812
 objects/cockpit_center_panel_v1_RUS_NML.png|9079065
 objects/cockpit_chairs.obj|5858611
-objects/cockpit_chairs.png|12795884
+objects/cockpit_chairs.png|12337453
 objects/cockpit_chairs_NML.png|5933800
 objects/cockpit_details.obj|6478751
 objects/cockpit_details.png|15235213
 objects/cockpit_details_NML.png|7330058
-objects/cockpit_eng_gauges_M_RUS.obj|4260054
-objects/cockpit_eng_gauges_M_RUS.png|13668925
+objects/cockpit_eng_gauges_M_RUS.obj|4258650
+objects/cockpit_eng_gauges_M_RUS.png|13068389
 objects/cockpit_eng_gauges_M_RUS_LIT.png|294486
 objects/cockpit_eng_glass_M_RUS.obj|112505
 objects/cockpit_eng_glass_M_RUS.png|823564
 objects/cockpit_eng_lamps_M_RUS.obj|2587906
-objects/cockpit_eng_lamps_M_RUS.png|10347666
-objects/cockpit_eng_lamps_M_RUS_LIT.png|13283348
+objects/cockpit_eng_lamps_M_RUS.png|10003992
+objects/cockpit_eng_lamps_M_RUS_LIT.png|12972133
 objects/cockpit_eng_misc_M_RUS.obj|62268
 objects/cockpit_eng_misc_M_RUS.png|80908
 objects/cockpit_eng_misc_M_RUS_LIT.png|6488
@@ -1325,7 +1325,7 @@ objects/cockpit_eng_panel_RUS.obj|1663173
 objects/cockpit_eng_panel_RUS.png|18911159
 objects/cockpit_eng_panel_RUS_LIT.png|33242
 objects/cockpit_eng_shell_M_RUS.obj|488446
-objects/cockpit_eng_shell_M_RUS.png|14543027
+objects/cockpit_eng_shell_M_RUS.png|14434602
 objects/cockpit_eng_stp_B_RUS.obj|55578
 objects/cockpit_front_panel_RUS.obj|846453
 objects/cockpit_front_panel_RUS.png|15432950
@@ -1792,7 +1792,7 @@ plugins/sasl/data/modules/Custom Module/electric_system/generators_logic.lua|341
 plugins/sasl/data/modules/Custom Module/electric_system/gpu_logic.lua|18506
 plugins/sasl/data/modules/Custom Module/engines_system/eng_fails.lua|21030
 plugins/sasl/data/modules/Custom Module/engines_system/eng_panel_m.lua|2844
-plugins/sasl/data/modules/Custom Module/engines_system/engine_gauges.lua|56960
+plugins/sasl/data/modules/Custom Module/engines_system/engine_gauges.lua|57510
 plugins/sasl/data/modules/Custom Module/engines_system/engines_panel.lua|47164
 plugins/sasl/data/modules/Custom Module/engines_system/engines_system.lua|244
 plugins/sasl/data/modules/Custom Module/engines_system/fuel_consumption.lua|14554
@@ -3185,7 +3185,7 @@ sounds/systems/flap.wav|2188
 sounds/systems/gear.wav|2188
 sounds/weather/wind.wav|520560
 tu154.acf|2834727
-tu154_cockpit.obj|1588759
+tu154_cockpit.obj|1585853
 tu154_icon11.png|113962
 tu154_icon11_thumb.png|10010
 tu154_paint.png|6686
