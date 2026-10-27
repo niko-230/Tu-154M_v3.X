@@ -568,9 +568,14 @@ end
 
 
 --- EGT Model ---
+-- Correction to match Tu-154M RLE section 8.1, tables 8.1.1 (ground, ISA) and 8.1.2 (11 km, M 0.8).
+-- B's formula was ~97 C too cold at ground idle (book: 465 C at N2 59.5-61.5%), ~34 C too cold at
+-- flight idle (book: 365 C at N2 78%) and ~20 C too hot at takeoff (book: 595 C max ground, 585 C at 11 km).
+-- Keyed on real N2 %. Global (not local) on purpose: this chunk is close to Lua's 200-locals limit.
+egt_rle_corr_tbl = {{-10,97},{60.5,97},{78,34},{82.25,3},{86,0},{94,0},{95.25,-17},{96.5,-21},{120,-21}}
 local function egt_from_n2 (rpm,temp,burn,kpp,delta_rpm)
 	local acc=math.max(delta_rpm,0)
-	local tvg=(1.03755728906152009522e-02 + 1.00010420877229377901e+00*temp + 1.94800724821419137811e+01*rpm -8.51458629305168331568e-06*math.pow(temp,2) + 3.99068120435730894213e-02*temp*rpm -4.04566507886464810095e-01*math.pow(rpm,2) + 1.28411028313892965633e-04*math.pow(temp,2)*rpm -5.39729923454061776347e-04*temp*math.pow(rpm,2) + 2.80693214389386713759e-03*math.pow(rpm,3)+kpp*25+acc*10)*burn --base temp+n2_induced EGT (static+acceleration+bypass valve correction)
+	local tvg=(1.03755728906152009522e-02 + 1.00010420877229377901e+00*temp + 1.94800724821419137811e+01*rpm -8.51458629305168331568e-06*math.pow(temp,2) + 3.99068120435730894213e-02*temp*rpm -4.04566507886464810095e-01*math.pow(rpm,2) + 1.28411028313892965633e-04*math.pow(temp,2)*rpm -5.39729923454061776347e-04*temp*math.pow(rpm,2) + 2.80693214389386713759e-03*math.pow(rpm,3)+kpp*25+acc*10+interpolate(egt_rle_corr_tbl,rpm))*burn --base temp+n2_induced EGT (static+acceleration+bypass valve correction)
 	return tvg
 end
 
