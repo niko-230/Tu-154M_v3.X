@@ -521,15 +521,16 @@ local function lamps()
 	local button_fire_ng_brt = math.max(get(ng_used) * power_sw * lamps_brt * day_night, test_btn)
 	set(button_fire_ng, button_fire_ng_brt)
 	
-	--local ext_test_but = get(ext_test)
+	-- КОНТРОЛЬ ОГНЕТУШИТЕЛЕЙ (RLE 8.15a.2): white ОЧЕР 1/2/3 lamps light while pressed if the extinguisher circuits are powered; no siren
+	local ext_test_but = get(ext_test)
 	
-	local button_fire_turn_3_brt = math.max(math.max(get(ext_used_3), bool2int(get(azs2)==0)) * power_sw * lamps_brt * day_night, test_btn)
+	local button_fire_turn_3_brt = math.max(math.max(get(ext_used_3), bool2int(get(azs2)==0), ext_test_but * get(azs2)) * power_sw * lamps_brt * day_night, test_btn)
 	set(button_fire_turn_3, button_fire_turn_3_brt)
 	
-	local button_fire_turn_2_brt = math.max(math.max(get(ext_used_2), bool2int(get(azs1)==0)) * power_sw * lamps_brt * day_night, test_btn)
+	local button_fire_turn_2_brt = math.max(math.max(get(ext_used_2), bool2int(get(azs1)==0), ext_test_but * get(azs1)) * power_sw * lamps_brt * day_night, test_btn)
 	set(button_fire_turn_2, button_fire_turn_2_brt)
 
-	local button_fire_turn_1_brt = math.max(math.max(get(ext_used_1), bool2int(get(azs1)==0)) * power_sw * lamps_brt * day_night, test_btn)
+	local button_fire_turn_1_brt = math.max(math.max(get(ext_used_1), bool2int(get(azs1)==0), ext_test_but * get(azs1)) * power_sw * lamps_brt * day_night, test_btn)
 	set(button_fire_turn_1, button_fire_turn_1_brt)	
 	
 	

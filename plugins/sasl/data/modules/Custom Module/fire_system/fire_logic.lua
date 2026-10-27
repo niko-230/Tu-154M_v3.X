@@ -15,7 +15,7 @@ defineProperty("sim_engine_ext4", globalProperty("sim/cockpit2/engine/actuators/
 
 -- controls
 defineProperty("lamp_test", globalPropertyi("tu154b2/custom/buttons/lamp_test_fire_panel")) -- кнопка проверки ламп на пожарной панели	0
---defineProperty("smoke_test", globalPropertyi("tu154b2/custom/buttons/eng/smoke_test")) -- проверка датчиков дыма
+defineProperty("smoke_test", globalPropertyi("tu154b2/custom/buttons/eng/smoke_test")) -- M panel: КОНТРОЛЬ СИГНАЛИЗАТОРОВ ДЫМА (single button)
 defineProperty("ext_test", globalPropertyi("tu154b2/custom/buttons/eng/ext_test")) -- проверка огнетушителей
 
 
@@ -347,7 +347,8 @@ if MASTER then
 			end
 		end
 		
-		local smoke_test=get(smoke_test1)+get(smoke_test2)+get(smoke_test3)+get(smoke_test4)+get(smoke_test5)+get(smoke_test6)+get(smoke_test7)
+		local smoke_test_m=get(smoke_test) -- M single test button (RLE 8.15a.2: tests both БГО1 and БГО2 groups + siren)
+		local smoke_test=get(smoke_test1)+get(smoke_test2)+get(smoke_test3)+get(smoke_test4)+get(smoke_test5)+get(smoke_test6)+get(smoke_test7)+smoke_test_m
 		if smoke_test>0 then
 			smoke_test_act=smoke_test_act+passed
 			if smoke_test_act>1 then 
@@ -362,7 +363,10 @@ if MASTER then
 		if fire_1 or fire_2 or fire_3 or fire_4 or smoke_test_act > 0.6 + math.random()/10 then
 			set(fire_detected, 1)
 			set(fire_siren, get(fire_buzzer)-bool2int(test_group>0))
-			if get(smoke_test1)+get(smoke_test2)+get(smoke_test3)+get(smoke_test4)>0 then
+			if smoke_test_m>0 then
+				set(fire_bag1,1)
+				set(fire_bag2,1)
+			elseif get(smoke_test1)+get(smoke_test2)+get(smoke_test3)+get(smoke_test4)>0 then
 				set(fire_bag1,1)
 			elseif get(smoke_test5)+get(smoke_test6)+get(smoke_test7)>0 then
 				set(fire_bag2,1)
