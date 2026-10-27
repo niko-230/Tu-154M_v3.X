@@ -24652,34 +24652,6 @@ ANIM_begin
 	TRIS 28431 6
 ANIM_end
 ANIM_begin
-	ANIM_trans 0.860300 -1.467980 -19.428301 0.860300 -1.467980 -19.428301 0.000000 0.000000 none
-	ANIM_rotate 0.000000 0.000000 -1.000000 0.000000 120.000000 0.000000 1.000000 sim/custom/switchers/fuel/pump_tank1_4_cap
-	ANIM_trans -0.860300 1.467980 19.428301 -0.860300 1.467980 19.428301 0.000000 0.000000 none
-	ATTR_manip_toggle hand 1.000000 0.000000 sim/custom/switchers/fuel/pump_tank1_4_cap
-	TRIS 28437 6
-ANIM_end
-ANIM_begin
-	ANIM_trans 0.860300 -1.467980 -19.449200 0.860300 -1.467980 -19.449200 0.000000 0.000000 none
-	ANIM_rotate 0.000000 0.000000 -1.000000 0.000000 120.000000 0.000000 1.000000 sim/custom/switchers/fuel/pump_tank1_3_cap
-	ANIM_trans -0.860300 1.467980 19.449200 -0.860300 1.467980 19.449200 0.000000 0.000000 none
-	ATTR_manip_toggle hand 1.000000 0.000000 sim/custom/switchers/fuel/pump_tank1_3_cap
-	TRIS 28443 6
-ANIM_end
-ANIM_begin
-	ANIM_trans 0.860300 -1.468170 -19.470600 0.860300 -1.468170 -19.470600 0.000000 0.000000 none
-	ANIM_rotate 0.000000 0.000000 -1.000000 0.000000 120.000000 0.000000 1.000000 sim/custom/switchers/fuel/pump_tank1_2_cap
-	ANIM_trans -0.860300 1.468170 19.470600 -0.860300 1.468170 19.470600 0.000000 0.000000 none
-	ATTR_manip_toggle hand 1.000000 0.000000 sim/custom/switchers/fuel/pump_tank1_2_cap
-	TRIS 28449 6
-ANIM_end
-ANIM_begin
-	ANIM_trans 0.860300 -1.468170 -19.492300 0.860300 -1.468170 -19.492300 0.000000 0.000000 none
-	ANIM_rotate 0.000000 0.000000 -1.000000 0.000000 120.000000 0.000000 1.000000 sim/custom/switchers/fuel/pump_tank1_1_cap
-	ANIM_trans -0.860300 1.468170 19.492300 -0.860300 1.468170 19.492300 0.000000 0.000000 none
-	ATTR_manip_toggle hand 1.000000 0.000000 sim/custom/switchers/fuel/pump_tank1_1_cap
-	TRIS 28455 6
-ANIM_end
-ANIM_begin
 	ANIM_trans 0.860300 -1.481400 -19.492300 0.860300 -1.481400 -19.492300 0.000000 0.000000 none
 	ANIM_rotate 0.000000 0.000000 -1.000000 0.000000 160.000000 0.000000 1.000000 tu154b2/custom/switchers/fuel/fuel_porc_cap
 	ANIM_trans -0.860300 1.481400 19.492300 -0.860300 1.481400 19.492300 0.000000 0.000000 none
@@ -24760,38 +24732,22 @@ ATTR_manip_push button 1.000000 0.000000 tu154b2/custom/gauges/acs3/left_knob_pr
 TRIS 28527 6
 ATTR_manip_push button 1.000000 0.000000 tu154b2/custom/gauges/acs3/right_knob_press start, stop, reset chrono
 TRIS 28533 6
-ATTR_manip_delta rotate_large_left -1.000000 0.000000 0.000000 9.000000 tu154b2/custom/switchers/eng/bus115_volt_sel
-TRIS 28539 6
-ATTR_manip_delta rotate_large_right 1.000000 0.000000 0.000000 9.000000 tu154b2/custom/switchers/eng/bus115_volt_sel
-TRIS 28545 6
-ATTR_manip_delta rotate_large_left -1.000000 0.000000 0.000000 2.000000 tu154b2/custom/switchers/eng/bus115_volt_phase_sel
-TRIS 28551 6
-ATTR_manip_delta rotate_large_right 1.000000 0.000000 0.000000 2.000000 tu154b2/custom/switchers/eng/bus115_volt_phase_sel
-TRIS 28557 6
-ATTR_manip_delta rotate_large_left -1.000000 0.000000 0.000000 4.000000 tu154b2/custom/switchers/eng/bus115_amp_sel
-TRIS 28563 6
-ATTR_manip_delta rotate_large_right 1.000000 0.000000 0.000000 4.000000 tu154b2/custom/switchers/eng/bus115_amp_sel
-TRIS 28569 6
-ATTR_manip_delta rotate_large_left -1.000000 0.000000 0.000000 2.000000 tu154b2/custom/switchers/eng/bus115_amp_phase_sel
-TRIS 28575 6
-ATTR_manip_delta rotate_large_right 1.000000 0.000000 0.000000 2.000000 tu154b2/custom/switchers/eng/bus115_amp_phase_sel
-TRIS 28581 6
-ATTR_manip_delta rotate_large_right 1.000000 0.000000 0.000000 8.000000 tu154b2/custom/switchers/eng/bus36_volt_sel
-TRIS 28587 6
-ATTR_manip_delta rotate_large_left -1.000000 0.000000 0.000000 8.000000 tu154b2/custom/switchers/eng/bus36_volt_sel
-TRIS 28593 6
-ATTR_manip_delta rotate_large_left -1.000000 0.000000 0.000000 5.000000 tu154b2/custom/switchers/eng/bus27_volt_sel
-TRIS 28599 6
-ATTR_manip_delta rotate_large_right 1.000000 0.000000 0.000000 5.000000 tu154b2/custom/switchers/eng/bus27_volt_sel
-TRIS 28605 6
-ATTR_manip_delta rotate_large_right 1.000000 0.000000 0.000000 3.000000 tu154b2/custom/switchers/eng/bus27_amp1_sel
-TRIS 28611 6
-ATTR_manip_delta rotate_large_left -1.000000 0.000000 0.000000 3.000000 tu154b2/custom/switchers/eng/bus27_amp1_sel
-TRIS 28617 6
-ATTR_manip_delta rotate_large_left -1.000000 0.000000 0.000000 3.000000 tu154b2/custom/switchers/eng/bus27_amp2_sel
-TRIS 28623 6
-ATTR_manip_delta rotate_large_right 1.000000 0.000000 0.000000 3.000000 tu154b2/custom/switchers/eng/bus27_amp2_sel
-TRIS 28629 6
+ATTR_manip_axis_knob rotate_large 0.000000 9.000000 1.000000 0.000000 tu154b2/custom/switchers/eng/bus115_volt_sel
+TRIS 28539 12
+ATTR_manip_axis_knob rotate_large 0.000000 2.000000 1.000000 0.000000 tu154b2/custom/switchers/eng/bus115_volt_phase_sel
+TRIS 28551 12
+ATTR_manip_axis_knob rotate_large 0.000000 4.000000 1.000000 0.000000 tu154b2/custom/switchers/eng/bus115_amp_sel
+TRIS 28563 12
+ATTR_manip_axis_knob rotate_large 0.000000 2.000000 1.000000 0.000000 tu154b2/custom/switchers/eng/bus115_amp_phase_sel
+TRIS 28575 12
+ATTR_manip_axis_knob rotate_large 0.000000 8.000000 1.000000 0.000000 tu154b2/custom/switchers/eng/bus36_volt_sel
+TRIS 28587 12
+ATTR_manip_axis_knob rotate_large 0.000000 5.000000 1.000000 0.000000 tu154b2/custom/switchers/eng/bus27_volt_sel
+TRIS 28599 12
+ATTR_manip_axis_knob rotate_large 0.000000 3.000000 1.000000 0.000000 tu154b2/custom/switchers/eng/bus27_amp1_sel
+TRIS 28611 12
+ATTR_manip_axis_knob rotate_large 0.000000 3.000000 1.000000 0.000000 tu154b2/custom/switchers/eng/bus27_amp2_sel
+TRIS 28623 12
 ATTR_manip_toggle up_down 1.000000 0.000000 tu154b2/custom/switchers/eng/gpu_on
 TRIS 28635 6
 ATTR_manip_toggle up_down 1.000000 0.000000 tu154b2/custom/switchers/eng/apu_gen_on
@@ -24970,10 +24926,8 @@ TRIS 29133 6
 ATTR_manip_drag_axis rotate_large 0.000000 0.000000 0.100000 20.000000 25.000000 tu154b2/custom/switchers/airbleed/right_sys_temp_set
 ATTR_manip_wheel 1.000000
 TRIS 29139 6
-ATTR_manip_delta rotate_large_left -1.000000 0.000000 0.000000 8.000000 tu154b2/custom/switchers/airbleed/sys_temp_select
-TRIS 29145 6
-ATTR_manip_delta rotate_large_right 1.000000 0.000000 0.000000 5.000000 tu154b2/custom/switchers/airbleed/sys_temp_select
-TRIS 29151 6
+ATTR_manip_axis_knob rotate_large 0.000000 5.000000 1.000000 0.000000 tu154b2/custom/switchers/airbleed/sys_temp_select
+TRIS 29145 12
 ATTR_manip_push button 1.000000 0.000000 tu154b2/custom/buttons/lamp_test_srd
 TRIS 29157 6
 ATTR_manip_toggle up 1.000000 0.000000 tu154b2/custom/switchers/airbleed/cockpit_mode_set
