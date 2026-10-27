@@ -1799,9 +1799,8 @@ plugins/sasl/data/modules/Custom Module/engines_system/fuel_consumption.lua|1455
 plugins/sasl/data/modules/Custom Module/engines_system/rt12.lua|6684
 plugins/sasl/data/modules/Custom Module/engines_system/rud_logic.lua|40321
 plugins/sasl/data/modules/Custom Module/engines_system/vibration_logic.lua|8889
-plugins/sasl/data/modules/Custom Module/fire_system/fire_logic.lua|16563
-plugins/sasl/data/modules/Custom Module/fire_system/fire_panel copy.lua|22014
-plugins/sasl/data/modules/Custom Module/fire_system/fire_panel.lua|28705
+plugins/sasl/data/modules/Custom Module/fire_system/fire_logic.lua|16805
+plugins/sasl/data/modules/Custom Module/fire_system/fire_panel.lua|28942
 plugins/sasl/data/modules/Custom Module/fire_system/fire_system.lua|87
 plugins/sasl/data/modules/Custom Module/flap_aero.lua|10127
 plugins/sasl/data/modules/Custom Module/flaps.lua|24565
