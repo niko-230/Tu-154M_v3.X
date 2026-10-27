@@ -224,7 +224,7 @@ local function flap_rate(pos)
 	elseif pos < 36 then
 		return 8/4          -- 2.000 deg/s
 	else
-		return 9/9           -- 1.000 deg/s
+		return 9/4.5         -- 2.000 deg/s  (2026-10-27: RLE 8.10.1: 45 deg in <=23 s total; was 9 s for 36->45 = 27.5 s)
 	end
 end
 local flap_pos_L_last = flaps_pos_cmd
@@ -235,7 +235,7 @@ local slats_dirr = 0
 -- FIXED (2026-08-18): real slat travel is 18s full extension/retraction
 -- (1/18 = 0.05556 ratio/sec). Previous value (0.035, ~28.6s) was B's leftover
 -- constant, never actually matched to either donor's real slat timing.
-local slats_spd = 1/18
+local slats_spd = 1/14 -- 2026-10-27: RLE 8.10.1/8.10.4.2: slats 13-15 s (was 18 s)
 local slats_prev = 0
 
 local stab_pos_now = get(stab_ratio) * 5.5 -- 0 - 5.5 degrees
@@ -489,7 +489,7 @@ if MASTER then
 	
 	-- calculate new position of slats
 	if get(slat_man_cap) == 0 then -- automatic mode
-		if flap_pos_L_last >= 12 and flap_lever_pos >= 5 then slats_pos_cmd = 1  -- delayed: slat starts at flap 12deg
+		if flap_lever_pos >= 5 then slats_pos_cmd = 1  -- 2026-10-27: RLE 8.10.2: slats start together with the flaps (was delayed to flaps 12 deg)
 		elseif flap_lever_pos < 5 and flap_pos_L_last <= 14 and flap_pos_R_last <= 14 then slats_pos_cmd = 0
 		end	
 		
@@ -531,62 +531,26 @@ if MASTER then
 
 	if get(stab_man_cap) == 0 and get(stab_automatic_fail) == 0 then -- automatic controls and no automatic fails
 		local stab_set = get(stab_setting)
-		-- Balloon fix: stab only starts when flap is almost fully extended (14.5 of 15deg).
-		-- For flap 15 approach: stab moves only in the last 0.5s of extension (~0.06 internal change during extension).
-		-- For flap 28 (pos already >14.5): coupling acts immediately. For landing stage (handled by flap_pos>=31): no change.
-		if flap_pos_L_last>14.5 then
-			if stab_dirr ==1 then
-				if flap_pos_L_last<31 then
-					if stab_set == 2 then
-						stab_move=bool2int(stab_pos_now < mkv_2)
-						stab_tgt = mkv_2
-					elseif stab_set == 1 then
-						stab_move=bool2int(stab_pos_now < mkv_1)
-						stab_tgt = mkv_1
-					end
-				else
-					-- FIXED (2026-08-20): landing stage (flap 36/45) IS CG-dependent per real M table
-					-- ("???? ?????????????? ?????????? ??????? ??????????? ? ?????????????", 1997 PDF):
-					-- ? (CG<24%):   5.5? physical = 5.5 internal (max) ? mkv_3
-					-- ? (24-32%):   3? physical = 2.0625 internal ? confirmed by user (donor M shows -3)
-					-- ? (CG>32%):   0? = baseline ? no drive
-					-- Previous comment "M only lets CG affect the intermediate stage" was WRONG.
-					if stab_set == 2 then
-						stab_move=bool2int(stab_pos_now < mkv_3)       -- ?: max 5.5 internal
-						stab_tgt = mkv_3
-					elseif stab_set == 1 then
-						stab_move=bool2int(stab_pos_now < 3.0)          -- C landing: M real РЛЭ value
-						stab_tgt = 3.0
-					end
-					-- ? (stab_set==0): no stab drive, stays at baseline
-				end
-			elseif stab_dirr ==-1 then
-				if flap_pos_L_last<44 then
-					if flap_pos_L_last >= 20 then
-						-- landing stage retract: CG-dependent
-						if stab_set == 2 then
-							stab_move=-bool2int(stab_pos_now >= mkv_3)
-						elseif stab_set == 1 then
-							stab_move=-bool2int(stab_pos_now >= 3.0)
-						end
-					else
-						-- takeoff stage retract: CG-dependent
-						if stab_set == 2 then
-							stab_move=-bool2int(stab_pos_now >= mkv_2)
-						elseif stab_set == 1 then
-							stab_move=-bool2int(stab_pos_now >= mkv_1)
-						end
-					end
-				end
-			end
-		else
-			-- 2026-10-11: flaps 15->0 dive fix. The stab used to start returning to 0 as soon as the flaps went
-			-- below 14.5, removing its nose-up while the aircraft needs MORE angle of attack (lift loss) -> dive.
-			-- It now keeps its takeoff setting until flaps AND slats are fully up, then returns to 0.
-			if flap_pos_L_last <= 0.5 and flap_pos_R_last <= 0.5 and get(slats) <= 0.01 then
-				stab_move=-bool2int(stab_pos_now >0)
-				stab_tgt = 0
-			end
+		-- 2026-10-27: stabilizer sequencing per RLE Tu-154M 8.10.2 (table 8.10.1 positions unchanged):
+		--  flaps 0->15: stab moves to its takeoff position TOGETHER with flaps and slats;
+		--  extending to 36/45: stab moves to its landing position when the flaps reach 31 deg;
+		--  45->28: stab goes back to the takeoff position at once;
+		--  28->0: stab starts back to 0 when the flaps pass 25 deg.
+		-- (replaces the balloon/dive workarounds: start at flaps 14.5, return only after flaps+slats fully up)
+		local takeoff_t = 0
+		local landing_t = 0
+		if stab_set == 2 then takeoff_t = mkv_2; landing_t = mkv_3
+		elseif stab_set == 1 then takeoff_t = mkv_1; landing_t = 3.0 end
+		local tgt = false
+		if flap_lever_pos >= 5 then
+			if flap_lever_pos >= 32 and flap_pos_L_last >= 31 then tgt = landing_t else tgt = takeoff_t end
+		elseif flap_pos_L_last <= 25 then
+			tgt = 0
+		end
+		if tgt then
+			stab_tgt = tgt
+			if stab_pos_now < tgt - 0.001 then stab_move = 1
+			elseif stab_pos_now > tgt + 0.001 then stab_move = -1 end
 		end
 		stab_move_act=stab_move	
 	elseif get(stab_man_cap) == 1 then -- manual stab control
@@ -596,14 +560,10 @@ if MASTER then
 	
 	
 	-- stab movements
-	-- Stab rate: extension 0.11/s (M real), landing extension 0.33/s; retraction 0.05/s (slower = smooth)
 	local stab_rate
-	if stab_move_act > 0 then
-		stab_rate = 0.11
-		if flap_pos_L_last >= 31 then stab_rate = 0.33 end
-	else
-		stab_rate = 0.05  -- retraction slower
-	end
+	-- 2026-10-27: RLE 8.10.1: 1.5 deg <=7.5 s, 3 deg <=15 s, 5.5 deg <=27.5 s -> 0.2 deg/s both ways
+	-- (was 0.11 out / 0.33 landing stage / 0.05 in)
+	stab_rate = 0.2
 	-- 2026-10-11: abrupt stab fix (flaps 0->15). Same rates, targets and start point (flaps 14.5) as before,
 	-- but the speed now builds up over STAB_EASE_TIME s and eases off before the target, instead of jumping
 	-- from 0 to full speed and stopping dead. Manual stab control and power loss behave as before.
@@ -647,7 +607,10 @@ if MASTER then
 	--stab_dirr = 0
 	--stab_pos_cmd = 0
 	set(stab_ratio, stab_pos_now / 5.5)
-	set(stab_pos, -1.5 - (stab_pos_now/5.5)*4.0) -- FIXED (2026-08-18): real M functional range is -1.5 to -5.5 (span 4.0deg), not 0 to -5.5 (B) or -1.5 to -7.0 (previous B-leftover formula). Mechanism ratio/rate (0-5.5, ~27.5s dual motor) is real and correct -- only rescaled the output mapping.
+	if stab_pos_now ~= stab_pos_now then stab_pos_now = 0; stab_vel = 0 end -- 2026-10-27: NaN guard
+	-- 2026-10-27 SAFETY: stabilizer output limited to its real range (0..5.5 -> -1.5..-7.0 here)
+	set(stab_pos, math.min(-1.5, math.max(-7.0, -stab_pos_now - 1.5))) -- 2026-10-27: B model (hstab incidence -1.5 in acf): totals 0 -> -3, 3 -> -6 (book: 6 deg to fuselage), 5.5 -> -8.5
+	-- -- FIXED (2026-08-18): real M functional range is -1.5 to -5.5 (span 4.0deg), not 0 to -5.5 (B) or -1.5 to -7.0 (previous B-leftover formula). Mechanism ratio/rate (0-5.5, ~27.5s dual motor) is real and correct -- only rescaled the output mapping.
 	set(ctr_115_1_cc, CC_115_1)
 	set(ctr_115_3_cc, CC_115_3)
 	

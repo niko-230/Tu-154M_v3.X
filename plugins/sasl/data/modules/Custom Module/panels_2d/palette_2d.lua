@@ -304,7 +304,7 @@ function update()
 
 	-- get current weight and ZFW CG
 	local current_ZFW = get(payload) + get(empty_weight)
-	local current_ZFW_CG = get(CG_load)*100/5.28+25
+	local current_ZFW_CG = get(CG_load)*100/5.28+47.5 -- 2026-10-27: acf/_cgZ at 47.5% MAC (B; was 25)
 	
 	-- local gear_press = get(gear1_deflect) > 0
 	
@@ -357,7 +357,7 @@ function update()
 
 	--local current_CG = calc_CG(current_weight, current_idx)
 	--local current_CG = 19.036*get(FM_cg)+24.513 
-	local current_CG =get(FM_cg)*100/5.28+47.5
+	local current_CG =get(FM_cg)*100/5.28+47.5 -- B
 	
 	
 	-- calculate numbers to show

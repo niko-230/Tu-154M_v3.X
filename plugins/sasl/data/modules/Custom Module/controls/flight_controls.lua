@@ -254,6 +254,14 @@ local elev_stall_tbl = {
 {40, 40}}
 
 
+elev_spd_tbl = { -- IAS km/h -> elevator effectiveness multiplier (global: keeps update() under the upvalue limit)
+{-1000, 1.0},
+{290, 1.0},
+{350, 1.6},
+{420, 2.4},
+{480, 3.0},
+{10000, 3.0}}
+
 local stab_stall_tbl = {
 {-400, 1},
 {20, 1},
@@ -564,7 +572,9 @@ end
 				-- joy_pitch2=(get(joy_pitch)+0.15)*0.5
 			-- end
 		-- end
-		joy_pitch2=(interpolate(yoke_tbl, get(joy_pitch))+get(yoke_offset))*0.5
+		-- 2026-10-27: the old input halving (only the last 11% of stick reached full elevator, active whenever the
+		-- nose-wheel selector is at 10 deg, i.e. also in flight) is removed: full yoke = full elevator.
+		joy_pitch2=get(joy_pitch)+get(yoke_offset)
 	else
 		joy_pitch2=get(joy_pitch)+get(yoke_offset)
 	end
@@ -603,21 +613,27 @@ end
 	-- was reducing elev_coef exactly when stab moves nose-up (flap 15 deployment),
 	-- cutting elevator authority right when needed most → balloon. M's 0.6 is constant
 	-- and provides consistent authority regardless of stab position.
-	elev_coef = 2.4  -- quadrupled from M real 0.6 to compensate M hstab weakness at flap 45 to compensate M hstab weakness at flap 45
-	local elev_left = 0 
-	local elev_right = 0 
-	local elev_left_c = 0 
-	local elev_right_c = 0 
-	
-	
-	elev_left = -pitch_pos_act * 45  -- effective 45*0.6=27deg
-	elev_right = -pitch_pos_act * 45
-	if elev_left>16-stab_pos*1.5 then
-		elev_left = 16-stab_pos*1.5 
-	end
-	if elev_right>16-stab_pos*1.5 then
-		elev_right = 16-stab_pos*1.5 
-	end
+	-- 2026-10-27: B's validated elevator model (Tu-154B2-CE, matched to real trim curves): effectiveness depends on
+	-- the stabilizer angle of attack (0.45..1), reduced when the wing stalls; 29 deg per full yoke, real stops.
+	local stab_angle_deg = 1.5 + stab_pos * 5.5  -- stab deflection as positive degrees (B: -setting-1.5)
+	local stab_aoa = (get(ua) or 0) - stab_angle_deg
+	if pitch_pos_act < 0 then stab_aoa = -stab_aoa end
+	elev_coef = -0.04408*stab_aoa + 0.6595
+	if elev_coef > 1 then elev_coef = 1 elseif elev_coef < 0.45 then elev_coef = 0.45 end
+	elev_coef = elev_coef*interpolate(stab_stall_tbl, get(ua) or 0)
+	-- 2026-10-27: speed correction from the flight logs vs the 1997 book trim curves: at takeoff speeds the trimmed
+	-- elevator matched the book (x1.0), but in clean flight at 420-570 km/h it sat at ~3x the real deflection
+	-- (25%/540: +2 vs +1; 40.7%/420-520: +6.4 vs +2.2; 37%/570: +13 vs +4.3) -> elevator ~3x too weak at speed.
+	elev_coef = elev_coef*interpolate(elev_spd_tbl, (get(ias_L) or 0)*1.852)
+	local elev_left = 0
+	local elev_right = 0
+	local elev_left_c = 0
+	local elev_right_c = 0
+	elev_left = -pitch_pos_act * 29
+	elev_right = -pitch_pos_act * 29
+	local stab_lim = (stab_angle_deg - 1.5) / 5.5
+	if elev_left > 16 - stab_lim*1.5 then elev_left = 16 - stab_lim*1.5 end
+	if elev_right > 16 - stab_lim*1.5 then elev_right = 16 - stab_lim*1.5 end
 	--elevator stalls above 22° NU
 	if elev_left< -22 then
 		elev_left_aero=interpolate(elev_stall_tbl,elev_left)
@@ -639,8 +655,16 @@ if MASTER then
 	-- set results
 	set(elev_L_ph,elev_left* (1 - get(elev_fail_left)))
 	set(elev_R_ph,elev_right* (1 - get(elev_fail_right)))
-	set(elevator_L, elev_left_aero * elev_coef * (1 - get(elev_fail_left)))
-	set(elevator_R, elev_right_aero * elev_coef * (1 - get(elev_fail_right)))
+	local elvL = elev_left_aero * elev_coef * (1 - get(elev_fail_left))
+	local elvR = elev_right_aero * elev_coef * (1 - get(elev_fail_right))
+	if elvL ~= elvL or elvL == math.huge or elvL == -math.huge then elvL = 0 end -- 2026-10-27: NaN/inf guard
+	if elvR ~= elvR or elvR == math.huge or elvR == -math.huge then elvR = 0 end
+	-- 2026-10-27 SAFETY: never command the elevator past its real travel (acf: 30 up / 20 down). With the speed
+	-- multiplier the raw command could reach ~87 deg, far outside the airfoil data X-Plane has for this surface.
+	if elvL < -30 then elvL = -30 elseif elvL > 20 then elvL = 20 end
+	if elvR < -30 then elvR = -30 elseif elvR > 20 then elvR = 20 end
+	set(elevator_L, elvL)
+	set(elevator_R, elvR)
 end	
 	
 	--print(get(elevator_L), "  ", get(elevator_R))

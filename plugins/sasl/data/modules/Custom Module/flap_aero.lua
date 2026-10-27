@@ -184,6 +184,44 @@ local engine_lift_tbl2={
 {100000, 1},
 }
 
+-- 2026-10-27 PITCH LOGGER (temporary, for calibration against the RLE / 1997 book trim curves).
+-- Every 5 s while airborne it writes one line to X-Plane's Log.txt starting with "T154PITCH".
+-- Remove this block (or set PITCH_LOG = false) once the pitch package is final.-- 2026-10-27: safety guard -- never write NaN/inf into X-Plane's flight model (it can stall the sim)
+function fm_ok(v, fallback, lo, hi)
+	if v == nil or v ~= v or v == math.huge or v == -math.huge then return fallback end
+	if lo and v < lo then return lo end -- 2026-10-27 SAFETY: keep every value sent to X-Plane in a realistic range
+	if hi and v > hi then return hi end
+	return v
+end
+
+PITCH_LOG = false -- calibration logger off for release (set true to log T154PITCH lines again)
+plog = {
+	t = 0,
+	w   = globalPropertyf("sim/flightmodel/weight/m_total"),
+	cg  = globalPropertyf("sim/cockpit2/gauges/indicators/CG_indicator"),
+	ias = globalPropertyf("sim/flightmodel/position/indicated_airspeed"),
+	mach= globalPropertyf("sim/flightmodel/misc/machno"),
+	alt = globalPropertyf("sim/flightmodel/position/elevation"),
+	vs  = globalPropertyf("sim/flightmodel/position/vh_ind"),
+	the = globalPropertyf("sim/flightmodel/position/theta"),
+	aoa = globalPropertyf("sim/flightmodel/position/alpha"),
+	stb = globalPropertyf("sim/cockpit2/controls/elevator_trim"),
+	elv = globalPropertyf("tu154b2/custom/controlls/elev_L_phys"),
+	ftime = globalPropertyf("tu154b2/custom/time/frame_time"),
+	gnd = globalPropertyi("sim/flightmodel/failures/onground_any"),
+}
+function pitch_log(flap_deg, slat_ratio, thr_n)
+	if not PITCH_LOG then return end
+	plog.t = plog.t + (get(plog.ftime) or 0)
+	if plog.t < 5 then return end
+	plog.t = 0
+	if (get(plog.gnd) or 1) == 1 and (get(plog.ias) or 0)*1.852 < 150 then return end -- also logs the takeoff roll/rotation above 150 km/h
+	sasl.logInfo(string.format("T154PITCH GND=%d W=%.0f CG=%.1f IAS=%.0f M=%.3f ALT=%.0f VS=%.1f THE=%.1f AOA=%.1f FLAP=%.1f SLAT=%.2f STAB=%.2f ELEV=%.1f THR=%.0f",
+		get(plog.gnd) or 0, get(plog.w) or 0, (get(plog.cg) or 0)*100/5.28+50, (get(plog.ias) or 0)*1.852, get(plog.mach) or 0,
+		get(plog.alt) or 0, get(plog.vs) or 0, get(plog.the) or 0, get(plog.aoa) or 0,
+		flap_deg, slat_ratio, (get(plog.stb) or 0)*5.5, get(plog.elv) or 0, thr_n))
+end
+
 function update()
 	local r_1=get(thrust_L) or 0
 	local r_3=get(thrust_R) or 0
@@ -204,7 +242,10 @@ function update()
 	-- ported from M (donor's own comment: "optimized for 78-80% RPM mode and soft
 	-- touchdown"): slat interaction terms
 	local slat_cl_add = slat * 0.0016  -- original M donor coefficient
-	local slat_cm_add = slat * 0.006   -- INCREASED: real 22 deg slats produce ~2.5x more nose-down Cm than 10 deg sim. Directly counteracts native XP12 pitch-up from _slat1_inc=8 during deployment. Calibrated to eliminate balloon without affecting landing balance.
+	-- 2026-10-27 SIGN FIX: X-Plane flap Cm is nose-down when NEGATIVE (M values -0.30/-0.34). The old "+ slat*0.006"
+	-- made the flaps LESS nose-down when slats deploy, i.e. a nose-UP of ~6% MAC equivalent with full slats -- the
+	-- opposite of what this comment intends. Now subtracts, so slats give the intended nose-down correction.
+	local slat_cm_add = -slat * 0.006   -- INCREASED: real 22 deg slats produce ~2.5x more nose-down Cm than 10 deg sim. Directly counteracts native XP12 pitch-up from _slat1_inc=8 during deployment. Calibrated to eliminate balloon without affecting landing balance.
 	local slat_cd_add = slat * 0.0007
 
 	-- Ground Effect Correction (M's formula)
@@ -225,10 +266,11 @@ function update()
 
 	-- ported from M: Pitch Moment Correction (quadratic, with slat term and
 	-- touchdown softening B's formula didn't have)
-	local flap1_cm = (-1.15e-04*math.pow(flap_inn,2) + 2.20e-04*flap_inn - 0.14) + slat_cm_add  -- tuned: stab holds without engine_pitch
-	local flap2_cm = (-2.30e-04*math.pow(flap_out,2) + 3.10e-04*flap_out - 0.10) + (slat_cm_add*0.5)  -- tuned
-	local cm_corr = (0.43*math.pow(GE_lift,2) - 0.12*GE_lift - 0.26) / (GE_lift - 0.93)
-	if main_on_ground then cm_corr = cm_corr*0.5 end
+	-- 2026-10-27: B's validated pitch moments (Tu-154B2-CE, matched to real trim curves). Slats add no Lua moment
+	-- in B (the acf slats are back to B: full span, 6 deg).
+	local flap1_cm = -2.7331754902e-04*math.pow(math.max(flap_inn,21),2) + 1.1752654608e-02*math.max(flap_inn,21) - 5.9845867059e-01
+	local flap2_cm = -5.7882916049e-04*math.pow(math.max(flap_out,19),2) + 2.1995508099e-02*math.max(flap_out,19) - 6.1310759716e-01
+	local cm_corr = (0.456458958233361*math.pow(GE_lift,2) - 0.120923847390904*GE_lift - 0.268038425904725) / (GE_lift - 0.932574423700116) -- B
 	flap1_cm = flap1_cm*cm_corr
 	flap2_cm = flap2_cm*cm_corr
 
@@ -242,19 +284,21 @@ function update()
 	-- Constants 0.05/2.6/1.45 match M donor exactly. gear_pitch removed (M has no equivalent).
 	local spd=interpolate(engine_lift_tbl,tas)
 	local lft=interpolate(engine_lift_tbl2,lift) -- lift already includes *q from line above
-	local engine_pitch=80000*0.05*9.81*2.6*(1.39*(r_1+r_3)/100000)*spd*lft  -- 1.39 = 1.45/1.044: project thrust is 4.4% above M's at the same real RPM (11,500 kgf base 112776.48 vs M 105948*1.02=108067), so pitch moment stays as M's
-	if tas>60 then
-		set(pitch_add,engine_pitch)
+	local engine_pitch=80000*0.05285*9.81*2.7*(1.5*(r_1+r_3)/100000)*spd*lft -- B
+	local gear_pitch=4900*9.81*(0.1*(1-(get(gear1_deploy) or 1))+0.45*(1-(get(gear2_deploy) or 1))+0.45*(1-(get(gear3_deploy) or 1))) -- B: gear retraction nose-up
+	if tas>80 then
+		set(pitch_add,fm_ok(engine_pitch+gear_pitch,0,-100000,400000))
 	end
-	set(cl, flap1_cl)
-	set(cl2, flap2_cl)
+	set(cl, fm_ok(flap1_cl,1.0,0.5,2.6))
+	set(cl2, fm_ok(flap2_cl,1.0,0.5,2.6))
 	
-	set(cd, flap1_cd)
-	set(cd2, flap2_cd)
+	set(cd, fm_ok(flap1_cd,0.06,0.0,0.3))
+	set(cd2, fm_ok(flap2_cd,0.06,0.0,0.3))
 	
 	
-	set(cm, flap1_cm)
-	set(cm2, flap2_cm)
+	set(cm, fm_ok(flap1_cm,-0.3,-1.0,0.2))
+	set(cm2, fm_ok(flap2_cm,-0.3,-1.0,0.2))
+	pitch_log(get(flap_inn_L) or 0, get(slat_L) or 0, r_1+r_3) -- calibration logger (thrust of engines 1+3, N)
 	
 
 end

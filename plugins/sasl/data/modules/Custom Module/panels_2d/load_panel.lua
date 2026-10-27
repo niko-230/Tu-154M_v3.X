@@ -258,17 +258,18 @@ local function calc_CG(pax1_weight,pax2_weight,pax3_weight,pax4_weight,pax5_weig
 	local pos4 = pos3+pax4_weight*75*2.33
 	local pos5 = pos4+pax5_weight*75*6.15
 	local pos6 = pos5+equip_weight*-10.54
-	local pos7 = pos6+empty_weight*1.528--+cabin_weight*-8.7775
+	local pos7 = pos6+empty_weight*1.528 -- B (47.5% MAC)--+cabin_weight*-8.7775
 	local pos8 = pos7+cargo3*-10.68
 	local pos9 = pos8--+simDR_payload_cargo4*-9.51
 	local pos10 = pos9+cargo1*-8.89
 	local pos11 = pos10+cargo2*4.18
-	local pos12 = pos11+tank1*-0.85
-	local pos13 = pos12+tank4*-2.75
-	local pos14 = pos13+tank2_l*-1
-	local pos15 = pos14+tank2_r*-1
-	local pos16 = pos15+tank3_l*3.3
-	local pos17 = pos16+tank3_r*3.3
+	-- 2026-10-27: tank arms moved to this aircraft's (M) tank positions, +0.402 m vs B
+	local pos12 = pos11+tank1*-0.448
+	local pos13 = pos12+tank4*-2.348
+	local pos14 = pos13+tank2_l*-0.598
+	local pos15 = pos14+tank2_r*-0.598
+	local pos16 = pos15+tank3_l*3.702
+	local pos17 = pos16+tank3_r*3.702
 	local m=pax1_weight+pax2_weight+pax3_weight+pax4_weight+pax5_weight+equip_weight+cargo3+cargo1+cargo2+tank1+tank4+tank2_l+tank2_r+tank3_l+tank3_r+empty_weight
 	local CG = ((pos17/m + 0.982)/ 5.285) *100
 
@@ -498,16 +499,17 @@ function update()
 	
 	-- stab set calcs
 	local to_stab = "FWD"
-	if to_cg > 35 then to_stab = "AFT"
-	elseif to_cg >= 28 and to_cg <=35 then to_stab = "CTR" end
+	-- 2026-10-27: stab setting bands per RLE Tu-154M table 8.10.1: П 18-24, С 24-32, З 32-40 % MAC (were B 28/35)
+	if to_cg > 32 then to_stab = "AFT"
+	elseif to_cg >= 24 and to_cg <=32 then to_stab = "CTR" end
 	
 	local ld_stab = "FWD"
-	if land_cg > 35 then ld_stab = "AFT"
-	elseif land_cg >= 28 and land_cg <=35 then ld_stab = "CTR" end
+	if land_cg > 32 then ld_stab = "AFT"
+	elseif land_cg >= 24 and land_cg <=32 then ld_stab = "CTR" end
 	
 	local zfw_stab = "FWD"
-	if zfw_cg > 35 then zfw_stab = "AFT"
-	elseif zfw_cg >= 28 and zfw_cg <=35 then zfw_stab = "CTR" end
+	if zfw_cg > 32 then zfw_stab = "AFT"
+	elseif zfw_cg >= 24 and zfw_cg <=32 then zfw_stab = "CTR" end
 
 	stab_set = zfw_stab.."/"..to_stab.."/"..ld_stab
 

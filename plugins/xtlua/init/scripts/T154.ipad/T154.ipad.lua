@@ -652,12 +652,12 @@ pos8 = pos7+simDR_payload_cargo3*-10.68
 pos9 = pos8--+simDR_payload_cargo4*-9.51
 pos10 = pos9+simDR_payload_cargo1*-8.89
 pos11 = pos10+simDR_payload_cargo2*4.18
-pos12 = pos11+simDR_tank1*-0.85
-pos13 = pos12+simDR_tank4*-2.75
-pos14 = pos13+simDR_tank2_l*-1
-pos15 = pos14+simDR_tank2_r*-1
-pos16 = pos15+simDR_tank3_l*3.3
-pos17 = pos16+simDR_tank3_r*3.3
+pos12 = pos11+simDR_tank1*-0.448
+pos13 = pos12+simDR_tank4*-2.348
+pos14 = pos13+simDR_tank2_l*-0.598
+pos15 = pos14+simDR_tank2_r*-0.598
+pos16 = pos15+simDR_tank3_l*3.702
+pos17 = pos16+simDR_tank3_r*3.702
 ct_t = pos17/takeoff_weight
 ct_nf =pos11/nofuel_weight
     
@@ -671,7 +671,7 @@ cax_nf = ((ct_nf + 0.982)/ 5.285) *100
 -- Расчеты page (palette_2d.lua: CG_indicator*100/5.28+47.5), so after loading, cax_to == Расчеты CG.
 do
     local FT = 0.3048
-    local EMPTY_Z = 71.11 * FT                                   -- acf/_cgZ
+    local EMPTY_Z = 73.70 * FT                                   -- acf/_cgZ (2026-10-27: B value 47.5% MAC, was 71.11)
     local ST_Z = {39.52, 82.40, 33.65, 34.08, 16.00, 29.25, 57.88, 76.34, 88.87} -- acf/_fixed_ref 0..8 (z)
     local TK_Z = {67.22, 60.99, 66.73, 66.73, 80.84, 80.84}     -- acf/_tank_xyz 0..5 (z): tank1, tank4, 2R, 2L, 3R, 3L
     local empty = simDR_empty_weight
@@ -696,7 +696,7 @@ do
         for i = 1, 9 do m_nf = m_nf + st[i]; mom_nf = mom_nf + st[i] * ST_Z[i] * FT end
         local m_to, mom_to = m_nf, mom_nf
         for i = 1, 6 do m_to = m_to + tk[i]; mom_to = mom_to + tk[i] * TK_Z[i] * FT end
-        cax_nf = (mom_nf / m_nf + offset) * 100 / 5.28 + 47.5
+        cax_nf = (mom_nf / m_nf + offset) * 100 / 5.28 + 47.5 -- 2026-10-27: acf/_cgZ at 47.5% MAC (B)
         cax_to = (mom_to / m_to + offset) * 100 / 5.28 + 47.5
     end
 end
