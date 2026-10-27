@@ -2,7 +2,7 @@ AviTab.json|1925732311
 KLNconfig.txt|700533605
 README.md|3829004420
 airfoils/NACA 0009 (symmetrical).afl|3143184736
-airfoils/hstab.afl|1473583538
+airfoils/hstab.afl|1427296503
 airfoils/vstab.afl|3305887970
 airfoils/wing.afl|2269135301
 airfoils/wing_mod.afl|2994963053
@@ -1758,7 +1758,7 @@ plugins/sasl/data/modules/Custom Module/close.png|1026565542
 plugins/sasl/data/modules/Custom Module/controls/control_fails.lua|1227701382
 plugins/sasl/data/modules/Custom Module/controls/controls.lua|3202332120
 plugins/sasl/data/modules/Custom Module/controls/controls_panel.lua|3954255220
-plugins/sasl/data/modules/Custom Module/controls/flight_controls.lua|887811890
+plugins/sasl/data/modules/Custom Module/controls/flight_controls.lua|2467174401
 plugins/sasl/data/modules/Custom Module/controls/landing_gears.lua|1158724660
 plugins/sasl/data/modules/Custom Module/controls/nosewheel.lua|2655821626
 plugins/sasl/data/modules/Custom Module/controls/trimmers.lua|1069990597
@@ -1802,8 +1802,8 @@ plugins/sasl/data/modules/Custom Module/engines_system/vibration_logic.lua|25957
 plugins/sasl/data/modules/Custom Module/fire_system/fire_logic.lua|3958958369
 plugins/sasl/data/modules/Custom Module/fire_system/fire_panel.lua|1358288316
 plugins/sasl/data/modules/Custom Module/fire_system/fire_system.lua|3545672572
-plugins/sasl/data/modules/Custom Module/flap_aero.lua|1895492523
-plugins/sasl/data/modules/Custom Module/flaps.lua|3963007900
+plugins/sasl/data/modules/Custom Module/flap_aero.lua|1209771729
+plugins/sasl/data/modules/Custom Module/flaps.lua|3427179002
 plugins/sasl/data/modules/Custom Module/free_texture.lua|1375699146
 plugins/sasl/data/modules/Custom Module/free_texture_lit.lua|3180233231
 plugins/sasl/data/modules/Custom Module/fuel_system/fuel_engines.lua|731225233
@@ -2044,7 +2044,7 @@ plugins/sasl/data/modules/Custom Module/panels_2d/ground_panel.lua|3052892739
 plugins/sasl/data/modules/Custom Module/panels_2d/ground_tex.png|1237942129
 plugins/sasl/data/modules/Custom Module/panels_2d/ground_tex.psd|3257100802
 plugins/sasl/data/modules/Custom Module/panels_2d/ground_tex_RUS.png|604554375
-plugins/sasl/data/modules/Custom Module/panels_2d/load_panel.lua|3540782077
+plugins/sasl/data/modules/Custom Module/panels_2d/load_panel.lua|1783608554
 plugins/sasl/data/modules/Custom Module/panels_2d/load_panel.png|458834075
 plugins/sasl/data/modules/Custom Module/panels_2d/load_panel.psd|2055659224
 plugins/sasl/data/modules/Custom Module/panels_2d/load_panel_RUS.png|3788486630
@@ -2061,7 +2061,7 @@ plugins/sasl/data/modules/Custom Module/panels_2d/overhead_tex.psd|1190412874
 plugins/sasl/data/modules/Custom Module/panels_2d/overhead_tex_RUS.png|62361477
 plugins/sasl/data/modules/Custom Module/panels_2d/palette.png|3373855947
 plugins/sasl/data/modules/Custom Module/panels_2d/palette.psd|4201241998
-plugins/sasl/data/modules/Custom Module/panels_2d/palette_2d.lua|2090255314
+plugins/sasl/data/modules/Custom Module/panels_2d/palette_2d.lua|656350420
 plugins/sasl/data/modules/Custom Module/panels_2d/panels_2d.lua|979152253
 plugins/sasl/data/modules/Custom Module/panels_2d/png_backup/absu_bk.png|3359251536
 plugins/sasl/data/modules/Custom Module/panels_2d/png_backup/absu_bk_RUS.png|1004313970
@@ -3104,7 +3104,7 @@ plugins/xtlua/init/scripts/T154.arm406/T154.arm406.lua|1875648857
 plugins/xtlua/init/scripts/T154.btwo/T154.btwo.lua|1200801371
 plugins/xtlua/init/scripts/T154.config_i/T154.config_i.lua|490124425
 plugins/xtlua/init/scripts/T154.egpws/T154.egpws.lua|1775297070
-plugins/xtlua/init/scripts/T154.ipad/T154.ipad.lua|196402086
+plugins/xtlua/init/scripts/T154.ipad/T154.ipad.lua|469341947
 plugins/xtlua/init/scripts/T154.kontur/T154.kontur.lua|3150684445
 plugins/xtlua/init/scripts/T154.radio/T154.radio.lua|2758145694
 plugins/xtlua/init/scripts/T154.systems/T154.systems.lua|3554891135
@@ -3183,7 +3183,7 @@ sounds/systems/click.wav|2005905547
 sounds/systems/flap.wav|2005905547
 sounds/systems/gear.wav|2005905547
 sounds/weather/wind.wav|1395809330
-tu154.acf|3273770237
+tu154.acf|3638268237
 tu154_cockpit.obj|2161734568
 tu154_icon11.png|2913622315
 tu154_icon11_thumb.png|2223285862
