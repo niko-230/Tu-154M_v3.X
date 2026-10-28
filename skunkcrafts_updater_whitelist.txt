@@ -1304,7 +1304,7 @@ objects/cockpit_center_panel_v1_RUS.obj|1297990773
 objects/cockpit_center_panel_v1_RUS.png|1848527146
 objects/cockpit_center_panel_v1_RUS_LIT.png|3547530027
 objects/cockpit_center_panel_v1_RUS_NML.png|3109606282
-objects/cockpit_chairs.obj|3984208904
+objects/cockpit_chairs.obj|3933086369
 objects/cockpit_chairs.png|2650470757
 objects/cockpit_chairs_NML.png|3721951477
 objects/cockpit_details.obj|33667316
@@ -1325,7 +1325,7 @@ objects/cockpit_eng_panel_RUS.obj|3468960347
 objects/cockpit_eng_panel_RUS.png|2865374119
 objects/cockpit_eng_panel_RUS_LIT.png|2981392672
 objects/cockpit_eng_shell_M_RUS.obj|3564876917
-objects/cockpit_eng_shell_M_RUS.png|2436193307
+objects/cockpit_eng_shell_M_RUS.png|3966787675
 objects/cockpit_eng_stp_B_RUS.obj|526345463
 objects/cockpit_front_panel_RUS.obj|3955728562
 objects/cockpit_front_panel_RUS.png|2972189606
