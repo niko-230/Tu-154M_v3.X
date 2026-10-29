@@ -1282,7 +1282,7 @@ objects/aux_stuff_1.obj|793819
 objects/aux_stuff_1.png|1318245
 objects/azs_panel.png|3321949
 objects/azs_panel_LIT.png|2323715
-objects/azs_panels.obj|387409
+objects/azs_panels.obj|355979
 objects/cabin_glass_out.obj|857612
 objects/cockpit_1.obj|14699191
 objects/cockpit_1.png|10212772
@@ -1758,7 +1758,7 @@ plugins/sasl/data/modules/Custom Module/close.png|399
 plugins/sasl/data/modules/Custom Module/controls/control_fails.lua|13502
 plugins/sasl/data/modules/Custom Module/controls/controls.lua|174
 plugins/sasl/data/modules/Custom Module/controls/controls_panel.lua|41339
-plugins/sasl/data/modules/Custom Module/controls/flight_controls.lua|34050
+plugins/sasl/data/modules/Custom Module/controls/flight_controls.lua|34653
 plugins/sasl/data/modules/Custom Module/controls/landing_gears.lua|12902
 plugins/sasl/data/modules/Custom Module/controls/nosewheel.lua|6036
 plugins/sasl/data/modules/Custom Module/controls/trimmers.lua|16839
@@ -1802,7 +1802,7 @@ plugins/sasl/data/modules/Custom Module/engines_system/vibration_logic.lua|8889
 plugins/sasl/data/modules/Custom Module/fire_system/fire_logic.lua|16805
 plugins/sasl/data/modules/Custom Module/fire_system/fire_panel.lua|28942
 plugins/sasl/data/modules/Custom Module/fire_system/fire_system.lua|87
-plugins/sasl/data/modules/Custom Module/flap_aero.lua|13202
+plugins/sasl/data/modules/Custom Module/flap_aero.lua|14644
 plugins/sasl/data/modules/Custom Module/flaps.lua|23555
 plugins/sasl/data/modules/Custom Module/free_texture.lua|284
 plugins/sasl/data/modules/Custom Module/free_texture_lit.lua|294
