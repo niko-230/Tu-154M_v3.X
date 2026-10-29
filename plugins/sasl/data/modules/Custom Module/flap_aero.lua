@@ -194,6 +194,8 @@ function fm_ok(v, fallback, lo, hi)
 	return v
 end
 
+FLAP45_CD_SCALE = 0.66 -- 2026-10-29: flaps-45 drag calibrated to the 1997 book (see flap1_cd/flap2_cd in update)
+FLAP_CL_SCALE = 0.76 -- 2026-10-29: flap lift calibrated to the 1997 book (see flap1_cl/flap2_cl in update)
 PITCH_LOG = false -- calibration logger off for release (set true to log T154PITCH lines again)
 plog = {
 	t = 0,
@@ -263,6 +265,14 @@ function update()
 	-- flap drag ~50% of total drag -> 20% reduction in flap Cd -> ~10% total drag reduction.
 	flap1_cd = flap1_cd*cd_corr*0.74
 	flap2_cd = flap2_cd*cd_corr*0.74
+	-- 2026-10-29 BOOK CALIBRATION (Бехтир 1997, Table 1: flaps 45 + gear Kmax 5.6; section 6.15: glideslope needs
+	-- 75-80% N2): a logged steady flaps-45 descent (76 t, Cy 1.15) gave L/D 4.5 vs ~5.4 from the book polar, i.e.
+	-- ~20% too much drag, which is why the glideslope needed ~84% N2. Engine part-power thrust checked OK.
+	-- Only the extra flap drag beyond 28 deg is reduced (flaps 28 unchanged, full effect at 45).
+	local fl45 = math.max(0, math.min(1, (flap_inn - 28) / 17))
+	local cd45 = 1 - (1 - FLAP45_CD_SCALE) * fl45
+	flap1_cd = flap1_cd * cd45
+	flap2_cd = flap2_cd * cd45
 
 	-- ported from M: Pitch Moment Correction (quadratic, with slat term and
 	-- touchdown softening B's formula didn't have)
@@ -277,6 +287,13 @@ function update()
 	-- ported from M: Lift Correction (quadratic, with slat term)
 	local flap1_cl = (6.00e-04*math.pow(flap_inn,2) - 1.30e-02*flap_inn + 1.08) + slat_cl_add
 	local flap2_cl = (7.85e-04*math.pow(flap_out,2) - 1.20e-02*flap_out + 1.18) + slat_cl_add
+	-- 2026-10-29 BOOK CALIBRATION (Бехтир 1997, Table 1 / Table 19 / section 6.4): with flaps out the sim made the
+	-- book's lift coefficient at ~2-3 deg less angle of attack than the real M (flaps 28: zero-lift angle -5.3 vs
+	-- book -3.6; flaps 45: -9.2 vs -6.6). Result: near-flat lift-off (pitch +1 vs book ~+6..7), glideslope
+	-- attitude ~2 deg too nose-low, touchdown at pitch -0.6 instead of book AoA 7-8 deg, and too little elevator
+	-- needed at rotation and on the glideslope. One factor brings both flap settings onto the book curves.
+	flap1_cl = flap1_cl * FLAP_CL_SCALE
+	flap2_cl = flap2_cl * FLAP_CL_SCALE
 
 	-- Engine pitch moment -- M donor's exact formula (re-applied 2026-08-20 after revert).
 	-- Key fix: lift_tot = lift * q (dynamic pressure), making engine_pitch V^2-proportional.

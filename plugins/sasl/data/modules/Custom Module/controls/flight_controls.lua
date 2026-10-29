@@ -254,13 +254,18 @@ local elev_stall_tbl = {
 {40, 40}}
 
 
-elev_spd_tbl = { -- IAS km/h -> elevator effectiveness multiplier (global: keeps update() under the upvalue limit)
-{-1000, 1.0},
-{290, 1.0},
-{350, 1.6},
-{420, 2.4},
-{480, 3.0},
-{10000, 3.0}}
+elev_spd_tbl = { -- IAS km/h -> elevator effectiveness (global: keeps update() under the upvalue limit)
+-- 2026-10-29: this table is now the ONLY effectiveness factor (B's tail-AoA formula removed, see update()).
+-- Values = old table x the B factor it used to be multiplied with at the same trimmed conditions, so the
+-- 27 Oct cruise-trim calibration to the book (25%/540, 37%/570, 40.7%/420-520 km/h) and the forward-CG
+-- approach (11:44 log) are kept: low speed 0.90, 350: 1.6x0.88, 420: 2.4x0.85, 480: 3.0x0.78, >=540: 3.0x0.75.
+{-1000, 0.90},
+{290, 0.90},
+{350, 1.41},
+{420, 2.04},
+{480, 2.34},
+{540, 2.25},
+{10000, 2.25}}
 
 local stab_stall_tbl = {
 {-400, 1},
@@ -615,11 +620,11 @@ end
 	-- and provides consistent authority regardless of stab position.
 	-- 2026-10-27: B's validated elevator model (Tu-154B2-CE, matched to real trim curves): effectiveness depends on
 	-- the stabilizer angle of attack (0.45..1), reduced when the wing stalls; 29 deg per full yoke, real stops.
-	local stab_angle_deg = 1.5 + stab_pos * 5.5  -- stab deflection as positive degrees (B: -setting-1.5)
-	local stab_aoa = (get(ua) or 0) - stab_angle_deg
-	if pitch_pos_act < 0 then stab_aoa = -stab_aoa end
-	elev_coef = -0.04408*stab_aoa + 0.6595
-	if elev_coef > 1 then elev_coef = 1 elseif elev_coef < 0.45 then elev_coef = 0.45 end
+	-- 2026-10-29: B's formula (effectiveness 0.45..1 from the tail angle of attack) removed. It has no source in the
+	-- book and made the elevator WEAKEST at aft CG (selector "З", stab 0: 0.45-0.55 at lift-off AoA vs 0.68 at "П"),
+	-- i.e. most yoke at aft CG -- the opposite of РЛЭ 4.6.9.1(2): at aft CG "усилия при взятии колонки на себя
+	-- значительно меньше". It also halved/doubled effectiveness when the elevator crossed neutral.
+	elev_coef = 1.0
 	elev_coef = elev_coef*interpolate(stab_stall_tbl, get(ua) or 0)
 	-- 2026-10-27: speed correction from the flight logs vs the 1997 book trim curves: at takeoff speeds the trimmed
 	-- elevator matched the book (x1.0), but in clean flight at 420-570 km/h it sat at ~3x the real deflection
@@ -631,9 +636,9 @@ end
 	local elev_right_c = 0
 	elev_left = -pitch_pos_act * 29
 	elev_right = -pitch_pos_act * 29
-	local stab_lim = (stab_angle_deg - 1.5) / 5.5
-	if elev_left > 16 - stab_lim*1.5 then elev_left = 16 - stab_lim*1.5 end
-	if elev_right > 16 - stab_lim*1.5 then elev_right = 16 - stab_lim*1.5 end
+	-- 2026-10-28: nose-down stop per the book (Бехтир 1997, tail data: δрв = -25 / +20 deg).
+	if elev_left > 20 then elev_left = 20 end
+	if elev_right > 20 then elev_right = 20 end
 	--elevator stalls above 22° NU
 	if elev_left< -22 then
 		elev_left_aero=interpolate(elev_stall_tbl,elev_left)
