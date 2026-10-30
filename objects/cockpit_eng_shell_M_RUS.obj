@@ -3,6 +3,7 @@ I
 OBJ
 
 TEXTURE cockpit_eng_shell_M_RUS.png
+TEXTURE_LIT cockpit_eng_shell_M_RUS_LIT.png
 
 POINT_COUNTS 5183 0 0 13044
 
@@ -6666,7 +6667,9 @@ ATTR_reset
 ATTR_cull
 ATTR_reset
 ATTR_shiny_rat 0.100000
+ATTR_light_level 0.000000 1.000000 sim/custom/t154/ppn13_lamp28
 TRIS 10119 159
+ATTR_light_level_reset
 ATTR_reset
 ANIM_begin
 ANIM_trans 0.846415 -1.147040 -19.833696 0.846415 -1.147040 -19.833696 0.000000 0.000000 none

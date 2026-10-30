@@ -539,7 +539,7 @@ createGlobalPropertyi("tu154b2/custom/buttons/lamp_test_engines", 0) -- кноп
 createGlobalPropertyi("tu154b2/custom/buttons/lamp_test_hydro", 0) -- кнопка проверки ламп на панели гидросистемы
 createGlobalPropertyi("tu154b2/custom/buttons/lamp_test_srd", 0) -- кнопка проверки ламп на панели наддува
 createGlobalPropertyi("tu154b2/custom/buttons/lamp_test_doors", 0) -- кнопка проверки ламп на панели индикации дверей и люков
-createGlobalPropertyi("tu154b2/custom/switchers/eng/wing_light", 1) -- габаритные наземные огни на крыле
+createGlobalPropertyi("tu154b2/custom/switchers/eng/wing_light", 0) -- габаритные наземные огни на крыле
 createGlobalPropertyi("tu154b2/custom/switchers/eng/door_heat", 0) -- обогрев дверей
 createGlobalPropertyi("tu154b2/custom/switchers/eng/gear_fan", 0) -- вентиляция шасси
 createGlobalPropertyi("tu154b2/custom/switchers/eng/galley_heat", 0) -- обогрев слива кухни

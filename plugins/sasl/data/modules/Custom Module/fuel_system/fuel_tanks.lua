@@ -59,6 +59,10 @@ defineProperty("gear_defl_R", globalProperty("sim/flightmodel2/gear/tire_vertica
 -- failures
 defineProperty("rel_fuelcap", globalPropertyi("sim/operation/failures/rel_fuelcap")) -- Fuel Cap left off
 defineProperty("fuel_porc_fail", globalPropertyi("tu154b2/custom/failures/fuel_porc_fail"))
+
+-- auto fuel sequence (stage 2 equal-rate transfer, Tu-154M scheme)
+defineProperty("auto_tanks_turn", globalPropertyi("tu154b2/custom/fuel/auto_tanks_turn")) -- 0 = none, 1 = 2, 2 = 2+3, 3 = 3, 4 = 4
+defineProperty("fuel_flow_mode", globalPropertyi("tu154b2/custom/switchers/fuel/fuel_flow_mode")) -- 1 = automatic
 -- time
 defineProperty("frame_time", globalPropertyf("tu154b2/custom/time/frame_time")) -- flight time
 
@@ -183,6 +187,14 @@ function update()
 	local pump3L = (get(pump_tank3_left1_work)+get(pump_tank3_left2_work)+get(pump_tank3_left3_work)) * spd * tank3L_rnd -- tank can give fuel
 	local pump3R = (get(pump_tank3_right1_work)+get(pump_tank3_right2_work)+get(pump_tank3_right3_work)) * spd * tank3R_rnd -- tank can give fuel	
 	local pump4 = (get(pump_tank41_work)+get(pump_tank42_work)) * spd -- tank can give fuel	
+
+	-- Tu-154M auto sequence, stage 2 (tanks 2 + 3 together):
+	-- each tank 3 gives the same amount as tank 2 on its side, so when tanks 2 run dry
+	-- (from 3700 kg each) a full tank 3 keeps 1725 kg (5425 - 3700), as per the M scheme.
+	if get(auto_tanks_turn) == 2 and get(fuel_flow_mode) == 1 then
+		if pump2L > 0 and pump3L > pump2L then pump3L = pump2L end
+		if pump2R > 0 and pump3R > pump2R then pump3R = pump2R end
+	end
 	
 	-- transfer fuel from othe tanks
 	if porc_open or (transfer and not tank1_full) then

@@ -90,6 +90,182 @@ local function inn_balance (src_x, src_z, x, z , cam_hdg)
 end
 
 
+-- =====================================================================
+-- 2026-10-29: engineer-panel controls that came with the M panel and had
+-- no click sound. Each control is watched on its own (no sums), and the
+-- first frame only records the start position, so loading makes no click.
+-- =====================================================================
+local extra_switches = {   -- metal toggle switches
+	"tu154b2/custom/switchers/eng/wing_light",          -- white ground lights on wingtips
+	"tu154b2/custom/switchers/eng/water_meter",
+	"tu154b2/custom/switchers/eng/water_compressor_1",
+	"tu154b2/custom/switchers/eng/water_compressor_2",
+	"tu154b2/custom/switchers/eng/galley_heat",
+	"tu154b2/custom/switchers/eng/lavatory_heat",
+	"tu154b2/custom/switchers/eng/gauges_on_1",
+	"tu154b2/custom/switchers/eng/gauges_on_2",
+	"tu154b2/custom/switchers/eng/gauges_on_3",
+	"tu154b2/custom/switchers/eng/vibro_sel_1",
+	"tu154b2/custom/switchers/eng/vibro_sel_2",
+	"tu154b2/custom/switchers/eng/vibro_sel_3",
+	"tu154b2/custom/switchers/spu_2_power",
+	"tu154b2/custom/switchers/airbleed/ground_cond_on",
+	"tu154b2/custom/switchers/airbleed/skv_faster_work",
+	"tu154b2/custom/switchers/airbleed/air_valve_both",
+}
+local extra_caps = {       -- switch covers
+	"tu154b2/custom/switchers/eng/hydro_trimm_rud_1_cap",
+	"tu154b2/custom/switchers/eng/srd_buzzer_cap",
+	"tu154b2/custom/switchers/airbleed/ground_cond_on_cap_eng",
+	"tu154b2/custom/switchers/airbleed/skv_faster_work_cap_eng",
+	"sim/custom/misc/itv_cap",
+}
+local extra_buttons = {    -- push buttons
+	"tu154b2/custom/gauges/eng/oil_qty_1_h", "tu154b2/custom/gauges/eng/oil_qty_1_p",
+	"tu154b2/custom/gauges/eng/oil_qty_2_h", "tu154b2/custom/gauges/eng/oil_qty_2_p",
+	"tu154b2/custom/gauges/eng/oil_qty_3_h", "tu154b2/custom/gauges/eng/oil_qty_3_p",
+	"tu154b2/custom/buttons/eng/control_ut",
+	"tu154b2/custom/buttons/eng/cold_eng_1", "tu154b2/custom/buttons/eng/cold_eng_2",
+	"tu154b2/custom/buttons/eng/cold_eng_3", "tu154b2/custom/buttons/eng/cold_apu",
+	"tu154b2/custom/buttons/eng/smoke_test",
+	"tu154b2/custom/buttons/fuel/fuel_meter_summ_zero",  "tu154b2/custom/buttons/fuel/fuel_meter_summ_max",
+	"tu154b2/custom/buttons/fuel/fuel_meter_tank2_zero", "tu154b2/custom/buttons/fuel/fuel_meter_tank2_max",
+	"tu154b2/custom/buttons/fuel/fuel_meter_tank3_zero", "tu154b2/custom/buttons/fuel/fuel_meter_tank3_max",
+	"tu154b2/custom/buttons/fuel/fuel_meter_tank4_zero", "tu154b2/custom/buttons/fuel/fuel_meter_tank4_max",
+	"tu154b2/custom/buttons/lamp_test_eng_up_1", "tu154b2/custom/buttons/lamp_test_eng_up_2",
+	"tu154b2/custom/gauges/acs3/left_knob_press", "tu154b2/custom/gauges/acs3/right_knob_press",
+}
+local extra_commands = {   -- clock (ITV) setting buttons are commands, not datarefs
+	"t154/itv_h_m", "t154/itv_h_p", "t154/itv_m_m", "t154/itv_m_p",
+}
+
+local function make_watch(list)
+	local w = {}
+	for i, name in ipairs(list) do w[i] = { ref = globalProperty(name), last = nil } end
+	return w
+end
+local watch_sw  = make_watch(extra_switches)
+local watch_cap = make_watch(extra_caps)
+local watch_but = make_watch(extra_buttons)
+
+local function play_at_panel(snd_L, snd_R)
+	local z_pos = get(pilot_Z)
+	local x_pos = get(pilot_X)
+	local plt_hdg = get(pilot_head)
+	local gain_L, gain_R = inn_balance(panel_x, panel_z, x_pos, z_pos, plt_hdg)
+	gain_L = gain_L * 1000
+	gain_R = gain_R * 1000
+	local dist = 1
+	if z_pos - panel_z ~= 0 then
+		dist = math.min(1, 1 / math.sqrt(math.pow(z_pos - panel_z, 2) + math.pow(x_pos - panel_x, 2)) / dist_gain)
+	end
+	setSampleGain(snd_L, gain_L * dist)
+	setSampleGain(snd_R, gain_R * dist)
+	playSample(snd_L, false)
+	playSample(snd_R, false)
+end
+
+local function changed(w)
+	local any = false
+	for _, c in ipairs(w) do
+		local v = get(c.ref)
+		if c.last ~= nil and v ~= c.last then any = true end
+		c.last = v
+	end
+	return any
+end
+
+local itv_button_pressed = false
+local function itv_hnd(phase)
+	if phase == 0 then itv_button_pressed = true end
+	return 1
+end
+local itv_registered = {}
+
+local function extra_sounds()
+	-- clock commands are created by xtlua, so hook them as soon as they exist
+	for i, name in ipairs(extra_commands) do
+		if not itv_registered[i] then
+			local cmd = findCommand(name)
+			if cmd then
+				registerCommandHandler(cmd, 0, itv_hnd)
+				itv_registered[i] = true
+			end
+		end
+	end
+
+	if changed(watch_sw)  then play_at_panel(switcher_sound_L, switcher_sound_R) end
+	if changed(watch_cap) then play_at_panel(cap_sound_L, cap_sound_R) end
+	if changed(watch_but) or itv_button_pressed then
+		itv_button_pressed = false
+		play_at_panel(button_sound_L, button_sound_R)
+	end
+end
+
+
+-- =====================================================================
+-- 2026-10-29: throttle lever stop click (each lever, at full forward and
+-- at full back / idle). Follows the visible lever (same value that moves
+-- the 3D lever). A lever must move away from the stop before it can click
+-- again there, and loading the aircraft makes no click.
+-- =====================================================================
+local thr_click_L = loadSample(moduleDirectory .. '/Custom Sounds/throttle_click_L.wav')
+local thr_click_R = loadSample(moduleDirectory .. '/Custom Sounds/throttle_click_R.wav')
+local thr_x, thr_z = 0.01, -22.73            -- pilots' throttle levers (centre pedestal), sound-system coordinates
+
+-- same distance rule as the ABSU buttons (absu_panel.lua), so the click stays audible over flight noise:
+-- 0.2 m -> 75%, 0.5 m -> 50%, 1.0 m -> 30%, 1.5 m -> 20%, 2.0 m -> 10%, beyond 2 m keeps falling as 1/d
+local THR_VOLUME = 0.5   -- overall loudness of the throttle click (1.0 = full, 0.5 = half)
+local thr_curve = {{0.2,0.75},{0.5,0.5},{1.0,0.3},{1.5,0.2},{2.0,0.1}}
+local function thr_dist(d)
+	if d <= thr_curve[1][1] then return thr_curve[1][2] end
+	for n = 2, #thr_curve do
+		local p0, p1 = thr_curve[n-1], thr_curve[n]
+		if d <= p1[1] then
+			return p0[2] + (p1[2]-p0[2]) * (d-p0[1]) / (p1[1]-p0[1])
+		end
+	end
+	local last = thr_curve[#thr_curve]
+	return last[2] * last[1] / d
+end
+local thr_levers = {
+	{ ref = globalPropertyf("tu154b2/custom/controlls/throttle_1"), at = nil },
+	{ ref = globalPropertyf("tu154b2/custom/controlls/throttle_2"), at = nil },
+	{ ref = globalPropertyf("tu154b2/custom/controlls/throttle_3"), at = nil },
+}
+local THR_END  = 0.002   -- counts as "at the stop"
+local THR_AWAY = 0.03    -- must leave the stop by this much to re-arm
+
+local function play_throttle_click()
+	local z_pos = get(pilot_Z)
+	local x_pos = get(pilot_X)
+	local plt_hdg = get(pilot_head)
+	local gain_L, gain_R = inn_balance(thr_x, thr_z, x_pos, z_pos, plt_hdg)
+	gain_L = gain_L * 1000
+	gain_R = gain_R * 1000
+	local dist = thr_dist(math.sqrt(math.pow(z_pos - thr_z, 2) + math.pow(x_pos - thr_x, 2))) * THR_VOLUME
+	setSampleGain(thr_click_L, gain_L * dist)
+	setSampleGain(thr_click_R, gain_R * dist)
+	playSample(thr_click_L, false)
+	playSample(thr_click_R, false)
+end
+
+local function throttle_clicks()
+	local click = false
+	for _, lev in ipairs(thr_levers) do
+		local v = get(lev.ref)
+		local now
+		if v >= 1 - THR_END then now = "full"
+		elseif v <= THR_END then now = "idle"
+		elseif v > THR_AWAY and v < 1 - THR_AWAY then now = "mid"
+		else now = lev.at end                       -- near a stop but not on it: keep state
+		if lev.at ~= nil and now ~= lev.at and (now == "full" or now == "idle") then click = true end
+		lev.at = now or "mid"
+	end
+	if click then play_throttle_click() end
+end
+
+
 local changes_sw_prev =0
 local changes_sw2_prev =0
 local changes_but_prev =0
@@ -231,6 +407,9 @@ function update()
 			playSample(lamp_sound_R, false)
 		end
 	end
+
+	extra_sounds()
+	throttle_clicks()
 
 	changes_sw_prev  =changes_sw  
 	changes_sw2_prev =changes_sw2 

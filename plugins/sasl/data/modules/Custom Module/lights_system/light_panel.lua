@@ -272,7 +272,7 @@ function update()
 	local cabin_mid_but=get(push_6)+get(push_7)
 	-- check changes and play sounds
 	local switchers_center=nav_lights + strobe + wing_light_left + wing_light_right + tail_light + day_night
-	local switchers_land=get(landing_ext_set_L) +  get(landing_ext_set_R) + get(landing_mode_set_L) + get(landing_mode_set_R)
+	local switchers_land=get(landing_ext_set_L) +  get(landing_ext_set_R) + get(landing_mode_set_L) + get(landing_mode_set_R) + light_signal -- signal-in-flight switch sits with the landing light switches
 	local switchers_ovhd=sign_belts_sw + sign_nosmoke_sw + sign_exit_sw + get(vent_1)
 	local switchers_fe = cabinl_flood + azs_panel_flood + cargo_1 + cargo_2 + tech_light + gear_nacelle
 	local z_pos=get(pilot_Z)

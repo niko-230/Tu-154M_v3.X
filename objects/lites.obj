@@ -24,6 +24,12 @@ ANIM_trans -7.209900 3.364900 -0.183800 -7.209900 3.364900 -0.183800 0.000000 0.
 ANIM_hide -0.100000 0.500000 sim/cockpit2/switches/navigation_lights_on
 LIGHT_NAMED airplane_nav_right 18.757200 -3.303600 7.901099
 LIGHT_PARAM full_custom_halo 18.757200 -3.303600 7.901099 0.00 0.24 0.00 0.10 20.00 0.70 -0.30 -0.70 0.10
+# 2026-10-29: white wing light from Tu-154M objects/lites.obj (ext_lights.lua white_light_*)
+ANIM_begin
+ANIM_hide -0.100000 0.500000 tu154b2/custom/lights/white_light_right
+LIGHT_NAMED airplane_nav_tail 18.722138 -3.395296 8.569259
+LIGHT_PARAM full_custom_halo 18.722138 -3.395296 8.569259 0.24 0.25 0.25 0.10 20.00 0.00 -1.00 0.00 0.10
+ANIM_end
 ANIM_end
 ANIM_end
 ANIM_begin
@@ -45,6 +51,12 @@ ANIM_trans 7.210000 3.364900 -0.183800 7.210000 3.364900 -0.183800 0.000000 0.00
 ANIM_hide -0.100000 0.500000 sim/cockpit2/switches/navigation_lights_on
 LIGHT_NAMED airplane_nav_left -18.727200 -3.303600 7.901099
 LIGHT_PARAM full_custom_halo -18.727200 -3.303600 7.901099 0.25 0.00 0.00 0.10 20.00 -0.70 -0.30 -0.70 0.10
+# 2026-10-29: white wing light from Tu-154M objects/lites.obj (ext_lights.lua white_light_*)
+ANIM_begin
+ANIM_hide -0.100000 0.500000 tu154b2/custom/lights/white_light_left
+LIGHT_NAMED airplane_nav_tail -18.717135 -3.392854 8.572902
+LIGHT_PARAM full_custom_halo -18.717135 -3.392854 8.572902 0.24 0.25 0.25 0.10 20.00 0.00 -1.00 0.00 0.10
+ANIM_end
 ANIM_end
 ANIM_end
 ANIM_begin
@@ -80,4 +92,10 @@ LIGHT_PARAM	airplane_generic_bb 1.9812000000 -1.4630400000 12.4968000000 0.62 0.
 LIGHT_PARAM	airplane_generic_pm 1.9812000000 -1.4630400000 12.4968000000 0.62 0.42 0.28 0 2000cd -0.4055797877 0.8191520443 0.4055797877 0.95371695074
 LIGHT_PARAM	airplane_generic_bb -1.9812000000 -1.4630400000 12.4968000000 0.62 0.42 0.28 0 2000cd 0.4055797877 0.8191520443 0.4055797877 0.6
 LIGHT_PARAM	airplane_generic_pm -1.9812000000 -1.4630400000 12.4968000000 0.62 0.42 0.28 0 2000cd 0.4055797877 0.8191520443 0.4055797877 0.95371695074
+ANIM_end
+# 2026-10-29: in-flight signal lights (fary signalizacii v polete), nose sides, shown when spot_light_on
+ANIM_begin
+ANIM_hide -0.100000 0.500000 sim/cockpit2/switches/spot_light_on
+LIGHT_PARAM full_custom_halo 0.880000 -3.032800 -22.219900 0.25 0.25 0.24 0.20 20.00 0.17 0.00 -0.98 0.50
+LIGHT_PARAM full_custom_halo -0.880000 -3.032800 -22.219900 0.25 0.25 0.24 0.20 20.00 -0.17 0.00 -0.98 0.50
 ANIM_end
