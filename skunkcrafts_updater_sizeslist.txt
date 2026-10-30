@@ -1287,7 +1287,7 @@ objects/cabin_glass_out.obj|857612
 objects/cockpit_1.obj|14699191
 objects/cockpit_1.png|10212772
 objects/cockpit_1_NML.png|11659837
-objects/cockpit_1_RUS.obj|29062328
+objects/cockpit_1_RUS.obj|29072018
 objects/cockpit_1_RUS.png|10396316
 objects/cockpit_1_RUS_LIT.png|106187
 objects/cockpit_1_RUS_NML.png|10445991
@@ -1324,25 +1324,26 @@ objects/cockpit_eng_misc_M_RUS_LIT.png|6488
 objects/cockpit_eng_panel_RUS.obj|1663173
 objects/cockpit_eng_panel_RUS.png|18911159
 objects/cockpit_eng_panel_RUS_LIT.png|33242
-objects/cockpit_eng_shell_M_RUS.obj|488446
+objects/cockpit_eng_shell_M_RUS.obj|488577
 objects/cockpit_eng_shell_M_RUS.png|14858545
+objects/cockpit_eng_shell_M_RUS_LIT.png|51052
 objects/cockpit_eng_stp_B_RUS.obj|55578
 objects/cockpit_front_panel_RUS.obj|846453
-objects/cockpit_front_panel_RUS.png|15432950
+objects/cockpit_front_panel_RUS.png|16260173
 objects/cockpit_front_panel_RUS_LIT.png|231260
 objects/cockpit_front_panel_RUS_NML.png|6961442
 objects/cockpit_front_panel_blend_RUS.obj|461742
 objects/cockpit_front_panel_kontur_RUS.obj|925600
-objects/cockpit_front_panel_kontur_RUS.png|15366661
+objects/cockpit_front_panel_kontur_RUS.png|15420370
 objects/cockpit_front_panel_kontur_RUS_NML.png|8309948
 objects/cockpit_glass.obj|480706
 objects/cockpit_glass.png|2372793
 objects/cockpit_glass_LIT.png|46733
 objects/cockpit_glass_NML.png|4629
-objects/cockpit_lamps_RUS.obj|6359276
+objects/cockpit_lamps_RUS.obj|6369370
 objects/cockpit_lamps_RUS.png|15858396
 objects/cockpit_lamps_RUS_LIT.png|10740722
-objects/cockpit_lamps_v1_RUS.obj|6352636
+objects/cockpit_lamps_v1_RUS.obj|6362730
 objects/cockpit_lamps_v1_RUS.png|13443061
 objects/cockpit_lamps_v1_RUS_LIT.png|10528112
 objects/cockpit_lt.obj|13005
@@ -1416,7 +1417,7 @@ objects/kursmp_digit_background.obj|750
 objects/lamps.obj|125005
 objects/lamps.png|212513
 objects/lamps_LIT.png|78188
-objects/lites.obj|4151
+objects/lites.obj|5248
 objects/lites.png|129191
 objects/lites_inside.obj|44
 objects/outside_misc.obj|24492
@@ -1811,7 +1812,7 @@ plugins/sasl/data/modules/Custom Module/fuel_system/fuel_fails.lua|7029
 plugins/sasl/data/modules/Custom Module/fuel_system/fuel_panel.lua|41926
 plugins/sasl/data/modules/Custom Module/fuel_system/fuel_pumps.lua|27920
 plugins/sasl/data/modules/Custom Module/fuel_system/fuel_system.lua|134
-plugins/sasl/data/modules/Custom Module/fuel_system/fuel_tanks.lua|11258
+plugins/sasl/data/modules/Custom Module/fuel_system/fuel_tanks.lua|11998
 plugins/sasl/data/modules/Custom Module/functions.lua|5923
 plugins/sasl/data/modules/Custom Module/green_digit_strip.png|7941
 plugins/sasl/data/modules/Custom Module/green_digit_strip.psd|106018
@@ -1834,7 +1835,7 @@ plugins/sasl/data/modules/Custom Module/lights_system/cockpit_lights_bright.lua|
 plugins/sasl/data/modules/Custom Module/lights_system/ext_lights.lua|13512
 plugins/sasl/data/modules/Custom Module/lights_system/light_commands.lua|6003
 plugins/sasl/data/modules/Custom Module/lights_system/light_fails.lua|4606
-plugins/sasl/data/modules/Custom Module/lights_system/light_panel.lua|27531
+plugins/sasl/data/modules/Custom Module/lights_system/light_panel.lua|27610
 plugins/sasl/data/modules/Custom Module/lights_system/lights_system.lua|235
 plugins/sasl/data/modules/Custom Module/main_panel/absu/absu.lua|277
 plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_at.lua|18356
@@ -2078,7 +2079,7 @@ plugins/sasl/data/modules/Custom Module/readme.txt|41
 plugins/sasl/data/modules/Custom Module/rectangle_ctr.lua|369
 plugins/sasl/data/modules/Custom Module/rectangle_ctr_fuel.lua|358
 plugins/sasl/data/modules/Custom Module/save_state.lua|115907
-plugins/sasl/data/modules/Custom Module/sounds/FE_top_sounds.lua|9663
+plugins/sasl/data/modules/Custom Module/sounds/FE_top_sounds.lua|17123
 plugins/sasl/data/modules/Custom Module/sounds/cabin_sounds.lua|35692
 plugins/sasl/data/modules/Custom Module/sounds/cabin_sounds2.lua|19580
 plugins/sasl/data/modules/Custom Module/sounds/chk_after_press_set.lua|11401
@@ -3059,6 +3060,8 @@ plugins/sasl/data/modules/Custom Sounds/tcas/old/traffic.wav|369436
 plugins/sasl/data/modules/Custom Sounds/tcas/tcas_test_fail.wav|46368
 plugins/sasl/data/modules/Custom Sounds/tcas/tcas_test_passed.wav|43404
 plugins/sasl/data/modules/Custom Sounds/tcas/traffic.wav|17654
+plugins/sasl/data/modules/Custom Sounds/throttle_click_L.wav|46380
+plugins/sasl/data/modules/Custom Sounds/throttle_click_R.wav|46380
 plugins/sasl/data/modules/Custom Sounds/trimm_ctr.wav|4826
 plugins/sasl/data/modules/Custom Sounds/trimm_down.wav|7164
 plugins/sasl/data/modules/Custom Sounds/trimm_down_L.wav|12900
@@ -3184,7 +3187,7 @@ sounds/systems/flap.wav|2188
 sounds/systems/gear.wav|2188
 sounds/weather/wind.wav|520560
 tu154.acf|2834727
-tu154_cockpit.obj|1585853
+tu154_cockpit.obj|1586349
 tu154_icon11.png|113962
 tu154_icon11_thumb.png|10010
 tu154_paint.png|6686
