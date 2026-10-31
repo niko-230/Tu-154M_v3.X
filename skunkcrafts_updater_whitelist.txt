@@ -2752,8 +2752,8 @@ plugins/sasl/data/modules/Custom Sounds/engines/out_behind_left.wav|3785957366
 plugins/sasl/data/modules/Custom Sounds/engines/out_behind_right.wav|3977708461
 plugins/sasl/data/modules/Custom Sounds/engines/out_high_left.wav|115849591
 plugins/sasl/data/modules/Custom Sounds/engines/out_high_right.wav|2145822227
-plugins/sasl/data/modules/Custom Sounds/engines/out_idle_left.wav|660640509
-plugins/sasl/data/modules/Custom Sounds/engines/out_idle_right.wav|3786927232
+plugins/sasl/data/modules/Custom Sounds/engines/out_idle_left.wav|539898669
+plugins/sasl/data/modules/Custom Sounds/engines/out_idle_right.wav|4085125637
 plugins/sasl/data/modules/Custom Sounds/engines/out_mid_left.wav|1355707994
 plugins/sasl/data/modules/Custom Sounds/engines/out_mid_right.wav|3178234517
 plugins/sasl/data/modules/Custom Sounds/engines/out_reverse.wav|829966036
