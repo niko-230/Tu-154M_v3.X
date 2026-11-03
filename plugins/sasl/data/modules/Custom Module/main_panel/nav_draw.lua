@@ -87,8 +87,23 @@ function update()
 	
 	n_FMS = sasl.countFMSEntries ()
 	n_appr = get(n_app)
+	-- 2026-11-03: X-Plane numbers the flight plan entries from 0 (as the UNS does in
+	-- uns_core.lua readPlan). This loop used to read entries 1..n: the first point (the
+	-- origin) was never drawn and one entry past the end was read. Table slot i now holds
+	-- entry i-1. If entry 0 has no position but entry n has one, the numbering is from 1.
+	local base = 0
+	if n_FMS > 0 then
+		local _, _, _, _, la0, lo0 = sasl.getFMSEntryInfo (0)
+		if la0 == nil or lo0 == nil or (la0 == 0 and lo0 == 0) then
+			local _, _, _, _, lan, lon = sasl.getFMSEntryInfo (n_FMS)
+			if lan ~= nil and lon ~= nil and not (lan == 0 and lon == 0) then base = 1 end
+		end
+	end
 	for i = 1, n_FMS, 1 do		
-		local tpe , nme , id , altitude , enr_latitude , enr_longitude = sasl.getFMSEntryInfo (i)
+		local tpe , nme , id , altitude , enr_latitude , enr_longitude = sasl.getFMSEntryInfo (i - 1 + base)
+		enr_latitude = enr_latitude or 0
+		enr_longitude = enr_longitude or 0
+		nme = nme or ""
 		local abs_heading = getHeading(ac_lat,ac_lon,enr_latitude,enr_longitude)
 		local bearing = 0
 		--local mag_diff = getHeadingDifference(simDR_true_heading,simDR_mag_heading)
