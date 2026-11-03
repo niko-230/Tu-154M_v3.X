@@ -17,16 +17,22 @@ Introduced cahnges on top of B-2:
 -  lighting edits
 - UNS option added
 
+In v3.1 Tu-154M 
+- engeneer panel was imported
+- flying dynamics re-checked and re-calculated according to Flight Manual
+- EFB tables revisited
+
+In v3.2 UNS was fully reworked to follow original design of UNS-1
+
 Future development:
 - refinements
 - English cockpit version
-- engeneer panel swap
-- "UNS only" cockpit version
 
-<img width="3456" height="2093" alt="Screenshot 2026-09-29 at 21 31 15" src="https://github.com/user-attachments/assets/062e6d8f-d4e4-4284-a4be-7eaa36abd0a1" />
-<img width="3456" height="2081" alt="Screenshot 2026-10-05 at 13 21 50" src="https://github.com/user-attachments/assets/08fa8e23-1a83-444c-b5c0-10436f93483c" />
-<img width="3456" height="2110" alt="Screenshot 2026-10-05 at 13 19 42" src="https://github.com/user-attachments/assets/1082f98c-348d-47fd-a97d-3bf0c86e9c62" />
-<img width="3456" height="2102" alt="Screenshot 2026-09-30 at 09 43 59" src="https://github.com/user-attachments/assets/64ea5e3c-b6b4-479b-9efe-568635b8e01f" />
-<img width="3456" height="2092" alt="Screenshot 2026-09-30 at 09 45 53" src="https://github.com/user-attachments/assets/78065f0b-cadd-4731-b436-795b8d007d06" />
-<img width="3456" height="2079" alt="Screenshot 2026-09-29 at 21 20 50" src="https://github.com/user-attachments/assets/42862fb4-d8c0-4af3-8815-6cf85c0b05a5" />
-
+<img width="756" height="526" alt="Screenshot 2026-11-03 at 13 59 46" src="https://github.com/user-attachments/assets/1ace0486-d039-443c-8afa-8baa2612a493" />
+<img width="817" height="588" alt="Screenshot 2026-11-03 at 14 00 18" src="https://github.com/user-attachments/assets/66a7d9a2-be93-4639-8f2a-4150d1b01b81" />
+<img width="1245" height="910" alt="Screenshot 2026-11-03 at 14 07 14" src="https://github.com/user-attachments/assets/ebbc51ab-591f-4d1d-9cee-0363739dda07" />
+<img width="1265" height="1042" alt="Screenshot 2026-11-03 at 14 21 38" src="https://github.com/user-attachments/assets/613c6d62-c4cb-4683-8354-9f83365c0216" />
+<img width="1675" height="1024" alt="Screenshot 2026-11-03 at 14 27 58" src="https://github.com/user-attachments/assets/95e9afd8-b956-4732-a717-271d43b92f90" />
+<img width="1514" height="988" alt="Screenshot 2026-11-03 at 14 26 51" src="https://github.com/user-attachments/assets/87be4258-5385-4726-a54f-78d3958f5a4e" />
+<img width="1572" height="1038" alt="Screenshot 2026-11-03 at 14 26 12" src="https://github.com/user-attachments/assets/2066b789-f47e-4db6-808e-f42653b4cf01" />
+<img width="1365" height="1059" alt="Screenshot 2026-11-03 at 14 24 40" src="https://github.com/user-attachments/assets/2fc72ac7-15e3-42a1-8dfa-8d7a810581e7" />
