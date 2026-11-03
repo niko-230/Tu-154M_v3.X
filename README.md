@@ -1,3 +1,5 @@
+<img width="1041" height="687" alt="Screenshot 2026-11-03 at 14 36 06" src="https://github.com/user-attachments/assets/f6d3c662-e98c-4614-89d8-22ef04917227" />
+<img width="1039" height="544" alt="Screenshot 2026-11-03 at 14 35 51" src="https://github.com/user-attachments/assets/81520db3-47c2-4a63-b7e5-af89ddc8dcdf" />
 Tu-154M v3.X XP12
 
 This mod is based entirely on Tu-154B-2 CE
