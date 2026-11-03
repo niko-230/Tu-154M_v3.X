@@ -254,6 +254,33 @@ local elev_stall_tbl = {
 {40, 40}}
 
 
+-- 2026-10-29 FLIGHT RECORDER (read-only, for diagnosing reported handling issues). Writes ELEVLOG lines to Log.txt.
+-- Read-only: it cannot change how the aircraft flies. Set ELOG.on = false to stop it.
+ELOG = { on = true, t = 0 }
+pcall(function()
+	ELOG.cg   = globalPropertyf("sim/flightmodel2/misc/cg_offset_z_mac")
+	ELOG.agl  = globalPropertyf("sim/flightmodel/position/y_agl")
+	ELOG.vs   = globalPropertyf("sim/flightmodel/position/vh_ind")
+	ELOG.the  = globalPropertyf("sim/flightmodel/position/theta")
+	ELOG.m    = globalPropertyf("sim/flightmodel/weight/m_total")
+	ELOG.nz   = globalPropertyf("sim/flightmodel/forces/g_nrml")
+	ELOG.rho  = globalPropertyf("sim/weather/rho")
+	ELOG.tas  = globalPropertyf("sim/flightmodel/position/true_airspeed")
+	ELOG.n1a  = globalPropertyf("tu154b2/custom/SC/engine/nk8_kvd1")
+	ELOG.n1b  = globalPropertyf("tu154b2/custom/SC/engine/nk8_kvd2")
+	ELOG.n1c  = globalPropertyf("tu154b2/custom/SC/engine/nk8_kvd3")
+	ELOG.thr  = globalProperty("sim/flightmodel/engine/POINT_thrust")
+	ELOG.ge   = globalPropertyf("sim/flightmodel/parts/CL_grndeffect[0]")
+	ELOG.gnd  = globalPropertyi("sim/flightmodel/failures/onground_any")
+	ELOG.alt  = globalPropertyf("sim/flightmodel/position/elevation")
+end)
+function ELOG.thrust()
+	if not ELOG.thr then return -1 end
+	local ok, t = pcall(get, ELOG.thr, 1, 3)
+	if ok and type(t) == "table" then return ((t[1] or 0) + (t[2] or 0) + (t[3] or 0)) / 9.81 end
+	return -1
+end
+function ELOG.g(prop) if not prop then return -1 end local ok, v = pcall(get, prop) if ok and v then return v end return -1 end
 elev_spd_tbl = { -- IAS km/h -> elevator effectiveness (global: keeps update() under the upvalue limit)
 -- 2026-10-29: this table is now the ONLY effectiveness factor (B's tail-AoA formula removed, see update()).
 -- Values = old table x the B factor it used to be multiplied with at the same trimmed conditions, so the
@@ -670,6 +697,24 @@ if MASTER then
 	if elvR < -30 then elvR = -30 elseif elvR > 20 then elvR = 20 end
 	set(elevator_L, elvL)
 	set(elevator_R, elvR)
+	if ELOG and ELOG.on then
+		ELOG.t = ELOG.t + passed
+		local ias_kmh = (get(ias_L) or 0) * 1.852
+		local agl = ELOG.g(ELOG.agl)
+		local low = agl >= 0 and agl < 60 -- flare zone: log twice per second
+		if ias_kmh > 100 and ELOG.t >= (low and 0.5 or 1) then
+			ELOG.t = 0
+			pcall(function()
+				local m, nz, rho, tas = ELOG.g(ELOG.m), ELOG.g(ELOG.nz), ELOG.g(ELOG.rho), ELOG.g(ELOG.tas)
+				local q = 0.5 * rho * tas * tas
+				local cy = (q > 10 and m > 0) and (m * 9.81 * nz / (q * 180)) or -1 -- wing area 180 m2 (book)
+				sasl.logInfo(string.format("ELEVLOG ias=%.0f alt=%.0f agl=%.1f vs=%.1f pitch=%.1f aoa=%.1f cy=%.2f ge=%.3f n2=%.1f/%.1f/%.1f thrust_kgf=%.0f m=%.0f gnd=%d stab_set=%.2f flap=%.0f yoke=%.2f elev_phys=%.1f elev_coef=%.2f elev_aero=%.1f cg_mac=%.1f",
+					ias_kmh, ELOG.g(ELOG.alt), agl, ELOG.g(ELOG.vs), ELOG.g(ELOG.the), get(ua) or 0, cy, ELOG.g(ELOG.ge),
+					ELOG.g(ELOG.n1a), ELOG.g(ELOG.n1b), ELOG.g(ELOG.n1c), ELOG.thrust(), m, ELOG.g(ELOG.gnd),
+					stab_pos * 5.5, get(flap_inn_L) or 0, pitch_pos_act, elev_left, elev_coef, elvL, ELOG.g(ELOG.cg)))
+			end)
+		end
+	end
 end	
 	
 	--print(get(elevator_L), "  ", get(elevator_R))

@@ -254,9 +254,13 @@ function update()
 	local tth_L_mode = get(left_sys_mode_set)
 	local tth_R_mode = get(right_sys_mode_set)
 	
-	local vvr_L_mode = get(left_vvr_mode_set)
-	local vvr_R_mode = get(right_vvr_mode_set)
-	local art_mode = get(art_on)*bool2int(power_AC)
+	-- M engineer panel: one mode switch per line (AUTO / COLD / HOT) drives both the turbo-cooler and the
+	-- air-air radiator (VVR) of that line, and there is no ART switch - the ART regulators work whenever 115V is on.
+	-- (B had separate VVR switches sim/custom/b2/vvr_1/2 and an ART switch sim/custom/b2/art; they are not on the M panel.)
+	local vvr_L_mode = tth_L_mode
+	local vvr_R_mode = tth_R_mode
+	local vvr_L_sw = get(left_vvr_mode_set) -- B-only VVR switch, kept only for its hold-5s-cools-all function
+	local art_mode = bool2int(power_AC)
 	
 	local tth_L_temp_set = get(left_sys_temp_set)
 	local tth_R_temp_set = get(right_sys_temp_set)
@@ -304,10 +308,10 @@ function update()
 		elseif vvr_L_mode == 3 then
 			cold_tube_vvr_reg_L = cold_tube_vvr_reg_L + passed * 0.02
 		end
-		if vvr_L_mode == 2 then
+		if vvr_L_sw == 2 then
 			vvr_hold_timer=vvr_hold_timer+passed
 		else
-			if vvr_hold_timer>5 and vvr_L_mode~=2 then 
+			if vvr_hold_timer>5 and vvr_L_sw~=2 then 
 				set(left_sys_mode_set,0)
 				set(right_sys_mode_set,0)
 				set(right_vvr_mode_set,0)

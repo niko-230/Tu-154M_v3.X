@@ -20,6 +20,10 @@ addSearchPath(moduleDirectory .. "/Custom Module/gui")
 addSearchPath(moduleDirectory .. "/Custom Module")
 addSearchPath(moduleDirectory .. "/Custom Module/main_panel")
 addSearchPath(moduleDirectory .. "/Custom Module/main_panel/taws")
+addSearchPath(moduleDirectory .. "/Custom Module/uns_fms")
+-- UNS screen switch (1 = new UNS screen + UNS 2D panel, 0 = original X-Plane CDU screen).
+-- Created this early because tu154_cockpit.obj uses it to swap the screens.
+createGlobalPropertyi("tu154b2/custom/uns/face", 1)
 nd_display = sasl.gl.createRenderTarget ( 500 , 400 )
 
 --include("dataref_creator_4.lua")
@@ -179,3 +183,7 @@ include("ils_display.lua")
 -- tu154b2/custom/elec/bus27_volt_right, both created by dataref_creator_1,
 -- so it must also load after the components table.
 include("vhf2_display.lua")
+
+-- UNS screen (cockpit v1): 3D screen device, UNS 2D panel and Aircraft > UNS menu.
+-- Reads tu154b2/custom/uns1_on (dataref_creator_1), so it loads after the components table too.
+include("uns_display.lua")

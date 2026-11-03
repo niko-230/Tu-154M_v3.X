@@ -74,6 +74,9 @@ defineProperty("fuel_flow_mode", globalPropertyi("tu154b2/custom/switchers/fuel/
 
 -- caps
 defineProperty("engine_caps", globalPropertyi("tu154b2/custom/anim/engine_caps"))  -- чехлы и крышки
+defineProperty("sensors_caps_rm", globalPropertyi("tu154b2/custom/anim/sensors_caps"))  -- заглушки ПВД/датчиков
+defineProperty("gear_blocks_rm", globalPropertyi("tu154b2/custom/anim/gear_blocks"))  -- колодки
+defineProperty("efb_page_rm", globalPropertyf("sim/custom/t154_efb/page"))  -- EFB page (4 = ground services)
 
 
 -- time
@@ -256,7 +259,35 @@ local start_1=0
 local start_2=0
 local start_3=0
 local start_pressed=0
+-- 2026-11-03: EFB "Убрать все" (command t154_efb/btn1 on EFB page 4).
+-- The tablet's xtlua handler clears the covers, but after a sim restart with covers on the
+-- start was still cut as if the engine covers were on (starter loop around 5 % N2), while
+-- taking the covers on and off one by one fixed it. Clear engine covers, sensor covers and
+-- chocks here too, from SASL, exactly like the one-by-one buttons do.
+-- Registered lazily: the command is created by xtlua and may not exist when SASL loads.
+local efb_btn1_cmd = nil
+local efb_btn1_tries = 0
+local function efb_remove_all_hnd(phase)
+	if phase == 0 and math.floor(get(efb_page_rm) + 0.5) == 4 then
+		set(engine_caps, 0)
+		set(sensors_caps_rm, 0)
+		set(gear_blocks_rm, 0)
+		sasl.logInfo("EFB remove-all: engine covers, sensor covers and chocks cleared (SASL)")
+	end
+	return 1 -- let the tablet's own handler run as well
+end
+local function register_efb_remove_all()
+	if efb_btn1_cmd ~= nil or efb_btn1_tries > 600 then return end
+	efb_btn1_tries = efb_btn1_tries + 1
+	efb_btn1_cmd = findCommand("t154_efb/btn1")
+	if efb_btn1_cmd ~= nil then
+		registerCommandHandler(efb_btn1_cmd, 1, efb_remove_all_hnd) -- before the tablet handler, so it always runs
+	end
+end
+local covers_cut_logged = false
+
 function update()
+	register_efb_remove_all()
 	local xp_ver = get(sim_vers)
 	local IS_XP12 = xp_ver ~= nil and xp_ver >= 120000
 	local IS_XP11 = xp_ver ~= nil and xp_ver >= 111000 and xp_ver < 120000
@@ -304,6 +335,11 @@ function update()
 	local time_now = get(sim_run_time)
 	
 	local blocked = get(engine_caps) == 1
+	-- one log line per flight if the covers cut a start (Log.txt: "[LUA]: start cut: engine covers on")
+	if blocked and (get(eng_rpm1) >= 5 or get(eng_rpm2) >= 5 or get(eng_rpm3) >= 5) and not covers_cut_logged then
+		covers_cut_logged = true
+		sasl.logInfo("start cut: engine covers on (engine_caps = " .. tostring(get(engine_caps)) .. ")")
+	end
 	set(fuel_time,999999)
 	-- automatic fuel cutoff if engines shuted down or didn's start properly
 	if (time_now - eng1_start_time > START_SEQ_TIME and rpm1 < RPM_APD_OFF) or (blocked and rpm1 >= 5) then 

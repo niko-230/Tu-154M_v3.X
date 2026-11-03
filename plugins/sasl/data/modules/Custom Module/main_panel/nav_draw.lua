@@ -71,7 +71,7 @@ local nd_show_tbl = {}
 local nd_name_tbl = {}
 local test_tbl = {}
 for i = 1, 200, 1 do
-	table.insert(nd_show_tbl, {[1] = 0, [2] = 0})
+	table.insert(nd_show_tbl, {[1] = 0, [2] = 0, [3] = 0}) -- [3] = 1: real position (used by the route line in nd_route_draw.lua)
 	table.insert(nd_name_tbl, "")
 end
 local n_FMS = 0
@@ -98,6 +98,12 @@ function update()
 		local x = dist * math.sin(math.rad(bearing))
 		nd_show_tbl[i][1] = x
 		nd_show_tbl[i][2] = y
+		-- route line: entries without a real position (lat/lon 0, e.g. discontinuities) break the line
+		if math.abs(enr_latitude) > 0.0001 or math.abs(enr_longitude) > 0.0001 then
+			nd_show_tbl[i][3] = 1
+		else
+			nd_show_tbl[i][3] = 0
+		end
 		nd_name_tbl[i] = nme
 	end
 	local nav_ind = get(app_nme)
@@ -114,6 +120,7 @@ function update()
 		local x_app = dist_app * math.sin(math.rad(bearing_app))
 		nd_show_tbl[n_FMS+i][1] = x_app
 		nd_show_tbl[n_FMS+i][2] = y_app
+		nd_show_tbl[n_FMS+i][3] = 1
 		if nav_ind[i] == nav_ind[i-1] then
 			nd_name_tbl[n_FMS+i] = ''
 		elseif nav_ind[i] ~=-1 then

@@ -202,6 +202,11 @@ defineProperty("fpf", globalPropertyf("tu154b2/custom/lights/front_panel_flood_s
 defineProperty("mpf", globalPropertyf("tu154b2/custom/lights/mid_panel_flood_set"))
 defineProperty("rpf", globalPropertyf("tu154b2/custom/lights/right_panel_flood_set"))
 defineProperty("rp_int", globalPropertyf("tu154b2/custom/lights/right_panel_int_set"))
+-- UNS brightness knob (dims the UNS panel lighting): instrument_brightness_ratio[16].
+-- Opened as array element (SASL counts from 1: [16] -> 17); the "...[16]" name form does not reach it.
+local uns_knob = globalPropertyfae("sim/cockpit2/switches/instrument_brightness_ratio", 17)
+local uns_knob_saved = nil      -- value read from saved_state.ini
+local uns_knob_hold = 0         -- seconds left to keep re-applying it (X-Plane restores its own value at load)
 defineProperty("table_up_R", globalPropertyi("tu154b2/custom/anim/table_up_R"))
 defineProperty("table_up_L", globalPropertyi("tu154b2/custom/anim/table_up_L"))
 defineProperty("efb_enabled", globalPropertyi("sim/custom/t154_efb/enabled"))
@@ -730,6 +735,7 @@ local var_table = {}
     var_table["efbEnabl"] = get(efb_enabled)
     var_table["engLang"] = get(eng_light_angle_result)
     var_table["engLang2"] = get(eng_light_angle2) * 1000
+    var_table["unsKnob"] = math.floor(get(uns_knob) * 1000 + 0.5)
     var_table["yokeHeight"] = get(yoke_height) * 1000
 
 
@@ -1223,6 +1229,7 @@ local function write_file()
         savefile:write("efbEnabl="..get(efb_enabled).."\n")
         savefile:write("engLang="..get(eng_light_angle_result).."\n")
         savefile:write("engLang2="..get(eng_light_angle2)*1000 .."\n")
+        savefile:write("unsKnob="..math.floor(get(uns_knob)*1000 + 0.5) .."\n")
         savefile:write("yokeHeight="..get(yoke_height)*1000 .."\n")
         
         
@@ -1745,6 +1752,11 @@ local function read_file()
         if var_table["efbEnabl"] then set(efb_enabled, var_table["efbEnabl"]) end
         if var_table["engLang"] then set(eng_light_angle_result, var_table["engLang"]) end
         if var_table["engLang2"] then set(eng_light_angle2, var_table["engLang2"]/1000) end
+        if var_table["unsKnob"] then
+            uns_knob_saved = math.max(0, math.min(1, var_table["unsKnob"]/1000))
+            uns_knob_hold = 3
+            set(uns_knob, uns_knob_saved)
+        end
         if var_table["yokeHeight"] then set(yoke_height, var_table["yokeHeight"]/1000) end
         
         
@@ -2105,6 +2117,12 @@ function update()
 		end
 	end
 	
+	-- UNS brightness knob: keep the saved position for a few seconds after reading it
+	if uns_knob_hold > 0 and uns_knob_saved then
+		uns_knob_hold = uns_knob_hold - passed
+		set(uns_knob, uns_knob_saved)
+	end
+
 	-- save the file
 	if (save_counter > 30 or get(save_state) == 1) and get(slider50)>0 and string.len(liv)>0 then
 		write_file()

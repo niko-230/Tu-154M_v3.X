@@ -100,7 +100,49 @@ end
 
 registerCommandHandler(button, 0, button_hnd)
 registerCommandHandler(button2, 0, button_hnd2)
+
+-- 2026-11-03: radar colour table per cockpit.
+-- X-Plane paints radar returns with cockpit/EFIS/RADAR.png, one table per aircraft, read when the
+-- aircraft loads. Kontur cockpit (v1) wants colour, Groza cockpit (v2) keeps its green CRT look.
+-- This copies the matching table onto RADAR.png:
+--   cockpit/EFIS/RADAR_kontur.png  (green / yellow / red / magenta)
+--   cockpit/EFIS/RADAR_groza.png   (original all-green table, strongest cores black)
+-- Only written when it differs. A change made here shows from the next aircraft load.
+local radar_dir = sasl.getAircraftPath() .. "/cockpit/EFIS/"
+local palette_timer = 0
+local palette_for = -1     -- kontur_on value the table on disk was last checked for
+local function read_all(f)
+	local h = io.open(f, "rb")
+	if not h then return nil end
+	local d = h:read("*a")
+	h:close()
+	return d
+end
+local function sync_radar_palette(k_on)
+	local src = radar_dir .. (k_on == 1 and "RADAR_kontur.png" or "RADAR_groza.png")
+	local want = read_all(src)
+	if not want then
+		sasl.logInfo("radar palette: missing " .. src)
+		return
+	end
+	if read_all(radar_dir .. "RADAR.png") ~= want then
+		local h = io.open(radar_dir .. "RADAR.png", "wb")
+		if h then
+			h:write(want)
+			h:close()
+			sasl.logInfo("radar palette: RADAR.png set for " .. (k_on == 1 and "Kontur (colour)" or "Groza (green)") .. " - active from next aircraft load")
+		end
+	end
+end
+
 function update()
+	-- radar colour table: check 5 s after load (cockpit version settled), and after every cockpit switch
+	palette_timer = palette_timer + get(frame_time)
+	local k_on_now = get(kontur_on) == 1 and 1 or 0
+	if palette_timer > 5 and k_on_now ~= palette_for then
+		palette_for = k_on_now
+		sync_radar_palette(k_on_now)
+	end
 	local tilt=get(elev_set)
 	local passed=get(frame_time)
 	--local brg=get(az)
@@ -192,7 +234,9 @@ function update()
 					wx_mode=0
 					wx_alph = 0
 				elseif radar_mode_set==3 then
-					wx_mode=3
+					-- 2026-11-03: METEO = X-Plane plain WX (2), like the Groza METEO and default airliners.
+					-- With mode 3 (WX+T) the Kontur showed flat green and ground returns in METEO.
+					wx_mode=2
 					wx_alph = 1
 				elseif radar_mode_set==4 then
 					wx_mode=4
@@ -211,7 +255,7 @@ function update()
 			knob_2_prev=get(knob_2_fo)
 		end
 		wx_side_prev = wx_ctr
-		set(sweep,2)
+		set(sweep,2/3) -- 2026-11-03: was 2 sweeps/s; same speed as the Groza radar
 		set(sec_width,60)
 		set(az,0)
 		--set(elev,wx_tilt)	

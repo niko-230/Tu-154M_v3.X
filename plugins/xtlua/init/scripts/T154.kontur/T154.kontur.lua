@@ -1943,11 +1943,10 @@ end
         -- end
     else
 		-- simDR_tcas_on = 0
-		if kontur_nav_l>0 then
-			simDR_efis_1_mode = 2
-		else
-			simDR_efis_1_mode = 1
-		end
+		-- X-Plane map style 1 in every mode except TCAS (5). Style 2 (MAP), used before
+		-- while NAV was on, makes X-Plane draw an FMS route twice (flight path + straight
+		-- legs) - the "second flight plan" on the Kontur.
+		simDR_efis_1_mode = 1
 		--simDR_tcas_on = 0
     end
 	
@@ -1970,11 +1969,10 @@ end
         -- end
     else
 		-- simDR_tcas_on = 0
-		if kontur_nav_r>0 then
-			simDR_efis_2_mode = 2
-		else
-			simDR_efis_2_mode = 1
-		end
+		-- X-Plane map style 1 in every mode except TCAS (5). Style 2 (MAP), used before
+		-- while NAV was on, makes X-Plane draw an FMS route twice (flight path + straight
+		-- legs) - the "second flight plan" on the Kontur.
+		simDR_efis_2_mode = 1
 		--simDR_tcas_on = 0
     end
 	

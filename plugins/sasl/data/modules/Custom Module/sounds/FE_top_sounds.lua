@@ -215,7 +215,6 @@ local thr_x, thr_z = 0.01, -22.73            -- pilots' throttle levers (centre 
 
 -- same distance rule as the ABSU buttons (absu_panel.lua), so the click stays audible over flight noise:
 -- 0.2 m -> 75%, 0.5 m -> 50%, 1.0 m -> 30%, 1.5 m -> 20%, 2.0 m -> 10%, beyond 2 m keeps falling as 1/d
-local THR_VOLUME = 0.5   -- overall loudness of the throttle click (1.0 = full, 0.5 = half)
 local thr_curve = {{0.2,0.75},{0.5,0.5},{1.0,0.3},{1.5,0.2},{2.0,0.1}}
 local function thr_dist(d)
 	if d <= thr_curve[1][1] then return thr_curve[1][2] end
@@ -236,6 +235,11 @@ local thr_levers = {
 local THR_END  = 0.002   -- counts as "at the stop"
 local THR_AWAY = 0.03    -- must leave the stop by this much to re-arm
 
+-- 2026-10-30: click is heard only in cockpit (inside) view. Outside views
+-- (incl. replay with an outside camera) stay silent, but lever positions are
+-- still followed so switching back to the cockpit never fires a late click.
+local view_external = globalPropertyi("sim/graphics/view/view_is_external")
+
 local function play_throttle_click()
 	local z_pos = get(pilot_Z)
 	local x_pos = get(pilot_X)
@@ -243,7 +247,7 @@ local function play_throttle_click()
 	local gain_L, gain_R = inn_balance(thr_x, thr_z, x_pos, z_pos, plt_hdg)
 	gain_L = gain_L * 1000
 	gain_R = gain_R * 1000
-	local dist = thr_dist(math.sqrt(math.pow(z_pos - thr_z, 2) + math.pow(x_pos - thr_x, 2))) * THR_VOLUME
+	local dist = thr_dist(math.sqrt(math.pow(z_pos - thr_z, 2) + math.pow(x_pos - thr_x, 2)))
 	setSampleGain(thr_click_L, gain_L * dist)
 	setSampleGain(thr_click_R, gain_R * dist)
 	playSample(thr_click_L, false)
@@ -262,7 +266,7 @@ local function throttle_clicks()
 		if lev.at ~= nil and now ~= lev.at and (now == "full" or now == "idle") then click = true end
 		lev.at = now or "mid"
 	end
-	if click then play_throttle_click() end
+	if click and get(view_external) == 0 then play_throttle_click() end
 end
 
 

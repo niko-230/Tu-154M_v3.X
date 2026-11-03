@@ -11,7 +11,7 @@
 [TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.X/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
 [TU154M WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/dataref_creator_1.lua:1501 in function <f>
 [TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <dataref_creator_1>
-[TU154M WARN]: [STACK]:| ...Aircraft/Tu-154M_v3.X/plugins/sasl/data/modules/main.lua:127 in function <f>
+[TU154M WARN]: [STACK]:| ...Aircraft/Tu-154M_v3.X/plugins/sasl/data/modules/main.lua:131 in function <f>
 [TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <c>
 [TU154M WARN]: [STACK]:| ...
 [TU154M INFO]: [LUA]: loading	dataref_creator_2
@@ -373,6 +373,13 @@
 [TU154M WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/controls/controls.lua:5 in function <f>
 [TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <controls>
 [TU154M WARN]: [STACK]:| ...
+[TU154M WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel/parts/CL_grndeffect[0]> not found
+[TU154M WARN]: [STACK]:| ...t/Tu-154M_v3.X/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154M WARN]: [STACK]:| .../data/modules/Custom Module/controls/flight_controls.lua:273 in function <?>
+[TU154M WARN]: [STACK]:| [C]:-1 in function <pcall>
+[TU154M WARN]: [STACK]:| .../data/modules/Custom Module/controls/flight_controls.lua:260 in function <f>
+[TU154M WARN]: [STACK]:| ...ircraft/Tu-154M_v3.X/plugins/sasl/data/init/initMain.lua:260 in function <flight_controls>
+[TU154M WARN]: [STACK]:| ...
 [TU154M INFO]: [LUA]: loading	trimmers
 [TU154M DEBUG]: [LUA]: "sim/graphics/view/pilots_head_psi": Casting float to int
 [TU154M INFO]: [LUA]: loading	flaps
@@ -460,7 +467,14 @@
 [TU154M INFO]: [LUA]: loading	ils_freq_text
 [TU154M INFO]: [LUA]: including	vhf2_display.lua
 [TU154M INFO]: [LUA]: loading	vhf2_freq_text
-[TU154M INFO]: Scripts loading time: 0.6830
+[TU154M INFO]: [LUA]: including	uns_display.lua
+[TU154M INFO]: [LUA]: requesting	uns_core
+[TU154M INFO]: [LUA]: loading	uns_screen
+[TU154M INFO]: [LUA]: requesting	uns_core
+[TU154M INFO]: [LUA]: requesting	uns_core
+[TU154M INFO]: [LUA]: loading	uns_popup
+[TU154M INFO]: [LUA]: requesting	uns_core
+[TU154M INFO]: Scripts loading time: 0.7278
 [TU154M INFO]: Module loaded
 [TU154M INFO]: Initializing modules...
 [TU154M DEBUG]: [LUA]: Tiles created
@@ -550,6 +564,8 @@
 [TU154M DEBUG]: [LUA]: PA-3 Config: NDB hidden
 [TU154M DEBUG]: [LUA]: PA-3 Config: APT hidden
 [TU154M INFO]: [LUA]: "crew_voices"	PREPARE
+[TU154M INFO]: [LUA]: radar palette: RADAR.png set for Groza (green) - active from next aircraft load
+[TU154M INFO]: [LUA]: radar palette: RADAR.png set for Kontur (colour) - active from next aircraft load
 [TU154M INFO]: Disabling...
 [TU154M INFO]: [LUA]: "flight_controls"	flight controls released
 [TU154M INFO]: [LUA]: "rud_logic"	throttles released
