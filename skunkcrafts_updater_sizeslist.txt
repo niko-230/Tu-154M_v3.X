@@ -1878,7 +1878,7 @@ plugins/sasl/data/modules/Custom Module/main_panel/mgv.lua|9149
 plugins/sasl/data/modules/Custom Module/main_panel/misc_fails.lua|7379
 plugins/sasl/data/modules/Custom Module/main_panel/misc_lamps.lua|14716
 plugins/sasl/data/modules/Custom Module/main_panel/msrp_clock.lua|0
-plugins/sasl/data/modules/Custom Module/main_panel/nav_draw.lua|8272
+plugins/sasl/data/modules/Custom Module/main_panel/nav_draw.lua|9025
 plugins/sasl/data/modules/Custom Module/main_panel/nd_marks.png|2044
 plugins/sasl/data/modules/Custom Module/main_panel/nd_route_draw.lua|5565
 plugins/sasl/data/modules/Custom Module/main_panel/nvu/drefs.txt|1811
