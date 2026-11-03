@@ -1,6 +1,6 @@
 AviTab.json|1925732311
-KLNconfig.txt|700533605
-README.md|3829004420
+KLNconfig.txt|4244301241
+README.md|1958547961
 airfoils/NACA 0009 (symmetrical).afl|3143184736
 airfoils/hstab.afl|1427296503
 airfoils/vstab.afl|3305887970
@@ -9,6 +9,7 @@ airfoils/wing_mod.afl|2994963053
 airfoils/wing_orig.afl|2361956735
 airfoils/wing_tip.afl|3602086378
 airfoils/wing_tip_orig.afl|1296979795
+black_box/03_11_26_000.bbox|3800067533
 black_box/26_10_26_000.bbox|450261693
 cockpit/-PANELS-/Panel.png|1294082873
 cockpit/EFIS/EFIS maps/map_s_HM-1.png|746417493
@@ -17,7 +18,9 @@ cockpit/EFIS/EFIS maps/map_s_HM-3.png|4080548798
 cockpit/EFIS/EFIS maps/map_s_HM-4.png|427997029
 cockpit/EFIS/EFIS maps/map_s_HM.png|455098011
 cockpit/EFIS/EFIS maps/map_s_HM.txt|691506296
-cockpit/EFIS/RADAR.png|3837817261
+cockpit/EFIS/RADAR.png|4001018773
+cockpit/EFIS/RADAR_groza.png|3837817261
+cockpit/EFIS/RADAR_kontur.png|4001018773
 cockpit/radios/GPS FMS/CDU739_screen.png|1764371993
 cockpit/radios/GPS FMS/Garmin_530_screen.png|2585056304
 cockpit_3d/-PANELS-/Panel-assets/Panel.png|3502180221
@@ -1178,6 +1181,7 @@ docs/Readme_rus.pdf|1431036751
 docs/Tu-154M Project Tupolev English Manual.pdf|3868996087
 docs/Tu-154M_practical aerodynamic_Russian - 1997.pdf|2781953952
 docs/Tu-154_readme_B2.pdf|3500407410
+docs/UNS-1_FMS_Operations_Manual_Tu-154M_v3.pdf|1911378970
 docs/real_docs/RUS RLE/Papka_1/Tu-154M_RLE_r1.pdf|1553212767
 docs/real_docs/RUS RLE/Papka_1/Tu-154M_RLE_r2.pdf|1717850104
 docs/real_docs/RUS RLE/Papka_1/Tu-154M_RLE_r3.pdf|3212794860
@@ -1300,9 +1304,9 @@ objects/cockpit_center_panel_RUS.png|3160185221
 objects/cockpit_center_panel_RUS_LIT.png|1082739747
 objects/cockpit_center_panel_RUS_NML.png|2323546716
 objects/cockpit_center_panel_blend_RUS.obj|411836873
-objects/cockpit_center_panel_v1_RUS.obj|1297990773
-objects/cockpit_center_panel_v1_RUS.png|1848527146
-objects/cockpit_center_panel_v1_RUS_LIT.png|3547530027
+objects/cockpit_center_panel_v1_RUS.obj|100860405
+objects/cockpit_center_panel_v1_RUS.png|2597010584
+objects/cockpit_center_panel_v1_RUS_LIT.png|726238536
 objects/cockpit_center_panel_v1_RUS_NML.png|3109606282
 objects/cockpit_chairs.obj|3933086369
 objects/cockpit_chairs.png|2650470757
@@ -1327,7 +1331,7 @@ objects/cockpit_eng_panel_RUS_LIT.png|2981392672
 objects/cockpit_eng_shell_M_RUS.obj|373824713
 objects/cockpit_eng_shell_M_RUS.png|3966787675
 objects/cockpit_eng_shell_M_RUS_LIT.png|3350826163
-objects/cockpit_eng_stp_B_RUS.obj|526345463
+objects/cockpit_eng_stp_B_RUS.obj|2600002560
 objects/cockpit_front_panel_RUS.obj|3955728562
 objects/cockpit_front_panel_RUS.png|2888144765
 objects/cockpit_front_panel_RUS_LIT.png|3246139668
@@ -1423,7 +1427,7 @@ objects/lites_inside.obj|3294239496
 objects/outside_misc.obj|2710254612
 objects/outside_misc.png|3153306431
 objects/particles/aircraft_particles.png|2598893857
-objects/particles/aircraft_particles.pss|3002279363
+objects/particles/aircraft_particles.pss|1926493226
 objects/particles/particles.obj|3461815660
 objects/plackards.obj|2585673336
 objects/plackards.png|2205193085
@@ -1595,7 +1599,7 @@ plugins/KLN90B/data/modules/configuration/widgetResources/SourceCodePro.ttf|1932
 plugins/KLN90B/data/modules/configuration/wprefs.ini|4267642933
 plugins/KLN90B/data/modules/main.lua|3535876057
 plugins/KLN90B/data/modules/popupsPositions.txt|1935643396
-plugins/KLN90B/data/modules/state.txt|2762326008
+plugins/KLN90B/data/modules/state.txt|1837666129
 plugins/KLN90B/data/output/SASLLog.txt|881456239
 plugins/KLN90B/data/output/readme.txt|1889794412
 plugins/KLN90B/functions.txt|3249875689
@@ -1759,7 +1763,7 @@ plugins/sasl/data/modules/Custom Module/close.png|1026565542
 plugins/sasl/data/modules/Custom Module/controls/control_fails.lua|1227701382
 plugins/sasl/data/modules/Custom Module/controls/controls.lua|3202332120
 plugins/sasl/data/modules/Custom Module/controls/controls_panel.lua|3954255220
-plugins/sasl/data/modules/Custom Module/controls/flight_controls.lua|2159956006
+plugins/sasl/data/modules/Custom Module/controls/flight_controls.lua|3202880229
 plugins/sasl/data/modules/Custom Module/controls/landing_gears.lua|1158724660
 plugins/sasl/data/modules/Custom Module/controls/nosewheel.lua|2655821626
 plugins/sasl/data/modules/Custom Module/controls/trimmers.lua|1069990597
@@ -1824,7 +1828,7 @@ plugins/sasl/data/modules/Custom Module/hydro_system/hydro_panel.lua|3224824043
 plugins/sasl/data/modules/Custom Module/hydro_system/hydro_system.lua|1065570783
 plugins/sasl/data/modules/Custom Module/kskv/kskv.lua|3846519517
 plugins/sasl/data/modules/Custom Module/kskv/kskv_bleed.lua|3205561475
-plugins/sasl/data/modules/Custom Module/kskv/kskv_cond.lua|3961624225
+plugins/sasl/data/modules/Custom Module/kskv/kskv_cond.lua|3407689513
 plugins/sasl/data/modules/Custom Module/kskv/kskv_fails.lua|882815993
 plugins/sasl/data/modules/Custom Module/kskv/kskv_panel.lua|2993057878
 plugins/sasl/data/modules/Custom Module/kskv/kskv_sard.lua|649720222
@@ -1874,9 +1878,9 @@ plugins/sasl/data/modules/Custom Module/main_panel/mgv.lua|2062529328
 plugins/sasl/data/modules/Custom Module/main_panel/misc_fails.lua|3044151566
 plugins/sasl/data/modules/Custom Module/main_panel/misc_lamps.lua|4267202113
 plugins/sasl/data/modules/Custom Module/main_panel/msrp_clock.lua|0
-plugins/sasl/data/modules/Custom Module/main_panel/nav_draw.lua|579673483
+plugins/sasl/data/modules/Custom Module/main_panel/nav_draw.lua|2396621403
 plugins/sasl/data/modules/Custom Module/main_panel/nd_marks.png|48685744
-plugins/sasl/data/modules/Custom Module/main_panel/nd_route_draw.lua|3017598637
+plugins/sasl/data/modules/Custom Module/main_panel/nd_route_draw.lua|344122940
 plugins/sasl/data/modules/Custom Module/main_panel/nvu/drefs.txt|985135991
 plugins/sasl/data/modules/Custom Module/main_panel/nvu/editor/editor_background.lua|2677748391
 plugins/sasl/data/modules/Custom Module/main_panel/nvu/editor/editor_button.lua|3593250814
@@ -1901,7 +1905,7 @@ plugins/sasl/data/modules/Custom Module/main_panel/radar/radar_line.png|78657098
 plugins/sasl/data/modules/Custom Module/main_panel/radar/radar_mask.png|1808843093
 plugins/sasl/data/modules/Custom Module/main_panel/radar/radar_mask_drift.png|3131120754
 plugins/sasl/data/modules/Custom Module/main_panel/radar/radar_mask_drift2.png|2868637760
-plugins/sasl/data/modules/Custom Module/main_panel/radar_kontur.lua|3826152915
+plugins/sasl/data/modules/Custom Module/main_panel/radar_kontur.lua|2491690157
 plugins/sasl/data/modules/Custom Module/main_panel/radar_test.lua|4084577334
 plugins/sasl/data/modules/Custom Module/main_panel/radar_test_draw.lua|1514156573
 plugins/sasl/data/modules/Custom Module/main_panel/radio/ark15.lua|2342067845
@@ -2078,8 +2082,8 @@ plugins/sasl/data/modules/Custom Module/panels_2d/yellow_digits.png|4026104290
 plugins/sasl/data/modules/Custom Module/readme.txt|417127972
 plugins/sasl/data/modules/Custom Module/rectangle_ctr.lua|1928446887
 plugins/sasl/data/modules/Custom Module/rectangle_ctr_fuel.lua|887126476
-plugins/sasl/data/modules/Custom Module/save_state.lua|1655774918
-plugins/sasl/data/modules/Custom Module/sounds/FE_top_sounds.lua|766896842
+plugins/sasl/data/modules/Custom Module/save_state.lua|771852169
+plugins/sasl/data/modules/Custom Module/sounds/FE_top_sounds.lua|2416557598
 plugins/sasl/data/modules/Custom Module/sounds/cabin_sounds.lua|3578820042
 plugins/sasl/data/modules/Custom Module/sounds/cabin_sounds2.lua|1411482904
 plugins/sasl/data/modules/Custom Module/sounds/chk_after_press_set.lua|511535066
@@ -2104,7 +2108,7 @@ plugins/sasl/data/modules/Custom Module/sounds/touchdown.lua|1009905869
 plugins/sasl/data/modules/Custom Module/sounds/voice_func.lua|2922089639
 plugins/sasl/data/modules/Custom Module/sounds/voice_tables.lua|1696483171
 plugins/sasl/data/modules/Custom Module/sounds/voice_talk.lua|1186723877
-plugins/sasl/data/modules/Custom Module/start_system/start_logic.lua|322655235
+plugins/sasl/data/modules/Custom Module/start_system/start_logic.lua|2043990890
 plugins/sasl/data/modules/Custom Module/start_system/start_panel.lua|3308506748
 plugins/sasl/data/modules/Custom Module/start_system/start_system.lua|2800573749
 plugins/sasl/data/modules/Custom Module/switch_lit.lua|683674566
@@ -2120,7 +2124,15 @@ plugins/sasl/data/modules/Custom Module/textureLit_alpha_coords.lua|3259576509
 plugins/sasl/data/modules/Custom Module/texture_ctr.lua|3556765118
 plugins/sasl/data/modules/Custom Module/time_logic.lua|3306150783
 plugins/sasl/data/modules/Custom Module/transsonic.lua|2494849523
-plugins/sasl/data/modules/Custom Module/uns_logic.lua|1993857974
+plugins/sasl/data/modules/Custom Module/uns_fms/DejaVu-LICENSE.txt|1610945640
+plugins/sasl/data/modules/Custom Module/uns_fms/DejaVuSansMono-Bold.ttf|2680652186
+plugins/sasl/data/modules/Custom Module/uns_fms/UNS_2d.png|376972993
+plugins/sasl/data/modules/Custom Module/uns_fms/UNS_2d_screen.png|1748740394
+plugins/sasl/data/modules/Custom Module/uns_fms/uns_core.lua|2129614442
+plugins/sasl/data/modules/Custom Module/uns_fms/uns_display.lua|3863005210
+plugins/sasl/data/modules/Custom Module/uns_fms/uns_popup.lua|646270568
+plugins/sasl/data/modules/Custom Module/uns_fms/uns_screen.lua|3510612593
+plugins/sasl/data/modules/Custom Module/uns_logic.lua|3707487927
 plugins/sasl/data/modules/Custom Module/walk.lua|2363159110
 plugins/sasl/data/modules/Custom Sounds/ROD_OFF.wav|4024833285
 plugins/sasl/data/modules/Custom Sounds/ROD_OFF_L.wav|3395022817
@@ -2756,7 +2768,7 @@ plugins/sasl/data/modules/Custom Sounds/engines/out_idle_left.wav|539898669
 plugins/sasl/data/modules/Custom Sounds/engines/out_idle_right.wav|4085125637
 plugins/sasl/data/modules/Custom Sounds/engines/out_mid_left.wav|1355707994
 plugins/sasl/data/modules/Custom Sounds/engines/out_mid_right.wav|3178234517
-plugins/sasl/data/modules/Custom Sounds/engines/out_reverse.wav|829966036
+plugins/sasl/data/modules/Custom Sounds/engines/out_reverse.wav|1628002049
 plugins/sasl/data/modules/Custom Sounds/engines/out_reverse_left.wav|3792875496
 plugins/sasl/data/modules/Custom Sounds/engines/out_reverse_right.wav|2988434082
 plugins/sasl/data/modules/Custom Sounds/engines/out_starter_cutout_L.wav|895053447
@@ -3081,10 +3093,10 @@ plugins/sasl/data/modules/configuration/readme.txt|598693735
 plugins/sasl/data/modules/configuration/widgetResources/SourceCodePro-LICENSE.txt|3071477787
 plugins/sasl/data/modules/configuration/widgetResources/SourceCodePro.ttf|193207767
 plugins/sasl/data/modules/configuration/wprefs.ini|2180162431
-plugins/sasl/data/modules/main.lua|3588895513
-plugins/sasl/data/modules/state.txt|920719776
+plugins/sasl/data/modules/main.lua|2136362114
+plugins/sasl/data/modules/state.txt|4264377067
 plugins/sasl/data/modulesdataref_creator_4.lua|0
-plugins/sasl/data/output/SASLLog.txt|3951056072
+plugins/sasl/data/output/SASLLog.txt|2341101790
 plugins/sasl/data/output/readme.txt|1889794412
 plugins/sasl/data/scripts/init.lua|2732355382
 plugins/sasl/functions.txt|3249875689
@@ -3108,7 +3120,7 @@ plugins/xtlua/init/scripts/T154.btwo/T154.btwo.lua|1200801371
 plugins/xtlua/init/scripts/T154.config_i/T154.config_i.lua|490124425
 plugins/xtlua/init/scripts/T154.egpws/T154.egpws.lua|1775297070
 plugins/xtlua/init/scripts/T154.ipad/T154.ipad.lua|469341947
-plugins/xtlua/init/scripts/T154.kontur/T154.kontur.lua|3150684445
+plugins/xtlua/init/scripts/T154.kontur/T154.kontur.lua|2956390682
 plugins/xtlua/init/scripts/T154.radio/T154.radio.lua|2758145694
 plugins/xtlua/init/scripts/T154.systems/T154.systems.lua|3554891135
 plugins/xtlua/init/scripts/T154.tcasCAS67/T154.tcasCAS67.lua|3164984505
@@ -3186,12 +3198,12 @@ sounds/systems/click.wav|2005905547
 sounds/systems/flap.wav|2005905547
 sounds/systems/gear.wav|2005905547
 sounds/weather/wind.wav|1395809330
-tu154.acf|3638268237
-tu154_cockpit.obj|118797415
+tu154.acf|2693587040
+tu154_cockpit.obj|4164418177
 tu154_icon11.png|2913622315
 tu154_icon11_thumb.png|2223285862
 tu154_paint.png|1900202556
 tu154_paint2.png|50155071
-tu154_prefs.txt|2351327766
+tu154_prefs.txt|3752079467
 tu154_vrconfig.txt|1305436609
 version.mak|1415776742
