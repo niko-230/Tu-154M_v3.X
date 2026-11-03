@@ -6,7 +6,7 @@ GLOBAL_cockpit_lit
 GLOBAL_specular 1.0
 TEXTURE ils_black.png
 
-POINT_COUNTS 14684 0 0 30105
+POINT_COUNTS 14700 0 0 30129
 VT 4.031418 -5.900269 -21.786407 1.000000 0.000000 0.000000 0.491074 0.381088
 VT 4.031418 -5.900269 -14.257599 1.000000 0.000000 0.000000 0.491074 0.349091
 VT 4.031418 -3.886215 -21.786407 1.000000 0.000000 0.000000 0.466797 0.381088
@@ -22063,263 +22063,263 @@ ANIM_begin
 ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
 ATTR_draw_disable
 ANIM_begin
-ATTR_manip_command button sim/FMS/ls_6r
+ATTR_manip_command button tu154/uns2/key/R6 UNS 2 R6
 TRIS 26769 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/ls_5r
+ATTR_manip_command button tu154/uns2/key/R5 UNS 2 R5
 TRIS 26775 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/ls_4r
+ATTR_manip_command button tu154/uns2/key/R4 UNS 2 R4
 TRIS 26781 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/ls_3r
+ATTR_manip_command button tu154/uns2/key/R3 UNS 2 R3
 TRIS 26787 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/ls_2r
+ATTR_manip_command button tu154/uns2/key/R2 UNS 2 R2
 TRIS 26793 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/ls_1r
+ATTR_manip_command button tu154/uns2/key/R1 UNS 2 R1
 TRIS 26799 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/ls_1l
+ATTR_manip_command button tu154/uns2/key/L1 UNS 2 L1
 TRIS 26805 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/ls_2l
+ATTR_manip_command button tu154/uns2/key/L2 UNS 2 L2
 TRIS 26811 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/ls_3l
+ATTR_manip_command button tu154/uns2/key/L3 UNS 2 L3
 TRIS 26817 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/ls_4l
+ATTR_manip_command button tu154/uns2/key/L4 UNS 2 L4
 TRIS 26823 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/ls_5l
+ATTR_manip_command button tu154/uns2/key/L5 UNS 2 L5
 TRIS 26829 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/ls_6l
+ATTR_manip_command button tu154/uns2/key/L6 UNS 2 L6
 TRIS 26835 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_clear CLR
+ATTR_manip_command button tu154/uns2/key/BACK UNS 2 BACK
 TRIS 26841 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_Y Y
+ATTR_manip_command button tu154/uns2/key/Y UNS 2 Y
 TRIS 26847 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_X X
+ATTR_manip_command button tu154/uns2/key/X UNS 2 X
 TRIS 26853 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_delete DEL
+ATTR_manip_command button tu154/uns2/key/DEL UNS 2 DEL
 TRIS 26859 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_W W
+ATTR_manip_command button tu154/uns2/key/W UNS 2 W
 TRIS 26865 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_V V
+ATTR_manip_command button tu154/uns2/key/V UNS 2 V
 TRIS 26871 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_Z Z
+ATTR_manip_command button tu154/uns2/key/Z UNS 2 Z
 TRIS 26877 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_U U
+ATTR_manip_command button tu154/uns2/key/U UNS 2 U
 TRIS 26883 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_P P
+ATTR_manip_command button tu154/uns2/key/P UNS 2 P
 TRIS 26889 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_Q Q
+ATTR_manip_command button tu154/uns2/key/Q UNS 2 Q
 TRIS 26895 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_R R
+ATTR_manip_command button tu154/uns2/key/R UNS 2 R
 TRIS 26901 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_S S
+ATTR_manip_command button tu154/uns2/key/S UNS 2 S
 TRIS 26907 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_T T
+ATTR_manip_command button tu154/uns2/key/T UNS 2 T
 TRIS 26913 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_O O
+ATTR_manip_command button tu154/uns2/key/O UNS 2 O
 TRIS 26919 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_N N
+ATTR_manip_command button tu154/uns2/key/N UNS 2 N
 TRIS 26925 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_M M
+ATTR_manip_command button tu154/uns2/key/M UNS 2 M
 TRIS 26931 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_L L
+ATTR_manip_command button tu154/uns2/key/L UNS 2 L
 TRIS 26937 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_K K
+ATTR_manip_command button tu154/uns2/key/K UNS 2 K
 TRIS 26943 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_F F
+ATTR_manip_command button tu154/uns2/key/F UNS 2 F
 TRIS 26949 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_G G
+ATTR_manip_command button tu154/uns2/key/G UNS 2 G
 TRIS 26955 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_H H
+ATTR_manip_command button tu154/uns2/key/H UNS 2 H
 TRIS 26961 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_I I
+ATTR_manip_command button tu154/uns2/key/I UNS 2 I
 TRIS 26967 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_J J
+ATTR_manip_command button tu154/uns2/key/J UNS 2 J
 TRIS 26973 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_E E
+ATTR_manip_command button tu154/uns2/key/E UNS 2 E
 TRIS 26979 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_D D
+ATTR_manip_command button tu154/uns2/key/D UNS 2 D
 TRIS 26985 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_C C
+ATTR_manip_command button tu154/uns2/key/C UNS 2 C
 TRIS 26991 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_B B
+ATTR_manip_command button tu154/uns2/key/B UNS 2 B
 TRIS 26997 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_A A
+ATTR_manip_command button tu154/uns2/key/A UNS 2 A
 TRIS 27003 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/exec EXEC
+ATTR_manip_command button tu154/uns2/key/ENTER UNS 2 ENTER
 TRIS 27009 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/prog PROG
+ATTR_manip_command button tu154/uns2/key/PERF UNS 2 PERF
 TRIS 27015 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/hold HOLD
+ATTR_manip_command button tu154/uns2/key/HOLD UNS 2 HOLD
 TRIS 27021 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/dep_arr DEP ARR
+ATTR_manip_command button tu154/uns2/key/MENU UNS 2 MENU
 TRIS 27027 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/clb CLB
+ATTR_manip_command button tu154/uns2/key/VNAV UNS 2 VNAV
 TRIS 27033 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/index INIT REF
+ATTR_manip_command button tu154/uns2/key/DATA UNS 2 DATA
 TRIS 27039 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/legs RTE
+ATTR_manip_command button tu154/uns2/key/NAV UNS 2 NAV
 TRIS 27045 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/fpln LEGS
+ATTR_manip_command button tu154/uns2/key/FPL UNS 2 FPL
 TRIS 27051 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/dir_intc DIR INTC
+ATTR_manip_command button tu154/uns2/key/DTO UNS 2 DTO
 TRIS 27057 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/fix FIX
+ATTR_manip_command button tu154/uns2/key/LIST UNS 2 LIST
 TRIS 27063 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/navrad NAV RAD
+ATTR_manip_command button tu154/uns2/key/TUNE UNS 2 TUNE
 TRIS 27069 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/next NEXT PAGE
+ATTR_manip_command button tu154/uns2/key/NEXT UNS 2 NEXT
 TRIS 27075 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/prev PREV PAGE
+ATTR_manip_command button tu154/uns2/key/PREV UNS 2 PREV
 TRIS 27081 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_1 1
+ATTR_manip_command button tu154/uns2/key/1 UNS 2 1
 TRIS 27087 24
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_2 2
+ATTR_manip_command button tu154/uns2/key/2 UNS 2 2
 TRIS 27111 24
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_3 3
+ATTR_manip_command button tu154/uns2/key/3 UNS 2 3
 TRIS 27135 24
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_6 6
+ATTR_manip_command button tu154/uns2/key/6 UNS 2 6
 TRIS 27159 24
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_5 5
+ATTR_manip_command button tu154/uns2/key/5 UNS 2 5
 TRIS 27183 24
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_4 4
+ATTR_manip_command button tu154/uns2/key/4 UNS 2 4
 TRIS 27207 24
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_7 7
+ATTR_manip_command button tu154/uns2/key/7 UNS 2 7
 TRIS 27231 24
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_8 8
+ATTR_manip_command button tu154/uns2/key/8 UNS 2 8
 TRIS 27255 24
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_9 9
+ATTR_manip_command button tu154/uns2/key/9 UNS 2 9
 TRIS 27279 24
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_slash SLASH
+ATTR_manip_command button tu154/uns2/key/SLASH UNS 2 /
 TRIS 27303 24
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_0 0
+ATTR_manip_command button tu154/uns2/key/0 UNS 2 0
 TRIS 27327 24
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_period PERIOD
+ATTR_manip_command button tu154/uns2/key/DOT UNS 2 ON/OFF DIM
 TRIS 27351 24
 ANIM_end
 ANIM_end
@@ -22335,6 +22335,7 @@ TRIS 27381 6
 ANIM_end
 ANIM_begin
 ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide 1.000000 1.000000 tu154b2/custom/uns/face
 ATTR_solid_camera
 ATTR_draw_enable
 ATTR_light_level 0.000000 1.000000 tu154b2/custom/light/no_LIT 1000.000000
@@ -22344,6 +22345,7 @@ TRIS 27387 6
 ANIM_end
 ANIM_begin
 ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide 1.000000 1.000000 tu154b2/custom/uns/face
 ATTR_solid_camera
 ATTR_draw_enable
 ATTR_light_level 0.000000 1.000000 tu154b2/custom/light/no_LIT 1000.000000
@@ -22353,265 +22355,285 @@ TRIS 27393 6
 ANIM_end
 ANIM_begin
 ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
+ANIM_hide 0.000000 0.000000 tu154b2/custom/uns/face
+ATTR_no_cockpit
+ATTR_light_level_reset
+ATTR_cockpit_device tu154b2/uns_screen 0 0 1
+TRIS 30111 6
+ATTR_no_cockpit_device
+ATTR_cockpit_device tu154b2/uns_screen2 0 0 1
+TRIS 30105 6
+ATTR_no_cockpit_device
+ATTR_draw_disable
+ATTR_manip_command button tu154/uns/popup UNS 2D panel
+TRIS 30123 6
+ATTR_manip_none
+TRIS 30117 6
+ATTR_draw_enable
+ATTR_light_level 0.000000 1.000000 tu154b2/custom/light/no_LIT 1000.000000
+ATTR_cockpit
+ANIM_end
+ANIM_begin
+ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
 ATTR_draw_disable
 ANIM_begin
-ATTR_manip_command button sim/FMS/ls_6r
+ATTR_manip_command button tu154/uns/key/R6 UNS R6
 TRIS 27399 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/ls_5r
+ATTR_manip_command button tu154/uns/key/R5 UNS R5
 TRIS 27405 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/ls_4r
+ATTR_manip_command button tu154/uns/key/R4 UNS R4
 TRIS 27411 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/ls_3r
+ATTR_manip_command button tu154/uns/key/R3 UNS R3
 TRIS 27417 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/ls_2r
+ATTR_manip_command button tu154/uns/key/R2 UNS R2
 TRIS 27423 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/ls_1r
+ATTR_manip_command button tu154/uns/key/R1 UNS R1
 TRIS 27429 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/ls_1l
+ATTR_manip_command button tu154/uns/key/L1 UNS L1
 TRIS 27435 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/ls_2l
+ATTR_manip_command button tu154/uns/key/L2 UNS L2
 TRIS 27441 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/ls_3l
+ATTR_manip_command button tu154/uns/key/L3 UNS L3
 TRIS 27447 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/ls_4l
+ATTR_manip_command button tu154/uns/key/L4 UNS L4
 TRIS 27453 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/ls_5l
+ATTR_manip_command button tu154/uns/key/L5 UNS L5
 TRIS 27459 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/ls_6l
+ATTR_manip_command button tu154/uns/key/L6 UNS L6
 TRIS 27465 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_clear CLR
+ATTR_manip_command button tu154/uns/key/BACK UNS BACK
 TRIS 27471 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_Y Y
+ATTR_manip_command button tu154/uns/key/Y UNS Y
 TRIS 27477 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_X X
+ATTR_manip_command button tu154/uns/key/X UNS X
 TRIS 27483 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_delete DEL
+ATTR_manip_command button tu154/uns/key/DEL UNS DEL
 TRIS 27489 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_W W
+ATTR_manip_command button tu154/uns/key/W UNS W
 TRIS 27495 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_V V
+ATTR_manip_command button tu154/uns/key/V UNS V
 TRIS 27501 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_Z Z
+ATTR_manip_command button tu154/uns/key/Z UNS Z
 TRIS 27507 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_U U
+ATTR_manip_command button tu154/uns/key/U UNS U
 TRIS 27513 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_P P
+ATTR_manip_command button tu154/uns/key/P UNS P
 TRIS 27519 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_Q Q
+ATTR_manip_command button tu154/uns/key/Q UNS Q
 TRIS 27525 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_R R
+ATTR_manip_command button tu154/uns/key/R UNS R
 TRIS 27531 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_S S
+ATTR_manip_command button tu154/uns/key/S UNS S
 TRIS 27537 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_T T
+ATTR_manip_command button tu154/uns/key/T UNS T
 TRIS 27543 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_O O
+ATTR_manip_command button tu154/uns/key/O UNS O
 TRIS 27549 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_N N
+ATTR_manip_command button tu154/uns/key/N UNS N
 TRIS 27555 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_M M
+ATTR_manip_command button tu154/uns/key/M UNS M
 TRIS 27561 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_L L
+ATTR_manip_command button tu154/uns/key/L UNS L
 TRIS 27567 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_K K
+ATTR_manip_command button tu154/uns/key/K UNS K
 TRIS 27573 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_F F
+ATTR_manip_command button tu154/uns/key/F UNS F
 TRIS 27579 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_G G
+ATTR_manip_command button tu154/uns/key/G UNS G
 TRIS 27585 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_H H
+ATTR_manip_command button tu154/uns/key/H UNS H
 TRIS 27591 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_I I
+ATTR_manip_command button tu154/uns/key/I UNS I
 TRIS 27597 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_J J
+ATTR_manip_command button tu154/uns/key/J UNS J
 TRIS 27603 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_E E
+ATTR_manip_command button tu154/uns/key/E UNS E
 TRIS 27609 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_D D
+ATTR_manip_command button tu154/uns/key/D UNS D
 TRIS 27615 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_C C
+ATTR_manip_command button tu154/uns/key/C UNS C
 TRIS 27621 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_B B
+ATTR_manip_command button tu154/uns/key/B UNS B
 TRIS 27627 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_A A
+ATTR_manip_command button tu154/uns/key/A UNS A
 TRIS 27633 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/exec EXEC
+ATTR_manip_command button tu154/uns/key/ENTER UNS ENTER
 TRIS 27639 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/prog PROG
+ATTR_manip_command button tu154/uns/key/PERF UNS PERF
 TRIS 27645 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/hold HOLD
+ATTR_manip_command button tu154/uns/key/HOLD UNS HOLD
 TRIS 27651 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/dep_arr DEP ARR
+ATTR_manip_command button tu154/uns/key/MENU UNS MENU
 TRIS 27657 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/clb CLB
+ATTR_manip_command button tu154/uns/key/VNAV UNS VNAV
 TRIS 27663 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/index INIT REF
+ATTR_manip_command button tu154/uns/key/DATA UNS DATA
 TRIS 27669 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/legs RTE
+ATTR_manip_command button tu154/uns/key/NAV UNS NAV
 TRIS 27675 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/fpln LEGS
+ATTR_manip_command button tu154/uns/key/FPL UNS FPL
 TRIS 27681 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/dir_intc DIR INTC
+ATTR_manip_command button tu154/uns/key/DTO UNS DTO
 TRIS 27687 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/fix FIX
+ATTR_manip_command button tu154/uns/key/LIST UNS LIST
 TRIS 27693 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/navrad NAV RAD
+ATTR_manip_command button tu154/uns/key/TUNE UNS TUNE
 TRIS 27699 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/next NEXT PAGE
+ATTR_manip_command button tu154/uns/key/NEXT UNS NEXT
 TRIS 27705 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/prev PREV PAGE
+ATTR_manip_command button tu154/uns/key/PREV UNS PREV
 TRIS 27711 6
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_1 1
+ATTR_manip_command button tu154/uns/key/1 UNS 1
 TRIS 27717 24
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_2 2
+ATTR_manip_command button tu154/uns/key/2 UNS 2
 TRIS 27741 24
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_3 3
+ATTR_manip_command button tu154/uns/key/3 UNS 3
 TRIS 27765 24
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_6 6
+ATTR_manip_command button tu154/uns/key/6 UNS 6
 TRIS 27789 24
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_5 5
+ATTR_manip_command button tu154/uns/key/5 UNS 5
 TRIS 27813 24
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_4 4
+ATTR_manip_command button tu154/uns/key/4 UNS 4
 TRIS 27837 24
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_7 7
+ATTR_manip_command button tu154/uns/key/7 UNS 7
 TRIS 27861 24
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_8 8
+ATTR_manip_command button tu154/uns/key/8 UNS 8
 TRIS 27885 24
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_9 9
+ATTR_manip_command button tu154/uns/key/9 UNS 9
 TRIS 27909 24
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_slash SLASH
+ATTR_manip_command button tu154/uns/key/SLASH UNS /
 TRIS 27933 24
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_0 0
+ATTR_manip_command button tu154/uns/key/0 UNS 0
 TRIS 27957 24
 ANIM_end
 ANIM_begin
-ATTR_manip_command button sim/FMS/key_period PERIOD
+ATTR_manip_command button tu154/uns/key/DOT UNS ON/OFF DIM
 TRIS 27981 24
 ANIM_end
 ANIM_end
@@ -24254,6 +24276,22 @@ VT -0.109708 -1.119454 -21.409269 0.000000 -0.650375 0.759613 0.486099 0.372635
 VT -0.109708 -1.091759 -21.385556 0.000000 -0.650375 0.759613 0.486099 0.350220
 VT -0.081998 -1.119454 -21.409269 0.000000 -0.650375 0.759613 0.469101 0.372635
 VT -0.081998 -1.091759 -21.385556 0.000000 -0.650375 0.759613 0.469101 0.350220
+VT 0.072200 -2.023300 -21.161100 0.000000 0.999758 0.022000 0.000000 1.000000
+VT 0.072200 -2.023300 -21.094700 0.000000 0.999758 0.022000 0.000000 0.000000
+VT 0.176600 -2.023300 -21.161100 0.000000 0.999758 0.022000 1.000000 1.000000
+VT 0.176600 -2.023300 -21.094700 0.000000 0.999758 0.022000 1.000000 0.000000
+VT -0.069800 -2.023300 -21.161100 0.000000 0.999758 0.022000 0.000000 1.000000
+VT -0.069800 -2.023300 -21.094700 0.000000 0.999758 0.022000 0.000000 0.000000
+VT 0.034600 -2.023300 -21.161100 0.000000 0.999758 0.022000 1.000000 1.000000
+VT 0.034600 -2.023300 -21.094700 0.000000 0.999758 0.022000 1.000000 0.000000
+VT 0.072700 -2.017000 -21.160600 0.000000 0.999758 0.022000 0.000000 1.000000
+VT 0.072700 -2.017000 -21.095200 0.000000 0.999758 0.022000 0.000000 0.000000
+VT 0.176100 -2.017000 -21.160600 0.000000 0.999758 0.022000 1.000000 1.000000
+VT 0.176100 -2.017000 -21.095200 0.000000 0.999758 0.022000 1.000000 0.000000
+VT -0.069300 -2.017000 -21.160600 0.000000 0.999758 0.022000 0.000000 1.000000
+VT -0.069300 -2.017000 -21.095200 0.000000 0.999758 0.022000 0.000000 0.000000
+VT 0.034100 -2.017000 -21.160600 0.000000 0.999758 0.022000 1.000000 1.000000
+VT 0.034100 -2.017000 -21.095200 0.000000 0.999758 0.022000 1.000000 0.000000
 IDX 13445
 IDX 13442
 IDX 13444
@@ -24473,6 +24511,12 @@ IDX 14682
 IDX 14682
 IDX 14681
 IDX 14683
+IDX10 14684 14685 14686 14686 14685 14687 14688 14689 14690 14690
+IDX10 14689 14691 14692 14693 14694 14694 14693 14695 14696 14697
+IDX 14698
+IDX 14698
+IDX 14697
+IDX 14699
 ANIM_begin
 ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
 ATTR_reset

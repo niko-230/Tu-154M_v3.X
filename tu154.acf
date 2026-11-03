@@ -41460,7 +41460,7 @@ P _wing/7/_yawbr/8 0
 P _wing/7/_yawbr/9 0
 P _wing/7/_yawbr/count 10
 P _wing/7/_yawbr_hyd0123 0
-P _wing/8/_Croot 12.900000000
+P _wing/8/_Croot 12.899999619
 P _wing/8/_Ctip 6.500000000
 P _wing/8/_afl_file_1 hstab.afl
 P _wing/8/_afl_file_2 hstab.afl
@@ -43263,7 +43263,7 @@ P _wing/8/_yawbr/8 0
 P _wing/8/_yawbr/9 0
 P _wing/8/_yawbr/count 10
 P _wing/8/_yawbr_hyd0123 0
-P _wing/9/_Croot 12.900000000
+P _wing/9/_Croot 12.899999619
 P _wing/9/_Ctip 6.500000000
 P _wing/9/_afl_file_1 hstab.afl
 P _wing/9/_afl_file_2 hstab.afl
@@ -46123,8 +46123,8 @@ P acf/_cgX_lft -0.010000000
 P acf/_cgX_rgt 0.010000000
 P acf/_cgY 1.000000000
 P acf/_cgZ 73.699996948
-P acf/_cgZ_aft 71.020000000
-P acf/_cgZ_fwd 68.590000000
+P acf/_cgZ_aft 71.019996643
+P acf/_cgZ_fwd 68.589996338
 P acf/_cg_in_mac 1
 P acf/_chaff_max 0
 P acf/_chute_line_len/0 0.000000000
@@ -47589,7 +47589,7 @@ P acf/_ground_pwr/2 0.000000000
 P acf/_ground_pwr/count 3
 P acf/_gyro_spooldown_time 60.000000000
 P acf/_gyro_spoolup_time 5.000000000
-P acf/_h_eqlbm 12.747026443
+P acf/_h_eqlbm 12.546023369
 P acf/_has_ADG 0
 P acf/_has_APU_bleed_air 1
 P acf/_has_APU_generator 1
@@ -47761,10 +47761,10 @@ P acf/_jet_N1_climb 92.000000000
 P acf/_jet_N1_hicrz 88.000000000
 P acf/_jet_N1_locrz 87.000000000
 P acf/_jet_N1_takeoff 95.000000000
-P acf/_jet_SFC_climb 0.780000000
+P acf/_jet_SFC_climb 0.779999971
 P acf/_jet_SFC_hicrz 0.700999975
 P acf/_jet_SFC_locrz 0.695999980
-P acf/_jet_SFC_takeoff 0.498000000
+P acf/_jet_SFC_takeoff 0.497999996
 P acf/_jett_is_pipe 0
 P acf/_jett_is_ret 0
 P acf/_jett_is_slung 0
@@ -48242,7 +48242,7 @@ P acf/_starter_engages_ignition 0
 P acf/_starter_is_air_driven 1
 P acf/_starter_max_rpm_rat 0.239999995
 P acf/_starter_requires_mode_sel 0
-P acf/_starter_torque_rat 0.280000000
+P acf/_starter_torque_rat 0.280000001
 P acf/_steerdeg_castor 0.000000000
 P acf/_ster_hi_speed_use 40.000000000
 P acf/_stickshaker 0
@@ -48384,7 +48384,7 @@ P acf/_tat_probes/0 0
 P acf/_tat_probes/1 0
 P acf/_tat_probes/2 0
 P acf/_tat_probes/count 3
-P acf/_the_eqlbm 0.580000000
+P acf/_the_eqlbm 0.876280606
 P acf/_thro_non_vect_props_at_sin_vect 0
 P acf/_thro_x_ctr 0.000000000
 P acf/_throt_max_fwd_emr 1.000000000
@@ -48394,7 +48394,7 @@ P acf/_throt_time_jet 1.000000000
 P acf/_throt_time_prop 0.500000000
 P acf/_throttle_drives_EPR 0
 P acf/_throttle_drives_N2 1
-P acf/_thrust_max_limit 2.680150E4
+P acf/_thrust_max_limit 2.68015E4
 P acf/_thrust_rev_dep_time 1.000000000
 P acf/_tip_AOA_des 0.000000000
 P acf/_tip_mach_des_100 0.000000000
@@ -48428,7 +48428,7 @@ P acf/_vect_min_nace 0.000000000
 P acf/_vect_power_aft 1.000000000
 P acf/_vect_power_for 1.000000000
 P acf/_vect_rate 15.000000000
-P acf/_version 3.0
+P acf/_version 3.x
 P acf/_vnav_descend_auto_arm 0
 P acf/_vor_mode_has_dead_reckon 0
 P acf/_vvi_but_adjusts_pitch 0
@@ -69891,6 +69891,16 @@ GROUP TRANSAS
     KEY_FRAME 0.000000 0.000000 1.000000
     KEY_FRAME 1.000000 1.000000
 
+  rad_CDU739 CDU739_screen.png
+    POS 1707.000000 -22.000000
+    DATAREF 
+    COPILOT
+    LIGHT_MODE MECHANICAL
+    LIGHT_RHEOSTAT 11
+    BUS_SRC 1
+    KEY_FRAME 0.000000 0.000000 1.000000
+    KEY_FRAME 1.000000 1.000000
+
   gen_rotary black
     POS 1776.000000 -59.000000
     IMAGE KONTUR/bg_black2
@@ -70691,7 +70701,7 @@ GROUP KNTR
                 POS 2482.500000 1444.500000
                 IMAGE KONTUR/mode_rls_3
                 DATAREF 
-                SHOW_EQUAL 3.000000 sim/cockpit2/EFIS/EFIS_weather_mode
+                SHOW_EQUAL 2.000000 sim/cockpit2/EFIS/EFIS_weather_mode
                 SHOW_GREATER 1.000000 sim/custom/kontur/weather_sys
                 LIGHT_MODE GLASS_AUTO
                 LIGHT_RHEOSTAT 14
@@ -72206,7 +72216,7 @@ GROUP KNTR
               POS 2482.500000 1444.500000
               IMAGE KONTUR/mode_rls_3
               DATAREF 
-              SHOW_EQUAL 3.000000 sim/cockpit2/EFIS/EFIS_weather_mode
+              SHOW_EQUAL 2.000000 sim/cockpit2/EFIS/EFIS_weather_mode
               SHOW_GREATER 1.000000 sim/custom/kontur/weather_sys
               LIGHT_MODE GLASS_AUTO
               LIGHT_RHEOSTAT 14
@@ -72430,7 +72440,7 @@ GROUP KNTR
               POS 2482.500000 1444.500000
               IMAGE KONTUR/mode_rls_nowx_3
               DATAREF 
-              SHOW_EQUAL 3.000000 sim/cockpit2/EFIS/EFIS_weather_mode
+              SHOW_EQUAL 2.000000 sim/cockpit2/EFIS/EFIS_weather_mode
               SHOW_GREATER 1.000000 sim/custom/kontur/weather_sys
               LIGHT_MODE GLASS_AUTO
               LIGHT_RHEOSTAT 14
@@ -78042,7 +78052,7 @@ GROUP KNTR
                 POS 2983.500000 1444.500000
                 IMAGE KONTUR/mode_rls_3
                 DATAREF 
-                SHOW_EQUAL 3.000000 sim/cockpit2/EFIS/EFIS_weather_mode
+                SHOW_EQUAL 2.000000 sim/cockpit2/EFIS/EFIS_weather_mode
                 SHOW_GREATER 1.000000 sim/custom/kontur/weather_sys
                 LIGHT_MODE GLASS_AUTO
                 LIGHT_RHEOSTAT 15
@@ -79536,7 +79546,7 @@ GROUP KNTR
               POS 2981.500000 1444.500000
               IMAGE KONTUR/mode_rls_3
               DATAREF 
-              SHOW_EQUAL 3.000000 sim/cockpit2/EFIS/EFIS_weather_mode
+              SHOW_EQUAL 2.000000 sim/cockpit2/EFIS/EFIS_weather_mode
               SHOW_GREATER 1.000000 sim/custom/kontur/weather_sys
               LIGHT_MODE GLASS_AUTO
               LIGHT_RHEOSTAT 15
@@ -79759,7 +79769,7 @@ GROUP KNTR
               POS 2981.500000 1444.500000
               IMAGE KONTUR/mode_rls_nowx_3
               DATAREF 
-              SHOW_EQUAL 3.000000 sim/cockpit2/EFIS/EFIS_weather_mode
+              SHOW_EQUAL 2.000000 sim/cockpit2/EFIS/EFIS_weather_mode
               SHOW_GREATER 1.000000 sim/custom/kontur/weather_sys
               LIGHT_MODE GLASS_AUTO
               LIGHT_RHEOSTAT 15
@@ -84863,16 +84873,4 @@ GROUP KNTR
     CLICK_DY 0
 
 END_GROUP
-rad_GPS_530_screen Garmin_530_screen.p
-  POS 907.000000 3134.000000
-  DATAREF 
-  COPILOT
-  SHOW_EQUAL 1.000000 tu154b2/custom/uns2_on
-  SHOW_EQUAL 0.000000 tu154b2/custom/b2/kontur_on
-  LIGHT_MODE MECHANICAL
-  LIGHT_RHEOSTAT 16
-  BUS_SRC 1
-  KEY_FRAME 0.000000 0.000000 1.000000
-  KEY_FRAME 1.000000 1.000000
-
 PANEL_3D_END
