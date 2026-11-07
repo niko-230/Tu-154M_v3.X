@@ -44,6 +44,25 @@ local function val(p, default)
 	return default
 end
 
+-- 2026-11-07: the hold built on the HOLDING page, for the Kontur map (main_panel/nav_draw.lua
+-- draws it). Written every time the HOLDING page is built from X-Plane's hold definition.
+-- (kept in the core table, not in new locals: this file is at Lua's 200-locals limit)
+core.HOLD_DR = {}
+do
+	local function newProp(fn, name, default)
+		local ok, p = pcall(fn, name, default)
+		if ok then return p end
+		return nil
+	end
+	core.HOLD_DR.set  = newProp(createGlobalPropertyi, "tu154b2/custom/uns/hold_set", 0)   -- 1: values below are valid
+	core.HOLD_DR.lat  = newProp(createGlobalPropertyf, "tu154b2/custom/uns/hold_lat", 0)   -- hold fix
+	core.HOLD_DR.lon  = newProp(createGlobalPropertyf, "tu154b2/custom/uns/hold_lon", 0)
+	core.HOLD_DR.inbd = newProp(createGlobalPropertyf, "tu154b2/custom/uns/hold_inbd", 0)  -- inbound course, magnetic
+	core.HOLD_DR.turn = newProp(createGlobalPropertyi, "tu154b2/custom/uns/hold_turn", 1)  -- 1 right, -1 left
+	core.HOLD_DR.time = newProp(createGlobalPropertyf, "tu154b2/custom/uns/hold_time", 0)  -- leg time, min
+	core.HOLD_DR.dist = newProp(createGlobalPropertyf, "tu154b2/custom/uns/hold_dist", 0)  -- leg distance, NM
+end
+
 local dr_lat    = prop(globalPropertyd, "sim/flightmodel/position/latitude")
 local dr_lon    = prop(globalPropertyd, "sim/flightmodel/position/longitude")
 local dr_psi    = prop(globalPropertyf, "sim/flightmodel/position/psi")
@@ -1296,6 +1315,28 @@ buildHoldPage = function(cur, tot, mod)
 		end
 	end
 	right(5, "SPD RULE", rule, "plain", F.rule)
+
+	-- the hold for the Kontur map: fix position from the flight plan, course, turn, leg
+	do
+		local fixName = v(F.fix)
+		local inbNum = crs and tonumber(string.match(crs, "^(%d+)"))
+		if fixName and inbNum and core.HOLD_DR.set then
+			local plan = readPlan()
+			local la, lo = nil, nil
+			for _, e in ipairs(plan) do
+				if (string.gsub(e.id or "", "@$", "")) == fixName and valid(e.lat, e.lon) then la, lo = e.lat, e.lon break end
+			end
+			if la then
+				pcall(set, core.HOLD_DR.lat, la)
+				pcall(set, core.HOLD_DR.lon, lo)
+				pcall(set, core.HOLD_DR.inbd, inbNum)
+				pcall(set, core.HOLD_DR.turn, (turn == "LEFT") and -1 or 1)
+				pcall(set, core.HOLD_DR.time, tonumber(num(F.time) or "") or 0)
+				pcall(set, core.HOLD_DR.dist, tonumber(num(F.dist) or "") or 0)
+				pcall(set, core.HOLD_DR.set, 1)
+			end
+		end
+	end
 	-- bottom: X-Plane's prompts (ERASE, NEW HOLD, EXIT HOLD ...) on keys 6
 	local pl, pr = nil, nil
 	for _, pp in ipairs(prompts) do
@@ -1344,26 +1385,81 @@ buildHoldPage = function(cur, tot, mod)
 		holdKeys["R6"] = { key = pr.key, kind = "plain" }
 	end
 
-	-- the racetrack: inbound leg ends at the fix (left end); right turns: inbound leg
-	-- at the bottom, left turns: at the top
-	local yl = C.yellow
-	local cA, cB = 10.6, 13.4
-	local rTop, rBot = ROWF.L1 + 0.075, ROWF.L4 - 0.035
-	local rMid = (rTop + rBot) / 2
-	local radCol = (rBot - rTop) / 2 * 506 / (800 * 0.94 / 24)
-	putLine(cA, rTop, cB, rTop, yl)
-	putLine(cA, rBot, cB, rBot, yl)
-	M[#M + 1] = { shape = "arc", c = cB, r = rMid, rad = radCol, a1 = -90, a2 = 90, color = yl }
-	M[#M + 1] = { shape = "arc", c = cA, r = rMid, rad = radCol, a1 = 90, a2 = 270, color = yl }
-	local rIn = (turn == "LEFT") and rTop or rBot
-	local cm = (cA + cB) / 2
-	local dy = 0.022
-	-- arrow on the inbound leg, pointing to the fix (left)
-	putLine(cm - 0.35, rIn, cm + 0.25, rIn - dy, C.green)
-	putLine(cm - 0.35, rIn, cm + 0.25, rIn + dy, C.green)
-	-- the fix: a small cross at the left end of the inbound leg
-	putLine(cA - 0.25, rIn - dy, cA + 0.25, rIn + dy, C.green)
-	putLine(cA - 0.25, rIn + dy, cA + 0.25, rIn - dy, C.green)
+	-- the racetrack, drawn as on the real UNS-1 HOLDING page: amber frame in the free middle
+	-- of the page (centred on the screen), yellow racetrack whose inbound leg ends at the fix
+	-- (left end) and runs on to the frame edge (the inbound course), green fix dot, entry
+	-- arrow along the inbound leg, turn arrow at the fix, outbound DIR arrow, TIME between
+	-- the fix and the start of the far turn, FIX / INBD labels. Everything is placed
+	-- symmetrically: FIX sits under the fix, INBD under the far turn centre, the same
+	-- distance from the frame's left and right edges; TIME and DIR on the centre line.
+	-- Right turns: inbound leg at the bottom; left turns: mirrored, inbound leg on top.
+	do
+		local cell = 800 * 0.94 / 24                 -- px per column (screen 800 x 506)
+		local PX = 1 / 506                           -- one pixel as a part of the screen height
+		local x1, x2 = 8.35, 15.65                   -- frame (columns), centred on the 24 columns
+		local Rc = 2.05                              -- turn radius (columns)
+		local Rp = Rc * cell                         -- ... in pixels
+		local cA, cB = x1 + 0.12 + Rc, x2 - 0.12 - Rc   -- turn centres (same gap to both edges)
+		local rightTurn = (turn ~= "LEFT")
+		local yT, yB = 0.26, 0.67                    -- frame (screen height parts)
+		local s = rightTurn and 1 or -1              -- +1: towards the inbound side (down)
+		local labOff, capHalf = 40, 8.6              -- labels: px from the inbound leg, half height
+		local gap = ((yB - yT) / PX - (2 * Rp + labOff + capHalf)) / 2   -- equal gaps top / bottom
+		local yIn = rightTurn and (yB - (gap + labOff + capHalf) * PX) or (yT + (gap + labOff + capHalf) * PX)
+		local yOut = yIn - s * 2 * Rp * PX
+		local yMid = (yIn + yOut) / 2
+		local yl, G, A = C.yellow, C.green, C.amber
+		local function at(y, dpx) return y + s * dpx * PX end
+		local function head(xc, y, dir)              -- open arrow head pointing left (-1) / right (+1)
+			putLine(xc, y, xc - dir * 0.36, y - 7 * PX, G)
+			putLine(xc, y, xc - dir * 0.36, y + 7 * PX, G)
+		end
+		local function tiny(text, cx, y)
+			M[#M + 1] = { text = text, cx = cx, yAbs = y, color = G, tiny = true }
+		end
+		-- frame
+		putLine(x1, yT, x2, yT, A); putLine(x1, yB, x2, yB, A)
+		putLine(x1, yT, x1, yB, A); putLine(x2, yT, x2, yB, A)
+		-- racetrack
+		putLine(cA, yIn, x2, yIn, yl)
+		putLine(cA, yOut, cB, yOut, yl)
+		M[#M + 1] = { shape = "arc", c = cA, r = yMid, rad = Rc, a1 = 90, a2 = 270, color = yl }
+		M[#M + 1] = { shape = "arc", c = cB, r = yMid, rad = Rc, a1 = -90, a2 = 90, color = yl }
+		-- fix
+		M[#M + 1] = { shape = "dot", c = cA, r = yIn, rad = 0.16, color = G }
+		-- entry arrow outside, along the inbound leg, centred over INBD, pointing to the fix
+		local eHalf = x2 - 0.25 - cB
+		local yE = at(yIn, 16)
+		putLine(cB - eHalf, yE, cB + eHalf, yE, G); head(cB - eHalf, yE, -1)
+		-- TIME: ticks at the fix and at the start of the far turn, double arrow, word above
+		putLine(cA, yIn, cA, at(yIn, -20), G); putLine(cB, yIn, cB, at(yIn, -20), G)
+		local yDim = at(yIn, -11)
+		putLine(cA + 0.06, yDim, cB - 0.06, yDim, G); head(cA + 0.06, yDim, -1); head(cB - 0.06, yDim, 1)
+		local cm = (cA + cB) / 2
+		tiny("TIME", cm, at(yIn, -30))
+		-- DIR: outbound direction, inside, near the outbound leg
+		local yD = at(yOut, 18)
+		putLine(cm - 1.1, yD, cm + 1.1, yD, G); head(cm + 1.1, yD, 1)
+		tiny("DIR", cm, at(yOut, 36))
+		-- turn arrow at the fix: inside the near turn, from the fix round towards the outbound leg
+		local r2 = Rc * 0.6
+		local a0, a1 = rightTurn and 270 or 90, rightTurn and 160 or 200
+		M[#M + 1] = { shape = "arc", c = cA, r = yMid, rad = r2, a1 = a0, a2 = a1, color = G }
+		do
+			local ang = math.rad(a1)
+			local hx, hyUp = cA + r2 * math.cos(ang), r2 * math.sin(ang)   -- columns, up from yMid
+			local tdir = rightTurn and -1 or 1
+			local tx, ty = -math.sin(ang) * tdir, math.cos(ang) * tdir    -- travel direction
+			for _, side in ipairs({ -1, 1 }) do
+				local bx = hx - tx * 0.42 - ty * side * 0.24
+				local byUp = hyUp - ty * 0.42 + tx * side * 0.24
+				putLine(hx, yMid - hyUp * cell * PX, bx, yMid - byUp * cell * PX, G)
+			end
+		end
+		-- labels by the inbound leg: FIX under the fix, INBD under the far turn centre
+		tiny("FIX", cA, at(yIn, labOff))
+		tiny("INBD", cB, at(yIn, labOff))
+	end
 
 	-- typed text (X-Plane scratchpad) in the bottom box
 	local sp = scratchText()
@@ -3717,6 +3813,30 @@ function core.draw(W, H, x0, y0, u, noBg)
 					local qx, qy = cx + rad * math.cos(a), cy + rad * math.sin(a)
 					if px then line(px, py, qx, qy, it.color) end
 					px, py = qx, qy
+				end
+			end
+		elseif it.shape == "dot" then
+			-- filled round dot: centre (c, r), radius in columns
+			local cx, cy = x0 + mx + it.c * cell, rowY(it.r)
+			if cy then
+				local rad = it.rad * cell
+				if sasl.gl.drawCircle then
+					sasl.gl.drawCircle(cx, cy, rad, true, it.color)
+				else
+					drawRect(cx - rad, cy - rad, 2 * rad, 2 * rad, it.color)
+				end
+			end
+		elseif it.tiny and it.yAbs then
+			-- small annotation text (HOLDING drawing): 56% size, narrower spacing, centred on cx
+			local size = big * 0.56
+			local cap = size * CAP
+			local yc = y0 + H * (1 - it.yAbs)
+			local pitch = cell * 0.62
+			local chars = uchars(it.text)
+			local xs = x0 + mx + it.cx * cell - #chars * pitch / 2
+			for i, ch in ipairs(chars) do
+				if ch ~= " " then
+					drawText(font, xs + (i - 0.5) * pitch, yc - cap / 2, ch, size, false, false, TEXT_ALIGN_CENTER, it.color)
 				end
 			end
 		elseif f then

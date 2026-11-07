@@ -76,6 +76,30 @@ for i = 1, 200, 1 do
 end
 local n_FMS = 0
 
+-- 2026-11-07: UNS hold on the Kontur map. X-Plane puts a hold into the flight plan as the
+-- hold fix twice in a row (e.g. BLO, BLO). The racetrack is built here from the values of
+-- the UNS HOLDING page (uns_core.lua writes them to tu154b2/custom/uns/hold_*), in the same
+-- aircraft-relative, heading-up NM frame as the waypoints, and drawn dashed by nd_route_draw.lua.
+-- Without HOLDING page values for that fix: standard hold (inbound = the leg into the fix,
+-- right turns, 1 minute).
+local hold_show_tbl = {}
+for i = 1, 120, 1 do table.insert(hold_show_tbl, {[1] = 0, [2] = 0}) end
+local n_hold = 0
+local hold_dr = false        -- looked up on the first update (uns_core.lua creates them at load)
+local tas_dr = globalPropertyf("sim/flightmodel/position/true_airspeed")   -- m/s
+local function holdLookup()
+	if hold_dr ~= false then return hold_dr end
+	local ok = true
+	local t = {}
+	for _, k in ipairs({ "set", "lat", "lon", "inbd", "turn", "time", "dist" }) do
+		local fn = (k == "set" or k == "turn") and globalPropertyi or globalPropertyf
+		local good, p = pcall(fn, "tu154b2/custom/uns/hold_" .. k)
+		if good and p then t[k] = p else ok = false end
+	end
+	hold_dr = ok and t or nil
+	return hold_dr
+end
+
 function update()
 	local wp_lat = get(lat)
 	local wp_lon = get(lon)
@@ -121,6 +145,73 @@ function update()
 		end
 		nd_name_tbl[i] = nme
 	end
+	-- hold: the first place where an entry repeats the one before it (same name and position)
+	n_hold = 0
+	do
+		local hfix = nil
+		local prev = nil
+		for i = 1, n_FMS, 1 do
+			local _, nme, _, _, la, lo = sasl.getFMSEntryInfo(i - 1 + base)
+			if la and lo and not (la == 0 and lo == 0) then
+				if prev and prev.nme == nme and math.abs(prev.la - la) < 0.0005 and math.abs(prev.lo - lo) < 0.0005 then
+					hfix = { la = la, lo = lo, pla = prev.pla, plo = prev.plo }
+					break
+				end
+				prev = { nme = nme, la = la, lo = lo, pla = prev and prev.la, plo = prev and prev.lo }
+			else
+				prev = nil
+			end
+		end
+		if hfix then
+			local magoff = get(mag_hdg) - true_hdg            -- magnetic = true + magoff
+			while magoff > 180 do magoff = magoff - 360 end
+			while magoff < -180 do magoff = magoff + 360 end
+			-- standard hold first
+			local inb_true = nil
+			if hfix.pla then inb_true = getHeading(hfix.pla, hfix.plo, hfix.la, hfix.lo) end
+			local turn, tmin, dist = 1, 1, 0
+			local H = holdLookup()
+			if H and get(H.set) == 1 and math.abs(get(H.lat) - hfix.la) < 0.001 and math.abs(get(H.lon) - hfix.lo) < 0.001 then
+				inb_true = get(H.inbd) - magoff
+				turn = (get(H.turn) == -1) and -1 or 1
+				tmin = get(H.time)
+				dist = get(H.dist)
+			end
+			if inb_true then
+				local tas = math.max(get(tas_dr), 60) * 1.943844          -- kt
+				local R = (tas * 0.514444) ^ 2 / (9.81 * math.tan(math.rad(25))) / 1852   -- NM, 25 deg bank
+				local L = (dist and dist > 0) and dist or (tas * ((tmin and tmin > 0) and tmin or 1) / 60)   -- NM
+				-- fix relative to the aircraft (heading-up NM frame), same maths as the waypoints
+				local brg = getHeadingDifference(true_hdg, getHeading(ac_lat, ac_lon, hfix.la, hfix.lo))
+				local d = getDistance(ac_lat, ac_lon, hfix.la, hfix.lo)
+				local fx, fy = d * math.sin(math.rad(brg)), d * math.cos(math.rad(brg))
+				local rel = math.rad(inb_true - true_hdg)
+				local ux, uy = math.sin(rel), math.cos(rel)              -- inbound direction
+				local sx, sy = uy * turn, -ux * turn                     -- side of the outbound leg
+				local pts = {}
+				local function add(x, y) pts[#pts + 1] = { x, y } end
+				local ax, ay = fx - L * ux, fy - L * uy                  -- start of the inbound leg
+				add(ax, ay); add(fx, fy)
+				local function arc(cx, cy, px0, py0)
+					local a0 = math.atan2(py0 - cy, px0 - cx)
+					for k = 1, 24 do
+						local a = a0 - turn * math.pi * k / 24          -- right turn = clockwise
+						add(cx + R * math.cos(a), cy + R * math.sin(a))
+					end
+				end
+				arc(fx + R * sx, fy + R * sy, fx, fy)                    -- turn at the fix
+				local bx, by = pts[#pts][1], pts[#pts][2]
+				add(bx - L * ux, by - L * uy)                            -- outbound leg
+				arc(ax + R * sx, ay + R * sy, bx - L * ux, by - L * uy)  -- turn back to the inbound leg
+				for k = 1, math.min(#pts, #hold_show_tbl) do
+					hold_show_tbl[k][1] = pts[k][1]
+					hold_show_tbl[k][2] = pts[k][2]
+				end
+				n_hold = math.min(#pts, #hold_show_tbl)
+			end
+		end
+	end
+
 	local nav_ind = get(app_nme)
 	local nav_alt = get(app_alt)
 	for i = 1, n_appr, 1 do	
@@ -163,6 +254,10 @@ components = {
 		position = {0, 0, 500, 400},
 		table_draw = nd_show_tbl,
 		name_draw = nd_name_tbl,
+		hold_draw = hold_show_tbl,
+		n_hold = function()
+			return n_hold
+		end,
 		n_wp = function()
 			return n_FMS+n_appr
 		end,
@@ -190,6 +285,10 @@ components = {
 		position = {500, 0, 500, 400},
 		table_draw = nd_show_tbl,
 		name_draw = nd_name_tbl,
+		hold_draw = hold_show_tbl,
+		n_hold = function()
+			return n_hold
+		end,
 		n_wp = function()
 			return n_FMS+n_appr
 		end,

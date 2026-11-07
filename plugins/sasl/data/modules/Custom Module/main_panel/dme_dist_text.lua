@@ -128,6 +128,120 @@ local function updateUnlitColor(isPowered)
 	return k
 end
 
+-- ===== Backlit rim around the painted comma =====
+-- The comma itself is white paint on the glass (3D mesh in cockpit_front_panel_RUS.obj /
+-- cockpit_front_panel_kontur_RUS.obj, lit like any other surface). While the DME is on,
+-- the display's red light leaks past the paint's edges: drawn here, on the screen BEHIND
+-- the painted comma, as a soft red band around its outline. The paint covers the middle,
+-- so only the glowing edge is seen. (values picked in the DME Painted Comma preview)
+local RIM_WIDTH = 3.3    -- how far the glow reaches past the comma's edge (screen px)
+local RIM_LEVEL = 0.10   -- glow strength right at the edge (0..1), fades outward
+local RIM_STEPS = 4      -- soft fade made of this many bands (outer = faint, inner = strong)
+-- comma shape/position: must match the 3D comma mesh (same numbers it was built from)
+local COMMA_SIZE = 5.5   -- radius of the round head (screen px)
+local COMMA_TAIL = 10.5  -- tail length below the head (screen px)
+local COMMA_BOLD = 1.80  -- tail boldness (1 = thin tail)
+local COMMA_X = 3.5      -- shift right(+)/left(-) from the old point position
+local COMMA_Y = 8.0      -- shift up(+)/down(-) from the digits' bottom line
+
+local COMMA_CX = POINT_X + COMMA_X * RES
+local COMMA_CY = BASELINE_Y + COMMA_Y * RES
+
+-- comma outline (same curve as the mesh), in device px around the comma centre:
+-- round head (radius r) with a tapered tail hooking down-left (length t below the head)
+local function commaOutline(r, t, w)
+	local function q(p0, c, p1, s)
+		return (1-s)*(1-s)*p0[1] + 2*(1-s)*s*c[1] + s*s*p1[1],
+		       (1-s)*(1-s)*p0[2] + 2*(1-s)*s*c[2] + s*s*p1[2]
+	end
+	local pts = {}
+	local a1 = math.rad(math.min(290, 250 + (w - 1) * 40))   -- where the tail leaves the head (bolder = further round)
+	for i = 0, 28 do local a = a1 * i / 28; pts[#pts+1] = {r * math.cos(a), r * math.sin(a)} end
+	local tip = {-0.75*r, -(r + t)}
+	local inS = pts[#pts]
+	for i = 1, 8 do local x, y = q(inS, {(0.05 - (w - 1)*0.6)*r, -1.15*r}, tip, i/8); pts[#pts+1] = {x, y} end
+	for i = 1, 11 do local x, y = q(tip, {1.05*r, -(r + 0.35*t)}, {r, 0}, i/12); pts[#pts+1] = {x, y} end
+	return pts
+end
+
+-- simple ear clipping -> list of triangles {x1,y1,x2,y2,x3,y3}
+local function triangulate(p)
+	local idx = {}
+	local area = 0
+	for i = 1, #p do local a, b = p[i], p[i % #p + 1]; area = area + a[1]*b[2] - b[1]*a[2] end
+	if area > 0 then for i = 1, #p do idx[i] = i end else for i = 1, #p do idx[i] = #p + 1 - i end end
+	local function cross(a, b, c) return (b[1]-a[1])*(c[2]-a[2]) - (b[2]-a[2])*(c[1]-a[1]) end
+	local tris, guard = {}, 0
+	while #idx > 3 and guard < 2000 do
+		guard = guard + 1
+		for k = 1, #idx do
+			local i0 = idx[(k - 2) % #idx + 1]; local i1 = idx[k]; local i2 = idx[k % #idx + 1]
+			local a, b, c = p[i0], p[i1], p[i2]
+			if cross(a, b, c) > 1e-9 then
+				local ear = true
+				for _, j in ipairs(idx) do
+					if j ~= i0 and j ~= i1 and j ~= i2 then
+						local q = p[j]
+						if cross(a, b, q) >= 0 and cross(b, c, q) >= 0 and cross(c, a, q) >= 0 then ear = false; break end
+					end
+				end
+				if ear then
+					tris[#tris+1] = {a[1], a[2], b[1], b[2], c[1], c[2]}
+					table.remove(idx, k)
+					break
+				end
+			end
+		end
+	end
+	local a, b, c = p[idx[1]], p[idx[2]], p[idx[3]]
+	tris[#tris+1] = {a[1], a[2], b[1], b[2], c[1], c[2]}
+	return tris
+end
+
+-- precomputed once: outline points and fill triangles in device px (screen position included)
+local RIM_PTS, RIM_TRIS = {}, {}
+do
+	local o = commaOutline(COMMA_SIZE * RES, COMMA_TAIL * RES, COMMA_BOLD)
+	for i, v in ipairs(o) do RIM_PTS[i] = {COMMA_CX + v[1], COMMA_CY + v[2]} end
+	RIM_TRIS = triangulate(RIM_PTS)
+end
+
+-- the outline grown by d px = the comma filled + every edge thickened + round corners.
+-- Drawn opaque in one colour, so overlapping pieces do not add up.
+local function fillGrown(d, color)
+	for _, t in ipairs(RIM_TRIS) do drawTriangle(t[1], t[2], t[3], t[4], t[5], t[6], color) end
+	local n = #RIM_PTS
+	for i = 1, n do
+		local a, b = RIM_PTS[i], RIM_PTS[i % n + 1]
+		local ex, ey = b[1] - a[1], b[2] - a[2]
+		local l = math.sqrt(ex*ex + ey*ey)
+		if l > 1e-6 then
+			local nx, ny = -ey / l * d, ex / l * d
+			drawTriangle(a[1]+nx, a[2]+ny, b[1]+nx, b[2]+ny, b[1]-nx, b[2]-ny, color)
+			drawTriangle(a[1]+nx, a[2]+ny, b[1]-nx, b[2]-ny, a[1]-nx, a[2]-ny, color)
+		end
+		drawCircle(a[1], a[2], d, true, color)
+	end
+end
+
+local RIM_COLORS = {}
+for s = 1, RIM_STEPS do RIM_COLORS[s] = {0, 0, 0, 1} end
+
+-- k = digit brightness (knob). Bands from outside in; each band's colour is what the
+-- stacked half-transparent bands of the preview add up to over the black screen.
+local function drawRim(k)
+	if RIM_LEVEL <= 0 or RIM_WIDTH <= 0 then return end
+	local v = 0
+	for s = RIM_STEPS, 1, -1 do
+		local a = RIM_LEVEL * k * (RIM_STEPS - s + 1) / RIM_STEPS
+		v = a + v * (1 - a)
+		local c = RIM_COLORS[s]
+		c[1] = DIGIT_COLOR[1] * v; c[2] = DIGIT_COLOR[2] * v; c[3] = DIGIT_COLOR[3] * v
+		fillGrown(RIM_WIDTH * RES * s / RIM_STEPS, c)
+	end
+end
+-- ==================================================
+
 local function formatDist(dist)
 	-- Truncate to 0.1 like the M donor (small +0.03 so e.g. 12.3999 shows 12.4),
 	-- which counts like a real display instead of flickering on rounding.
@@ -176,7 +290,10 @@ function draw()
 	-- faint unlit segments first (always visible, powered or not, like the
 	-- physical segment pattern of a real display), lit digits on top
 	if UNLIT_SEGMENTS and updateUnlitColor(isPowered) > UNLIT_MIN_VISIBLE then
-		local ghost = "888.8"
+		-- 2026-11-06: no decimal point on the screen any more -- the real unit has a
+		-- white comma painted on the glass (now a 3D mesh in cockpit_front_panel_RUS.obj /
+		-- cockpit_front_panel_kontur_RUS.obj, lit like any other painted surface)
+		local ghost = "888 8"
 		for i = 1, 5 do
 			drawChar(i, ghost:sub(i, i), UNLIT_COLOR)
 		end
@@ -198,7 +315,11 @@ function draw()
 		LIT_COLOR[2] = DIGIT_COLOR[2] * k
 		LIT_COLOR[3] = DIGIT_COLOR[3] * k
 
+		-- backlit rim around the painted comma (behind the paint, before the digits)
+		drawRim(k)
+
 		local text = formatDist(dist)
+		text = text:sub(1, 3) .. " " .. text:sub(5)   -- drop the point (painted comma on the glass)
 		for i = 1, 5 do
 			drawChar(i, text:sub(i, i), LIT_COLOR)
 		end

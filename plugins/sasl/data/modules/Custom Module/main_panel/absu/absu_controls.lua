@@ -329,9 +329,13 @@ local gps_course_prev=0
 -- NOTE: deliberately global (no "local"), not module-level locals -- the enclosing
 -- function (line 362) was already at Lua's 60-upvalue ceiling; two more locals pushed
 -- it over and broke the whole module load. Globals don't count against that limit.
-absu_uns_course_smooth = nil
+-- 2026-11-07: start values are false, never nil. In SASL, READING a global that is nil makes
+-- SASL try to load a component of that name ("can't load component absu_uns_last_dist" in
+-- Log.txt) and aborts this whole update() for the frame -- the autopilot then stops following
+-- UNS (seen in a UNS HOLD, where the FMS-leg tracker hands over to the fallback below).
+absu_uns_course_smooth = false
 absu_uns_z_smooth = 0
-absu_uns_last_dist = nil
+absu_uns_last_dist = false
 local cmd_GA_needle=0
 local roll_submode_prev=0
 -- APP
@@ -384,7 +388,7 @@ end
 -- nil and the previous UNS logic is used unchanged as the fallback.
 -- All state is global on purpose (update() is at Lua's 60-upvalue ceiling, see above).
 -- ===================================================================================
-absu_uns_leg_idx = nil        -- our active TO-entry (may be one ahead of X-Plane's during a turn)
+absu_uns_leg_idx = false      -- our active TO-entry (may be one ahead of X-Plane's during a turn)
 absu_uns_leg_n_prev = -1      -- plan entry count last frame (plan edited -> resync)
 absu_uns_leg_bad_time = 0     -- seconds the FMS-leg/DTK cross-check has been failing
 absu_uns_leg_printed = false  -- one-time index-base debug print
@@ -435,7 +439,7 @@ function absu_uns_leg_track(raw_course, passed)
 	end
 
 	-- keep our index in step with X-Plane's: equal, or exactly one ahead during an anticipated turn
-	if n ~= absu_uns_leg_n_prev or absu_uns_leg_idx == nil or (absu_uns_leg_idx ~= xd and absu_uns_leg_idx ~= xd + 1) then
+	if n ~= absu_uns_leg_n_prev or not absu_uns_leg_idx or (absu_uns_leg_idx ~= xd and absu_uns_leg_idx ~= xd + 1) then
 		absu_uns_leg_idx = xd
 	end
 	absu_uns_leg_n_prev = n
@@ -1195,7 +1199,7 @@ function update()
 					-- keep the fallback filters primed so switching back to it is seamless
 					absu_uns_course_smooth = raw_course
 					absu_uns_z_smooth = raw_z
-					absu_uns_last_dist = nil
+					absu_uns_last_dist = false
 				else
 				-- FALLBACK (no usable FMS leg data, e.g. direct-to): previous UNS logic, unchanged
 
@@ -1203,7 +1207,7 @@ function update()
 					-- KLN's own internally-filtered course/deviation, these can jump sharply the
 					-- moment the flight plan sequences to a new leg -- exactly what happens at a
 					-- sharp turn waypoint, which was pinning roll_need against its ceiling.
-					if absu_uns_course_smooth == nil then absu_uns_course_smooth = raw_course end
+					if not absu_uns_course_smooth then absu_uns_course_smooth = raw_course end
 					local course_delta = raw_course - absu_uns_course_smooth
 					while course_delta > 180 do course_delta = course_delta - 360 end
 					while course_delta < -180 do course_delta = course_delta + 360 end
@@ -1228,7 +1232,7 @@ function update()
 					-- chase potentially garbage data); once distance confirms we've passed the point,
 					-- snap fresh instead of blending stale frozen values into newly-stabilized data.
 					local uns_near_wpt = uns_dist > 0 and uns_dist < 0.3
-					local uns_passed_wpt = uns_near_wpt and absu_uns_last_dist ~= nil and uns_dist > absu_uns_last_dist
+					local uns_passed_wpt = uns_near_wpt and absu_uns_last_dist and uns_dist > absu_uns_last_dist
 					if uns_passed_wpt then
 						absu_uns_course_smooth = raw_course
 						absu_uns_z_smooth = raw_z
