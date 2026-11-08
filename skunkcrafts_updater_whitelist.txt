@@ -1236,8 +1236,8 @@ objects/antenna.png|1731289868
 objects/antenna_NML.png|891662323
 objects/aux_stuff.obj|3377864708
 objects/aux_stuff.png|1206325960
-objects/aux_stuff_1.obj|1541727277
-objects/aux_stuff_1.png|2584167065
+objects/aux_stuff_1.obj|1526522316
+objects/aux_stuff_1.png|1521385561
 objects/azs_panel.png|3950294998
 objects/azs_panel_LIT.png|47489282
 objects/azs_panels.obj|19639002
@@ -1245,7 +1245,7 @@ objects/cabin_glass_out.obj|2272218505
 objects/cockpit_1.obj|875589475
 objects/cockpit_1.png|2779735781
 objects/cockpit_1_NML.png|4001591915
-objects/cockpit_1_RUS.obj|2524099346
+objects/cockpit_1_RUS.obj|1667690718
 objects/cockpit_1_RUS.png|976430686
 objects/cockpit_1_RUS_LIT.png|3268489700
 objects/cockpit_1_RUS_NML.png|677432332
@@ -1268,10 +1268,10 @@ objects/cockpit_chairs_NML.png|3721951477
 objects/cockpit_details.obj|33667316
 objects/cockpit_details.png|3761200128
 objects/cockpit_details_NML.png|856661332
-objects/cockpit_eng_gauges_M_RUS.obj|1977555601
+objects/cockpit_eng_gauges_M_RUS.obj|2907617150
 objects/cockpit_eng_gauges_M_RUS.png|269186567
 objects/cockpit_eng_gauges_M_RUS_LIT.png|152528651
-objects/cockpit_eng_glass_M_RUS.obj|1500518814
+objects/cockpit_eng_glass_M_RUS.obj|1422761134
 objects/cockpit_eng_glass_M_RUS.png|1651003390
 objects/cockpit_eng_lamps_M_RUS.obj|3721026855
 objects/cockpit_eng_lamps_M_RUS.png|616195820
@@ -1294,7 +1294,7 @@ objects/cockpit_front_panel_blend_RUS.obj|2093338815
 objects/cockpit_front_panel_kontur_RUS.obj|514516921
 objects/cockpit_front_panel_kontur_RUS.png|1172510333
 objects/cockpit_front_panel_kontur_RUS_NML.png|3697007778
-objects/cockpit_glass.obj|1876893120
+objects/cockpit_glass.obj|2571977935
 objects/cockpit_glass.png|3901994029
 objects/cockpit_glass_LIT.png|1291223038
 objects/cockpit_glass_NML.png|1150728792
@@ -1351,13 +1351,13 @@ objects/ground_civil/gpu_hobart.png|3965390024
 objects/ground_civil/gpu_hobart_LIT.png|2170747766
 objects/ground_civil/ground copy.obj|2662646270
 objects/ground_civil/ground.obj|1651453722
-objects/ground_civil/ground.png|331207770
+objects/ground_civil/ground.png|1981303898
 objects/ground_civil/ground_lit.png|1919347166
 objects/ground_def/gpu_hobart.obj|376941916
 objects/ground_def/gpu_hobart.png|1609502480
 objects/ground_def/gpu_hobart_LIT.png|2170747766
 objects/ground_def/ground.obj|697877269
-objects/ground_def/ground.png|4267480177
+objects/ground_def/ground.png|2901492998
 objects/ground_def/ground_lit.png|1707369570
 objects/ground_lit.png|1919347166
 objects/ground_vvs/gpu_hobart.obj|3194093783
@@ -1754,7 +1754,7 @@ plugins/sasl/data/modules/Custom Module/engines_system/eng_panel_m.lua|422420125
 plugins/sasl/data/modules/Custom Module/engines_system/engine_gauges.lua|2260777639
 plugins/sasl/data/modules/Custom Module/engines_system/engines_panel.lua|2445929969
 plugins/sasl/data/modules/Custom Module/engines_system/engines_system.lua|730277265
-plugins/sasl/data/modules/Custom Module/engines_system/fuel_consumption.lua|3661891985
+plugins/sasl/data/modules/Custom Module/engines_system/fuel_consumption.lua|786500594
 plugins/sasl/data/modules/Custom Module/engines_system/rt12.lua|3745828307
 plugins/sasl/data/modules/Custom Module/engines_system/rud_logic.lua|2141206285
 plugins/sasl/data/modules/Custom Module/engines_system/vibration_logic.lua|2595737452
@@ -3153,7 +3153,7 @@ sounds/systems/flap.wav|2005905547
 sounds/systems/gear.wav|2005905547
 sounds/weather/wind.wav|1395809330
 tu154.acf|2693587040
-tu154_cockpit.obj|4164418177
+tu154_cockpit.obj|232770973
 tu154_icon11.png|2913622315
 tu154_icon11_thumb.png|2223285862
 tu154_paint.png|1900202556
