@@ -3,6 +3,7 @@ defineProperty("mdrag_tas", globalPropertyf("sim/flightmodel/position/true_airsp
 defineProperty("mdrag_force", globalPropertyf("sim/flightmodel/forces/faxil_plug_acf"))
 defineProperty("mdrag_rho", globalPropertyf("sim/weather/rho"))
 defineProperty("mdrag_flap", globalPropertyf("sim/flightmodel/controls/flaprat"))
+defineProperty("mdrag_onground", globalPropertyi("sim/flightmodel/failures/onground_any")) -- M drag only in the air (on the ground it would overwrite pushback tug forces)
 local M_DCD0 = 0.005     -- added parasite drag coefficient
 local M_SREF = 201.45    -- m2, Tu-154M wing area
 local M_drag_fade_tbl = {{ -1, 1 }, { 0, 1 }, { 0.05, 0 }, { 2, 0 }} -- clean only; flap drag already calibrated in flap_aero.lua
@@ -323,7 +324,9 @@ function update()
 		set(Flow_3,FF_3_corr)
 		set(sfc_to_rpm,rpm_max)
 		local v = get(mdrag_tas)
-		set(mdrag_force, M_DCD0 * 0.5 * get(mdrag_rho) * v * v * M_SREF * interpolate(M_drag_fade_tbl, get(mdrag_flap)))
+		if get(mdrag_onground) == 0 then
+			set(mdrag_force, M_DCD0 * 0.5 * get(mdrag_rho) * v * v * M_SREF * interpolate(M_drag_fade_tbl, get(mdrag_flap)))
+		end
 		set(idle_FF,idle_fuel)
 		set(fuel_q_1,math.max(0,tank1-delta_FF))
 		-- set(sfc_half_lo,sfc_half*corr_half)
