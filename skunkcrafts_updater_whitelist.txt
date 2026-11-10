@@ -1,6 +1,6 @@
 AviTab.json|1925732311
 KLNconfig.txt|4193424204
-README.md|1958547961
+README.md|1257461958
 airfoils/NACA 0009 (symmetrical).afl|3143184736
 airfoils/hstab.afl|1427296503
 airfoils/vstab.afl|3305887970
@@ -10,6 +10,7 @@ airfoils/wing_orig.afl|2361956735
 airfoils/wing_tip.afl|3602086378
 airfoils/wing_tip_orig.afl|1296979795
 black_box/03_11_26_000.bbox|3800067533
+black_box/10_11_26_000.bbox|2085348038
 cockpit/-PANELS-/Panel.png|1294082873
 cockpit/EFIS/EFIS maps/map_s_HM-1.png|746417493
 cockpit/EFIS/EFIS maps/map_s_HM-2.png|2086776577
@@ -1236,8 +1237,8 @@ objects/antenna.png|1731289868
 objects/antenna_NML.png|891662323
 objects/aux_stuff.obj|3377864708
 objects/aux_stuff.png|1206325960
-objects/aux_stuff_1.obj|1526522316
-objects/aux_stuff_1.png|1521385561
+objects/aux_stuff_1.obj|2946357041
+objects/aux_stuff_1.png|1706899284
 objects/azs_panel.png|3950294998
 objects/azs_panel_LIT.png|47489282
 objects/azs_panels.obj|19639002
@@ -1283,7 +1284,7 @@ objects/cockpit_eng_panel_RUS.obj|3468960347
 objects/cockpit_eng_panel_RUS.png|2865374119
 objects/cockpit_eng_panel_RUS_LIT.png|2981392672
 objects/cockpit_eng_shell_M_RUS.obj|373824713
-objects/cockpit_eng_shell_M_RUS.png|3625347821
+objects/cockpit_eng_shell_M_RUS.png|388545710
 objects/cockpit_eng_shell_M_RUS_LIT.png|3350826163
 objects/cockpit_eng_stp_B_RUS.obj|2600002560
 objects/cockpit_front_panel_RUS.obj|3163924974
@@ -1553,7 +1554,7 @@ plugins/KLN90B/data/modules/configuration/widgetResources/SourceCodePro.ttf|1932
 plugins/KLN90B/data/modules/configuration/wprefs.ini|4267642933
 plugins/KLN90B/data/modules/main.lua|3535876057
 plugins/KLN90B/data/modules/popupsPositions.txt|1935643396
-plugins/KLN90B/data/modules/state.txt|3077911372
+plugins/KLN90B/data/modules/state.txt|655736649
 plugins/KLN90B/data/output/SASLLog.txt|881456239
 plugins/KLN90B/data/output/readme.txt|1889794412
 plugins/KLN90B/functions.txt|3249875689
@@ -1852,14 +1853,14 @@ plugins/sasl/data/modules/Custom Module/main_panel/nvu/pa3_handdrawn_vert.glsl|1
 plugins/sasl/data/modules/Custom Module/main_panel/nvu/rsbn_names_ru.lua|1852044540
 plugins/sasl/data/modules/Custom Module/main_panel/pkp.lua|1949808281
 plugins/sasl/data/modules/Custom Module/main_panel/pnp.lua|1607642456
-plugins/sasl/data/modules/Custom Module/main_panel/radar/radar.lua|306657851
+plugins/sasl/data/modules/Custom Module/main_panel/radar/radar.lua|4021315243
 plugins/sasl/data/modules/Custom Module/main_panel/radar/radar_angle_scale.png|395874987
 plugins/sasl/data/modules/Custom Module/main_panel/radar/radar_exp.lua|827025924
 plugins/sasl/data/modules/Custom Module/main_panel/radar/radar_line.png|786570983
 plugins/sasl/data/modules/Custom Module/main_panel/radar/radar_mask.png|1808843093
 plugins/sasl/data/modules/Custom Module/main_panel/radar/radar_mask_drift.png|3131120754
 plugins/sasl/data/modules/Custom Module/main_panel/radar/radar_mask_drift2.png|2868637760
-plugins/sasl/data/modules/Custom Module/main_panel/radar_kontur.lua|2491690157
+plugins/sasl/data/modules/Custom Module/main_panel/radar_kontur.lua|392262658
 plugins/sasl/data/modules/Custom Module/main_panel/radar_test.lua|4084577334
 plugins/sasl/data/modules/Custom Module/main_panel/radar_test_draw.lua|1514156573
 plugins/sasl/data/modules/Custom Module/main_panel/radio/ark15.lua|2342067845
@@ -2037,8 +2038,8 @@ plugins/sasl/data/modules/Custom Module/readme.txt|417127972
 plugins/sasl/data/modules/Custom Module/rectangle_ctr.lua|1928446887
 plugins/sasl/data/modules/Custom Module/rectangle_ctr_fuel.lua|887126476
 plugins/sasl/data/modules/Custom Module/save_state.lua|771852169
-plugins/sasl/data/modules/Custom Module/sounds/FE_top_sounds.lua|2416557598
-plugins/sasl/data/modules/Custom Module/sounds/cabin_sounds.lua|3578820042
+plugins/sasl/data/modules/Custom Module/sounds/FE_top_sounds.lua|2582599660
+plugins/sasl/data/modules/Custom Module/sounds/cabin_sounds.lua|2449393311
 plugins/sasl/data/modules/Custom Module/sounds/cabin_sounds2.lua|1411482904
 plugins/sasl/data/modules/Custom Module/sounds/chk_after_press_set.lua|511535066
 plugins/sasl/data/modules/Custom Module/sounds/chk_before_base.lua|333100557
@@ -2053,14 +2054,14 @@ plugins/sasl/data/modules/Custom Module/sounds/cockpit_sounds.lua|1876955939
 plugins/sasl/data/modules/Custom Module/sounds/crew_voices.lua|4231002645
 plugins/sasl/data/modules/Custom Module/sounds/door_sounds.lua|3913113382
 plugins/sasl/data/modules/Custom Module/sounds/engine_whine.lua|3029217422
-plugins/sasl/data/modules/Custom Module/sounds/engines_sound.lua|4273362242
+plugins/sasl/data/modules/Custom Module/sounds/engines_sound.lua|562459640
 plugins/sasl/data/modules/Custom Module/sounds/left_panel_sounds.lua|1484844117
 plugins/sasl/data/modules/Custom Module/sounds/right_panel_sounds.lua|811851918
 plugins/sasl/data/modules/Custom Module/sounds/sounds.lua|3772783540
 plugins/sasl/data/modules/Custom Module/sounds/starter_cutout.lua|3777369644
 plugins/sasl/data/modules/Custom Module/sounds/touchdown.lua|1009905869
 plugins/sasl/data/modules/Custom Module/sounds/voice_func.lua|2922089639
-plugins/sasl/data/modules/Custom Module/sounds/voice_tables.lua|1696483171
+plugins/sasl/data/modules/Custom Module/sounds/voice_tables.lua|2130106596
 plugins/sasl/data/modules/Custom Module/sounds/voice_talk.lua|1186723877
 plugins/sasl/data/modules/Custom Module/start_system/start_logic.lua|2043990890
 plugins/sasl/data/modules/Custom Module/start_system/start_panel.lua|3308506748
@@ -2229,85 +2230,85 @@ plugins/sasl/data/modules/Custom Sounds/chklist/eng/eng/ready.wav|4149145070
 plugins/sasl/data/modules/Custom Sounds/chklist/eng/eng/tonns.wav|3608703853
 plugins/sasl/data/modules/Custom Sounds/chklist/eng/eng/turned_off_2.wav|372718461
 plugins/sasl/data/modules/Custom Sounds/chklist/eng/eng/turned_on_2.wav|3367543862
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/0.wav|3288978128
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/1.wav|2459449485
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/2.wav|3863861106
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/3.wav|1316891480
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/4.wav|3582454436
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/5.wav|1769720196
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/6.wav|2334945854
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/7.wav|2696783625
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/8.wav|950558571
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/9.wav|1755996131
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/ABSU.wav|3714143275
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/ARK.wav|1587824963
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/EUP.wav|2096802341
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/Hold_short.wav|3763778495
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/PN-5_PN-6.wav|3052223401
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/RV.wav|3950031033
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/RV_RN.wav|2023858412
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/SRD.wav|3639621179
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/TKS.wav|1986233811
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/TKS_aligned.wav|1488002983
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/TKS_ready.wav|2431904812
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/TOD.wav|183773459
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/UVD.wav|2601086130
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/V1.wav|3495277157
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/V2.wav|3526272735
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/VSU_fuel_sis.wav|4112062371
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/Vr.wav|770024209
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/adjuster_stabilizer.wav|4083592328
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/air_horizons.wav|2699913840
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/altimeters.wav|480800967
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/befor_DPRM.wav|866104423
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/befor_eng_run.wav|3547093416
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/before_3_turn.wav|4156138411
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/before_taxiing.wav|3063063289
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/booster.wav|2660097994
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/brake.wav|2859278183
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/checklist_completed.wav|3118782946
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/course_PNP.wav|3719484567
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/course_mp.wav|3164979371
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/course_mp_ark.wav|1784091937
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/deicing.wav|1631122507
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/doors.wav|3755920487
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/elektro_system.wav|2721619124
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/fail_1.wav|3017909793
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/fail_2.wav|2359843801
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/fail_3.wav|3087551248
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/fail_4.wav|2917390395
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/fail_5.wav|3223720616
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/flaps.wav|2648822483
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/fuel_pumps.wav|1635242887
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/fuel_quantity.wav|1234155695
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/gear.wav|3659916627
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/landing_date.wav|708813632
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/landing_lights.wav|1723404329
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/msrp_ssos_rv1.wav|1673448202
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/navigation_complex.wav|1143829116
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/on_taxiing.wav|366092572
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/plan.wav|1800379920
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/plugs_keys_rod.wav|2464902796
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/pre_start.wav|2374806866
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/prepared.wav|772933339
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/pressure_hydraulic_systems.wav|2591719672
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/pressure_of_the_airfield.wav|3327711587
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/ready.wav|3893877063
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/ready_takeoff.wav|3382376052
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/recorder.wav|3511475553
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/removed_lights_off.wav|4035732574
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/rudders_ailerons.wav|1627023871
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/speed_br.wav|2418599919
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/stabilizer.wav|1801764292
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/stabilizer_RV.wav|2477376450
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/switch_on.wav|2196205646
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/switch_on_1.wav|3934273485
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/switch_on_agreed.wav|440767483
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/switch_on_date.wav|1836338575
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/takeoff_data.wav|2111238087
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/takeoff_start.wav|729643676
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/trim.wav|1766737047
-plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/vents.wav|4151046623
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/0.wav|3661690992
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/1.wav|2784053999
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/2.wav|1216002263
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/3.wav|2205457660
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/4.wav|167258273
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/5.wav|2621232901
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/6.wav|1067685098
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/7.wav|3940041983
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/8.wav|1177553336
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/9.wav|2938120575
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/ABSU.wav|3290809418
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/ARK.wav|2489831986
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/EUP.wav|3193295681
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/Hold_short.wav|2025910406
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/PN-5_PN-6.wav|1001327696
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/RV.wav|3033811345
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/RV_RN.wav|1545843538
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/SRD.wav|1918075522
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/TKS.wav|3317546612
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/TKS_aligned.wav|2310034196
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/TKS_ready.wav|2231272460
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/TOD.wav|3641132036
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/UVD.wav|2052395862
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/V1.wav|863424684
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/V2.wav|1681477504
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/VSU_fuel_sis.wav|2716658574
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/Vr.wav|4192547631
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/adjuster_stabilizer.wav|3698410631
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/air_horizons.wav|3472311746
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/altimeters.wav|3018357182
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/befor_DPRM.wav|3407575253
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/befor_eng_run.wav|3995886604
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/before_3_turn.wav|1494790584
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/before_taxiing.wav|2770615918
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/booster.wav|1073245038
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/brake.wav|1418004494
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/checklist_completed.wav|385138389
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/course_PNP.wav|3273611656
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/course_mp.wav|2162350686
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/course_mp_ark.wav|2107661525
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/deicing.wav|3434609781
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/doors.wav|2587770126
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/elektro_system.wav|3393309988
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/fail_1.wav|3512199176
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/fail_2.wav|3074250207
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/fail_3.wav|3220888006
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/fail_4.wav|356712979
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/fail_5.wav|3862309827
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/flaps.wav|1057990820
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/fuel_pumps.wav|581391094
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/fuel_quantity.wav|3764058308
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/gear.wav|1476016036
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/landing_date.wav|2559381816
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/landing_lights.wav|1069844082
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/msrp_ssos_rv1.wav|229195251
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/navigation_complex.wav|3019066917
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/on_taxiing.wav|1883039507
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/plan.wav|927005492
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/plugs_keys_rod.wav|1568782409
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/pre_start.wav|2627946853
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/prepared.wav|35127423
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/pressure_hydraulic_systems.wav|2914283397
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/pressure_of_the_airfield.wav|412882834
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/ready.wav|1957615500
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/ready_takeoff.wav|134173990
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/recorder.wav|129918373
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/removed_lights_off.wav|3066694245
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/rudders_ailerons.wav|4024149507
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/speed_br.wav|3553901801
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/stabilizer.wav|634983517
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/stabilizer_RV.wav|2791014718
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/switch_on.wav|2490837116
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/switch_on_1.wav|995255671
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/switch_on_agreed.wav|2656543151
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/switch_on_date.wav|4005324216
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/takeoff_data.wav|3776326443
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/takeoff_start.wav|3957389892
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/trim.wav|312891272
+plugins/sasl/data/modules/Custom Sounds/chklist/eng/nav/vents.wav|4091384018
 plugins/sasl/data/modules/Custom Sounds/chklist/rus/cop/-15.wav|1364334350
 plugins/sasl/data/modules/Custom Sounds/chklist/rus/cop/-3.wav|3540630634
 plugins/sasl/data/modules/Custom Sounds/chklist/rus/cop/0.wav|2147196717
@@ -2410,84 +2411,84 @@ plugins/sasl/data/modules/Custom Sounds/chklist/rus/eng/ready.wav|2202434321
 plugins/sasl/data/modules/Custom Sounds/chklist/rus/eng/tonns.wav|3361689661
 plugins/sasl/data/modules/Custom Sounds/chklist/rus/eng/turned_off_2.wav|2251505250
 plugins/sasl/data/modules/Custom Sounds/chklist/rus/eng/turned_on_2.wav|33153911
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/0.wav|2499377574
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/1.wav|2500908316
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/2.wav|2802247525
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/3.wav|1687976807
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/4.wav|212548857
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/5.wav|1350586095
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/6.wav|2076494954
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/7.wav|3645114641
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/8.wav|1146130932
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/9.wav|3673538041
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/ABSU.wav|2144231763
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/ARK.wav|1627303722
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/EUP.wav|2570072353
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/Hold_short.wav|11597739
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/PN-5_PN-6.wav|2275937335
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/RV.wav|155827005
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/RV_RN.wav|928095612
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/SRD.wav|989810307
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/TKS.wav|173186420
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/TKS_aligned.wav|3945481830
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/TKS_ready.wav|147881203
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/TOD.wav|3840188120
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/UVD.wav|2102715947
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/V1.wav|2954822019
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/V2.wav|3518231321
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/VSU_fuel_sis.wav|2050282128
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/Vr.wav|3326306760
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/adjuster_stabilizer.wav|3538037947
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/air_horizons.wav|2538448302
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/altimeters.wav|4122124072
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/befor_DPRM.wav|248163879
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/befor_eng_run.wav|243132578
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/before_3_turn.wav|895767789
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/before_taxiing.wav|577830081
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/booster.wav|1938288779
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/brake.wav|566525857
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/checklist_completed.wav|1519033618
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/course_PNP.wav|2780794924
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/course_mp.wav|3697131094
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/course_mp_ark.wav|170407365
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/deicing.wav|1357491795
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/doors.wav|214244408
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/elektro_system.wav|2096763811
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/fail_1.wav|3698893584
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/fail_2.wav|1178574351
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/fail_3.wav|4236889036
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/fail_4.wav|3639593495
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/fail_5.wav|2109146604
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/flaps.wav|2619663830
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/fuel_pumps.wav|216266129
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/fuel_quantity.wav|498819906
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/gear.wav|964504234
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/landing_date.wav|2450622333
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/landing_lights.wav|111308960
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/msrp_ssos_rv1.wav|2479662772
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/navigation_complex.wav|3277470352
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/on_taxiing.wav|3559191348
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/plan.wav|1492034832
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/plugs_keys_rod.wav|1885833895
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/pre_start.wav|1709420294
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/prepared.wav|1522677475
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/pressure_hydraulic_systems.wav|2293921813
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/pressure_of_the_airfield.wav|1615863377
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/ready.wav|218194693
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/ready_takeoff.wav|245559271
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/recorder.wav|1405848190
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/rudders_ailerons.wav|4131418276
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/speed_br.wav|895471789
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/stabilizer.wav|2358656489
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/stabilizer_RV.wav|3895983149
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/switch_on.wav|2407275183
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/switch_on_1.wav|341168793
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/switch_on_agreed.wav|2798832697
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/switch_on_date.wav|2305895755
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/takeoff_data.wav|2311094889
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/takeoff_start.wav|4101148766
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/trim.wav|1589770347
-plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/vents.wav|4014525205
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/0.wav|151495824
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/1.wav|2635463066
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/2.wav|465969122
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/3.wav|934027133
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/4.wav|3180758537
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/5.wav|7999541
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/6.wav|1488648172
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/7.wav|385456518
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/8.wav|496170554
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/9.wav|3231845989
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/ABSU.wav|3358341458
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/ARK.wav|3836639444
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/EUP.wav|2497970057
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/Hold_short.wav|419084181
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/PN-5_PN-6.wav|213056626
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/RV.wav|407391351
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/RV_RN.wav|2688752425
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/SRD.wav|2235038326
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/TKS.wav|3639598010
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/TKS_aligned.wav|3361718354
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/TKS_ready.wav|182220713
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/TOD.wav|2588597919
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/UVD.wav|2902628911
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/V1.wav|1066402744
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/V2.wav|983958633
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/VSU_fuel_sis.wav|4137352539
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/Vr.wav|3035258936
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/adjuster_stabilizer.wav|3270525581
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/air_horizons.wav|1046527638
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/altimeters.wav|633980994
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/befor_DPRM.wav|1217919426
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/befor_eng_run.wav|3864828046
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/before_3_turn.wav|3899876287
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/before_taxiing.wav|1599004
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/booster.wav|3006472703
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/brake.wav|828706182
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/checklist_completed.wav|2904242140
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/course_PNP.wav|3444166939
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/course_mp.wav|2621980477
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/course_mp_ark.wav|3403210812
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/deicing.wav|1975030593
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/doors.wav|865829945
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/elektro_system.wav|4216962484
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/fail_1.wav|3903050820
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/fail_2.wav|657635628
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/fail_3.wav|1795770474
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/fail_4.wav|1809475347
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/fail_5.wav|3493898259
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/flaps.wav|2345811028
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/fuel_pumps.wav|3030048235
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/fuel_quantity.wav|239819261
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/gear.wav|256418544
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/landing_date.wav|2771101338
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/landing_lights.wav|3796309838
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/msrp_ssos_rv1.wav|3583026098
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/navigation_complex.wav|3151778133
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/on_taxiing.wav|12920615
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/plan.wav|3685333121
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/plugs_keys_rod.wav|2781171824
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/pre_start.wav|3472965947
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/prepared.wav|3890339618
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/pressure_hydraulic_systems.wav|3090036716
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/pressure_of_the_airfield.wav|1176237837
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/ready.wav|3331100582
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/ready_takeoff.wav|4144228191
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/recorder.wav|4221390791
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/rudders_ailerons.wav|3464285528
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/speed_br.wav|3192233477
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/stabilizer.wav|3538143523
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/stabilizer_RV.wav|3832219013
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/switch_on.wav|3808423161
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/switch_on_1.wav|84875956
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/switch_on_agreed.wav|3467434752
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/switch_on_date.wav|4077668187
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/takeoff_data.wav|205323721
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/takeoff_start.wav|282640044
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/trim.wav|709409034
+plugins/sasl/data/modules/Custom Sounds/chklist/rus/nav/vents.wav|2213641998
 plugins/sasl/data/modules/Custom Sounds/cockpit_fan.wav|1655070730
 plugins/sasl/data/modules/Custom Sounds/cockpit_fan_L.wav|3356261836
 plugins/sasl/data/modules/Custom Sounds/cockpit_fan_R.wav|466877424
@@ -2547,44 +2548,44 @@ plugins/sasl/data/modules/Custom Sounds/crew/eng/ground/good_bye.wav|1229006325
 plugins/sasl/data/modules/Custom Sounds/crew/eng/ground/start_1.wav|2768745255
 plugins/sasl/data/modules/Custom Sounds/crew/eng/ground/start_2.wav|574849033
 plugins/sasl/data/modules/Custom Sounds/crew/eng/ground/start_3.wav|1401716809
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/1.wav|541929939
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/10.wav|1651742957
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/2.wav|1656649333
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/3.wav|414093839
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/5.wav|424303939
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/alt_50.wav|2335757085
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/flaps_15.wav|4205899094
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/flaps_28.wav|411494844
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/flaps_36.wav|2363726549
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/flaps_45.wav|3139923265
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/flaps_rel_sin.wav|3450899155
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/flaps_ret_sin.wav|2935921656
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/flaps_retracted.wav|2811666295
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/lights_off.wav|341836473
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/lights_on.wav|3551618103
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/minimums.wav|1091529879
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/pos_rate.wav|194628106
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/rotate.wav|3510385611
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/score.wav|4029198944
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/set_ort_course.wav|724039720
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/slats_rel.wav|3854225737
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/slats_released.wav|2176122691
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/slats_ret.wav|2302064316
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/spd_160.wav|1431995690
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/spd_200.wav|303999727
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/spd_220.wav|1465686128
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/spd_240.wav|914313508
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/spd_330.wav|3695421334
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/spd_360.wav|3884391960
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/spd_alive.wav|3878254714
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/spoilers_out.wav|3928951344
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/stab_0.wav|3722154174
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/stab_1_5.wav|1561428801
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/stab_3.wav|3123096825
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/stab_5_5.wav|2473480010
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/stab_move.wav|935821882
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/tks_eup.wav|1152559629
-plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/v1.wav|3482321215
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/1.wav|951604623
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/10.wav|627225571
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/2.wav|1864216765
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/3.wav|2136833182
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/5.wav|4265965315
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/alt_50.wav|1800045181
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/flaps_15.wav|3282040389
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/flaps_28.wav|2885823364
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/flaps_36.wav|1114262171
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/flaps_45.wav|60820215
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/flaps_rel_sin.wav|985907304
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/flaps_ret_sin.wav|2154226245
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/flaps_retracted.wav|2986470753
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/lights_off.wav|1195278223
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/lights_on.wav|80203843
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/minimums.wav|4227803736
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/pos_rate.wav|3465932738
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/rotate.wav|2576953778
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/score.wav|1047556312
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/set_ort_course.wav|3863258711
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/slats_rel.wav|1794026405
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/slats_released.wav|3964970977
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/slats_ret.wav|3290632601
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/spd_160.wav|1801259097
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/spd_200.wav|3099982179
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/spd_220.wav|3513451632
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/spd_240.wav|1794904593
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/spd_330.wav|1774128394
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/spd_360.wav|3530411636
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/spd_alive.wav|988374540
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/spoilers_out.wav|1832234550
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/stab_0.wav|2910904654
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/stab_1_5.wav|2825621830
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/stab_3.wav|809438934
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/stab_5_5.wav|3694640620
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/stab_move.wav|1537726476
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/tks_eup.wav|2445275933
+plugins/sasl/data/modules/Custom Sounds/crew/eng/navigator/v1.wav|1132986246
 plugins/sasl/data/modules/Custom Sounds/crew/rus/copilot/brakes_check.wav|4062553641
 plugins/sasl/data/modules/Custom Sounds/crew/rus/copilot/down_gear.wav|1718171409
 plugins/sasl/data/modules/Custom Sounds/crew/rus/copilot/gear_down.wav|134811061
@@ -2638,44 +2639,44 @@ plugins/sasl/data/modules/Custom Sounds/crew/rus/ground/good_bye.wav|1994378005
 plugins/sasl/data/modules/Custom Sounds/crew/rus/ground/start_1.wav|1834054405
 plugins/sasl/data/modules/Custom Sounds/crew/rus/ground/start_2.wav|113303453
 plugins/sasl/data/modules/Custom Sounds/crew/rus/ground/start_3.wav|1008317480
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/1.wav|2335148294
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/10.wav|2263151891
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/2.wav|2128796561
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/3.wav|228757133
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/5.wav|1704096823
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/alt_50.wav|3646498984
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/flaps_15.wav|865817234
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/flaps_28.wav|3745319138
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/flaps_36.wav|1825525359
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/flaps_45.wav|900187275
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/flaps_rel_sin.wav|3322493324
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/flaps_ret_sin.wav|739933018
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/flaps_retracted.wav|1545085375
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/lights_off.wav|2272510202
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/lights_on.wav|938917496
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/minimums.wav|550068098
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/pos_rate.wav|871313549
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/rotate.wav|2698092161
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/score.wav|2536192672
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/set_ort_course.wav|3241948701
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/slats_rel.wav|377377009
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/slats_released.wav|2741466108
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/slats_ret.wav|2297682738
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/spd_160.wav|284915786
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/spd_200.wav|3017014361
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/spd_220.wav|68800828
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/spd_240.wav|2543795870
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/spd_330.wav|1753050525
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/spd_360.wav|3194819290
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/spd_alive.wav|1524656369
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/spoilers_out.wav|330158298
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/stab_0.wav|943175979
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/stab_1_5.wav|1308073158
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/stab_3.wav|1952650146
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/stab_5_5.wav|430270564
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/stab_move.wav|1663466772
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/tks_eup.wav|2892499139
-plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/v1.wav|1179971689
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/1.wav|1937791630
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/10.wav|1379849527
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/2.wav|4287251817
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/3.wav|3681715878
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/5.wav|2700454165
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/alt_50.wav|143061009
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/flaps_15.wav|960731799
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/flaps_28.wav|2619355485
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/flaps_36.wav|1117183133
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/flaps_45.wav|13647132
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/flaps_rel_sin.wav|1325080858
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/flaps_ret_sin.wav|3810192413
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/flaps_retracted.wav|2240435134
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/lights_off.wav|4265520356
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/lights_on.wav|143872821
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/minimums.wav|469362425
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/pos_rate.wav|2998142412
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/rotate.wav|4055300886
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/score.wav|1923796567
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/set_ort_course.wav|2698256097
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/slats_rel.wav|2050047468
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/slats_released.wav|3655817051
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/slats_ret.wav|1744202534
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/spd_160.wav|4108137466
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/spd_200.wav|1011161853
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/spd_220.wav|75511505
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/spd_240.wav|37792043
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/spd_330.wav|331580484
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/spd_360.wav|1392480598
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/spd_alive.wav|3395395938
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/spoilers_out.wav|39104504
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/stab_0.wav|4206944395
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/stab_1_5.wav|509117397
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/stab_3.wav|1052140016
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/stab_5_5.wav|336578207
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/stab_move.wav|2927112294
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/tks_eup.wav|2983910425
+plugins/sasl/data/modules/Custom Sounds/crew/rus/navigator/v1.wav|2593655944
 plugins/sasl/data/modules/Custom Sounds/cursmp.wav|2744695436
 plugins/sasl/data/modules/Custom Sounds/cursmp_L.wav|240077953
 plugins/sasl/data/modules/Custom Sounds/cursmp_R.wav|2845700428
@@ -3048,9 +3049,9 @@ plugins/sasl/data/modules/configuration/widgetResources/SourceCodePro-LICENSE.tx
 plugins/sasl/data/modules/configuration/widgetResources/SourceCodePro.ttf|193207767
 plugins/sasl/data/modules/configuration/wprefs.ini|2180162431
 plugins/sasl/data/modules/main.lua|2136362114
-plugins/sasl/data/modules/state.txt|3947257735
+plugins/sasl/data/modules/state.txt|1843058099
 plugins/sasl/data/modulesdataref_creator_4.lua|0
-plugins/sasl/data/output/SASLLog.txt|362816239
+plugins/sasl/data/output/SASLLog.txt|988630322
 plugins/sasl/data/output/readme.txt|1889794412
 plugins/sasl/data/scripts/init.lua|2732355382
 plugins/sasl/functions.txt|3249875689
@@ -3074,7 +3075,7 @@ plugins/xtlua/init/scripts/T154.btwo/T154.btwo.lua|1200801371
 plugins/xtlua/init/scripts/T154.config_i/T154.config_i.lua|490124425
 plugins/xtlua/init/scripts/T154.egpws/T154.egpws.lua|1775297070
 plugins/xtlua/init/scripts/T154.ipad/T154.ipad.lua|469341947
-plugins/xtlua/init/scripts/T154.kontur/T154.kontur.lua|2956390682
+plugins/xtlua/init/scripts/T154.kontur/T154.kontur.lua|4192993624
 plugins/xtlua/init/scripts/T154.radio/T154.radio.lua|2758145694
 plugins/xtlua/init/scripts/T154.systems/T154.systems.lua|3554891135
 plugins/xtlua/init/scripts/T154.tcasCAS67/T154.tcasCAS67.lua|3164984505
@@ -3158,6 +3159,6 @@ tu154_icon11.png|2913622315
 tu154_icon11_thumb.png|2223285862
 tu154_paint.png|1900202556
 tu154_paint2.png|50155071
-tu154_prefs.txt|1644002717
+tu154_prefs.txt|133969355
 tu154_vrconfig.txt|1305436609
 version.mak|1415776742
