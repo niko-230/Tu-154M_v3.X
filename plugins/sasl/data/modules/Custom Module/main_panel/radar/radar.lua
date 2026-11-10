@@ -146,6 +146,7 @@ local sweep_dir=0
 local flicker=0
 local tme=0
 local blanking_timer=0
+brg=0 -- 2026-11-10: antenna bearing must exist before the first sweep (drift masks read it)
 --local arc_arr=get(arc_array)
 
 --local rend_tgt = sasl.gl.createRenderTarget ( 500 , 500 )
@@ -284,6 +285,207 @@ local wx_az=0
 local wx_speed=0
 local wx_sect=101
 
+--------------------------------------------------------------------------------------------------
+-- 2026-11-10: Groza picture drawn by SASL (cockpit v2), so the radar look follows the cockpit
+-- setup chosen in the EFB with no reload.
+-- RADAR.png stays on the colour table for the Kontur (v1). In v2 METEO / KONTUR modes X-Plane's own
+-- returns are hidden (weather alpha 0) and this code paints the Groza picture in the original Groza
+-- greens (same bands and colours as cockpit/EFIS/RADAR_groza.png). GROUND / DRIFT modes keep
+-- X-Plane's picture, made green by a multiply filter.
+-- FPS: GZ.QPF weather queries per frame (round robin over a 27 x 16 grid); the picture is kept in
+-- a render target and only the 1-degree columns the antenna has just swept are redrawn.
+-- All Groza state lives in the one table GZ (update() is at the Lua 60-upvalue limit).
+--------------------------------------------------------------------------------------------------
+defineProperty("gz_lat", globalPropertyd("sim/flightmodel/position/latitude"))
+defineProperty("gz_lon", globalPropertyd("sim/flightmodel/position/longitude"))
+defineProperty("gz_elev", globalPropertyd("sim/flightmodel/position/elevation")) -- m MSL
+defineProperty("gz_wx_alpha2", globalPropertyf("sim/cockpit2/EFIS/EFIS_weather_alpha"))
+defineProperty("gz_flight_time", globalPropertyf("sim/time/total_flight_time_sec"))
+defineProperty("gz_terrain_on", globalPropertyi("sim/cockpit2/EFIS/EFIS_terrain_on"))
+
+local GZ = {
+	NB = 27, NR = 16,      -- weather samples: 27 bearings (every 4 deg, -52..+52) x 16 ranges
+	NF = 96,               -- rings drawn per 1-degree column
+	R_PX = 270,            -- screen radius of the selected range (as the range marks: 270 px)
+	CX = 280, CY = 280,    -- antenna point inside the 560x560 picture (= panel 307, 1600)
+	QPF = 1,               -- weather queries per frame (full refresh ~10 s at 40 fps)
+	BEAM = 1.75,           -- half beam width, deg
+	KM = {[2] = 30, [3] = 50, [4] = 125, [5] = 250, [6] = 375}, -- range switch -> km
+	-- Groza bands (index 0..255 as RADAR_groza.png): <53 none, then 53 / 62 / 77 / 128 / 216
+	COL = {
+		false,
+		{50/255, 195/255, 50/255, 1},
+		{50/255, 235/255, 50/255, 1},
+		{50/255, 1, 50/255, 1},
+		{180/255, 1, 180/255, 1},
+		{0, 0, 0, 1},
+	},
+	grid = {}, next = 0, rt = nil, clear = true,
+	active = false,        -- own Groza picture shown (meteo / contour)
+	ground = false,        -- ground / drift: X-Plane picture + green filter
+	last_col = nil, range_last = -1, mode_last = -1,
+	have_api = sasl.weather ~= nil and sasl.weather.getWeatherAtLocation ~= nil,
+	enter = true,          -- next frame in v2 is an entry (aircraft load, EFB switch to v2)
+	warm_hold = 0,         -- seconds the set is kept warm after an entry
+	from_v1 = false,       -- the entry is an EFB switch from the Kontur cockpit
+	keep_warm = false,     -- switched to v2 with engines running: power switch off, set warm until switched on
+	fade = 0,              -- 1 -> 0: own picture fading out after power off / standby (CRT afterglow)
+	mode_saved = 0,        -- Groza mode knob as last set in v2 (the Kontur script turns it to ZEMLYA in v1)
+	knob_hold = 0,         -- seconds the knob is held at mode_saved after coming back from v1
+	ft_last = 0,           -- flight time last frame (a drop = new flight started)
+}
+
+function GZ.flush()
+	for n = 0, GZ.NB * GZ.NR - 1 do GZ.grid[n] = 0 end
+	GZ.next = 0
+	GZ.clear = true
+	GZ.last_col = nil
+end
+GZ.flush()
+
+-- one weather sample: grid cell n (bearing j, range k) -> Groza band index 0..255
+function GZ.sample(n)
+	local j = math.floor(n / GZ.NR)
+	local k = n % GZ.NR
+	local km = GZ.KM[range] or 375
+	local d = (k + 1) / GZ.NR * km
+	local hdg = math.rad(get(deg1) + (j * 4 - 52))
+	local lat0 = get(gz_lat)
+	local lat = lat0 + d * math.cos(hdg) / 111.32
+	local lon = get(gz_lon) + d * math.sin(hdg) / (111.32 * math.max(0.05, math.cos(math.rad(lat0))))
+	if lat > 89.9 then lat = 89.9 elseif lat < -89.9 then lat = -89.9 end
+	if lon > 180 then lon = lon - 360 elseif lon < -180 then lon = lon + 360 end
+	local dm = d * 1000
+	local h = get(gz_elev) + dm * math.tan(math.rad(wx_tilt)) - dm * dm / 17000000 -- beam centre, earth curve
+	local half = dm * math.tan(math.rad(GZ.BEAM))
+	local v = 0
+	local ok, w = pcall(sasl.weather.getWeatherAtLocation, lat, lon, math.max(0, h))
+	if ok and type(w) == "table" then
+		local p = w.precipRate or w.basePrecipRate or 0
+		local top = 0
+		if type(w.cloudLayers) == "table" then
+			for _, c in ipairs(w.cloudLayers) do
+				if (c.coverage or 0) > 0.05 and (c.altTop or 0) > top then top = c.altTop end
+			end
+		end
+		if top == 0 then top = 1e9 end -- no layer data: do not cut by tops
+		if p > 0.005 and h - half < top then
+			v = 30 + 225 * (math.min(1, p) ^ 0.7) * wx_gain
+		end
+	end
+	GZ.grid[n] = v
+end
+
+-- value between samples (bilinear); b = bearing deg, f = range fraction 0..1
+function GZ.val(b, f)
+	local NB, NR, g = GZ.NB, GZ.NR, GZ.grid
+	local x = (b + 52) / 4
+	if x < 0 then x = 0 elseif x > NB - 1 then x = NB - 1 end
+	local y = f * NR - 1
+	if y < 0 then y = 0 elseif y > NR - 1 then y = NR - 1 end
+	local j0, k0 = math.floor(x), math.floor(y)
+	local j1, k1 = math.min(j0 + 1, NB - 1), math.min(k0 + 1, NR - 1)
+	local tx, ty = x - j0, y - k0
+	return g[j0 * NR + k0] * (1 - tx) * (1 - ty) + g[j1 * NR + k0] * tx * (1 - ty)
+		+ g[j0 * NR + k1] * (1 - tx) * ty + g[j1 * NR + k1] * tx * ty
+end
+
+function GZ.band(v)
+	if v < 53 then return 1 elseif v < 62 then return 2 elseif v < 77 then return 3
+	elseif v < 128 then return 4 elseif v < 216 then return 5 else return 6 end
+end
+
+-- redraw one 1-degree column (c = 0..104 -> bearing c-52 .. c-51) inside the render target
+function GZ.draw_column(c)
+	local CX, CY, RP, NF = GZ.CX, GZ.CY, GZ.R_PX, GZ.NF
+	local b1, b2 = math.rad(c - 52), math.rad(c - 51)
+	local s1, c1, s2, c2 = math.sin(b1), math.cos(b1), math.sin(b2), math.cos(b2)
+	-- erase the column to transparent
+	sasl.gl.setBlendFunctionSeparate(BLEND_SOURCE_ALPHA, BLEND_ONE_MINUS_SOURCE_ALPHA, BLEND_ONE_MINUS_SOURCE_ALPHA, BLEND_ONE_MINUS_SOURCE_ALPHA)
+	local R = RP + 4
+	sasl.gl.drawConvexPolygon({CX, CY, CX + R * s1, CY + R * c1, CX + R * s2, CY + R * c2}, true, 1, {0, 0, 0, 1})
+	sasl.gl.resetBlending()
+	-- paint runs of equal band
+	local bm = c - 51.5
+	local run_band, run_start = 1, 0
+	for i = 0, NF do
+		local band = 1
+		if i < NF then
+			band = GZ.band(GZ.val(bm, (i + 0.5) / NF) + (math.random() - 0.5) * 14)
+		end
+		if band ~= run_band then
+			if run_band > 1 then
+				local r1 = run_start / NF * RP
+				local r2 = i / NF * RP
+				sasl.gl.drawConvexPolygon({CX + r1 * s1, CY + r1 * c1, CX + r2 * s1, CY + r2 * c1,
+					CX + r2 * s2, CY + r2 * c2, CX + r1 * s2, CY + r1 * c2}, true, 1, GZ.COL[run_band])
+			end
+			run_band, run_start = band, i
+		end
+	end
+end
+
+function GZ.render()
+	if not GZ.rt then
+		GZ.rt = sasl.gl.createRenderTarget(560, 560)
+		GZ.clear = true
+	end
+	local col = math.floor(sweep + 52)
+	if col < 0 then col = 0 elseif col > 104 then col = 104 end
+	sasl.gl.setRenderTarget(GZ.rt, GZ.clear)
+	GZ.clear = false
+	if GZ.last_col == nil then GZ.last_col = col end
+	local a, b = math.min(GZ.last_col, col), math.max(GZ.last_col, col)
+	if b - a > 12 then a = col b = col end
+	for c = a, b do GZ.draw_column(c) end
+	GZ.last_col = col
+	sasl.gl.restoreRenderTarget()
+	sasl.gl.drawTexture(GZ.rt, 27, 1320, 560, 560, {1, 1, 1, 1})
+end
+
+-- green filter over X-Plane's own picture (ground / drift modes), in convex wedges around the antenna
+function GZ.green_filter()
+	sasl.gl.setBlendFunction(BLEND_DESTINATION_COLOR, BLEND_ONE_MINUS_SOURCE_ALPHA)
+	local R = 276
+	for w = 0, 9 do
+		local a0 = -115 + w * 23
+		local p = {307, 1600}
+		for s = 0, 4 do
+			local r = math.rad(a0 + s * 5.75)
+			p[#p + 1] = 307 + R * math.sin(r)
+			p[#p + 1] = 1600 + R * math.cos(r)
+		end
+		sasl.gl.drawConvexPolygon(p, true, 1, {0.2, 1, 0.2, 1})
+	end
+	sasl.gl.resetBlending()
+end
+
+-- called from update() in cockpit v2, after the mode logic
+function GZ.update(passed, xmt_work)
+	local was_active = GZ.active
+	GZ.active = power and (mode == 2 or mode == 3) and xmt_work == 1
+	GZ.ground = power and (mode == 1 or mode == 4) and xmt_work == 1
+	if GZ.active and not GZ.have_api then GZ.active = false GZ.ground = true end -- no weather API: old way
+	if GZ.active and (not was_active or range ~= GZ.range_last or mode ~= GZ.mode_last) then
+		GZ.flush()
+	end
+	GZ.range_last = range
+	GZ.mode_last = mode
+	if GZ.knob_hold <= 0 then GZ.mode_saved = mode end
+	set(gz_terrain_on, 0) -- the Groza screen never shows the TAWS terrain picture
+	if was_active and not GZ.active then GZ.fade = 1 end -- own picture fades out green, X-Plane's stays hidden
+	if GZ.active then GZ.fade = 0 elseif GZ.fade > 0 then GZ.fade = math.max(0, GZ.fade - passed / 2) end
+	if GZ.active then
+		for q = 1, GZ.QPF do
+			GZ.sample(GZ.next)
+			GZ.next = (GZ.next + 1) % (GZ.NB * GZ.NR)
+		end
+	end
+	local hide_xp = GZ.active or GZ.fade > 0
+	set(EFIS_weather_alpha, hide_xp and 0 or 1)
+	set(gz_wx_alpha2, hide_xp and 0 or 1)
+end
+
 function update()
 	if get(kontur_on) == 0 then
         local passed = get(frame_time)
@@ -405,6 +607,51 @@ function update()
             -- power_counter = 0 
         -- end
 
+        -- 2026-11-10: with engines running the Groza is warmed up at once whenever its cockpit is entered:
+        -- aircraft load, new flight, or EFB switch v1 -> v2. Held warm for 10 s so the power flicker of a
+        -- new flight cannot cool it down again. Outside air temperature does not matter for this.
+        local ft = get(gz_flight_time)
+        if ft < GZ.ft_last - 1 then GZ.enter = true end
+        GZ.ft_last = ft
+        local eng_run = get(eng1_N1) >= 5 or get(eng2_N1) >= 5 or get(eng3_N1) >= 5
+        if GZ.enter then
+            GZ.enter = false
+            GZ.warm_hold = 10
+            if GZ.from_v1 then
+                -- EFB switch v1 -> v2: Groza comes in at GOTOV (ready). The Kontur script turns the knob to
+                -- ZEMLYA in v1, so it is held at GOTOV for 1 s while those late writes run out.
+                GZ.mode_saved = 0
+                GZ.knob_hold = 1
+                if eng_run then
+                    -- engines running: power on and warmed up, GOTOV lamp lit, ready for ZEMLYA / METEO / KONTUR
+                    set(rls_on, 1)
+                    power_switch = 1
+                    power_sw_last = 1
+                    power_counter = 190
+                end
+            end
+            GZ.from_v1 = false
+        end
+        if GZ.knob_hold > 0 then
+            GZ.knob_hold = GZ.knob_hold - passed
+            set(rls_mode, GZ.mode_saved)
+            mode = GZ.mode_saved
+            mode_sw_last = GZ.mode_saved
+        end
+        if GZ.keep_warm then
+            if power_switch == 1 then
+                power_counter = 190 -- switched on: works at once
+                GZ.keep_warm = false
+            else
+                power_counter = 180 -- off, but stays warm
+            end
+        end
+        if GZ.warm_hold > 0 then
+            GZ.warm_hold = GZ.warm_hold - passed
+            if power_switch == 1 and eng_run then
+                power_counter = math.max(power_counter, 190)
+            end
+        end
         power = power_counter > 180
 		if mode_sw_last~=mode and (mode_sw_last==0 or mode_sw_last==4) then
 			mode_timer=0
@@ -770,13 +1017,39 @@ function update()
 		end
 
 
-        set(EFIS_weather_alpha, 1)
+        GZ.update(passed, xmt_work) -- 2026-11-10: Groza picture logic + weather alpha (was: set(EFIS_weather_alpha, 1))
 
 
         set(radar_cc, bool2int(power_el)*power_switch )
+	else
+		if GZ.active then -- leaving the Groza cockpit while it drew its own picture: give X-Plane's picture back
+			set(EFIS_weather_alpha, 1)
+			set(gz_wx_alpha2, 1)
+		end
+		GZ.active = false
+		GZ.ground = false
+		GZ.enter = true -- coming back to v2 counts as an entry (warm with engines running)
+		GZ.from_v1 = true
+		GZ.fade = 0
+		GZ.knob_hold = 0
 	end
 
 	
+end
+
+-- 2026-11-10: Groza picture / green filter first, then the existing masks, marks and sweep line on top
+function draw()
+	if get(kontur_on) ~= 0 then return end -- Kontur cockpit (v1): the Groza screen is not in use, draw nothing
+	if GZ.active then
+		GZ.render()
+	else
+		GZ.green_filter() -- whatever X-Plane's own picture shows in the Groza cockpit is green, never colour
+		                  -- (always, also while X-Plane's picture fades after power off from ZEMLYA / drift)
+		if GZ.fade > 0 and GZ.rt then
+			sasl.gl.drawTexture(GZ.rt, 27, 1320, 560, 560, {1, 1, 1, GZ.fade})
+		end
+	end
+	drawAll(components)
 end
 
 

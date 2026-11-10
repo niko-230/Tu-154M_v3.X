@@ -240,6 +240,29 @@ local THR_AWAY = 0.03    -- must leave the stop by this much to re-arm
 -- still followed so switching back to the cockpit never fires a late click.
 local view_external = globalPropertyi("sim/graphics/view/view_is_external")
 
+-- 2026-11-09: click 15% quieter, and covered by the surrounding cockpit noise:
+-- the louder the engines and the airflow, the less the click stands out
+-- (idle and parked = unchanged, takeoff thrust or cruise speed = half).
+local THR_CLICK_VOL = 0.85
+local thr_n1 = {   -- read the same way as engine_gauges.lua / absu_panel.lua
+	globalProperty("sim/flightmodel/engine/ENGN_N1_[0]"),
+	globalProperty("sim/flightmodel/engine/ENGN_N1_[1]"),
+	globalProperty("sim/flightmodel/engine/ENGN_N1_[2]"),
+}
+local thr_tas = globalPropertyf("sim/flightmodel/position/true_airspeed")
+local function thr_noise_cover_calc()
+	local n1 = (get(thr_n1[1]) + get(thr_n1[2]) + get(thr_n1[3])) / 3
+	local eng = math.min(1, math.max(0, (n1 - 40) / (95 - 40)))      -- idle ~40% N1 -> 0, takeoff ~95% -> 1
+	local air = math.min(1, math.max(0, (get(thr_tas) * 3.6 - 80) / 820)) -- same scale as the wind noise
+	return 1 - 0.5 * math.max(eng, air)
+end
+-- safety: if the noise reading ever fails, the click still plays (at the -15% level)
+local function thr_noise_cover()
+	local ok, v = pcall(thr_noise_cover_calc)
+	if ok and type(v) == "number" and v == v then return math.min(1, math.max(0.5, v)) end
+	return 1
+end
+
 local function play_throttle_click()
 	local z_pos = get(pilot_Z)
 	local x_pos = get(pilot_X)
@@ -247,7 +270,7 @@ local function play_throttle_click()
 	local gain_L, gain_R = inn_balance(thr_x, thr_z, x_pos, z_pos, plt_hdg)
 	gain_L = gain_L * 1000
 	gain_R = gain_R * 1000
-	local dist = thr_dist(math.sqrt(math.pow(z_pos - thr_z, 2) + math.pow(x_pos - thr_x, 2)))
+	local dist = thr_dist(math.sqrt(math.pow(z_pos - thr_z, 2) + math.pow(x_pos - thr_x, 2))) * THR_CLICK_VOL * thr_noise_cover()
 	setSampleGain(thr_click_L, gain_L * dist)
 	setSampleGain(thr_click_R, gain_R * dist)
 	playSample(thr_click_L, false)

@@ -63,51 +63,51 @@ state = {
     };
     ['contextWindows'] = {
         ['Controls'] = {
-            ['visible'] = false;
-            ['mode'] = {
-                [1] = 0;
-            };
             ['position'] = {
                 [1] = 50;
                 [2] = 50;
                 [3] = 616;
                 [4] = 560;
             };
-        };
-        ['KLN90B'] = {
             ['visible'] = false;
             ['mode'] = {
                 [1] = 0;
             };
+        };
+        ['KLN90B'] = {
             ['position'] = {
                 [1] = 330;
                 [2] = 887;
                 [3] = 631;
                 [4] = 208;
             };
-        };
-        ['KLN90B_DISPLAY'] = {
             ['visible'] = false;
             ['mode'] = {
                 [1] = 0;
             };
+        };
+        ['KLN90B_DISPLAY'] = {
             ['position'] = {
                 [1] = 277;
                 [2] = 931;
                 [3] = 1770;
                 [4] = 562;
             };
-        };
-        ['ABSU'] = {
-            ['visible'] = true;
+            ['visible'] = false;
             ['mode'] = {
                 [1] = 0;
             };
+        };
+        ['ABSU'] = {
             ['position'] = {
                 [1] = 1028;
                 [2] = -415;
                 [3] = 1738;
                 [4] = 512;
+            };
+            ['visible'] = true;
+            ['mode'] = {
+                [1] = 0;
             };
         };
     };

@@ -487,15 +487,7 @@ eng_tbl["fail_4"] = {loadSample(moduleDirectory .. '/Custom Sounds/chklist/rus/e
 eng_tbl["fail_5"] = {loadSample(moduleDirectory .. '/Custom Sounds/chklist/rus/eng/fail_5.wav'), loadSample(moduleDirectory .. '/Custom Sounds/chklist/eng/eng/fail_5.wav')}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+-- 2026-11-09: co-pilot voice 30% quieter (all his phrases, both languages)
+for _, v in pairs(cop_tbl) do
+	for _, smp in ipairs(v) do setSampleGain(smp, 700) end
+end

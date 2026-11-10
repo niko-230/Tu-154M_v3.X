@@ -56,6 +56,7 @@ defineProperty("inner_marker", globalPropertyi("sim/cockpit/misc/inner_marker_li
 defineProperty("light_open_right", globalPropertyf("tu154b2/custom/anim/light_open_right")) -- light open
 
 defineProperty("airspeed", globalPropertyf("sim/flightmodel/position/indicated_airspeed")) -- indicated airspeed in KTS
+local wind_rho = globalPropertyf("sim/weather/rho") -- air density at the aircraft, kg/m3 (wind noise on shared-cockpit slave)
 
 -- power
 defineProperty("bus27_volt_L", globalPropertyf("tu154b2/custom/elec/bus27_volt_left"))
@@ -690,7 +691,14 @@ function update()
 	-- if tas<80 then
 		-- tas=0
 	-- end
-	setSampleGain(wind_sound, (tas-80)/0.82*run*(1 - external)*0.5* math.max(dist2*door,0.5))
+	-- 2026-11-09: wind noise follows INDICATED airspeed (how hard the air really hits the airframe),
+	-- not true airspeed - at altitude TAS is much higher than IAS and made the wind far too loud.
+	-- Level 0.35 (= original 0.5 minus 30%); near the ground IAS ~ TAS, so takeoff/approach are as before.
+	local wind_ias = get(airspeed) * 1.852 -- kts -> km/h
+	if not MASTER then -- shared-cockpit slave: no own flight model, derive IAS from the master's TAS and air density
+		wind_ias = tas * math.sqrt(math.max(0, get(wind_rho)) / 1.225)
+	end
+	setSampleGain(wind_sound, math.max(0, wind_ias-80)/0.82*run*(1 - external)*0.35* math.max(dist2*door,0.5))
 	setSamplePitch(wind_sound, 600+tas*2/3)
 	--set(db1,math.max(dist - 25, 0)*door)
     

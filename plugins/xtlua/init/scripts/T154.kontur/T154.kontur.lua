@@ -1382,7 +1382,7 @@ end
 function kontur_left()
     
  
- if simDR_bus27left < 1 then
+ if simDR_bus27left < 1 or kontur_pow_l < 1 then -- 2026-11-10: also a full reset when the overhead power is off
         kontur_onoff_l = 1
         kontur_on_l = 0
         kontur_nav_l = 0
@@ -1641,7 +1641,7 @@ end
 function kontur_right()
     
 
- if simDR_bus27right < 1 then
+ if simDR_bus27right < 1 or kontur_pow_r < 1 then -- 2026-11-10: also a full reset when the overhead power is off
     kontur_onoff_r = 1
     kontur_on_r = 0
     kontur_nav_r = 0
@@ -2174,8 +2174,25 @@ end
 
 
 
+-- 2026-11-10: when the cockpit is switched from v2 to v1, cycle the RLS (weather radar) power
+-- off for a moment and back on - the same as switching the overhead RLS button off and on by hand.
+-- In v2 the Kontur radar logic does not run, so with the RLS power already on its state is left
+-- half-started; the short off/on restarts it cleanly. Loading directly into v1 is not affected.
+local kontur_on_prev = -1
+local rls_cycle_timer = 0
+
 function after_physics()
     if T154_kontur_on > 0 then
+        if kontur_on_prev == 0 and weather_sys > 0 then
+            weather_sys = 0
+            rls_cycle_timer = 0.5
+        end
+        if rls_cycle_timer > 0 then
+            rls_cycle_timer = rls_cycle_timer - simDR_passed
+            if rls_cycle_timer <= 0 then
+                weather_sys = 1
+            end
+        end
         simDR_gns = 1
         kontur_left()
         kontur_right()
@@ -2185,5 +2202,37 @@ function after_physics()
         kontur_pow_r = 0
         ubs_pow_l = 0
         ubs_pow_r = 0
+        rls_cycle_timer = 0
+        -- 2026-11-10: Groza cockpit: both Kontur units fully off, pages cleared - same as their power-off
+        -- reset in v1. A Kontur TAWS / RLS / TCAS page left open in v1 must not keep driving the shared
+        -- pilot map (TAWS terrain picture on the Groza screen). Done once on entering v2 (nothing
+        -- changes these while the Kontur script sleeps), so it costs nothing per frame.
+        if kontur_on_prev ~= 0 then
+            kontur_onoff_l = 1
+            kontur_on_l = 0
+            kontur_nav_l = 0
+            kontur_tcas_l = 0
+            kontur_tcas_l_aux = 0
+            kontur_taws_l = 0
+            kontur_wx_l = 0
+            kontur_wx_l_aux = 0
+            kontur_test_start_l = 0
+            kontur_test_timer_l = 0
+            kontur_test_l = 0
+            kontur_pow_l_lit = 0
+            kontur_onoff_r = 1
+            kontur_on_r = 0
+            kontur_nav_r = 0
+            kontur_tcas_r = 0
+            kontur_tcas_r_aux = 0
+            kontur_taws_r = 0
+            kontur_wx_r = 0
+            kontur_wx_r_aux = 0
+            kontur_test_start_r = 0
+            kontur_test_timer_r = 0
+            kontur_test_r = 0
+            kontur_pow_r_lit = 0
+        end
     end
+    kontur_on_prev = T154_kontur_on
 end

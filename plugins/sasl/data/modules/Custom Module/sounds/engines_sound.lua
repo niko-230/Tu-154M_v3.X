@@ -1064,20 +1064,28 @@ function update()
 		
 		local bal_L, bal_R = inn_balance (view_head, dist)
 		
+		-- 2026-11-09: cockpit engine left/right balance for the main engine layer (inn_middle):
+		-- 1) the right-ear recording (inn_middle_right.wav) is 1.6 dB louder than the left one,
+		--    so the right ear dominated in every seat; the two are levelled here (no file changes).
+		-- 2) small seat-side tilt: captain's seat (left) hears engine 1 side slightly more,
+		--    co-pilot's seat (right) engine 3 side; centre seats stay even.
+		local seat_tilt = math.min(1, math.max(-1, -get(pilot_X) / 0.6)) * 0.06
+		local mid_L = bal_L * 1.10 * (1 + seat_tilt)
+		local mid_R = bal_R * 0.91 * (1 - seat_tilt)
 		
-		setSampleGain(inn_middle_left_1, 700 * ENG_VOL_TRIM * INN_MIDDLE_LEVEL * bal_L * rpm_gain_1_inn * main_vol*(0.75+0.75*cockpit_dr))
+		setSampleGain(inn_middle_left_1, 700 * ENG_VOL_TRIM * INN_MIDDLE_LEVEL * mid_L * rpm_gain_1_inn * main_vol*(0.75+0.75*cockpit_dr))
 		setSampleGain(es_n1_inn[1][1], 0) -- N1 layer: outside view only
-		setSampleGain(inn_middle_right_1, 700 * ENG_VOL_TRIM * INN_MIDDLE_LEVEL * bal_R * rpm_gain_1_inn * main_vol*(0.75+0.75*cockpit_dr))
+		setSampleGain(inn_middle_right_1, 700 * ENG_VOL_TRIM * INN_MIDDLE_LEVEL * mid_R * rpm_gain_1_inn * main_vol*(0.75+0.75*cockpit_dr))
 		setSampleGain(es_n1_inn[1][2], 0) -- N1 layer: outside view only
 		
-		setSampleGain(inn_middle_left_2, 700 * ENG_VOL_TRIM * INN_MIDDLE_LEVEL * bal_L * rpm_gain_2_inn * main_vol*(0.75+0.75*cockpit_dr))
+		setSampleGain(inn_middle_left_2, 700 * ENG_VOL_TRIM * INN_MIDDLE_LEVEL * mid_L * rpm_gain_2_inn * main_vol*(0.75+0.75*cockpit_dr))
 		setSampleGain(es_n1_inn[2][1], 0) -- N1 layer: outside view only
-		setSampleGain(inn_middle_right_2, 700 * ENG_VOL_TRIM * INN_MIDDLE_LEVEL * bal_R * rpm_gain_2_inn * main_vol*(0.75+0.75*cockpit_dr))
+		setSampleGain(inn_middle_right_2, 700 * ENG_VOL_TRIM * INN_MIDDLE_LEVEL * mid_R * rpm_gain_2_inn * main_vol*(0.75+0.75*cockpit_dr))
 		setSampleGain(es_n1_inn[2][2], 0) -- N1 layer: outside view only
 		
-		setSampleGain(inn_middle_left_3, 700 * ENG_VOL_TRIM * INN_MIDDLE_LEVEL * bal_L * rpm_gain_3_inn * main_vol*(0.75+0.75*cockpit_dr))
+		setSampleGain(inn_middle_left_3, 700 * ENG_VOL_TRIM * INN_MIDDLE_LEVEL * mid_L * rpm_gain_3_inn * main_vol*(0.75+0.75*cockpit_dr))
 		setSampleGain(es_n1_inn[3][1], 0) -- N1 layer: outside view only
-		setSampleGain(inn_middle_right_3, 700 * ENG_VOL_TRIM * INN_MIDDLE_LEVEL * bal_R * rpm_gain_3_inn * main_vol*(0.75+0.75*cockpit_dr))	
+		setSampleGain(inn_middle_right_3, 700 * ENG_VOL_TRIM * INN_MIDDLE_LEVEL * mid_R * rpm_gain_3_inn * main_vol*(0.75+0.75*cockpit_dr))	
 		setSampleGain(es_n1_inn[3][2], 0) -- N1 layer: outside view only
 		
 		setSampleGain(inn_starter_left_new_1, 950 * bal_L * main_vol*(0.75+0.75*cockpit_dr))
@@ -1154,7 +1162,7 @@ function update()
 		
 		local noise_L, noise_R = out_balance (0, 10, 180, 30 , 80 , 1500)
 		
-		local apu_L, apu_R = out_balance (0, 15, 180, 120, 100, 100)
+		local apu_L, apu_R = out_balance (0, 15, 180, 135, 100, 100) -- 2026-11-09: full-volume cone 30 deg wider (half-angle 120 -> 135)
 		
 		local rear_gain_1=math.min(1,-1.333e-05*n2_equiv_thrust(rpm_1)+1.533)
 		local rear_gain_2=math.min(1,-1.333e-05*n2_equiv_thrust(rpm_2)+1.533)

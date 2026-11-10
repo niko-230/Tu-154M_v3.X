@@ -101,13 +101,14 @@ end
 registerCommandHandler(button, 0, button_hnd)
 registerCommandHandler(button2, 0, button_hnd2)
 
--- 2026-11-03: radar colour table per cockpit.
--- X-Plane paints radar returns with cockpit/EFIS/RADAR.png, one table per aircraft, read when the
--- aircraft loads. Kontur cockpit (v1) wants colour, Groza cockpit (v2) keeps its green CRT look.
--- This copies the matching table onto RADAR.png:
---   cockpit/EFIS/RADAR_kontur.png  (green / yellow / red / magenta)
---   cockpit/EFIS/RADAR_groza.png   (original all-green table, strongest cores black)
--- Only written when it differs. A change made here shows from the next aircraft load.
+-- 2026-11-03 / 2026-11-10: radar colour table.
+-- X-Plane paints radar returns with cockpit/EFIS/RADAR.png, one table per sim session.
+-- Since 2026-11-10 RADAR.png is ALWAYS the colour table (cockpit/EFIS/RADAR_kontur.png) for the
+-- Kontur (v1). The Groza (v2) green picture is drawn by SASL itself in main_panel/radar/radar.lua,
+-- so switching cockpits in the EFB needs no reload.
+-- This only makes sure RADAR.png is the colour table (one-time fix if an older version left the
+-- green table there; such a fix shows from the next sim start). RADAR_groza.png is kept as the
+-- reference for the Groza colours used in radar.lua.
 local radar_dir = sasl.getAircraftPath() .. "/cockpit/EFIS/"
 local palette_timer = 0
 local palette_for = -1     -- kontur_on value the table on disk was last checked for
@@ -130,18 +131,17 @@ local function sync_radar_palette(k_on)
 		if h then
 			h:write(want)
 			h:close()
-			sasl.logInfo("radar palette: RADAR.png set for " .. (k_on == 1 and "Kontur (colour)" or "Groza (green)") .. " - active from next aircraft load")
+			sasl.logInfo("radar palette: RADAR.png set for " .. (k_on == 1 and "Kontur (colour)" or "Groza (green)") .. " - active from next sim start")
 		end
 	end
 end
 
 function update()
-	-- radar colour table: check 5 s after load (cockpit version settled), and after every cockpit switch
+	-- radar colour table: make sure RADAR.png is the colour table, once, 5 s after load
 	palette_timer = palette_timer + get(frame_time)
-	local k_on_now = get(kontur_on) == 1 and 1 or 0
-	if palette_timer > 5 and k_on_now ~= palette_for then
-		palette_for = k_on_now
-		sync_radar_palette(k_on_now)
+	if palette_timer > 5 and palette_for ~= 1 then
+		palette_for = 1
+		sync_radar_palette(1)
 	end
 	local tilt=get(elev_set)
 	local passed=get(frame_time)
@@ -310,6 +310,6 @@ function update()
 		set(range4,250*0.688)
 		set(range5,375*0.688)
 		set(disp_brt,1)
-		set(wx_alpha,1)
+		-- 2026-11-10: weather alpha in the Groza cockpit is set by radar.lua (0 while it draws its own picture)
 	end
 end
