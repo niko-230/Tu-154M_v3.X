@@ -38,5 +38,6 @@ Future development:
 <img width="817" height="588" alt="Screenshot 2026-11-03 at 14 00 18" src="https://github.com/user-attachments/assets/66a7d9a2-be93-4639-8f2a-4150d1b01b81" />
 <img width="1245" height="910" alt="Screenshot 2026-11-03 at 14 07 14" src="https://github.com/user-attachments/assets/ebbc51ab-591f-4d1d-9cee-0363739dda07" />
 <img width="1675" height="1024" alt="Screenshot 2026-11-03 at 14 27 58" src="https://github.com/user-attachments/assets/95e9afd8-b956-4732-a717-271d43b92f90" />
-<img width="1346" height="967" alt="Screenshot 2026-11-10 at 14 50 43" src="https://github.com/user-attachments/assets/87c0c8fc-073c-4345-88f1-70bf3d1dc242" />
-<img width="1513" height="991" alt="Screenshot 2026-11-10 at 14 20 59" src="https://github.com/user-attachments/assets/1aac7bd9-f13c-48b8-86b0-56c7855a9452" />
+<img width="1656" height="1020" alt="Screenshot 2026-11-12 at 19 27 05" src="https://github.com/user-attachments/assets/5b146622-7ebb-46a7-9146-bfbed90f8640" />
+<img width="1159" height="885" alt="Screenshot 2026-11-12 at 19 24 07" src="https://github.com/user-attachments/assets/f1de660b-fe8e-4117-92ef-07555b5f9426" />
+
