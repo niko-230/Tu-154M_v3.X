@@ -4,37 +4,46 @@
 -- (tu154b2/custom/switchers/nav_1/2_mile_km, 1 = km, matching B/M donor).
 -- Power gated on the real Kurs-MP unit's own power condition (curs_np_on_1/2 + buses).
 --
--- Rendering: TrueType digital7.ttf ("Seven Segment") via drawText, so the size
--- is freely adjustable and it stays sharp (no bitmap stretching), with real bold.
--- That font is proportional (a "1" is ~1/3 the width of an "8"), which is what
--- made a single-string draw slide around whenever the value changed. So here
--- every character is drawn on its own into a FIXED cell:
---   [ d ][ d ][ d ][.][ d ]      right-aligned on the screen
--- Digits are right-aligned inside their cell (the font's digits all share the
--- same right-side spacing), so a "1" sits on the right segments exactly like a
--- real 7-segment display, and nothing ever moves.
+-- Rendering (2026-11-12): the digits are the engineer's МСРП clock digits (green_digit_strip.png,
+-- drawn there by digitstapeLit.lua), in red: red_digit_strip.png in Custom Module, one row of
+-- 11 cells (digits 0..9 and "-"), each 92 x 112 px, leaning 6 degrees (italic, baked into the
+-- picture so it stays sharp; each digit leans from its bottom). Every character is one whole cell drawn into
+-- a FIXED slot, so nothing ever moves; the cells already place a "1" on the right segments,
+-- like a real 7-segment display.
+--   [ d ][ d ][ d ] , [ d ]      (the comma is white paint on the glass, a 3D mesh)
+-- The slots stay exactly where they were with the old font, so the painted comma still sits
+-- in the gap before the tenths.
 
 defineProperty("distNm", 0)
 defineProperty("mileKm", 1)
 defineProperty("powered", true)
 defineProperty("bright", 1)    -- digit brightness knob 0..1 (dme_display.lua)
 
-local dme_font = loadFont("digital7.ttf")
+-- red МСРП clock digits: one image per cell (digits 0..9, then "-")
+local CELL_W, CELL_H = 92, 112          -- one cell of red_digit_strip.png (px; 80 + 12 for the lean)
+local CELL_INK_CX = 37                  -- centre of a digit's ink bottom across the cell (px)
+local CELL_INK_BOTTOM = 10              -- ink bottom, from the cell's bottom (px)
+local CELL_INK_H = 90                   -- ink height of a full "8" (px)
+local digitImg = {}
+for d = 0, 9 do digitImg[tostring(d)] = loadImage("red_digit_strip.png", d * CELL_W, 0, CELL_W, CELL_H) end
+digitImg["-"] = loadImage("red_digit_strip.png", 10 * CELL_W, 0, CELL_W, CELL_H)
 
 -- ===== Tuning (screen is 215 x 70 px) =====
 -- (values picked in the DME Readout Picker)
-local FONT_SIZE = 67       -- digit height is ~0.70 x this (67 -> ~47 px tall)
-local BOLD = true          -- real font bold (crisp), set false for normal weight
-local ITALIC = true        -- real font italic/slant (crisp), set false for upright
+local FONT_SIZE = 67       -- (old font size: only fixes the slot positions, which the painted comma follows)
+local DIGIT_HEIGHT = 46.9  -- height of the МСРП digits (same height as the old digits)
+local FIELD_SHIFT = 2.0    -- all slots moved right by this (the МСРП digits are wider; keeps the
+                           -- tenths digit clear of the painted comma and the left edge as before)
 local CENTER_X = 100       -- horizontal centre of the whole 5-slot field
 local CENTER_Y = 35        -- vertical centre of the digits (35 = middle of screen)
 local DIGIT_GAP = 21       -- px of empty space between neighbouring digits
 local POINT_EXTRA = 8      -- extra px added to the gap that holds the decimal point
-local DIGIT_COLOR = {0.89, 0.23, 0.17, 1}   -- LED red-orange
+local DIGIT_COLOR = {0.89, 0.23, 0.17, 1}   -- LED red-orange (the comma's glow; the digits are red in the picture)
 local BRIGHT_MIN = 0.50      -- lit-digit brightness at the knob's lowest stop (50% of full)
-local LIT_COLOR = {0, 0, 0, 1}
+local LIT_COLOR = {1, 1, 1, 1}  -- brightness of the red picture (knob)
 local UNLIT_SEGMENTS = true    -- faint "888.8" behind the digits, like a real LED display
-local UNLIT_LEVEL = 0.33       -- brightness of the unlit segments (0.33 = 33%).
+local UNLIT_LEVEL = 0.20       -- brightness of the unlit segments in daylight (0.20 = 20%; was 0.33 --
+                               -- lowered 2026-11-12: the МСРП digit picture is brighter than the old font).
                                -- In-sim the screen is drawn on the emissive (LIT) layer,
                                -- which swallows very dark values: 0.05 looked fine in a
                                -- browser but was invisible in X-Plane.
@@ -50,6 +59,8 @@ CENTER_X = CENTER_X * RES
 CENTER_Y = CENTER_Y * RES
 DIGIT_GAP = DIGIT_GAP * RES
 POINT_EXTRA = POINT_EXTRA * RES
+DIGIT_HEIGHT = DIGIT_HEIGHT * RES
+FIELD_SHIFT = FIELD_SHIFT * RES
 
 -- Font metrics of digital7.ttf (units per em 2048), used to place glyphs exactly.
 local EM = 2048
@@ -80,8 +91,12 @@ local POINT_X = (inkLeft[3] + DIGIT_INK_W + inkLeft[5]) / 2   -- middle of that 
 
 -- Horizontal centre of a digit slot (used to centre the dashes).
 local function digitInkCenter(i)
-	return inkLeft[i] + DIGIT_INK_W / 2
+	return inkLeft[i] + DIGIT_INK_W / 2 + FIELD_SHIFT
 end
+
+-- one МСРП cell drawn so its ink is DIGIT_HEIGHT tall, centred on the slot, bottom on BASELINE_Y
+local CELL_SCALE = DIGIT_HEIGHT / CELL_INK_H
+local DRAW_W, DRAW_H = CELL_W * CELL_SCALE, CELL_H * CELL_SCALE
 
 local MAX_DIST = 999.9   -- 5-character field limit
 
@@ -94,7 +109,8 @@ local MAX_DIST = 999.9   -- 5-character field limit
 local UNLIT_NIGHT = 0.0        -- unlit level left at night (0.0 = gone, 1.0 = no fade)
 local FADE_DARK_SUN = -6.0     -- sun pitch (deg) where it is fully dark (end of civil dusk)
 local FADE_DAY_SUN = 10.0      -- sun pitch (deg) where the full daytime level is reached
-local UNLIT_POWERED_NIGHT = 0.25 -- while the device is ON, ghosts never fade below this x their
+local UNLIT_POWERED_NIGHT = 0.41 -- (0.41 x 0.20 = same night level as before: 0.25 x 0.33)
+                                 -- while the device is ON, ghosts never fade below this x their
                                  -- daytime level, so they stay faintly visible at night.
                                  -- At night the whole screen also runs at only 20% (NIGHT_BRIGHTNESS in
                                  -- the _display.lua file), so 0.5 here ends up very dim.
@@ -111,7 +127,7 @@ local function unlitDaylight()
 end
 
 
--- unlit colour = DIGIT_COLOR x UNLIT_LEVEL x (daylight, or the ON-at-night level), fully opaque
+-- unlit colour = red picture x UNLIT_LEVEL x (daylight, or the ON-at-night level), fully opaque
 -- (one table reused every frame, so no new memory per frame)
 local UNLIT_COLOR = {0, 0, 0, 1}
 local UNLIT_MIN_VISIBLE = 0.02   -- below this, skip drawing the ghosts at all
@@ -122,9 +138,9 @@ local function updateUnlitColor(isPowered)
 	local light = unlitDaylight()
 	if isPowered and UNLIT_POWERED_NIGHT > light then light = UNLIT_POWERED_NIGHT end
 	local k = UNLIT_LEVEL * light
-	UNLIT_COLOR[1] = DIGIT_COLOR[1] * k
-	UNLIT_COLOR[2] = DIGIT_COLOR[2] * k
-	UNLIT_COLOR[3] = DIGIT_COLOR[3] * k
+	UNLIT_COLOR[1] = k   -- the picture is already red: dim it evenly
+	UNLIT_COLOR[2] = k
+	UNLIT_COLOR[3] = k
 	return k
 end
 
@@ -258,22 +274,11 @@ end
 
 
 local function drawChar(i, ch, color)
-	color = color or DIGIT_COLOR
-	if ch == " " then
-		return
-	elseif ch == "." then
-		drawText(dme_font, POINT_X, BASELINE_Y, ".", FONT_SIZE, BOLD, ITALIC, TEXT_ALIGN_CENTER, color)
-	elseif ch == "-" then
-		drawText(dme_font, digitInkCenter(i), BASELINE_Y, "-", FONT_SIZE, BOLD, ITALIC, TEXT_ALIGN_CENTER, color)
-	else
-		-- Right-align each digit inside its slot so every digit's ink ends at the
-		-- slot's right side (a "1" sits on the right segments like a real display).
-		-- Done with TEXT_ALIGN_LEFT + the font's own measured digit widths, because
-		-- TEXT_ALIGN_LEFT/CENTER are the alignments proven to work here.
-		local adv = (DIGIT_ADVANCE[ch] or 1028) * px
-		local x = inkLeft[i] + DIGIT_INK_W + DIGIT_ADV_R - adv
-		drawText(dme_font, x, BASELINE_Y, ch, FONT_SIZE, BOLD, ITALIC, TEXT_ALIGN_LEFT, color)
-	end
+	local img = digitImg[ch]
+	if not img then return end           -- " " (blank) and anything else: nothing
+	local x = digitInkCenter(i) - CELL_INK_CX * CELL_SCALE
+	local y = BASELINE_Y - CELL_INK_BOTTOM * CELL_SCALE
+	drawTexture(img, x, y, DRAW_W, DRAW_H, color or LIT_COLOR)
 end
 
 function draw()
@@ -311,9 +316,9 @@ function draw()
 		if b == nil then b = 1 end
 		if b < 0 then b = 0 elseif b > 1 then b = 1 end
 		local k = BRIGHT_MIN + (1 - BRIGHT_MIN) * b
-		LIT_COLOR[1] = DIGIT_COLOR[1] * k
-		LIT_COLOR[2] = DIGIT_COLOR[2] * k
-		LIT_COLOR[3] = DIGIT_COLOR[3] * k
+		LIT_COLOR[1] = k   -- the picture is already red: dim it evenly
+		LIT_COLOR[2] = k
+		LIT_COLOR[3] = k
 
 		-- backlit rim around the painted comma (behind the paint, before the digits)
 		drawRim(k)

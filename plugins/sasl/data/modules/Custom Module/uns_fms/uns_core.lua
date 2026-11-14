@@ -61,6 +61,11 @@ do
 	core.HOLD_DR.turn = newProp(createGlobalPropertyi, "tu154b2/custom/uns/hold_turn", 1)  -- 1 right, -1 left
 	core.HOLD_DR.time = newProp(createGlobalPropertyf, "tu154b2/custom/uns/hold_time", 0)  -- leg time, min
 	core.HOLD_DR.dist = newProp(createGlobalPropertyf, "tu154b2/custom/uns/hold_dist", 0)  -- leg distance, NM
+	-- 2026-11-12: 1 = the UNS shows the top of descent (X-Plane has one, and a unit that is
+	-- on has its TGT V/S entered) -> the Kontur map draws the TOD point (main_panel/nav_draw.lua)
+	core.TOD_SHOW = newProp(createGlobalPropertyi, "tu154b2/custom/uns/tod_show", 0)
+	core.TOD_LAT  = newProp(createGlobalPropertyf, "tu154b2/custom/uns/tod_lat", 0)   -- TOD position
+	core.TOD_LON  = newProp(createGlobalPropertyf, "tu154b2/custom/uns/tod_lon", 0)
 end
 
 local dr_lat    = prop(globalPropertyd, "sim/flightmodel/position/latitude")
@@ -122,6 +127,10 @@ do
 	DX.adf1 = prop(globalPropertyi, "sim/cockpit2/radios/actuators/adf1_frequency_hz")
 	DX.adf2 = prop(globalPropertyi, "sim/cockpit2/radios/actuators/adf2_frequency_hz")
 	DX.xpdr = prop(globalPropertyi, "sim/cockpit2/radios/actuators/transponder_code")
+	-- 2026-11-12: X-Plane FMS top of descent (the T/D of X-Plane's PROGRESS page), NM
+	DX.tod  = prop(globalPropertyf, "sim/cockpit2/radios/indicators/fms_distance_to_tod_pilot")
+	-- 2026-11-12: sim paused -> the power-up self test stops too (3D and 2D UNS alike)
+	DX.paused = prop(globalPropertyi, "sim/time/paused")
 end
 
 local NAV_LL = NAV_LATLON or 2048
@@ -1299,8 +1308,19 @@ buildHoldPage = function(cur, tot, mod)
 	left(3, "TURN", turn, "turn", F.inbd)
 	left(4, "QUAD/RAD", v(F.quad), "plain", F.quad)
 	left(5, "MAX KIAS", num(F.kias), "plain", F.kias)
-	right(1, "TIME", num(F.time), "plain", F.time)
-	right(2, "DIST", num(F.dist), "plain", F.dist)
+	-- 2026-11-12: a new hold (MOD, not yet entered): TIME and DIST are the pilot's entries -
+	-- empty boxes until TIME or DIST is typed (X-Plane's own default values are not shown)
+	if not mod then S.holdLegSet = nil end
+	if mod and not S.holdLegSet then
+		for row, f in ipairs({ { "TIME", F.time }, { "DIST", F.dist } }) do
+			putR("U" .. row, 23, f[1], W, false)
+			putR("L" .. row, 23, "---", C.box, true, true)
+			if f[2] then holdKeys["R" .. row] = { key = f[2].key, kind = "leg" } end
+		end
+	else
+		right(1, "TIME", num(F.time), "leg", F.time)
+		right(2, "DIST", num(F.dist), "leg", F.dist)
+	end
 	right(3, "ETA", v(F.eta), "plain", F.eta)
 	if not v(F.eta) or string.match(v(F.eta), "^[%-:%s]+$") then M[#M].color = C.cyan end   -- shown only
 	right(4, "EFC", v(F.efc), "plain", F.efc)
@@ -1380,7 +1400,19 @@ buildHoldPage = function(cur, tot, mod)
 			sasl.logWarning(line)
 		end
 	end
-	if pr then
+	-- 2026-11-12: new hold not yet entered (MOD): CANCEL instead of NEW HOLD - it throws the
+	-- unconfirmed hold away (X-Plane's <CANCEL MOD, under the ←ENTER at left key 6)
+	local erase = nil
+	if mod then
+		for _, pp in ipairs(prompts) do
+			if string.match(pp.key, "l$") and (string.find(pp.text, "CANCEL MOD", 1, true)
+				or string.find(pp.text, "ERASE", 1, true)) then erase = pp end
+		end
+	end
+	if erase then
+		putR("L6", 23, "CANCEL→", W)
+		holdKeys["R6"] = { key = erase.key, kind = "cancel" }
+	elseif pr then
 		putR("L6", 23, (string.gsub(pr.text, ">$", "→")), W)
 		holdKeys["R6"] = { key = pr.key, kind = "plain" }
 	end
@@ -1587,6 +1619,8 @@ function P.MIRROR.build()
 
 	-- selected waypoint: UNS options (white), as on the UNS flight plan page
 	if sel then
+		-- 2026-11-12: orange separator between the plan and the options, as on the real UNS
+		putLine(15.5, ROWF.L1 - 0.045, 15.5, ROWF.L6 + 0.03, C.amber)
 		putR("L1", 23, S.legsDelArmed and "CONFIRM→" or "DEL→", S.legsDelArmed and C.amber or C.white)
 		putR("L2", 23, "DTO→", C.white)
 		putR("L3", 23, "HOLD→", C.white)
@@ -2316,6 +2350,34 @@ local function vnavPoints(plan, dest)
 end
 local function fmtFt(a) return string.format("%d", math.floor(a + 0.5)) end
 
+-- 2026-11-12: the point dist NM ahead along the route (aircraft -> active waypoint -> next
+-- waypoints ...), for the TOD on the Kontur map: lat, lon (nil beyond the end of the plan).
+-- (a core.* function, not a new local: this file is at Lua's 200-locals limit)
+core.alongRoute = function(dist)
+	local plan, dest = readPlan()
+	if dest < 1 then return nil end
+	local la, lo = val(dr_lat, 0), val(dr_lon, 0)
+	for i = dest, #plan do
+		local e = plan[i]
+		if usable(e) then
+			local leg = gc(la, lo, e.lat, e.lon)
+			if leg > 0.001 and dist <= leg then
+				local f = dist / leg                  -- great circle point f of the way along
+				local p1, l1, p2, l2 = math.rad(la), math.rad(lo), math.rad(e.lat), math.rad(e.lon)
+				local d = leg / R_NM
+				local A, B = math.sin((1 - f) * d) / math.sin(d), math.sin(f * d) / math.sin(d)
+				local x = A * math.cos(p1) * math.cos(l1) + B * math.cos(p2) * math.cos(l2)
+				local y = A * math.cos(p1) * math.sin(l1) + B * math.cos(p2) * math.sin(l2)
+				local z = A * math.sin(p1) + B * math.sin(p2)
+				return math.deg(atan2(z, math.sqrt(x * x + y * y))), math.deg(atan2(y, x))
+			end
+			dist = dist - leg
+			la, lo = e.lat, e.lon
+		end
+	end
+	return nil
+end
+
 -- VNAV key: page 1 = this UNS PATH VNAV page; pages 2/3/4 = X-Plane's own CLB, CRZ
 -- and DES pages (CRZ ALT and the other X-Plane values are entered there, on
 -- X-Plane's own fields). NEXT / PREV move through the four pages.
@@ -2367,6 +2429,15 @@ function P.VNAV.build()
 	local gs = val(dr_gs, 0) * 1.943844
 	local alt = val(DX.elev, 0) * 3.28084
 	local tgt = S.tgtVS
+	-- 2026-11-12: TOD = X-Plane FMS's own top of descent (from the cruise altitude and the
+	-- plan / STAR altitudes), the same T/D as on X-Plane's PROGRESS page: distance and time
+	-- to it. Shown once the TGT V/S is entered (as on the real UNS) and until it is passed.
+	local xtod = val(DX.tod, 0) or 0
+	if tgt and tgt < 0 and xtod > 0.05 and xtod < 9000 then
+		put("U1", 0, "TOD", C.white, false)
+		putR("U1", 9, fmtDist(xtod) .. "NM", C.green, false)
+		putR("U1", 15, (gs > 30 and hhmm(xtod / gs * 60)) or "--:--", C.green, false)
+	end
 	putR("U1", 23, "TGT V/S", C.white, false)
 	if S.vnavField == "TGT" then
 		local t = (S.entry ~= "") and ("-" .. S.entry) or "-----"
@@ -2393,14 +2464,6 @@ function P.VNAV.build()
 		if gs > 30 and d > 0.1 then
 			local need = -(alt - to.alt) / (d / gs * 60)
 			putR("D1", altCol, string.format("%d", math.floor(need / 10 + 0.5) * 10), C.green, false)
-			-- top of descent for the target vertical speed (only before it is reached)
-			if tgt and tgt < 0 and alt > to.alt then
-				local tod = d - (alt - to.alt) / (-tgt) * gs / 60
-				if tod > 0.05 then
-					put("U1", 0, "TO TOD", C.white, false)
-					put("U1", 7, fmtDist(tod) .. "NM", C.green, false)
-				end
-			end
 		else
 			putR("D1", altCol, "----", C.green, false)
 		end
@@ -3152,6 +3215,15 @@ function core.key(k, u)
 	end
 	if S.busy then return end   -- ORIGIN/DEST being entered (about a second)
 
+	-- 2026-11-12: a new hold is entered only once its TIME or DIST has been typed
+	if (k == "ENTER" or k == "L6") and S.page == "MIRROR" and not S.holdLegSet then
+		local pn, _, _, pmod = pageInfo()
+		if pn == "HOLDING" and pmod then
+			msg("ENTER TIME OR DIST")
+			dirtySoon()
+			return
+		end
+	end
 	-- X-Plane waits for ENTER: ←ENTER is offered at left key 6, same as the ENTER key
 	if k == "L6" and core.waitingEnter() then
 		xpCommand(BOEING.ENTER)
@@ -3327,6 +3399,29 @@ function core.key(k, u)
 					wait(0.2)
 					S.busy = nil
 				end)
+			elseif hk and hk.kind == "cancel" then
+				-- X-Plane's CANCEL MOD drops the new hold; then, as the HOLD key does, the
+				-- HOLD FIX list (X-Plane's NEW HOLD if a hold is still shown, e.g. a STAR's)
+				S.userHold = nil
+				S.holdLegSet = nil
+				S.busy = "HOLD"
+				runJob(function()
+					xpCommand("sim/FMS/ls_" .. hk.key)
+					wait(0.3)
+					xpCommand("sim/FMS/hold")
+					wait(0.35)
+					if not core.holdAtKey() then
+						local nk, ns = findWord(cduLines(), "NEW HOLD")
+						if nk then
+							xpCommand("sim/FMS/ls_" .. nk .. ns)
+							wait(0.3)
+						end
+					end
+					S.busy = nil
+				end)
+			elseif hk and hk.kind == "leg" then
+				if typed ~= "" then S.holdLegSet = true end   -- the pilot's TIME / DIST
+				xpCommand("sim/FMS/ls_" .. hk.key)
 			elseif hk then
 				xpCommand("sim/FMS/ls_" .. hk.key)
 			end
@@ -3440,7 +3535,8 @@ end
 -------------------------------------------------------------------------------
 -- POWER-UP SELF TEST ---------------------------------------------------------
 -- dark for 1.5 s, then UNS - 1 / TUPOLEV 154 M and the test list; PASS row by row,
--- DATABASE BANK 2 counts 10..100 %, then the FPL MENU start page
+-- after RAM PASS: DATABASE BANK 1 counts 10..90 % within a second, then the label becomes
+-- DATABASE BANK 2 and counts 10..100 %; then the FPL MENU start page
 local BOOT_DARK = 1.5
 local BOOT_ROWS = {
 	{ "CPU", 3.5 }, { "RAM", 5.0 }, { "DATABASE", 12.6, db = true },
@@ -3456,12 +3552,18 @@ local function buildBoot(e)
 	for i, r in ipairs(BOOT_ROWS) do
 		local row = "S" .. i
 		local label = r[1]
-		if r.db and e >= BOOT_DB_START then label = "DATABASE BANK 2" end
+		-- 2026-11-12: BANK 1 from RAM PASS (BOOT_ROWS[2]) to 90 %, 10 % every 0.1 s, then BANK 2
+		local db1 = BOOT_ROWS[2][2]
+		if r.db and e >= BOOT_DB_START then label = "DATABASE BANK 2"
+		elseif r.db and e >= db1 then label = "DATABASE BANK 1" end
 		put(row, 1, label, C.green)
 		if e >= r[2] then
 			put(row, 18, "PASS", C.green)
 		elseif r.db and e >= BOOT_DB_START + BOOT_DB_STEP then
-			local pct = math.min(100, math.floor((e - BOOT_DB_START) / BOOT_DB_STEP) * 10)
+			local pct = math.min(100, math.floor((e - BOOT_DB_START) / BOOT_DB_STEP + 1e-6) * 10)
+			putR(row, 21, string.format("%d%%", pct), C.green)
+		elseif r.db and e < BOOT_DB_START and e >= db1 + 0.1 then
+			local pct = math.min(90, math.floor((e - db1) / 0.1 + 1e-6) * 10)
 			putR(row, 21, string.format("%d%%", pct), C.green)
 		end
 	end
@@ -3636,13 +3738,13 @@ local function build()
 		V.model = nil
 		if faceOn() and unitActive(u) then
 			setUnit(u)
-			if V.boot and now() - V.boot >= BOOT_END then
+			if V.boot and (core.bootT or 0) - V.boot >= BOOT_END then
 				V.boot = nil              -- self test done: position page, then ACCEPT
 				V.posinit = true
 			end
 			if V.boot then
 				M = {}
-				buildBoot(now() - V.boot)
+				buildBoot((core.bootT or 0) - V.boot)
 			elseif V.posinit then
 				M = {}
 				pcall(buildPosInit)
@@ -3709,6 +3811,14 @@ local function eraseFlightPlan()
 end
 local wasAny = nil
 function core.update()
+	-- 2026-11-12: self-test clock: runs with the real-time clock, but stands still while
+	-- the sim is paused (keys and pages still work in pause)
+	do
+		local tr = now()
+		local dtr = tr - (core.lastT or tr)
+		core.lastT = tr
+		if val(DX.paused, 0) ~= 1 then core.bootT = (core.bootT or 0) + math.max(0, math.min(dtr, 0.5)) end
+	end
 	checkCdu2()
 	jobStep()
 	core.listStep()
@@ -3723,7 +3833,7 @@ function core.update()
 		local a = unitActive(u)
 		if a ~= V.was then
 			V.was = a
-			V.boot = a and t or nil
+			V.boot = a and (core.bootT or 0) or nil
 			V.posinit = false
 			V.dim = false
 			resetUnitPages(u)
@@ -3745,6 +3855,26 @@ function core.update()
 	if t >= nextBuild then
 		build()
 		nextBuild = t + (booting and 0.1 or REFRESH)
+	end
+	-- 2026-11-12: TOD on the Kontur map: same condition as the PATH VNAV page shows it,
+	-- and its position: X-Plane's TOD distance measured along the route from the aircraft
+	if core.TOD_SHOW and t >= (core.todNext or 0) then
+		core.todNext = t + 0.25
+		local xtod = val(DX.tod, 0) or 0
+		local tgtSet = false
+		for u = 1, 2 do
+			local v = SS[u].tgtVS
+			if unitActive(u) and v and v < 0 then tgtSet = true end
+		end
+		local ok, la, lo = false, nil, nil
+		if tgtSet and xtod > 0.05 and xtod < 9000 then ok, la, lo = pcall(core.alongRoute, xtod) end
+		if ok and la and lo then
+			pcall(set, core.TOD_LAT, la)
+			pcall(set, core.TOD_LON, lo)
+			pcall(set, core.TOD_SHOW, 1)
+		else
+			pcall(set, core.TOD_SHOW, 0)
+		end
 	end
 end
 

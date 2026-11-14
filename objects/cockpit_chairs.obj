@@ -77092,7 +77092,7 @@ TRIS 87453 2586
 ANIM_end
 ANIM_begin
 ANIM_trans -0.014863 -1.892190 -21.574200 -0.014863 -1.892190 -21.574200 0.000000 0.000000 none
-ANIM_rotate -1.000000 0.000000 0.000000 0.000000 5.000000 0.000000 1.000000 tu154b2/custom/b2/kontur_on
+ANIM_rotate -1.000000 0.000000 0.000000 0.000000 0.000000 0.000000 1.000000 tu154b2/custom/b2/kontur_on
 ANIM_trans 0.014863 1.892190 21.574200 0.014863 1.892190 21.574200 0.000000 0.000000 none
 TRIS 90039 72
 ATTR_no_cull
@@ -77136,7 +77136,7 @@ ATTR_cull
 TRIS 90708 36
 ANIM_end
 ANIM_begin
-ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
+# ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on   (shown in both cockpits)
 ANIM_begin
 ANIM_hide -1.000000 -1.000000 sim/custom/b2/kontur_90th
 # TRIS 90744 1332
@@ -77149,7 +77149,7 @@ ANIM_end
 # ANIM_end
 ANIM_begin
 ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
-TRIS 94302 18
+# TRIS 94302 18   (v1-only part removed)
 ANIM_end
 ANIM_begin
 ANIM_hide -1.000000 0.100000 tu154b2/custom/switchers/eng/emerg_gen_on_3_cap

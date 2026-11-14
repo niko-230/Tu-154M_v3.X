@@ -12,6 +12,8 @@ defineProperty("menu")
 defineProperty("name_draw")
 defineProperty("hold_draw")   -- UNS hold racetrack points (nav_draw.lua), heading-up NM frame
 defineProperty("n_hold")
+defineProperty("tod_draw")    -- 2026-11-12: TOD point (nav_draw.lua), heading-up NM frame
+defineProperty("n_tod")
 gps_dest = globalPropertyi("tu154b2/custom/radio/curr_wp")
 gps_dest_app = globalPropertyi("tu154b2/custom/radio/curr_wp_app")
 n_wp_app = globalPropertyi("tu154b2/custom/radio/appr_n_waypoints")
@@ -125,6 +127,38 @@ function draw()
 			local x1, y1 = hold[i - 1][1] / rc * 678 + 235 + 14.5, hold[i - 1][2] / rc * 678 + yoff + 17
 			local x2, y2 = hold[i][1] / rc * 678 + 235 + 14.5, hold[i][2] / rc * 678 + yoff + 17
 			route_segment(x1, y1, x2, y2, menu_on, hcol, true)
+		end
+	end
+
+	-- 2026-11-12: top of descent - green circle on the magenta route line and "TOD" in green,
+	-- the label placed like the waypoint names; same projection and hidden areas
+	if get(navon) ~= 0 and (get(n_tod) or 0) > 0 then
+		local tod = get(tod_draw)
+		local range_set = get(range)
+		local rc = 1
+		if range_set == 1 then rc = 10
+		elseif range_set == 2 then rc = 20
+		elseif range_set == 3 then rc = 40
+		elseif range_set == 4 then rc = 100
+		elseif range_set == 5 then rc = 200
+		elseif range_set == 6 then rc = 320
+		elseif range_set == 7 then rc = 640
+		end
+		rc = rc * (1 - 0.073 * get(dist_mode)) * 1.1
+		local yoff = -4 + 130 * bool2int(get(mode) == 5) + 21
+		local menu_on = get(menu) == 1
+		local x = tod[1][1] / rc * 678 + 235            -- as a waypoint star (bottom-left corner)
+		local y = tod[1][2] / rc * 678 + yoff
+		local cx, cy = x + 14.5, y + 17                  -- on the route line (star centre)
+		local tcol = {0.20, 1.00, 0.20, brt}
+		if not route_blocked(cx, cy, menu_on) then
+			for r = 6, 8, 0.5 do                             -- ring, as thick as the route line
+				sasl.gl.drawCircle(cx, cy, r, false, tcol)
+			end
+		end
+		local hide_txt = y>320 or (x>320 and y>250) or (x<120 and y>290) or y>370 or x>420 or x<0 or y<0 or (x<130 and y<66) or (x>50 and x<390 and y>140 and y<250 and menu_on)
+		if not hide_txt then
+			drawText(font, x+29, y+12, "TOD", 18, false, false, TEXT_ALIGN_LEFT, tcol)
 		end
 	end
 

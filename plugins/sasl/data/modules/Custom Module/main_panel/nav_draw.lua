@@ -100,6 +100,71 @@ local function holdLookup()
 	return hold_dr
 end
 
+-- 2026-11-12: top of descent on the Kontur map (green dot on the route line + "TOD").
+-- X-Plane's own TOD distance (the T/D of its PROGRESS page, shown on the UNS PATH VNAV page)
+-- is measured forward along the flight plan from the aircraft: active waypoint, then the
+-- next ones - the same points the route line here is drawn through. Shown while the UNS
+-- shows its TOD (tu154b2/custom/uns/tod_show from uns_core.lua: TGT V/S entered); if that
+-- value cannot be found, whenever X-Plane has a TOD. Not added to the flight plan.
+local tod_show_tbl = { {[1] = 0, [2] = 0} }
+local n_tod = 0
+local xp_tod = globalPropertyf("sim/cockpit2/radios/indicators/fms_distance_to_tod_pilot")
+local uns_tod = nil          -- tu154b2/custom/uns/tod_show, looked up until found
+local uns_tod_tries = 0
+local tod_log_frames = 0
+local tod_why = ""
+local function unsTodShow()
+	if not uns_tod and uns_tod_tries < 20 and (tod_log_frames % 60) == 1 then
+		uns_tod_tries = uns_tod_tries + 1
+		local ok, p = pcall(globalPropertyi, "tu154b2/custom/uns/tod_show")
+		if ok and p then uns_tod = p end
+	end
+	if not uns_tod then return nil end
+	local ok, v = pcall(get, uns_tod)
+	if ok then return v end
+	return nil
+end
+local function fmsLatLon(i)
+	local _, _, _, _, la, lo = sasl.getFMSEntryInfo(i)
+	if la and lo and not (la == 0 and lo == 0) then return la, lo end
+	return nil
+end
+-- point a fraction f of the way from (la1, lo1) to (la2, lo2) along the great circle
+local function gcPoint(la1, lo1, la2, lo2, f)
+	local p1, l1, p2, l2 = math.rad(la1), math.rad(lo1), math.rad(la2), math.rad(lo2)
+	local a = math.sin((p2 - p1) / 2) ^ 2 + math.cos(p1) * math.cos(p2) * math.sin((l2 - l1) / 2) ^ 2
+	local d = 2 * math.asin(math.min(1, math.sqrt(a)))
+	if d < 1e-9 then return la1, lo1 end
+	local A = math.sin((1 - f) * d) / math.sin(d)
+	local B = math.sin(f * d) / math.sin(d)
+	local x = A * math.cos(p1) * math.cos(l1) + B * math.cos(p2) * math.cos(l2)
+	local y = A * math.cos(p1) * math.sin(l1) + B * math.cos(p2) * math.sin(l2)
+	local z = A * math.sin(p1) + B * math.sin(p2)
+	return math.deg(math.atan2(z, math.sqrt(x * x + y * y))), math.deg(math.atan2(y, x))
+end
+-- TOD position, or nil (tod_why says why)
+local function todPosition(ac_lat, ac_lon, n_entries, base)
+	local togo = get(xp_tod) or 0
+	if togo <= 0.05 or togo > 9000 then tod_why = "X-Plane has no TOD" return nil end
+	local show = unsTodShow()
+	if show ~= nil and show ~= 1 then tod_why = "UNS shows no TOD (TGT V/S)" return nil end
+	local okA, act = pcall(sasl.getDestinationFMSEntry)
+	if not okA or type(act) ~= "number" then tod_why = "no active waypoint" return nil end
+	local la, lo = ac_lat, ac_lon
+	local d = togo
+	for i = act, n_entries - 1 + base do
+		local nla, nlo = fmsLatLon(i)
+		if nla then
+			local leg = getDistance(la, lo, nla, nlo)
+			if leg > 0.001 and d <= leg then return gcPoint(la, lo, nla, nlo, d / leg) end
+			d = d - leg
+			la, lo = nla, nlo
+		end
+	end
+	tod_why = "TOD beyond the end of the plan"
+	return nil
+end
+
 function update()
 	local wp_lat = get(lat)
 	local wp_lon = get(lon)
@@ -240,6 +305,19 @@ function update()
 			nd_name_tbl[n_FMS+i] = '(INTC)'
 		end	
 	end
+	-- 2026-11-12: TOD point, same aircraft-relative heading-up NM frame as the waypoints
+	n_tod = 0
+	tod_log_frames = tod_log_frames + 1
+	local okT, tla, tlo = pcall(todPosition, ac_lat, ac_lon, n_FMS, base)
+	if not okT then tod_why = "error: " .. tostring(tla) tla = nil end
+	if tla and tlo then
+		local brg = getHeadingDifference(true_hdg, getHeading(ac_lat, ac_lon, tla, tlo))
+		local d = getDistance(ac_lat, ac_lon, tla, tlo)
+		tod_show_tbl[1][1] = d * math.sin(math.rad(brg))
+		tod_show_tbl[1][2] = d * math.cos(math.rad(brg))
+		n_tod = 1
+		tod_why = string.format("drawn %.1f NM ahead (x %.1f, y %.1f NM)", d, tod_show_tbl[1][1], tod_show_tbl[1][2])
+	end
 	-- dirty trick to remove AP altitude intercept line from nd_name_tbl
 	if get(vvi)>0 then
 		set(ap_alt,0)
@@ -257,6 +335,10 @@ components = {
 		hold_draw = hold_show_tbl,
 		n_hold = function()
 			return n_hold
+		end,
+		tod_draw = tod_show_tbl,
+		n_tod = function()
+			return n_tod
 		end,
 		n_wp = function()
 			return n_FMS+n_appr
@@ -288,6 +370,10 @@ components = {
 		hold_draw = hold_show_tbl,
 		n_hold = function()
 			return n_hold
+		end,
+		tod_draw = tod_show_tbl,
+		n_tod = function()
+			return n_tod
 		end,
 		n_wp = function()
 			return n_FMS+n_appr

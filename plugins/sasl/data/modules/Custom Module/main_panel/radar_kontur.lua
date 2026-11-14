@@ -195,9 +195,10 @@ function update()
 				-- set(az,brg-1)
 			-- end
 		-- end
-		--- gain (works only for MAP mode)
+		--- gain: РРУ knob works in MAP and (since 2026-11-14) METEO, like the real Kontur-10 РРУ.
+		--- Knob in its default middle position (0.5) = X-Plane calibrated gain 1.0, exactly as before.
 		if get(kontur_on) == 1 then
-			if wx_mode == 4 then
+			if wx_mode == 4 or wx_mode == 2 then
 				if gn==0 then
 					wx_gain=1
 				else

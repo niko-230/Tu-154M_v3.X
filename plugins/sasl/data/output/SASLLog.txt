@@ -474,7 +474,7 @@
 [TU154M INFO]: [LUA]: requesting	uns_core
 [TU154M INFO]: [LUA]: loading	uns_popup
 [TU154M INFO]: [LUA]: requesting	uns_core
-[TU154M INFO]: Scripts loading time: 0.7866
+[TU154M INFO]: Scripts loading time: 0.7541
 [TU154M INFO]: Module loaded
 [TU154M INFO]: Initializing modules...
 [TU154M DEBUG]: [LUA]: Tiles created

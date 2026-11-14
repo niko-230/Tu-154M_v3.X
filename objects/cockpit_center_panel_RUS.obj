@@ -9999,10 +9999,10 @@ ANIM_begin
 ANIM_hide 0.000000 0.000000 sim/custom/b2/kontur_70th
 ANIM_begin
 ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
-TRIS 48 192
+# TRIS 48 192   (RSBN mount removed)
 ANIM_end
 ANIM_begin
-ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on
+# ANIM_hide 1.000000 1.000000 tu154b2/custom/b2/kontur_on   (knob plate now shown in both cockpits)
 ATTR_hard 
 ATTR_no_cull
 TRIS 240 36
