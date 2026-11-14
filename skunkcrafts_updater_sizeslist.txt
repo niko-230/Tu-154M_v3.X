@@ -1,6 +1,6 @@
 AviTab.json|124
 KLNconfig.txt|653
-README.md|2370
+README.md|2372
 airfoils/NACA 0009 (symmetrical).afl|25075
 airfoils/hstab.afl|25047
 airfoils/vstab.afl|24843
@@ -11,6 +11,7 @@ airfoils/wing_tip.afl|25078
 airfoils/wing_tip_orig.afl|25046
 black_box/03_11_26_000.bbox|55560
 black_box/10_11_26_000.bbox|56194
+black_box/14_11_26_000.bbox|90054
 cockpit/-PANELS-/Panel.png|298229
 cockpit/EFIS/EFIS maps/map_s_HM-1.png|3504
 cockpit/EFIS/EFIS maps/map_s_HM-2.png|3771
@@ -1181,7 +1182,7 @@ docs/Readme_rus.pdf|1030059
 docs/Tu-154M Project Tupolev English Manual.pdf|9313980
 docs/Tu-154M_practical aerodynamic_Russian - 1997.pdf|4132688
 docs/Tu-154_readme_B2.pdf|1517843
-docs/UNS-1_FMS_Operations_Manual_Tu-154M_v3.pdf|15380471
+docs/UNS-1_FMS_Operations_Manual_Tu-154M_v3.pdf|2262469
 docs/real_docs/RUS RLE/Papka_1/Tu-154M_RLE_r1.pdf|5274213
 docs/real_docs/RUS RLE/Papka_1/Tu-154M_RLE_r2.pdf|1419422
 docs/real_docs/RUS RLE/Papka_1/Tu-154M_RLE_r3.pdf|5564644
@@ -1241,32 +1242,32 @@ objects/aux_stuff_1.obj|1926780
 objects/aux_stuff_1.png|3486526
 objects/azs_panel.png|3321949
 objects/azs_panel_LIT.png|2323715
-objects/azs_panels.obj|355979
+objects/azs_panels.obj|352479
 objects/cabin_glass_out.obj|857612
 objects/cockpit_1.obj|14699191
 objects/cockpit_1.png|10212772
 objects/cockpit_1_NML.png|11659837
-objects/cockpit_1_RUS.obj|29237732
-objects/cockpit_1_RUS.png|10396316
-objects/cockpit_1_RUS_LIT.png|106187
-objects/cockpit_1_RUS_NML.png|10445991
+objects/cockpit_1_RUS.obj|29381525
+objects/cockpit_1_RUS.png|12770191
+objects/cockpit_1_RUS_LIT.png|135201
+objects/cockpit_1_RUS_NML.png|14054633
 objects/cockpit_2.obj|1648278
 objects/cockpit_2.png|17029111
 objects/cockpit_2_LIT.png|312604
 objects/cockpit_center_panel.obj|769841
-objects/cockpit_center_panel_RUS.obj|730708
+objects/cockpit_center_panel_RUS.obj|730777
 objects/cockpit_center_panel_RUS.png|16224737
 objects/cockpit_center_panel_RUS_LIT.png|573507
 objects/cockpit_center_panel_RUS_NML.png|8762506
 objects/cockpit_center_panel_blend_RUS.obj|739888
-objects/cockpit_center_panel_v1_RUS.obj|1761602
+objects/cockpit_center_panel_v1_RUS.obj|1761671
 objects/cockpit_center_panel_v1_RUS.png|17920932
 objects/cockpit_center_panel_v1_RUS_LIT.png|520524
 objects/cockpit_center_panel_v1_RUS_NML.png|9079065
-objects/cockpit_chairs.obj|5858625
+objects/cockpit_chairs.obj|5858681
 objects/cockpit_chairs.png|12337453
 objects/cockpit_chairs_NML.png|5933800
-objects/cockpit_details.obj|6478751
+objects/cockpit_details.obj|6523003
 objects/cockpit_details.png|15235213
 objects/cockpit_details_NML.png|7330058
 objects/cockpit_eng_gauges_M_RUS.obj|4259235
@@ -1287,15 +1288,15 @@ objects/cockpit_eng_shell_M_RUS.obj|488577
 objects/cockpit_eng_shell_M_RUS.png|14860927
 objects/cockpit_eng_shell_M_RUS_LIT.png|51052
 objects/cockpit_eng_stp_B_RUS.obj|59
-objects/cockpit_front_panel_RUS.obj|855786
+objects/cockpit_front_panel_RUS.obj|856397
 objects/cockpit_front_panel_RUS.png|16260173
 objects/cockpit_front_panel_RUS_LIT.png|231260
 objects/cockpit_front_panel_RUS_NML.png|6961442
 objects/cockpit_front_panel_blend_RUS.obj|461742
-objects/cockpit_front_panel_kontur_RUS.obj|934933
-objects/cockpit_front_panel_kontur_RUS.png|15420370
+objects/cockpit_front_panel_kontur_RUS.obj|966688
+objects/cockpit_front_panel_kontur_RUS.png|16762097
 objects/cockpit_front_panel_kontur_RUS_NML.png|8309948
-objects/cockpit_glass.obj|482645
+objects/cockpit_glass.obj|485209
 objects/cockpit_glass.png|2372793
 objects/cockpit_glass_LIT.png|46733
 objects/cockpit_glass_NML.png|4629
@@ -1310,8 +1311,8 @@ objects/cockpit_prefill.obj|287361
 objects/cockpit_shtorki.obj|1247615
 objects/cockpit_shtorki.png|4944257
 objects/cockpit_shtorki_NML.png|6304746
-objects/cockpit_side_panel_RUS.obj|1138018
-objects/cockpit_side_panel_RUS.png|18837654
+objects/cockpit_side_panel_RUS.obj|1138004
+objects/cockpit_side_panel_RUS.png|16324360
 objects/cockpit_side_panel_RUS_LIT.png|3775
 objects/cockpit_side_panel_RUS_NML.png|14398778
 objects/cockpit_side_panel_blend_RUS.obj|21009
@@ -1819,7 +1820,7 @@ plugins/sasl/data/modules/Custom Module/main_panel/diss/diss.lua|87
 plugins/sasl/data/modules/Custom Module/main_panel/diss/diss_logic.lua|11896
 plugins/sasl/data/modules/Custom Module/main_panel/diss/diss_panel.lua|11150
 plugins/sasl/data/modules/Custom Module/main_panel/dme_display.lua|4998
-plugins/sasl/data/modules/Custom Module/main_panel/dme_dist_text.lua|14792
+plugins/sasl/data/modules/Custom Module/main_panel/dme_dist_text.lua|15698
 plugins/sasl/data/modules/Custom Module/main_panel/door_panel.lua|5839
 plugins/sasl/data/modules/Custom Module/main_panel/eup53.lua|1833
 plugins/sasl/data/modules/Custom Module/main_panel/gns430.lua|16077
@@ -1833,9 +1834,9 @@ plugins/sasl/data/modules/Custom Module/main_panel/mgv.lua|9149
 plugins/sasl/data/modules/Custom Module/main_panel/misc_fails.lua|7379
 plugins/sasl/data/modules/Custom Module/main_panel/misc_lamps.lua|14716
 plugins/sasl/data/modules/Custom Module/main_panel/msrp_clock.lua|0
-plugins/sasl/data/modules/Custom Module/main_panel/nav_draw.lua|13413
+plugins/sasl/data/modules/Custom Module/main_panel/nav_draw.lua|17198
 plugins/sasl/data/modules/Custom Module/main_panel/nd_marks.png|2044
-plugins/sasl/data/modules/Custom Module/main_panel/nd_route_draw.lua|7075
+plugins/sasl/data/modules/Custom Module/main_panel/nd_route_draw.lua|8622
 plugins/sasl/data/modules/Custom Module/main_panel/nvu/drefs.txt|1811
 plugins/sasl/data/modules/Custom Module/main_panel/nvu/editor/editor_background.lua|431
 plugins/sasl/data/modules/Custom Module/main_panel/nvu/editor/editor_button.lua|1414
@@ -1860,7 +1861,7 @@ plugins/sasl/data/modules/Custom Module/main_panel/radar/radar_line.png|4393
 plugins/sasl/data/modules/Custom Module/main_panel/radar/radar_mask.png|11141
 plugins/sasl/data/modules/Custom Module/main_panel/radar/radar_mask_drift.png|7586
 plugins/sasl/data/modules/Custom Module/main_panel/radar/radar_mask_drift2.png|3142
-plugins/sasl/data/modules/Custom Module/main_panel/radar_kontur.lua|10514
+plugins/sasl/data/modules/Custom Module/main_panel/radar_kontur.lua|10690
 plugins/sasl/data/modules/Custom Module/main_panel/radar_test.lua|1698
 plugins/sasl/data/modules/Custom Module/main_panel/radar_test_draw.lua|2985
 plugins/sasl/data/modules/Custom Module/main_panel/radio/ark15.lua|15671
@@ -2037,6 +2038,7 @@ plugins/sasl/data/modules/Custom Module/panels_2d/yellow_digits.png|87651
 plugins/sasl/data/modules/Custom Module/readme.txt|41
 plugins/sasl/data/modules/Custom Module/rectangle_ctr.lua|369
 plugins/sasl/data/modules/Custom Module/rectangle_ctr_fuel.lua|358
+plugins/sasl/data/modules/Custom Module/red_digit_strip.png|22162
 plugins/sasl/data/modules/Custom Module/save_state.lua|116926
 plugins/sasl/data/modules/Custom Module/sounds/FE_top_sounds.lua|18581
 plugins/sasl/data/modules/Custom Module/sounds/cabin_sounds.lua|36376
@@ -2083,7 +2085,7 @@ plugins/sasl/data/modules/Custom Module/uns_fms/DejaVu-LICENSE.txt|8816
 plugins/sasl/data/modules/Custom Module/uns_fms/DejaVuSansMono-Bold.ttf|331992
 plugins/sasl/data/modules/Custom Module/uns_fms/UNS_2d.png|999863
 plugins/sasl/data/modules/Custom Module/uns_fms/UNS_2d_screen.png|5338
-plugins/sasl/data/modules/Custom Module/uns_fms/uns_core.lua|139627
+plugins/sasl/data/modules/Custom Module/uns_fms/uns_core.lua|145597
 plugins/sasl/data/modules/Custom Module/uns_fms/uns_display.lua|5163
 plugins/sasl/data/modules/Custom Module/uns_fms/uns_popup.lua|4902
 plugins/sasl/data/modules/Custom Module/uns_fms/uns_screen.lua|889
@@ -3049,7 +3051,7 @@ plugins/sasl/data/modules/configuration/widgetResources/SourceCodePro-LICENSE.tx
 plugins/sasl/data/modules/configuration/widgetResources/SourceCodePro.ttf|212160
 plugins/sasl/data/modules/configuration/wprefs.ini|274
 plugins/sasl/data/modules/main.lua|4717
-plugins/sasl/data/modules/state.txt|2715
+plugins/sasl/data/modules/state.txt|2716
 plugins/sasl/data/modulesdataref_creator_4.lua|0
 plugins/sasl/data/output/SASLLog.txt|37363
 plugins/sasl/data/output/readme.txt|57
@@ -3153,10 +3155,10 @@ sounds/systems/click.wav|2188
 sounds/systems/flap.wav|2188
 sounds/systems/gear.wav|2188
 sounds/weather/wind.wav|520560
-tu154.acf|2834639
-tu154_cockpit.obj|1589524
-tu154_icon11.png|113962
-tu154_icon11_thumb.png|10010
+tu154.acf|2834640
+tu154_cockpit.obj|1591844
+tu154_icon11.png|135845
+tu154_icon11_thumb.png|11140
 tu154_paint.png|6686
 tu154_paint2.png|1215
 tu154_prefs.txt|4282
