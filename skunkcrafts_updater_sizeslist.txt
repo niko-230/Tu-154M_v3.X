@@ -12,6 +12,7 @@ airfoils/wing_tip_orig.afl|25046
 black_box/03_11_26_000.bbox|55560
 black_box/10_11_26_000.bbox|56194
 black_box/14_11_26_000.bbox|90054
+black_box/15_11_26_000.bbox|61509
 cockpit/-PANELS-/Panel.png|298229
 cockpit/EFIS/EFIS maps/map_s_HM-1.png|3504
 cockpit/EFIS/EFIS maps/map_s_HM-2.png|3771
@@ -1247,21 +1248,21 @@ objects/cabin_glass_out.obj|857612
 objects/cockpit_1.obj|14699191
 objects/cockpit_1.png|10212772
 objects/cockpit_1_NML.png|11659837
-objects/cockpit_1_RUS.obj|29381525
-objects/cockpit_1_RUS.png|12770191
-objects/cockpit_1_RUS_LIT.png|135201
-objects/cockpit_1_RUS_NML.png|14054633
+objects/cockpit_1_RUS.obj|29629842
+objects/cockpit_1_RUS.png|13009682
+objects/cockpit_1_RUS_LIT.png|252447
+objects/cockpit_1_RUS_NML.png|13912876
 objects/cockpit_2.obj|1648278
 objects/cockpit_2.png|17029111
 objects/cockpit_2_LIT.png|312604
 objects/cockpit_center_panel.obj|769841
-objects/cockpit_center_panel_RUS.obj|730777
-objects/cockpit_center_panel_RUS.png|16224737
+objects/cockpit_center_panel_RUS.obj|745036
+objects/cockpit_center_panel_RUS.png|16967249
 objects/cockpit_center_panel_RUS_LIT.png|573507
 objects/cockpit_center_panel_RUS_NML.png|8762506
 objects/cockpit_center_panel_blend_RUS.obj|739888
-objects/cockpit_center_panel_v1_RUS.obj|1761671
-objects/cockpit_center_panel_v1_RUS.png|17920932
+objects/cockpit_center_panel_v1_RUS.obj|1780689
+objects/cockpit_center_panel_v1_RUS.png|19395224
 objects/cockpit_center_panel_v1_RUS_LIT.png|520524
 objects/cockpit_center_panel_v1_RUS_NML.png|9079065
 objects/cockpit_chairs.obj|5858681
@@ -1289,7 +1290,7 @@ objects/cockpit_eng_shell_M_RUS.png|14860927
 objects/cockpit_eng_shell_M_RUS_LIT.png|51052
 objects/cockpit_eng_stp_B_RUS.obj|59
 objects/cockpit_front_panel_RUS.obj|856397
-objects/cockpit_front_panel_RUS.png|16260173
+objects/cockpit_front_panel_RUS.png|17680940
 objects/cockpit_front_panel_RUS_LIT.png|231260
 objects/cockpit_front_panel_RUS_NML.png|6961442
 objects/cockpit_front_panel_blend_RUS.obj|461742
@@ -1795,7 +1796,7 @@ plugins/sasl/data/modules/Custom Module/lights_system/cockpit_lights_bright.lua|
 plugins/sasl/data/modules/Custom Module/lights_system/ext_lights.lua|13512
 plugins/sasl/data/modules/Custom Module/lights_system/light_commands.lua|6003
 plugins/sasl/data/modules/Custom Module/lights_system/light_fails.lua|4606
-plugins/sasl/data/modules/Custom Module/lights_system/light_panel.lua|27610
+plugins/sasl/data/modules/Custom Module/lights_system/light_panel.lua|27857
 plugins/sasl/data/modules/Custom Module/lights_system/lights_system.lua|235
 plugins/sasl/data/modules/Custom Module/main_panel/absu/absu.lua|277
 plugins/sasl/data/modules/Custom Module/main_panel/absu/absu_at.lua|18356
@@ -1818,7 +1819,7 @@ plugins/sasl/data/modules/Custom Module/main_panel/clock24.lua|1183
 plugins/sasl/data/modules/Custom Module/main_panel/crew_session.lua|350
 plugins/sasl/data/modules/Custom Module/main_panel/diss/diss.lua|87
 plugins/sasl/data/modules/Custom Module/main_panel/diss/diss_logic.lua|11896
-plugins/sasl/data/modules/Custom Module/main_panel/diss/diss_panel.lua|11150
+plugins/sasl/data/modules/Custom Module/main_panel/diss/diss_panel.lua|11696
 plugins/sasl/data/modules/Custom Module/main_panel/dme_display.lua|4998
 plugins/sasl/data/modules/Custom Module/main_panel/dme_dist_text.lua|15698
 plugins/sasl/data/modules/Custom Module/main_panel/door_panel.lua|5839
@@ -3156,7 +3157,7 @@ sounds/systems/flap.wav|2188
 sounds/systems/gear.wav|2188
 sounds/weather/wind.wav|520560
 tu154.acf|2834640
-tu154_cockpit.obj|1591844
+tu154_cockpit.obj|1592726
 tu154_icon11.png|135845
 tu154_icon11_thumb.png|11140
 tu154_paint.png|6686
