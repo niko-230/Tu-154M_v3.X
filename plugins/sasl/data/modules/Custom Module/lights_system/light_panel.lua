@@ -13,6 +13,7 @@ defineProperty("ovhd_front_flood", globalPropertyf("tu154b2/custom/lights/ovhd_f
 defineProperty("mid_flood", globalPropertyf("tu154b2/custom/lights/mid_panel_flood_set"))
 defineProperty("ovhd_panel", globalPropertyi("tu154b2/custom/lights/ovhd_panel_int_set")) -- 
 defineProperty("nvu_panel", globalPropertyi("tu154b2/custom/lights/mid_left_panel_int_set")) -- 
+local uns_brt_knob = globalPropertyfae("sim/cockpit2/switches/instrument_brightness_ratio", 17) -- v1: ОСВЕЩЕНИЕ ПУЛЬТОВ UNS knob (0..1)
 defineProperty("pkp_right", globalPropertyi("tu154b2/custom/switchers/airbleed/skv_faster_work_cap")) -- 
 
 defineProperty("right_panel_int_set", globalPropertyf("tu154b2/custom/lights/right_panel_int_set")) -- регулятор встроенного освещения правой панели
@@ -436,7 +437,7 @@ function update()
 	rotary_left=get(left_panel_fld_set)+get(left_panel_int_set)+get(mid_right_panel_int_set)
 	rotary_left2=get(pkp_left)
 	rotary_mid=get(front_flood)+get(ovhd_back_flood)+get(ovhd_front_flood)+get(mid_flood)
-	rotary_nvu=get(ovhd_panel)+get(nvu_panel)
+	rotary_nvu=get(ovhd_panel)+get(nvu_panel)+math.floor(get(uns_brt_knob)*10+0.5) -- UNS knob clicks in the same 10 steps as its neighbour
 	rotary_right=get(right_panel_fld_set)+get(right_panel_int_set)
 	rotary_right2=get(pkp_right)
 	

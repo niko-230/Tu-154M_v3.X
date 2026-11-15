@@ -183,6 +183,21 @@ end
 
 
 
+-- wind correction knob (Δград): one click per whole degree, same click as the δград / Uкм/час drum buttons
+local wind_knob_last = nil
+
+local function wind_knob(gain_L, gain_R, dist)
+	local deg = math.floor(get(wind_set) + 0.5)
+	if wind_knob_last ~= nil and deg ~= wind_knob_last then
+		setSampleGain(button_sound_L, gain_L * dist)
+		setSampleGain(button_sound_R, gain_R * dist)
+		playSample(button_sound_L, false)
+		playSample(button_sound_R, false)
+	end
+	wind_knob_last = deg
+end
+
+
 
 local function lamps()
 
@@ -286,6 +301,8 @@ function update()
 	switchers(gain_L, gain_R,dist)
 	
 	buttons(gain_nvu_L, gain_nvu_R,dist_nvu)
+	
+	wind_knob(gain_nvu_L, gain_nvu_R, dist_nvu)
 	
 	lamps()
 	
