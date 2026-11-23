@@ -1,6 +1,6 @@
 AviTab.json|124
 KLNconfig.txt|653
-README.md|2372
+README.md|1045
 airfoils/NACA 0009 (symmetrical).afl|25075
 airfoils/hstab.afl|25047
 airfoils/vstab.afl|24843
@@ -1295,7 +1295,7 @@ objects/cockpit_front_panel_RUS_LIT.png|231260
 objects/cockpit_front_panel_RUS_NML.png|6961442
 objects/cockpit_front_panel_blend_RUS.obj|461742
 objects/cockpit_front_panel_kontur_RUS.obj|966688
-objects/cockpit_front_panel_kontur_RUS.png|16762097
+objects/cockpit_front_panel_kontur_RUS.png|16757051
 objects/cockpit_front_panel_kontur_RUS_NML.png|8309948
 objects/cockpit_glass.obj|485209
 objects/cockpit_glass.png|2372793
@@ -1324,11 +1324,11 @@ objects/drops_window.png|25365
 objects/drops_window_LIT.png|901680
 objects/engines.obj|1786107
 objects/engines.png|1998536
-objects/engines_NML.png|2543524
+objects/engines_NML.png|2357273
 objects/ext_stuff.png|20464
 objects/fuselage.obj|2295732
 objects/fuselage.png|5796635
-objects/fuselage_NML.png|999647
+objects/fuselage_NML.png|962543
 objects/gears.obj|5432333
 objects/gears.png|3094004
 objects/gears_NML.png|3059539
@@ -1385,7 +1385,7 @@ objects/outside_misc.obj|24492
 objects/outside_misc.png|1785341
 objects/particles/aircraft_particles.png|1130642
 objects/particles/aircraft_particles.pss|333730
-objects/particles/particles.obj|380
+objects/particles/particles.obj|388
 objects/plackards.obj|6708
 objects/plackards.png|6677870
 objects/prefill.obj|552468
@@ -1436,7 +1436,7 @@ objects/windshield_thermal_out.png|162854
 objects/windshield_thermal_side.png|38209
 objects/wings.obj|1164948
 objects/wings.png|4590917
-objects/wings_NML.png|3076916
+objects/wings_NML.png|2782086
 objects/wings_b2.png|5522707
 objects/wings_b2_NML.png|623060
 objects/wiper.png|42601
